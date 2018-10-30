@@ -1,4 +1,4 @@
-»ñÈ¡URLÎÊºÅÖ®ºóµÄ²ÎÊı
+è·å–URLé—®å·ä¹‹åçš„å‚æ•°
 var Hzy = window.Hzy || {};
 Hzy.urlDecode = function(str) {
 	var urlParam;
@@ -20,7 +20,7 @@ Hzy.getURLParams = function(url) {
 	return paraObj;
 };
 sql
-×Ö·û´®Æ¥Åä
+å­—ç¬¦ä¸²åŒ¹é…
 select sy.*,
        (select wm_concat(user_fullname)
           from fix_userinfo
@@ -34,46 +34,46 @@ insert into sys_xmgwry
   (ID, FKID, GWRY, PROJECTID, ORGID) select SQ_SYS_PERMISSION.Nextval, sg.id, fu.user_name, sg.projectid, sg.orgid from SYS_GWLC sg
  LEFT JOIN FIX_USERINFO FU ON ',' ||  sg.GWRY || ',' like '%,'||fu.user_name||',%'
 
-Êı×éÖØ¸´
+æ•°ç»„é‡å¤
 var ary = new Array("111","22","33","111");
 var nary=ary.sort();
 for(var i=0;i<ary.length;i++){
-    if (nary[i]==nary[i+1]){//´íÎó
-        Fix.Runtime.setError("ÈËÔ±ÖØ¸´");
+    if (nary[i]==nary[i+1]){//é”™è¯¯
+        Fix.Runtime.setError("äººå‘˜é‡å¤");
     }	
 }
-É¾³ıÊı×éÔªËØ
+åˆ é™¤æ•°ç»„å…ƒç´ 
 for(var i=allConf.ptdetail.length-1;i>=0;i--){
 	if(allConf.ptdetail[i].TB != tbn){
-		//É¾³ı²»ÊÇ¸ÃÖ÷±íÏÂµÄÊı¾İ
+		//åˆ é™¤ä¸æ˜¯è¯¥ä¸»è¡¨ä¸‹çš„æ•°æ®
 		allConf.ptdetail.splice(i,1);
 	}
 }
-ÅĞ¶ÏÊÇ·ñÊôÓÚ¸ÃÊı×é
+åˆ¤æ–­æ˜¯å¦å±äºè¯¥æ•°ç»„
 $.inArray(allConf.ptdetail[i].TABLENAME,data) == -1
-ĞòºÅÅÅĞò
+åºå·æ’åº
 $("#addBtn,#removeBtn").click(function(){
 	$("#table_SYS_YWSJCLRPZ_SS>tbody>tr").each(function(i){
 		$("#SERIAL",$(this)).val(i+1);
 	});
 });
 
-//¼àÌıalertÊÂ¼ş
+//ç›‘å¬alertäº‹ä»¶
 var _alert =window.alert;
 window.alert = function(){
     _alert(arguments[0]);
-    if(arguments[0] == "Ç©ÃûÒÑ±£´æ"){
+    if(arguments[0] == "ç­¾åå·²ä¿å­˜"){
    getTp();
     }
 }
 onMouseOut=this.style.color="black" onMouseOver=this.style.color="green" 
 
-»ñÈ¡µ±Ç°tdÊôÓÚtrµÄµÚ¼¸ÁĞ
-var index = $(this).parents("tr").find("td").index($(this));//µ±Ç°ÁĞ
-var a = $(this).parents("tr").parents("tbody").find("tr").eq(1).find("td").eq(index).text();µÚ¶şĞĞµ±Ç°ÁĞ
-var b = $(this).parents("tr").parents("tbody").find("tr").eq(2).find("td").eq(index).text();µÚÈıĞĞµ±Ç°ÁĞ
+è·å–å½“å‰tdå±äºtrçš„ç¬¬å‡ åˆ—
+var index = $(this).parents("tr").find("td").index($(this));//å½“å‰åˆ—
+var a = $(this).parents("tr").parents("tbody").find("tr").eq(1).find("td").eq(index).text();ç¬¬äºŒè¡Œå½“å‰åˆ—
+var b = $(this).parents("tr").parents("tbody").find("tr").eq(2).find("td").eq(index).text();ç¬¬ä¸‰è¡Œå½“å‰åˆ—
 
-Ç§·ÖÎ»ÏÔÊ¾
+åƒåˆ†ä½æ˜¾ç¤º
 function setNumberOfThousands(str){
 	return(str.replace(/\d{1,3}(?=(\d{3})+$)/g,function(s){
 		  return s+','
