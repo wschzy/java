@@ -1,0 +1,146 @@
+#mask { 
+	background: #000; 
+	opacity: 0.5; -moz-opacity: 0.5;
+	position: absolute;
+	left: 0; top: 0;
+	z-index: 9527; 
+	display: none;
+}
+
+#popup_content { 
+	background: #fff; 
+	position: absolute;
+	border-radius: 8px;
+	z-index: 9999; 
+	display: none;
+}
+
+.buttons {
+	overflow: auto;
+	height: 40px;
+}
+
+.button_classic {
+	margin: 0 20px 0 0;
+	float: left;
+	display: block;
+    padding: 0 30px;
+    height: 40px;
+    line-height: 40px;
+    background: -moz-linear-gradient(top, #27b1f6 0%, #0aa1ed 100%);
+    background: -webkit-linear-gradient(top, #27b1f6 0%, #0aa1ed 100%);
+    background: -o-linear-gradient(top, #27b1f6 0%, #0aa1ed 100%);
+    background: -ms-linear-gradient(top, #27b1f6 0%, #0aa1ed 100%);
+    color: #fff;
+    border-radius: 2px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.button_cancel {
+	margin: 0 20px 0 0;
+	float: left;
+	display: block;
+    padding: 0 30px;
+    height: 40px;
+    line-height: 40px;
+    background: #aaa;
+    color: #fff;
+    border-radius: 2px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.content_wrapper {
+	padding: 30px;
+}
+
+#popup_title {
+	font-size: 18px;
+	border-bottom: 3px solid #888;
+	margin: 0 0 20px 0;
+	padding: 0 0 10px 0;
+}
+
+#province, #city, #area {
+	width: 120px;
+}
+
+.address_list_item {
+	height: 36px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+	background: #e8e8e8;
+}
+
+.address_list_item:after {
+	display: inline-block;
+    clear: both;
+    content: "";
+}
+
+.address_list_item_active {
+	border: 1px solid #2ea8ee;
+}
+
+.address_list_item .addr_name,
+.address_list_item .recv_person,
+.address_list_item .recv_addr_full,
+.address_list_item .recv_phone,
+.address_list_item .op,
+.address_list_item .is_default {
+	float: left;
+    text-align: center;
+    height: 36px;
+    line-height: 36px;
+    overflow: hidden;
+}
+
+.address_list_item .addr_name {
+    width:103px;
+    color: #fff;
+    background: #999;
+}
+
+.address_list_item .addr_name_active {
+    background: #2ea8ee;
+}
+
+.address_list_item .addr_name_default  {
+    background: #aaa;
+}
+
+.address_list_item .recv_person {
+    width:76px;
+}
+
+.address_list_item .recv_addr_full {
+    width:312px;
+}
+
+.address_list_item .recv_phone {
+    width:100px;
+}
+
+.address_list_item .op {
+    width: 93px;
+    cursor: pointer;
+}
+
+.address_list_item .is_default {
+    width: 94px;
+}
+
+.address_list_item a {
+	color: #2ea8ee;
+	text-decoration: none;
+}
+
+.address_list_item a:hover {
+	color: #2aa3ea;
+	text-decoration: underline;
+}
+
+
+
+

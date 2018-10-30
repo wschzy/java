@@ -1,0 +1,439 @@
+﻿解析excel
+https://github.com/SheetJS/js-xlsx/blob/master/dist/xlsx.core.min.js
+
+$(function(){
+	$("#import").click(function(){//点击导入按钮，使files触发点击事件，然后完成读取文件的操作。
+		$("#excel-file").click();
+	});
+	
+	$('#excel-file').change(function(e) {
+        var files = e.target.files;
+
+        var fileReader = new FileReader();
+        fileReader.onload = function(ev) {
+            try {
+                var data = ev.target.result,
+                    workbook = XLSX.read(data, {
+                        type: 'binary'
+                    }), // 以二进制流方式读取得到整份excel表格对象
+                    persons = []; // 存储获取到的数据
+            } catch (e) {
+                console.log('文件类型不正确');
+                return;
+            }
+
+            // 表格的表格范围，可用于判断表头是否数量是否正确
+            var fromTo = '';
+            // 遍历每张表读取
+            for (var sheet in workbook.Sheets) {
+                if (workbook.Sheets.hasOwnProperty(sheet)) {
+                    fromTo = workbook.Sheets[sheet]['!ref'];
+                    console.log(fromTo);
+                    persons = persons.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
+                    // break; // 如果只取第一张表，就取消注释这行
+                }
+            }
+            setData(persons);
+        };
+
+        // 以二进制方式打开文件
+        fileReader.readAsBinaryString(files[0]);
+    });
+}); 
+
+function setData(persons){
+	var newDataList=[];//定义新的数据对象
+	for(var i=0;i<persons.length;i++){
+		var rowData={};
+		rowData.REIMTYPE=persons[i].报销类型;
+		rowData.REASON=persons[i].事由;
+		rowData.STARTTIME=persons[i].开始日期;
+		rowData.ENDTIME=persons[i].结束日期;
+		rowData.REIMMONEY=persons[i].报销金额;
+		rowData.USEDATE=persons[i].发生日期;
+		rowData.EXPLAIN=persons[i].说明;
+		rowData.MONEY=persons[i].金额;
+		newDataList.push(rowData);
+	}
+
+	var obj_aliasAdapter = new Fix.Component.AliasAdapter({
+		"FillMode": "Muilt",
+		"TargetList": ["REIMTYPE","REASON","STARTTIME","ENDTIME","REIMMONEY","USEDATE","EXPLAIN","MONEY"]
+	});
+	obj_aliasAdapter.fill(newDataList, null);
+
+}
+
+
+var urlParam = Fix.getURLParams(window.location.href);
+var pkValue = urlParam["_pkValue"];
+String id =StringUtil.getString(dataView.get("guid"));
+String HZXM = StringUtil.getString(dt.Rows[0].ItemValue("HZXM"));
+DataTable dt=(DataTable)SqlAdapter.executeForGetSqlData(selectSql, null, null);
+String sfzhm = StringUtil.getString(dt.Rows[0].ItemValue("SFZHM"));
+Fix.ajax({
+		action:{
+			_method:"REIMBURSEMENT.getTable"
+		},
+		async: false,
+		data:{
+			guid : pkValue
+		},
+		success: function(response){
+			var data = response.out0;
+			var ht = "";
+			var a = 1;
+			if(data != undefined){
+				for(var i=0;i<data.length;i++){
+					if(i > 0){
+						if(data[i].NUMBER != data[i-1].NUMBER){
+							a = 1;
+							for(var j=i;j<data.length;j++){
+								if(j < data.length-1){
+									if(data[j].NUMBER == data[j+1].NUMBER){
+										a = a+1;
+									}else{
+										break;
+									}
+								}
+							}
+							ht = ht +'<tr><td rowspan="'+a+'">' + data[i].NUMBER + '</td><td rowspan="'+a+'">' + data[i].REIMTYPE + '</td><td rowspan="'+a+'">' + data[i].REASON+ '</td><td rowspan="'+a+'">' + data[i].STARTTIME + '</td><td rowspan="'+a+'">' +  data[i].ENDTIME+ '</td><td>' + data[i].USEDATE + '</td><td>' + data[i].EXPLAIN + '</td><td>' + data[i].MONEY + '</td></tr>'; 
+						}else{
+							ht = ht +'<tr><td>' + data[i].USEDATE + '</td><td>' + data[i].EXPLAIN + '</td><td>' + data[i].MONEY + '</td></tr>';
+						}
+					}else{
+						for(var j=0;j<data.length;j++){
+							if(j < data.length-1){
+								if(data[j].NUMBER == data[j+1].NUMBER){
+									a = j+2;
+								}else{
+									break;
+								}
+							}
+						}
+						ht = ht +'<tr><td rowspan="'+a+'">' + data[i].NUMBER + '</td><td rowspan="'+a+'">' + data[i].REIMTYPE + '</td><td rowspan="'+a+'">' + data[i].REASON + '</td><td rowspan="'+a+'">' + data[i].STARTTIME + '</td><td rowspan="'+a+'">' + data[i].ENDTIME + '</td><td>' + data[i].USEDATE + '</td><td>' + data[i].EXPLAIN + '</td><td>' + data[i].MONEY + '</td></tr>'; 
+					}
+					
+				}
+				$('#tab').append(ht);
+			}
+		}
+	});
+
+
+导出excel
+<input type="button" value="导出" onclick="method1('tab1')"/>
+
+var idTmr;
+function  getExplorer() {
+    var explorer = window.navigator.userAgent ;
+    //ie
+    if (explorer.indexOf("MSIE") >= 0) {
+        return 'ie';
+    }
+    //firefox
+    else if (explorer.indexOf("Firefox") >= 0) {
+        return 'Firefox';
+    }
+    //Chrome
+    else if(explorer.indexOf("Chrome") >= 0){
+        return 'Chrome';
+    }
+    //Opera
+    else if(explorer.indexOf("Opera") >= 0){
+        return 'Opera';
+    }
+    //Safari
+    else if(explorer.indexOf("Safari") >= 0){
+        return 'Safari';
+    }
+}
+function method1(tableid) {//整个表格拷贝到EXCEL中
+    if(getExplorer()=='ie') {
+        var curTbl = document.getElementById(tableid);
+        var oXL = new ActiveXObject("Excel.Application");
+
+        //创建AX对象excel
+        var oWB = oXL.Workbooks.Add();
+        //获取workbook对象
+        var xlsheet = oWB.Worksheets(1);
+        //激活当前sheet
+        var sel = document.body.createTextRange();
+        sel.moveToElementText(curTbl);
+        //把表格中的内容移到TextRange中
+        sel.select;
+        //全选TextRange中内容
+        sel.execCommand("Copy");
+        //复制TextRange中内容
+        xlsheet.Paste();
+        //粘贴到活动的EXCEL中
+        oXL.Visible = true;
+        //设置excel可见属性
+
+        try {
+            var fname = oXL.Application.GetSaveAsFilename("Excel.xls", "Excel Spreadsheets (*.xls), *.xls");
+        } catch (e) {
+            print("Nested catch caught " + e);
+        } finally {
+            oWB.SaveAs(fname);
+
+            oWB.Close(savechanges = false);
+            //xls.visible = false;
+            oXL.Quit();
+            oXL = null;
+            //结束excel进程，退出完成
+            //window.setInterval("Cleanup();",1);
+            idTmr = window.setInterval("Cleanup();", 1);
+        }
+    } else {
+        tableToExcel('tab1')
+    }
+}
+function Cleanup() {
+    window.clearInterval(idTmr);
+    CollectGarbage();
+}
+
+
+var tableToExcel = (function() {
+    var uri = 'data:application/vnd.ms-excel;base64,',
+    template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+    base64 = function(s) {
+        return window.btoa(unescape(encodeURIComponent(s)))
+    },
+    // 下面这段函数作用是：将template中的变量替换为页面内容ctx获取到的值
+    format = function(s, c) {
+            return s.replace(/{(\w+)}/g,
+                            function(m, p) {
+                                return c[p];
+                            }
+            )
+    };
+    return function(table, name) {
+        if (!table.nodeType) {
+            table = document.getElementById(table)
+        }
+        // 获取表单的名字和表单查询的内容
+        var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML};
+        // format()函数：通过格式操作使任意类型的数据转换成一个字符串
+        // base64()：进行编码
+        window.location.href = uri + base64(format(template, ctx))
+    }
+})()
+
+
+
+var urlParam = Fix.getURLParams(window.location.href);
+var id = urlParam["xyid"];
+
+var url = Fix.App.getHost()+"/forms/dc/DC_D_FANGWU/DC_D_FANGWU_MODIFY.htm?_viewId=DC_D_FANGWU_list";
+var param={
+		title:"",
+		url:url,
+		width:800,
+		height:300
+	};
+top.Fix.Manager.createDialog(param, function(){
+	
+}, parent);
+
+
+Fix.Runtime.closeThisPage();
+
+
+$.blockUI({
+	message : "正在计算，请稍候..."
+});
+Fix.ajax({
+	action:{
+		_method:"FE_ZB_RESULT.calculateSWZB",
+		_param:{
+			projectid:top.onlineUser.projectId,
+			version:version,
+			xzqh : xzqh
+		}
+	},
+	async: true,
+	success:function(response){
+		$.unblockUI();
+		Fix.Runtime.closeThisPage();
+	}
+});
+
+
+ionic start myApp tabs
+cd myApp
+ionic serve
+ionic g component actionsheet
+
+创建页面
+ionic g page news  
+app.module.ts引入申明
+
+function(opts,btn, url_params){
+var hzid;
+var _pkValue;
+$(".row_selected").each(function() {
+hzid = $(this).data("HZID");
+_pkValue = $(this).data("ID");
+});
+var tabObj = {
+	width: "800px",
+	height : "200px",
+	url: Fix.App.appHost + "forms/dc/DC_D_TUDI/DC_D_TUDI_FORM.htm?_useType=modify&_pk=ID&_pkValue="+_pkValue+"&objName=DC_D_TUDI&_viewId=DC_D_TUDI_list&hzid="+hzid};
+
+Fix.Util.getTopWin().Fix.Manager.createDialog(tabObj, function(instObj){if(instObj !=  undefined){
+		window.location = window.location;		
+	} }, top);
+
+}
+
+保存前调用
+Fix.Engine.onBeforeCollect(function(){
+	
+});
+
+
+DataTable dt = (DataTable)SqlAdapter.executeForGetSqlData("SELECT XZQH FROM BP_SWZBCG", "DB_FIX_BIZ_BASE", null);
+for (int i = 0; i < dt.Rows.length; i++) {
+	String xzqh = StringUtil.getString(dt.Rows[i].ItemValue("XZQH"));
+}
+
+
+function(value,aData,store,rowIndex) {
+	var Params = Fix.getURLParams(window.location.href);
+		var usetype = Params["useType"];
+		var type = "modify";
+		if(usetype == "view"){
+			type = usetype;
+		}
+	return "<a onclick=\"openHZRD('"+aData["ID"]+"','"+type+"');\">"+value+"</a>	";	
+}
+
+
+
+function(value,aData,store,rowIndex) {
+	var xzqh = aData["XZQH"];
+	var flag = isModifySwzbByxzqh(xzqh);
+	if(flag == true){
+		return;
+	}
+}
+
+
+var xzqh=Fix.Engine.fn_getAliasValue("XZQH");
+
+
+Fix.get("RegionSelect_0").els.disable();
+
+合并json
+$.extend(data_package,response.datas);
+判断json是否为空
+jQuery.isEmptyObject(_fixCOM_map[str_scope])
+将字符串转为JSON数据
+JSON.parse();
+将JSON转为字符串
+JSON.stringify();
+
+String trans = TransactionUtil.getTbyD("DB_FIX_BIZ_BASE");
+TransactionProcess tp = new TransactionProcess();
+tp.startProcess(trans);
+try {
+		
+} catch (Exception e) {
+	tp.rollbackProcess();//回滚本行导入事务
+	tp = new TransactionProcess();
+	tp.startProcessForDB("DB_FIX_BIZ_BASE");//开始报错事务
+}
+finally {
+	tp.commitProcess();//提交事务
+}
+
+
+Fix.SetFormReadOnly(true);
+
+$.confirm({
+		        message: message,
+		        okText: "是",
+		        cancelText: "否",
+		        onOk: function () {
+		        	Fix.Engine.CollectedJSON.flowParam=opts;
+		        },
+		        onCancel: function () {}
+ });
+
+
+
+var JQToolbar_Config = {
+		bizObj: Fix.Engine.BizObj,
+		tmpUrl: "../../../theme/" + Fix.Runtime.store.get("FixTheme") + "/template/fomToolbarNew.tpl",
+		htmlID: "tool-box",
+		toolbarDef: toolbarInfo
+	};
+	var toolbar = new Fix.Component.JQToolbar(JQToolbar_Config);
+	toolbar.draw();
+
+var tid = url_params._treeNodeId;获取 树节点ID
+
+
+PopupSelect 组件使用
+var tid = '';
+runF = function(opts,btn, url_params){
+	 tid = url_params._treeNodeId;
+	var orgAdminSelect = $("#addOrgAdmin",$(document));
+	if(orgAdminSelect==undefined || orgAdminSelect.length==0){
+		$("#searchPanel",$(document)).append('<span id="addOrgAdmin" ComponentType="PopupSelect" ></span>');
+		windowParams = Fix.getURLParams(window.location.href);
+		var orgid = windowParams.orgId;
+		// 单位人员选择
+		var sjConfig = {
+			htmlID : "addOrgAdmin",
+			PopupSelect : {
+				width : "800",
+				height : "510",
+				title : "人员选择",
+				isHaveText : false,
+				name : "选择",
+				selectField : ["USER_FULLNAME", "USER_NAME"],
+				isSingle : false,
+				bizObj : "FIX_USERINFO",
+				readonly : true,
+				urlParam : "formSql="+orgid,
+				viewId : "multList"
+			},
+			event : {
+				onSelectValue : "addXMry" //回调函数
+			},
+			func : "PopupSelect",
+			needSubmit : false
+		};
+		var orgadmin = new Fix.Component.PopupSelect(sjConfig);
+		orgadmin.draw();
+	}
+	$("#addOrgAdmin a",$(document)).click();
+};
+addXMry = function(selectedValue, inst, jq_scope) {
+	if (selectedValue[0] != undefined && selectedValue[0].USER_NAME != undefined) {
+		var urlParam = Fix.getURLParams(window.location.href); // url获取参数
+
+		var userid = "";
+		$.each(selectedValue, function(i) {
+			if (i != 0) {
+				userid += ",";
+			}
+			userid += selectedValue[i].USER_NAME;
+		});
+		Fix.ajax({
+			action : {
+				_method : "SYS_XMGWRY.addXMry",
+				_param : {
+					userids : userid,
+					tid:tid
+				}
+			},
+			async : false,
+			success : function(response) {
+			}
+		});
+	}
+};

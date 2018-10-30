@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+
+<title></title>
+<style>
+    
+    .wrap-dialog {
+        position: fixed;top: 0; left: 0;width: 100%; height: 100%;font-size: 16px;text-align: center;background-color: rgba(0, 0, 0, .4);z-index: 999;
+    }
+    .dialog {
+        position: relative;
+        margin: 15% auto;
+        width: 300px;
+        background-color: #FFFFFF;
+    }
+    .dialog .dialog-header {
+        height: 20px;
+        padding: 10px;
+        background-color: lightskyblue;
+    }
+    .dialog .dialog-body {
+        height: 30px;
+        padding: 20px;
+    }
+    .dialog .dialog-footer {
+        padding: 8px;
+        background-color: whitesmoke;
+    }
+    .btn {
+        width: 70px;
+        padding: 2px;
+    }
+    .hide {
+        display: none;
+    }
+    .ml50 {
+        margin-left: 50px;
+    }
+</style>
+</head>
+<body >
+<input type="button" value="点我" class="btn ml50" id="remove">
+<div class="wrap-dialog hide" >
+    <div class="dialog">
+        <div class="dialog-header">
+            <span class="dialog-title">提示信息</span>
+        </div>
+        <div class="dialog-body">
+            <span id="dialog-message"></span>
+        </div>
+        <div class="dialog-footer">
+            <input type="button" class="btn" id="confirm" value="是" />
+            <input type="button" class="btn ml50" id="cancel" value="否" />
+        </div>
+    </div>
+</div>
+</body>
+<script src="http://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+       
+        $('#remove').click(function(){
+            var message = "xxxxxxxxxxxxxxxxxxxx";
+            dialogBox(message,
+                function () {
+                   alert(1);
+                },
+                function(){
+                   alert(2);
+                }
+            );
+        });
+
+    });
+
+    function dialogBox(message, yesCallback, noCallback){
+        if(message){
+            $('#dialog-message').html(message);
+        }
+       
+        $('.wrap-dialog').removeClass("hide");
+     
+        $('#confirm').click(function(){
+            $('.wrap-dialog').addClass("hide");
+            yesCallback();
+        });
+      
+        $('#cancel').click(function(){
+            $('.wrap-dialog').addClass("hide");
+            noCallback();
+        });
+    }
+</script>
+</html>
