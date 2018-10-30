@@ -19,7 +19,7 @@ Hzy.getURLParams = function(url) {
 	}
 	return paraObj;
 };
-sql
+
 ×Ö·û´®Æ¥Åä
 select sy.*,
        (select wm_concat(user_fullname)
