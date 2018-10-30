@@ -330,7 +330,7 @@ Fix.get("RegionSelect_0").els.disable();
 $.extend(data_package,response.datas);
 判断json是否为空
 jQuery.isEmptyObject(_fixCOM_map[str_scope])
-将字符串转为JSON数据使用parse();
+将字符串转为JSON数据使用
 JSON.parse();
 将JSON转为字符串
 JSON.stringify();
