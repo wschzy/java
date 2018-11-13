@@ -23,12 +23,9 @@
               "src/assets"
             ],
             "styles": [
-              "../node_modules/_bootstrap@3.3.7@bootstrap/dist/css/bootstrap.min.css", 
               "src/styles.css"
             ],
             "scripts": [
-              "../node_modules/_jquery@3.2.1@jquery/dist/jquery.js",
-              "../node_modules/_bootstrap@3.3.7@bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'login',
@@ -8,6 +9,13 @@ import {Router} from '@angular/router';
   styleUrls:['./login.component.css']
 })
 export class LoginComponent implements OnInit{
-    constructor(){}
-    ngOnInit(){}
+    constructor(){
+
+    }
+    ngOnInit(){
+        $(".sign-up").on('click',function(){
+          alert('hi,jquery!');
+          });
+      
+    }
 }
