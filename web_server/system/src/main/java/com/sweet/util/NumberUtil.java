@@ -56,10 +56,6 @@ public class NumberUtil {
 
     /**
      * 数字的检查
-     * 
-     * @param s
-     *            数字的字符串
-     * @return boolean 2003/11/06 
      */
     public static boolean checkIntNumberValid(String s) {
         if (s == null || s.length() == 0) {
@@ -75,10 +71,6 @@ public class NumberUtil {
 
     /**
      * String转Int
-     * 
-     * @param str
-     *            字符串
-     * @return int 返回值 2003/11/07
      */
     public static int convertToInt(String str) {
         int result = -1;
@@ -103,10 +95,6 @@ public class NumberUtil {
 
     /**
      * String转Long
-     * 
-     * @param str
-     *            字符串
-     * @return Long 返回值 2003/11/07
      */
     public static long convertToLong(String str) {
         long result = 0;
@@ -121,10 +109,6 @@ public class NumberUtil {
 
     /**
      * String转Float
-     * 
-     * @param str
-     *            文字列
-     * @return Float 返回值 2003/11/07
      */
     public static float convertToFloat(String str) {
         float result = 0;
@@ -139,12 +123,6 @@ public class NumberUtil {
 
     /**
      * String转Int
-     * 
-     * @param value
-     *            字符串
-     * @param flag
-     *            转换标志： true : value为null或者是空字符串、抛Exception异常  false : value为null或者是空字符串、返回0
-     * @return int 返回值
      */
     public static int parseInt(String value, boolean flag) throws Exception {
         if (flag) {
@@ -183,10 +161,6 @@ public class NumberUtil {
 
     /**
      * l为null时返回0L
-     * 
-     * @param l
-     *            长整型对象
-     * @return 长整型值
      */
     public static long NVL(Long l) {
         if (l == null) {
@@ -198,10 +172,6 @@ public class NumberUtil {
 
     /**
      * i为null时返回0
-     * 
-     * @param i
-     *            整形对象
-     * @return 整形值
      */
     public static int NVL(Integer i) {
         if (i == null) {
@@ -213,8 +183,6 @@ public class NumberUtil {
     
     /**
      * 格式化指定数值(,##0.00)
-     * @param value
-     * @return 结果
      */
     public static String formatCurrency(Double value){
     	String result = "0.00";
@@ -225,8 +193,6 @@ public class NumberUtil {
     
     /**
      * 格式化指定数值(,##0)
-     * @param value
-     * @return 结果
      */
     public static String formatInteger(Double value){
     	String result = "0";
