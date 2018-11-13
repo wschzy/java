@@ -1,10 +1,11 @@
+
 .login{
     background: url(../../assets/simple-codelines.svg),#2b3137;
     background-position: center 10%;
     background-size: cover;
     color: hsla(0,0%,100%,.6);
     width: 1349px;
-    height: 559px;
+    height: 600px;
 }
 .login .title{
     margin-left:180px;
@@ -25,12 +26,14 @@
     padding-top: 40px;
 }
 .login .login-tab{
-    width:420px;
+    width: 30%;
     height:476px;
     background: #FAFBFC;
-    margin-left:780px;
-    margin-top: -390px;
     border-radius: 2px;
+    position: relative;
+    left: 780px;
+    top: -435px;
+
 }
 .form-group{
     margin:15px 0;
@@ -57,7 +60,7 @@
     padding: 10px;
     width: 85%;
     margin-top:4px;
-    margin-left:30px;
+    margin-left:-20px;
     border:0.5px solid #D1D5DA;
 }
 .form-control-note {
@@ -70,6 +73,7 @@
     padding-top:5px;
     display: inline-block;
     height: 30px;
+    display: block;
 }
 .sign-up{
     width:340px;
