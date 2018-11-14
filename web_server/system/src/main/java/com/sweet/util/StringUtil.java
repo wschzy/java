@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 
 public class StringUtil {
    private StringUtil() {}
-   //j
+   //j5
    public static String[] str2Array(String str) {
         return str2Array(str, ",");
     }
