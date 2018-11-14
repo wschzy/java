@@ -10,6 +10,7 @@ public class StringUtil {
    //j
    public static String[] str2Array(String str) {
         return str2Array(str, ",");
+        //j
     }
    public static String[] str2Array(String str, String sep) {
        //
