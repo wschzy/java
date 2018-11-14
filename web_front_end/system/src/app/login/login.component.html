@@ -11,17 +11,17 @@
         <form>
             <dl class="form-group"> 
               <dt class="input-label">
-                  <label class="form-label">UserName</label>
+                  <label class="form-label" for="username">UserName</label>
               </dt>
               <dd>
-                  <input type="text" class="form-control" placeholder="Pick a username">
+                  <input type="text" class="form-control" id="username" formControlName="username" placeholder="Pick a username"/>
               </dd>
               
               <dt class="input-label">
                   <label class="form-label">Password</label>
               </dt>
               <dd>
-                  <input type="text" class="form-control" placeholder="Create a password">
+                  <input type="password" class="form-control" formControlName="pass1" placeholder="Create a password"/>
               </dd><dt class="input-label" style="display:none">
                   <label class="form-label">Email</label>
               </dt>
@@ -37,8 +37,8 @@
               </dd>
 
             </dl>
-            <div style="text-align:center">
-              <button class="sign-up">Sign Up for GitHub</button>
+            <div style="text-align:center" class="form-group">
+              <button class="sign-up btn-warning">Sign Up for GitHub</button>
             </div>
         </form>
     </div> 

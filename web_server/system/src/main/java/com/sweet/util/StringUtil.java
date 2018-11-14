@@ -10,11 +10,6 @@ public class StringUtil {
    
    public static String[] str2Array(String str) {
         return str2Array(str, ",");
-<<<<<<< .merge_file_a08932
-        //b
-=======
-        //a
->>>>>>> .merge_file_a15592
     }
    public static String[] str2Array(String str, String sep) {
        //
