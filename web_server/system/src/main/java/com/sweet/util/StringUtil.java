@@ -7,6 +7,7 @@ import java.util.StringTokenizer;
 
 public class StringUtil {
    private StringUtil() {}
+   //j
    public static String[] str2Array(String str) {
         return str2Array(str, ",");
     }
@@ -68,7 +69,7 @@ public class StringUtil {
        return (s1.equals(s2));
     }
    /**
-      * zeroToSpace("0"ºÍ"00"ºÍ"000"µÄ¿Õ·û´®±ä»»)
+      * zeroToSpace("0"ï¿½ï¿½"00"ï¿½ï¿½"000"ï¿½Ä¿Õ·ï¿½ï¿½ï¿½ï¿½ä»»)
      */
     public static String zeroToSpace(String s) {
         boolean allZero = true;
@@ -94,7 +95,7 @@ public class StringUtil {
         }
     }
    /**
-      * addPreZero(ÔÚ¶ÔÏóÇ°Ìí¼Ó¸ö0)
+      * addPreZero(ï¿½Ú¶ï¿½ï¿½ï¿½Ç°ï¿½ï¿½Ó¸ï¿½0)
      */
     public static String addPreZero(Object val, int length) {
         if (val == null) {
@@ -113,20 +114,20 @@ public class StringUtil {
        return result;
     }
    /**
-      * decreasePreZero(ÕûÊýÈ¥µôÇ°ÃæµÄ0²¢·µ»Ø½á¹û)
+      * decreasePreZero(ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½Ç°ï¿½ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½Ø½ï¿½ï¿½)
      */
     public static String decreasePreZero(String number) {
         String result = number;
-        // Èç¹ûÎªnull»òÕß¿Õ×Ö·û´®Ôò·µ»Ø""
+        // ï¿½ï¿½ï¿½Îªnullï¿½ï¿½ï¿½ß¿ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ò·µ»ï¿½""
         if (number == null || number.trim().equals("")) {
             return "";
         }
         if (number.trim().equals("0") || number.trim().equals("-0")) {
             return "0";
         }
-        // µ÷ÓÃº¯ÊýÖµ¼ì²é
+        // ï¿½ï¿½ï¿½Ãºï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½
         if (NumberUtil.checkNumberValid(number) != false) {
-            // »õ±Ò½«±»×ª»»³ÉÊý×Ö¸ñÊ½
+            // ï¿½ï¿½ï¿½Ò½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½Ê½
             long numNumber = 0;
             numNumber = Long.parseLong(number);
             result = String.valueOf(numNumber);
@@ -134,24 +135,24 @@ public class StringUtil {
         return result;
     }
    /**
-      * formatPercentNumber(Êý×Ö906 --> 906%µÄ¸ñÊ½×ª»»)
+      * formatPercentNumber(ï¿½ï¿½ï¿½ï¿½906 --> 906%ï¿½Ä¸ï¿½Ê½×ªï¿½ï¿½)
      */
     public static String formatPercentNumber(String number) {
-        // null»òÕß¿Õ×Ö·û´®¡¢·µ»Ø""
+        // nullï¿½ï¿½ï¿½ß¿ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½""
         if (number == null || number.trim().equals("")) {
             return "";
         }
-        // Èç¹ûÊý×Ö×Ö·û´®ÊÇ0»ò-0¡¢·µ»Ø0
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½-0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0
         if (number.trim().equals("0") || number.trim().equals("-0")) {
             return "0";
-            // Êý×Ö×Ö·û´®×îºó¡¢Ìí¼Ó%²¢·µ»Ø
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½%ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         } else if (NumberUtil.checkNumberValid(number)) {
             return number + "%";
         } else {
             return number.trim();
         }
     }
-    //formatRate(Êý×ÖZZ.ZZ ----> Z9.999µÄ¸ñÊ½×ª»»)
+    //formatRate(ï¿½ï¿½ï¿½ï¿½ZZ.ZZ ----> Z9.999ï¿½Ä¸ï¿½Ê½×ªï¿½ï¿½)
     public static String formatRate(String rate) {
         if (rate == null || "".equals(rate.trim())) {
             return "";
@@ -182,7 +183,7 @@ public class StringUtil {
         return rate;
     }
    /**
-      * formatPostNum(ÓÊÕþ±àÂë¸ñÊ½×ª»»)
+      * formatPostNum(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½×ªï¿½ï¿½)
      */
     public static String formatPostNum(String[] postNum) {
         if (postNum == null) {
@@ -200,14 +201,14 @@ public class StringUtil {
         }
         return result.toString();
     }
-    //formatPostNum(ÓÊÕþ±àÂë¸ñÊ½×ª»»)
+    //formatPostNum(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½×ªï¿½ï¿½)
     public static String formatPostNum(String postNum) {
         if (postNum == null || postNum.length() != 7) {
             return postNum;
         }
         return postNum.trim().substring(0, 3) + "-" + postNum.trim().substring(3, 7);
     }
-    //formatPostNumToArray(ÓÊÕþ±àÂë¸ñÊ½×ª»»)
+    //formatPostNumToArray(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½×ªï¿½ï¿½)
     public static String[] formatPostNumToArray(String postNum) {
         String[] postNumArray = { "", "" };
         if (postNum == null || postNum.length() != 7) {
@@ -219,7 +220,7 @@ public class StringUtil {
     }
    /**
      * 
-      * trimSpc(È¥³ý×ó¡¢ÓÒ¿Õ¸ñ(°ë½ÇºÍÈ«½Ç))
+      * trimSpc(È¥ï¿½ï¿½ï¿½ï¿½ï¿½Ò¿Õ¸ï¿½(ï¿½ï¿½Çºï¿½È«ï¿½ï¿½))
      */
     public static String trimSpc(String val) {
         if (val == null) {
@@ -227,22 +228,22 @@ public class StringUtil {
         } else {
             val = val.trim();
         }
-        // ×ó¿Õ¸ñ(°ë½ÇºÍÈ«½Ç)ÊýµÄ±äÁ¿
+        // ï¿½ï¿½Õ¸ï¿½(ï¿½ï¿½Çºï¿½È«ï¿½ï¿½)ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½
         int iHead = 0;
-        // ×ó¿Õ¸ñ(°ë½ÇºÍÈ«½Ç)ÊýµÄ¼ÆËã
+        // ï¿½ï¿½Õ¸ï¿½(ï¿½ï¿½Çºï¿½È«ï¿½ï¿½)ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
         for (int i = 0; i < val.length(); i++) {
-            if (val.charAt(i) == ' ' || val.charAt(i) == '¡¡') {
+            if (val.charAt(i) == ' ' || val.charAt(i) == 'ï¿½ï¿½') {
                 iHead++;
             } else {
                 break;
             }
         }
-        // É¾³ýÓÒ¿Õ¸ñ(°ë½ÇºÍÈ«½Ç)²¢·µ»Ø×Ö·û´®
+        // É¾ï¿½ï¿½ï¿½Ò¿Õ¸ï¿½(ï¿½ï¿½Çºï¿½È«ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
         String valUse = val.substring(iHead);
         if (null != valUse) {
             int iEnd = valUse.length();
             for (int i = valUse.length() - 1; i >= 0; i--) {
-                if (valUse.charAt(i) == ' ' || valUse.charAt(i) == '¡¡') {
+                if (valUse.charAt(i) == ' ' || valUse.charAt(i) == 'ï¿½ï¿½') {
                     iEnd--;
                 } else {
                     break;
@@ -254,7 +255,7 @@ public class StringUtil {
     }
    /**
      * 
-      * filteZero(È«²¿0»òÕßnullÊ±·µ»Ø¿Õ×Ö·û´®)
+      * filteZero(È«ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½nullÊ±ï¿½ï¿½ï¿½Ø¿ï¿½ï¿½Ö·ï¿½ï¿½ï¿½)
      *
     */
     public static String filteZero(String val) {
@@ -268,7 +269,7 @@ public class StringUtil {
        return val;
     }
    /*
-      * nvl(×Ö·û´®´¦Àí)
+      * nvl(ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
     */
     public static String nvl(String value) {
         if (value == null) {
@@ -279,7 +280,7 @@ public class StringUtil {
     }
    /**
      * 
-      * addBackFullSpace(ÔÚ×îºóÌí¼ÓÈ«½Ç¿Õ¸ñ²¢·µ»Ø×Ö·û´®)
+      * addBackFullSpace(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½Ç¿Õ¸ñ²¢·ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½)
      *
     */
     public static String addBackFullSpace(String val, int length) {
@@ -292,13 +293,13 @@ public class StringUtil {
         }
         StringBuffer result = new StringBuffer();
         for (int i = 0; i < num; i++) {
-            result.append("¡¡");
+            result.append("ï¿½ï¿½");
         }
        return val + result.toString();
     }
    /**
      * 
-      * replace(×Ö·û½»ÌæÅÅÁÐ²¢·µ»Ø×Ö·û´®)
+      * replace(ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½)
      *
     */
     public static String replace(String sVal, String oldVal, String repVal) {
@@ -320,7 +321,7 @@ public class StringUtil {
         }
         return result.toString();
     }
-    //toNumStr(´Ó×Ö·û´®µÄ¿ªÍ·ÌáÈ¡Êý×Ö²¿·Ö)
+    //toNumStr(ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½Í·ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ö²ï¿½ï¿½ï¿½)
     public static String toNumStr(String str) {
         int i = 0;
        if (str == null) {
@@ -335,14 +336,14 @@ public class StringUtil {
         return str.substring(0, i);
     }
    /**
-      * listToStringArray(List¡´String¡µ×ª×Ö·û´®Êý×é)
+      * listToStringArray(Listï¿½ï¿½Stringï¿½ï¿½×ªï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
      *
     */
     public static String[] listToStringArray(List<String> inputList) {
         return inputList.toArray(new String[inputList.size()]);
     }
    /**
-      * listToSQLString(ÒÔ¶ººÅ·Ö¸ô°ÑList¡´String¡µ×ª³ÉSQLÊ¹ÓÃµÄ×Ö·û´®)
+      * listToSQLString(ï¿½Ô¶ï¿½ï¿½Å·Ö¸ï¿½ï¿½Listï¿½ï¿½Stringï¿½ï¿½×ªï¿½ï¿½SQLÊ¹ï¿½Ãµï¿½ï¿½Ö·ï¿½ï¿½ï¿½)
      *
     */
     public static String listToSQLString(List<String> inputList) {
@@ -359,7 +360,7 @@ public class StringUtil {
     }
    /**
      * 
-      * getHashString(Éú³ÉHash×Ö·û´®)
+      * getHashString(ï¿½ï¿½ï¿½ï¿½Hashï¿½Ö·ï¿½ï¿½ï¿½)
      *
     */
     public static String getHashString(byte[] md5Data) {
@@ -377,7 +378,7 @@ public class StringUtil {
     }
    /**
      * 
-      * toHexString(×ª»»Îª16½øÖÆ×Ö·û´®)
+      * toHexString(×ªï¿½ï¿½Îª16ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½)
      *
     */
     public static String toHexString(byte[] in) {
@@ -413,14 +414,14 @@ public class StringUtil {
     	}
     }
    /**
-      * checkMaxLength(×î´ó³¤¶È¼ì²é)
+      * checkMaxLength(ï¿½ï¿½ó³¤¶È¼ï¿½ï¿½)
      */
     public static boolean checkMaxLength(Object str,int length){
     	String info = getString(str);
     	return !(info.length()>length);
     }
    /*
-      * compareValues(±È½ÏÁ½¸öÖµ)
+      * compareValues(ï¿½È½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ)
     */
     public static boolean compareValues(String value1,String value2,String type){
     	boolean result = true;
