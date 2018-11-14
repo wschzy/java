@@ -11,6 +11,7 @@ public class StringUtil {
         return str2Array(str, ",");
     }
    public static String[] str2Array(String str, String sep) {
+       //ha 
         StringTokenizer token = null;
         String[] array = null;
        if (str == null || sep == null) {
