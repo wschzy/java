@@ -12,7 +12,7 @@ import com.sweet.hzy.service.SysUserInfoService;
 
 @RestController
 @RequestMapping(value="/SysUserInfo")
-public class SysUserInfoController {
+public class SysUserInfoController extends BaseController {
 
 	@Resource
 	SysUserInfoService sysUserInfoService;
