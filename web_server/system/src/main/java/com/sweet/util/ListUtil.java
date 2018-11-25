@@ -10,23 +10,14 @@ public class ListUtil {
 		return strToList(str, ",");
 	}
 	
-	/**
-	  * isEmpty(判断是否为空)
-	 */
 	public static boolean isEmpty(Collection list){
 		return !isNotEmpty(list);
 	}
 	
-	/**
-	  * isEmpty(判断是否为空)
-	 */
 	public static boolean isEmpty(Object[] arr){
 		return !isNotEmpty(arr);
 	}
 	
-	/**
-	  * isNotEmpty(判断是否不为空)
-	 */
 	public static boolean isNotEmpty(Collection list){
 		if(list!=null && list.size()>0)
 			return true;
@@ -45,7 +36,6 @@ public class ListUtil {
 		return !isNotEmpty(map);
 	}
 	
-	//isNotEmpty(判断是否不为空)
 	public static boolean isNotEmpty(Object[] arr){
 		if(arr!=null && arr.length>0)
 			return true;
@@ -53,9 +43,6 @@ public class ListUtil {
 			return false;
 	}
 	
-	/**
-	  * strToList(将字符串按 regex 分割，组成list返回)
-	 */
 	static List<String> strToList(String str, String regex){
 		List<String> list = new ArrayList<String>();
 		

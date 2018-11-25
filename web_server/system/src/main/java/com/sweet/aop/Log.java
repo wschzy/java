@@ -27,10 +27,8 @@ public class Log {
 
 	@Before("webLog()")
 	public void doBefore(JoinPoint joinPoint) throws Throwable {
-		// 接收到请求，记录请求内容
 		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		HttpServletRequest request = attributes.getRequest();
-		// 记录下请求内容
 		log.info("URL : " + request.getRequestURL().toString());
 		log.info("HTTP_METHOD : " + request.getMethod());
 		log.info("IP : " + request.getRemoteAddr());
@@ -43,7 +41,6 @@ public class Log {
 
 	@AfterReturning(returning = "ret", pointcut = "webLog()")
 	public void doAfterReturning(Object ret) throws Throwable {
-		// 处理完请求，返回内容
 		log.info("RESPONSE : " + ret);
 	}
 }

@@ -159,25 +159,18 @@ public class NumberUtil {
         return intArr;
     }
 
-    /**
-     * l为null时返回0L
-     */
+    //l为null时返回0L
     public static long NVL(Long l) {
         if (l == null) {
             return 0L;
         }
-
         return l.longValue();
     }
-
-    /**
-     * i为null时返回0
-     */
+    //i为null时返回0
     public static int NVL(Integer i) {
         if (i == null) {
             return 0;
         }
-
         return i.intValue();
     }
     

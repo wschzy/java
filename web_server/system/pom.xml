@@ -9,10 +9,23 @@
         <version>2.0.0.RELEASE</version>
     </parent>
     <dependencies>
-        <dependency>
+    	 <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+	        <!-- 排除Tomcat服务器 -->
+	        <exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
         </dependency>
+		<!-- 添加undertow服务器 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-undertow</artifactId>
+		</dependency>
+		
         <dependency>
 			<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-freemarker</artifactId>
@@ -37,7 +50,23 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-		
-		
+		<!-- 多事务管理 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jta-atomikos</artifactId>
+		</dependency>
+		<!-- springboot 整合 pagehelper -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.2.5</version>
+		</dependency>
+		<!-- 热部署 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+			<scope>true</scope>
+		</dependency>
     </dependencies>
 </project>

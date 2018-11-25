@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.StringTokenizer;
 
+
 public class StringUtil {
    private StringUtil() {}
    
@@ -12,7 +13,6 @@ public class StringUtil {
         return str2Array(str, ",");
     }
    public static String[] str2Array(String str, String sep) {
-       //
         StringTokenizer token = null;
         String[] array = null;
        if (str == null || sep == null) {
@@ -68,9 +68,6 @@ public class StringUtil {
         }
        return (s1.equals(s2));
     }
-   /**
-      * zeroToSpace("0"��"00"��"000"�Ŀշ����任)
-     */
     public static String zeroToSpace(String s) {
         boolean allZero = true;
        if (s == null) {
@@ -94,9 +91,6 @@ public class StringUtil {
             return s;
         }
     }
-   /**
-      * addPreZero(�ڶ���ǰ��Ӹ�0)
-     */
     public static String addPreZero(Object val, int length) {
         if (val == null) {
             return "";
@@ -113,46 +107,21 @@ public class StringUtil {
         }
        return result;
     }
-   /**
-      * decreasePreZero(����ȥ��ǰ���0�����ؽ��)
-     */
     public static String decreasePreZero(String number) {
         String result = number;
-        // ���Ϊnull���߿��ַ����򷵻�""
         if (number == null || number.trim().equals("")) {
             return "";
         }
         if (number.trim().equals("0") || number.trim().equals("-0")) {
             return "0";
         }
-        // ���ú���ֵ���
         if (NumberUtil.checkNumberValid(number) != false) {
-            // ���ҽ���ת�������ָ�ʽ
             long numNumber = 0;
             numNumber = Long.parseLong(number);
             result = String.valueOf(numNumber);
         }
         return result;
     }
-   /**
-      * formatPercentNumber(����906 --> 906%�ĸ�ʽת��)
-     */
-    public static String formatPercentNumber(String number) {
-        // null���߿��ַ���������""
-        if (number == null || number.trim().equals("")) {
-            return "";
-        }
-        // ��������ַ�����0��-0������0
-        if (number.trim().equals("0") || number.trim().equals("-0")) {
-            return "0";
-            // �����ַ���������%������
-        } else if (NumberUtil.checkNumberValid(number)) {
-            return number + "%";
-        } else {
-            return number.trim();
-        }
-    }
-    //formatRate(����ZZ.ZZ ----> Z9.999�ĸ�ʽת��)
     public static String formatRate(String rate) {
         if (rate == null || "".equals(rate.trim())) {
             return "";
@@ -182,82 +151,6 @@ public class StringUtil {
         }
         return rate;
     }
-   /**
-      * formatPostNum(���������ʽת��)
-     */
-    public static String formatPostNum(String[] postNum) {
-        if (postNum == null) {
-            return "";
-        }
-        StringBuffer result = new StringBuffer();
-        for (int i = 0; i < postNum.length; i++) {
-            if (postNum[i] == null || postNum[i].trim().equals("")) {
-                return "";
-            }
-            if (i != 0) {
-                result.append("-");
-            }
-            result.append(postNum[i]);
-        }
-        return result.toString();
-    }
-    //formatPostNum(���������ʽת��)
-    public static String formatPostNum(String postNum) {
-        if (postNum == null || postNum.length() != 7) {
-            return postNum;
-        }
-        return postNum.trim().substring(0, 3) + "-" + postNum.trim().substring(3, 7);
-    }
-    //formatPostNumToArray(���������ʽת��)
-    public static String[] formatPostNumToArray(String postNum) {
-        String[] postNumArray = { "", "" };
-        if (postNum == null || postNum.length() != 7) {
-        } else {
-            postNumArray[0] = postNum.trim().substring(0, 3);
-            postNumArray[1] = postNum.trim().substring(3, 7);
-        }
-        return postNumArray;
-    }
-   /**
-     * 
-      * trimSpc(ȥ�����ҿո�(��Ǻ�ȫ��))
-     */
-    public static String trimSpc(String val) {
-        if (val == null) {
-            return "";
-        } else {
-            val = val.trim();
-        }
-        // ��ո�(��Ǻ�ȫ��)���ı���
-        int iHead = 0;
-        // ��ո�(��Ǻ�ȫ��)���ļ���
-        for (int i = 0; i < val.length(); i++) {
-            if (val.charAt(i) == ' ' || val.charAt(i) == '��') {
-                iHead++;
-            } else {
-                break;
-            }
-        }
-        // ɾ���ҿո�(��Ǻ�ȫ��)�������ַ���
-        String valUse = val.substring(iHead);
-        if (null != valUse) {
-            int iEnd = valUse.length();
-            for (int i = valUse.length() - 1; i >= 0; i--) {
-                if (valUse.charAt(i) == ' ' || valUse.charAt(i) == '��') {
-                    iEnd--;
-                } else {
-                    break;
-                }
-            }
-            valUse = valUse.substring(0, iEnd);
-        }
-        return valUse;
-    }
-   /**
-     * 
-      * filteZero(ȫ��0����nullʱ���ؿ��ַ���)
-     *
-    */
     public static String filteZero(String val) {
         if (val == null || "".equals(val.trim())) {
             return "";
@@ -268,9 +161,6 @@ public class StringUtil {
         val = new Long(val.trim()).toString();
        return val;
     }
-   /*
-      * nvl(�ַ�������)
-    */
     public static String nvl(String value) {
         if (value == null) {
             return "";
@@ -278,50 +168,7 @@ public class StringUtil {
             return value.trim();
         }
     }
-   /**
-     * 
-      * addBackFullSpace(��������ȫ�ǿո񲢷����ַ���)
-     *
-    */
-    public static String addBackFullSpace(String val, int length) {
-        if (val == null) {
-            return "";
-        }
-        int num = length - val.length();
-        if (num <= 0) {
-            return val;
-        }
-        StringBuffer result = new StringBuffer();
-        for (int i = 0; i < num; i++) {
-            result.append("��");
-        }
-       return val + result.toString();
-    }
-   /**
-     * 
-      * replace(�ַ��������в������ַ���)
-     *
-    */
-    public static String replace(String sVal, String oldVal, String repVal) {
-        if (sVal == null || oldVal == null || repVal == null) {
-            return sVal;
-        }
-        StringBuffer result = new StringBuffer(sVal);
-        String str = sVal;
-       int preLength = 0;
-        int newEndPost = 0;
-        while (str.toString().indexOf(oldVal) >= 0) {
-            int startPost = preLength + str.toString().indexOf(oldVal);
-            int endPost = startPost + oldVal.length();
-           result.delete(startPost, endPost);
-            result.insert(startPost, repVal);
-           newEndPost = startPost + repVal.length();
-            str = result.substring(newEndPost, result.length());
-            preLength = newEndPost;
-        }
-        return result.toString();
-    }
-    //toNumStr(���ַ����Ŀ�ͷ��ȡ���ֲ���)
+    
     public static String toNumStr(String str) {
         int i = 0;
        if (str == null) {
@@ -335,17 +182,9 @@ public class StringUtil {
         }
         return str.substring(0, i);
     }
-   /**
-      * listToStringArray(List��String��ת�ַ�������)
-     *
-    */
     public static String[] listToStringArray(List<String> inputList) {
         return inputList.toArray(new String[inputList.size()]);
     }
-   /**
-      * listToSQLString(�Զ��ŷָ��List��String��ת��SQLʹ�õ��ַ���)
-     *
-    */
     public static String listToSQLString(List<String> inputList) {
         StringBuffer output = new StringBuffer();
         for (int i = 0; i < inputList.size(); i++) {
@@ -358,11 +197,6 @@ public class StringUtil {
         }
         return output.toString();
     }
-   /**
-     * 
-      * getHashString(����Hash�ַ���)
-     *
-    */
     public static String getHashString(byte[] md5Data) {
         StringBuffer hashString = new StringBuffer();
         for (int i = 0; i < md5Data.length; ++i) {
@@ -376,11 +210,6 @@ public class StringUtil {
         }
         return hashString.toString();
     }
-   /**
-     * 
-      * toHexString(ת��Ϊ16�����ַ���)
-     *
-    */
     public static String toHexString(byte[] in) {
         byte ch = 0x00;
         int i = 0;
@@ -413,16 +242,10 @@ public class StringUtil {
     		return "";
     	}
     }
-   /**
-      * checkMaxLength(��󳤶ȼ��)
-     */
     public static boolean checkMaxLength(Object str,int length){
     	String info = getString(str);
     	return !(info.length()>length);
     }
-   /*
-      * compareValues(�Ƚ�����ֵ)
-    */
     public static boolean compareValues(String value1,String value2,String type){
     	boolean result = true;
     	String str1 = StringUtil.getString(value1);

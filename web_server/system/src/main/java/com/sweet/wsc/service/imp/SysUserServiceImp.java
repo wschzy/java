@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sweet.hzy.mapper.SysUserInfoMapper;
 import com.sweet.util.MD5;
 import com.sweet.wsc.mapper.SysUserMapper;
 import com.sweet.wsc.service.SysUserService;
@@ -15,11 +16,13 @@ public class SysUserServiceImp implements SysUserService{
 
 	@Resource
 	private SysUserMapper sysUserMapper;
-	
-	@Transactional(transactionManager="wscTransactionManager")
+	@Resource
+	private SysUserInfoMapper sysUserInfoMapper;
+	@Transactional//多事务管理
 	public int addUser(String loginid, String password, String phone, Integer sex) {
-		//MD5加密
-		return sysUserMapper.addUser(loginid, MD5.getMD5(password.getBytes()), phone, sex);
+		 sysUserMapper.addUser(loginid, MD5.getMD5(password.getBytes()), phone, sex);
+		 sysUserInfoMapper.addUser(loginid, MD5.getMD5(password.getBytes()), phone, sex);
+		 return 1/sex;
 	}
 
 	
