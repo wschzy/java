@@ -111,7 +111,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<maimClass>com.sweet.Action</maimClass>
+					<mainClass>com.sweet.Action</mainClass>
 				</configuration>
 				<executions>
 					<execution>

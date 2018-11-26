@@ -4,7 +4,6 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.github.pagehelper.PageInfo;
 import com.sweet.bean.SysUserInfo;
 import com.sweet.hzy.service.SysUserInfoService;
@@ -25,7 +24,6 @@ public class SysUserInfoController extends BaseController {
 	public int addUser(String loginid,String password,String phone,Integer sex) {
 		return sysUserInfoService.addUser(loginid, password, phone, sex);
 	}
-	
 	//添加用户
 	@RequestMapping(value="/allUser")
 	public PageInfo<SysUserInfo> findUserList(Integer page,Integer pageSize) {
