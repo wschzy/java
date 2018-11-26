@@ -17,15 +17,12 @@ public class NumberUtil {
     	return result;
     }
     
-    /**
-     * 数值的校验(0-9)、返回true或false
-     */
     public static boolean checkNumberValid(String number) {
         number = StringUtil.nvl(number);
         if ("".equals(number)) {
             return false;
         }
-        boolean bDot = false; // 判断是否为'.'
+        boolean bDot = false; 
         int nChar;
         for (int i = 0; i < number.length(); i++) {
             nChar = number.charAt(i);
@@ -40,9 +37,7 @@ public class NumberUtil {
             if ((nChar < '0') && (nChar != ',') && (nChar != '.')) {
                 return false;
             }
-            // 如果是'.'
             if (nChar == '.') {
-                // 判断是否为'.'，是返回true，其他返回false
                 if (!bDot) {
                     bDot = true;
                     continue;
@@ -54,9 +49,6 @@ public class NumberUtil {
         return true;
     }
 
-    /**
-     * 数字的检查
-     */
     public static boolean checkIntNumberValid(String s) {
         if (s == null || s.length() == 0) {
             return false;
@@ -68,10 +60,7 @@ public class NumberUtil {
         }
         return true;
     }
-
-    /**
-     * String转Int
-     */
+    
     public static int convertToInt(String str) {
         int result = -1;
         try {
@@ -93,9 +82,6 @@ public class NumberUtil {
         return result;
     }
 
-    /**
-     * String转Long
-     */
     public static long convertToLong(String str) {
         long result = 0;
         try {
@@ -107,9 +93,6 @@ public class NumberUtil {
         return result;
     }
 
-    /**
-     * String转Float
-     */
     public static float convertToFloat(String str) {
         float result = 0;
         try {
@@ -121,9 +104,6 @@ public class NumberUtil {
         return result;
     }
 
-    /**
-     * String转Int
-     */
     public static int parseInt(String value, boolean flag) throws Exception {
         if (flag) {
             if (value == null || "".equals(value.trim())) {
@@ -146,9 +126,6 @@ public class NumberUtil {
     }
 
 
-    /**
-     * 字符串数组转换为整型数组
-     */
     public static Integer[] strArr2IntArr(String[] strArr) {
         Integer[] intArr = new Integer[strArr.length];
 
@@ -159,14 +136,12 @@ public class NumberUtil {
         return intArr;
     }
 
-    //l为null时返回0L
     public static long NVL(Long l) {
         if (l == null) {
             return 0L;
         }
         return l.longValue();
     }
-    //i为null时返回0
     public static int NVL(Integer i) {
         if (i == null) {
             return 0;
@@ -174,9 +149,6 @@ public class NumberUtil {
         return i.intValue();
     }
     
-    /**
-     * 格式化指定数值(,##0.00)
-     */
     public static String formatCurrency(Double value){
     	String result = "0.00";
     	if (value != null)
@@ -184,9 +156,6 @@ public class NumberUtil {
     	return result;
     }
     
-    /**
-     * 格式化指定数值(,##0)
-     */
     public static String formatInteger(Double value){
     	String result = "0";
     	if (value != null)

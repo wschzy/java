@@ -18,7 +18,7 @@ public class SysUserServiceImp implements SysUserService{
 	private SysUserMapper sysUserMapper;
 	@Resource
 	private SysUserInfoMapper sysUserInfoMapper;
-	@Transactional//多事务管理
+	@Transactional
 	public int addUser(String loginid, String password, String phone, Integer sex) {
 		 sysUserMapper.addUser(loginid, MD5.getMD5(password.getBytes()), phone, sex);
 		 sysUserInfoMapper.addUser(loginid, MD5.getMD5(password.getBytes()), phone, sex);
