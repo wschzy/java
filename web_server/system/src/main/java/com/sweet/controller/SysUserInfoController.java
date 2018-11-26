@@ -27,7 +27,7 @@ public class SysUserInfoController extends BaseController {
 	}
 	
 	//添加用户
-	@RequestMapping(value="/allUser.do")
+	@RequestMapping(value="/allUser")
 	public PageInfo<SysUserInfo> findUserList(Integer page,Integer pageSize) {
 		return sysUserInfoService.findUserList(page,pageSize);
 	}

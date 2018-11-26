@@ -6,7 +6,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.sweet.bean.ResponseResult;
-
+/**
+ * 全局捕获异常
+ */
 public abstract class BaseController {
 	protected String getSessionVal(HttpSession session,String param) {
 		return String.valueOf(session.getAttribute(param).toString());

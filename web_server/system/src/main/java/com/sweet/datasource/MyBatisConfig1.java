@@ -20,7 +20,6 @@ import com.sweet.config.DBConfig1;
 @MapperScan(basePackages = "com.sweet.hzy.mapper", sqlSessionTemplateRef = "hzySqlSessionTemplate")
 public class MyBatisConfig1 {
 
-	// ≈‰÷√ ˝æ›‘¥
 	@Bean(name = "hzyDataSource")
 	public DataSource testDataSource(DBConfig1 testConfig) throws SQLException {
 		MysqlXADataSource mysqlXaDataSource = new MysqlXADataSource();
