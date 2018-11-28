@@ -21,10 +21,11 @@ public class SysUserInfoController extends BaseController {
 	private String port;
 	//添加用户
 	@RequestMapping(value="/addUser.do")
-	public int addUser(String loginid,String password,String phone,Integer sex) {
+	public int addUser(String loginid,String password,String phone,Integer sex) throws Exception {
 		return sysUserInfoService.addUser(loginid, password, phone, sex);
 	}
-	//添加用户
+	
+	//查询用户列表
 	@RequestMapping(value="/allUser")
 	public PageInfo<SysUserInfo> findUserList(Integer page,Integer pageSize) {
 		return sysUserInfoService.findUserList(page,pageSize);

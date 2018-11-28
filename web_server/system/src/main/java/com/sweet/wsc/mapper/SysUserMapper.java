@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Select;
 
 import com.sweet.bean.SysUserInfo;
 
+@Deprecated
 public interface SysUserMapper {
 
 	@Select("SELECT * FROM SYS_USERINFO WHERE loginid = #{loginid}")

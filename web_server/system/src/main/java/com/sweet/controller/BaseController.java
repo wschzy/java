@@ -18,10 +18,10 @@ public abstract class BaseController {
 	public ResponseResult<Void> handlerException(Exception e,HttpServletRequest request) {
 		ResponseResult<Void> rr = new ResponseResult<Void>();
 		e.printStackTrace();
-		if(e instanceof NumberFormatException) {
-			rr.setMessage("数字格式错误");
-		}else {
+		if(e instanceof NullPointerException) {
 			rr.setMessage("未知错误，请联系管理员");
+		}else {
+			rr.setMessage(e.getMessage());
 		}
 		rr.setState(ResponseResult.STATE_ERROR);
 		return rr;

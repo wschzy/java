@@ -10,7 +10,7 @@ import com.sweet.util.MD5;
 import com.sweet.wsc.mapper.SysUserMapper;
 import com.sweet.wsc.service.SysUserService;
 
-
+@Deprecated
 @Service
 public class SysUserServiceImp implements SysUserService{
 

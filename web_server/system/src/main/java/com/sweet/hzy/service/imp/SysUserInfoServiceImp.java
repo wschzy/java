@@ -22,9 +22,12 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 	private SysUserInfoMapper sysUserInfoMapper;
 	
 	@Transactional
-	public int addUser(String loginid, String password, String phone, Integer sex) {
-		return sysUserInfoMapper.addUser(loginid, MD5.getMD5(password.getBytes()), phone, sex);
-		
+	public int addUser(String loginid, String password, String phone, Integer sex) throws Exception {
+		if(sysUserInfoMapper.findUserByLoginidAndPassword(loginid, MD5.getMD5(password.getBytes())) ==null) {
+			return sysUserInfoMapper.addUser(loginid, MD5.getMD5(password.getBytes()), phone, sex);
+		}else {
+			throw new Exception("该用户已经注册");
+		}
 	}
 	
 	public PageInfo<SysUserInfo> findUserList(Integer page,Integer pageSize) {
