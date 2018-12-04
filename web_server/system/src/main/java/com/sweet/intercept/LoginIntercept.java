@@ -15,7 +15,7 @@ public class LoginIntercept implements HandlerInterceptor {
 			throws Exception {
 		log.info("开始拦截登录请求....");
 		HttpSession session = request.getSession();
-		if (session.getAttribute("loginid") != null) {
+		if (session.getAttribute("loginid") == null) {
 			response.getWriter().println("login");
 			//重定向
 			return false;

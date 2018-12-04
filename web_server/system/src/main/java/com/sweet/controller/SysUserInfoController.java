@@ -1,6 +1,8 @@
 package com.sweet.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,17 +22,23 @@ public class SysUserInfoController extends BaseController {
 	@Value("${server.port}")
 	private String port;
 	//添加用户
-	@RequestMapping(value="/addUser.do")
-	public int addUser(String loginid,String password,String phone,Integer sex) throws Exception {
-		return sysUserInfoService.addUser(loginid, password, phone, sex);
+	@RequestMapping(value="/addUser")
+	public int addUser(String loginid,String password,String phone,Integer sex,String fullname,String email,String picture){
+		return sysUserInfoService.addUser(loginid, password, phone, sex, picture, picture, picture);
 	}
 	
 	//查询用户列表
-	@RequestMapping(value="/allUser")
+	@RequestMapping(value="/allUser.do")
 	public PageInfo<SysUserInfo> findUserList(Integer page,Integer pageSize) {
 		return sysUserInfoService.findUserList(page,pageSize);
 	}
 	
+	//登录
+	@RequestMapping(value="/findUser")
+	public SysUserInfo findUserByLoginidAndPassword(String loginid, String password,HttpSession session) {
+		SysUserInfo user = sysUserInfoService.findUserByLoginidAndPassword(loginid, password);
+		return user;
+	}
 	/*多事务
 	@Resource
 	SysUserService sysUserService;

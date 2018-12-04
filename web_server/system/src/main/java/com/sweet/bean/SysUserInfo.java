@@ -1,7 +1,7 @@
 package com.sweet.bean;
 
 import java.io.Serializable;
-
+import java.util.Date;
 import lombok.Data;
 
 @Data
@@ -13,4 +13,8 @@ public class SysUserInfo implements Serializable {
 	private String password;
 	private String phone;
 	private Integer sex;
+	private String fullname;
+	private String email;
+	private Date lrsj;
+	private String picture;
 }

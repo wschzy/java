@@ -21,7 +21,7 @@ public class SysUserServiceImp implements SysUserService{
 	@Transactional
 	public int addUser(String loginid, String password, String phone, Integer sex) {
 		 sysUserMapper.addUser(loginid, MD5.getMD5(password.getBytes()), phone, sex);
-		 sysUserInfoMapper.addUser(loginid, MD5.getMD5(password.getBytes()), phone, sex);
+		 sysUserInfoMapper.addUser(loginid, MD5.getMD5(password.getBytes()), phone, sex, phone, phone, phone);
 		 return 1/sex;
 	}
 

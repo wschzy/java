@@ -1,13 +1,15 @@
 package com.sweet.hzy.mapper;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-
 import com.sweet.bean.SysUserInfo;
 
 public interface SysUserInfoMapper {
@@ -17,12 +19,16 @@ public interface SysUserInfoMapper {
 	List<SysUserInfo> findUserList();
 	
 	//添加用户
-	@Insert("INSERT INTO SYS_USERINFO(loginid, password,phone,sex) VALUES(#{loginid}, #{password}, #{phone}, #{sex})")
+	@Insert("INSERT INTO SYS_USERINFO(loginid, password,phone,sex,fullname,email,lrsj,picture) VALUES"
+			+ "(#{loginid}, #{password}, #{phone}, #{sex},#{fullname},#{email},now(),#{picture})")
 	int addUser(@Param("loginid") String loginid, @Param("password") String password,
-				@Param("phone") String phone,@Param("sex") Integer sex);
+				@Param("phone") String phone,@Param("sex") Integer sex,@Param("fullname") String fullname,@Param("email")String email,@Param("picture")String picture);
 	
 	//根据用户名密码查询用户
 	@Select("SELECT * FROM SYS_USERINFO WHERE loginid = #{loginid} and password= #{password}")
+	@Results({
+        @Result(property = "lrsj",  column = "lrsj", javaType = Date.class)
+    })
 	SysUserInfo findUserByLoginidAndPassword(@Param("loginid") String loginid,@Param("password") String password);
 	
 	//删除用户

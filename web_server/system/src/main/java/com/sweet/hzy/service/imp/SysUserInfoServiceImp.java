@@ -1,12 +1,9 @@
 package com.sweet.hzy.service.imp;
 
 import java.util.List;
-
 import javax.annotation.Resource;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sweet.bean.SysUserInfo;
@@ -22,11 +19,11 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 	private SysUserInfoMapper sysUserInfoMapper;
 	
 	@Transactional
-	public int addUser(String loginid, String password, String phone, Integer sex) throws Exception {
+	public int addUser(String loginid, String password, String phone, Integer sex,String fullname,String email,String picture){
 		if(sysUserInfoMapper.findUserByLoginidAndPassword(loginid, MD5.getMD5(password.getBytes())) ==null) {
-			return sysUserInfoMapper.addUser(loginid, MD5.getMD5(password.getBytes()), phone, sex);
+			return sysUserInfoMapper.addUser(loginid, MD5.getMD5(password.getBytes()), phone, sex, picture, picture, picture);
 		}else {
-			throw new Exception("该用户已经注册");
+			throw new RuntimeException("该用户已经注册");
 		}
 	}
 	
@@ -39,5 +36,12 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 		return pageInfoSysUserInfoList;
 	}
 
+	public SysUserInfo findUserByLoginidAndPassword(String loginid, String password) {
+		SysUserInfo user = sysUserInfoMapper.findUserByLoginidAndPassword(loginid, MD5.getMD5(password.getBytes()));
+		if(user == null) {
+			throw new RuntimeException("未找到改用户");
+		}
+		return user;
+	}
 	
 }
