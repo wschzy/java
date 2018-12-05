@@ -36,8 +36,7 @@ public class SysUserInfoController extends BaseController {
 	//登录
 	@RequestMapping(value="/findUser")
 	public SysUserInfo findUserByLoginidAndPassword(String loginid, String password,HttpSession session) {
-		SysUserInfo user = sysUserInfoService.findUserByLoginidAndPassword(loginid, password);
-		return user;
+		 return sysUserInfoService.findUserByLoginidAndPassword(loginid, password,session);
 	}
 	/*多事务
 	@Resource
