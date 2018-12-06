@@ -18,6 +18,7 @@ import com.sweet.hzy.mapper.SysUserInfoMapper;
 import com.sweet.hzy.mapper.TbForbidMapper;
 import com.sweet.hzy.service.SysUserInfoService;
 import com.sweet.util.MD5;
+import com.sweet.util.ServletUtil;
 
 
 @Service
@@ -51,14 +52,13 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 			throw new RuntimeException("该账号已经被禁用");
 		}
 		SysUserInfo user = sysUserInfoMapper.findUserByLoginidAndPassword(loginid, MD5.getMD5(password.getBytes()));
-		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-		HttpServletRequest request = attributes.getRequest();
+		HttpServletRequest request = ServletUtil.getRequset();
 		if(user == null) {
 			handlerErrorPassword(loginid, request.getRemoteAddr());
 			throw new RuntimeException("账号或者密码错误");
 		}else {
 			int r = tbForbidMapper.updateTbForbidEnable(loginid);
-			if(r > 0) {
+			if(r > 1) {
 				throw new RuntimeException("登录失败");
 			}
 			session.setAttribute("id", user.getId());
@@ -73,7 +73,7 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 		return user;
 	}
 	
-	private void handlerErrorPassword(String loginid,String ip) {
+	public void handlerErrorPassword(String loginid,String ip) {
 		TbForbid disRecord = tbForbidMapper.findNotDisableRecordUserForLoginid(loginid);//根据id查询禁用记录
 		if(disRecord == null) {
 			//不存在禁用记录，插入禁用记录

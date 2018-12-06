@@ -38,10 +38,10 @@ public class SysUserInfoController extends BaseController {
 	public SysUserInfo findUserByLoginidAndPassword(String loginid, String password,HttpSession session) {
 		 return sysUserInfoService.findUserByLoginidAndPassword(loginid, password,session);
 	}
-	/*多事务
+	/*//多事务
 	@Resource
 	SysUserService sysUserService;
-	@RequestMapping(value="/addUser2.do")
+	@RequestMapping(value="/addUser2")
 	public int addUserw(String loginid,String password,String phone,Integer sex) {
 		return sysUserService.addUser(loginid, password, phone, sex);
 	}*/
