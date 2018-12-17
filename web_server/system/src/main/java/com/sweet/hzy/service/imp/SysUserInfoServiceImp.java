@@ -7,9 +7,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sweet.bean.SysUserInfo;
@@ -47,6 +44,7 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 	}
 
 	public SysUserInfo findUserByLoginidAndPassword(String loginid, String password,HttpSession session) {
+		//查询改用户是否被禁用
 		TbForbid disRecord = tbForbidMapper.findDisableUserForLoginid(loginid);
 		if(disRecord != null) {
 			throw new RuntimeException("该账号已经被禁用");

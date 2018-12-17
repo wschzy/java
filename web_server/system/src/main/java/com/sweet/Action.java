@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
-
 import com.sweet.config.DBConfig1;
 import com.sweet.config.DBConfig2;
 @SpringBootApplication// same as @Configuration @EnableAutoConfiguration @ComponentScan
