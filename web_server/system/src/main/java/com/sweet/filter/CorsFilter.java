@@ -1,4 +1,4 @@
-package com.sweet.filter;
+/*package com.sweet.filter;
 
 import java.io.IOException;
 
@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import lombok.extern.slf4j.Slf4j;
-/**
+*//**
  *解决跨域问题 
- */
+ *//*
 @WebFilter(urlPatterns = "/*",filterName = "CorsFilter")  
 @Slf4j
 public class CorsFilter implements Filter {  
@@ -40,4 +40,4 @@ public class CorsFilter implements Filter {
     public void destroy(){
     	
     }  
-}  
+}  */

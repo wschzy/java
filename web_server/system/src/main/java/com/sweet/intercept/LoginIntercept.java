@@ -11,8 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class LoginIntercept implements HandlerInterceptor {
 
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-			throws Exception {
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)throws Exception {
 		log.info("开始拦截登录请求....");
 		HttpSession session = request.getSession();
 		if (session.getAttribute("loginid") == null) {

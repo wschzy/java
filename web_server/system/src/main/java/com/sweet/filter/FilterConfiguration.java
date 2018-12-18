@@ -18,17 +18,4 @@ public class FilterConfiguration {
 		registration.setName("characterEncodingFilter");
 		return registration;
 	}
-
-    @Bean
-    @Order(Integer.MAX_VALUE)
-    public FilterRegistrationBean<Filter> corsFilter() {
-        FilterRegistrationBean<Filter> registration = new FilterRegistrationBean<Filter>();
-        registration.setFilter(new CorsFilter());
-        registration.addUrlPatterns("/*");
-        registration.setName("corsFilter");
-        return registration;
-    }
- 
-
-
 }
