@@ -1,8 +1,6 @@
 package com.sweet.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -11,9 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.sweet.bean.ResponseResult;
 
 public abstract class BaseController {
-	protected String getSessionVal(HttpSession session,String param) {
-		return String.valueOf(session.getAttribute(param).toString());
-	}
+	
 	/**
 	 * 全局捕获异常
 	 */

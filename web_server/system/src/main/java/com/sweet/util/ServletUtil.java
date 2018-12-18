@@ -24,4 +24,11 @@ public class ServletUtil {
 		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		return attributes.getRequest().getSession();
 	}
+	
+	/**
+	 * 获取session 参数值
+	 */
+	public String getSessionVal(HttpSession session,String param) {
+		return String.valueOf(session.getAttribute(param).toString());
+	}
 }
