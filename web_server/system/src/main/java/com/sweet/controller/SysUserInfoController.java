@@ -24,7 +24,7 @@ public class SysUserInfoController extends BaseController {
 	private String port;
 	//添加用户
 	@PostMapping(value="/addUser")
-	public int addUser(String loginid,String password,String phone,Integer sex,String fullname,String email,String picture){
+	public int addUser(String loginid,String password,String phone,Integer sex,String fullname,String email,String picture)throws Exception{
 		return sysUserInfoService.addUser(loginid, password, phone, sex, picture, picture, picture);
 	}
 	
@@ -36,7 +36,7 @@ public class SysUserInfoController extends BaseController {
 	
 	//登录
 	@RequestMapping(value="/findUser")
-	public SysUserInfo findUserByLoginidAndPassword(@Valid SysUserInfo user,HttpSession session) {
+	public SysUserInfo findUserByLoginidAndPassword(@Valid SysUserInfo user,HttpSession session) throws Exception{
 		 return sysUserInfoService.findUserByLoginidAndPassword(user.getLoginid(), user.getPassword(),session);
 	}
 	
