@@ -11,7 +11,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import lombok.extern.slf4j.Slf4j;
 
 //字符编码过滤器
@@ -27,6 +26,7 @@ public class CharacterEncodingFilter implements Filter{
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         log.info("过滤字符编码");
+        log.info(request.getRequestURI());
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         filterChain.doFilter(request , response);

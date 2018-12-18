@@ -17,7 +17,7 @@ public abstract class BaseController {
 	public ResponseResult<Void> handlerException(Exception e,HttpServletRequest request) {
 		ResponseResult<Void> rr = new ResponseResult<Void>();
 		e.printStackTrace();
-		if(e instanceof NullPointerException) {
+		if(e instanceof RuntimeException) {
 			rr.setMessage("未知错误，请联系管理员");
 		}else if(e instanceof BindException) {
 			BindingResult bindingResult = ((BindException) e).getBindingResult();

@@ -16,6 +16,7 @@ import com.sweet.hzy.mapper.TbForbidMapper;
 import com.sweet.hzy.service.SysUserInfoService;
 import com.sweet.util.MD5;
 import com.sweet.util.ServletUtil;
+import com.sweet.util.SysException;
 
 
 @Service
@@ -30,7 +31,7 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 		if(sysUserInfoMapper.findUserByLoginidAndPassword(loginid, MD5.getMD5(password.getBytes())) ==null) {
 			return sysUserInfoMapper.addUser(loginid, MD5.getMD5(password.getBytes()), phone, sex, picture, picture, picture);
 		}else {
-			throw new Exception("该用户已经注册");
+			throw new SysException("该用户已经注册");
 		}
 	}
 	
@@ -43,22 +44,22 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 		return pageInfoSysUserInfoList;
 	}
 
-	@Transactional
+	@Transactional(rollbackFor=Exception.class,noRollbackFor=SysException.class)
 	public SysUserInfo findUserByLoginidAndPassword(String loginid, String password,HttpSession session) throws Exception {
 		//查询改用户是否被禁用
 		TbForbid disRecord = tbForbidMapper.findDisableUserForLoginid(loginid);
 		if(disRecord != null) {
-			throw new Exception("该账号已经被禁用");
+			throw new SysException("该账号已经被禁用");
 		}
 		SysUserInfo user = sysUserInfoMapper.findUserByLoginidAndPassword(loginid, MD5.getMD5(password.getBytes()));
 		HttpServletRequest request = ServletUtil.getRequset();
 		if(user == null) {
 			handlerErrorPassword(loginid, request.getRemoteAddr());
-			throw new Exception("账号或者密码错误");
+			throw new SysException("账号或者密码错误");
 		}else {
 			int r = tbForbidMapper.updateTbForbidEnable(loginid);
 			if(r > 1) {
-				throw new Exception("登录失败");
+				throw new SysException("登录失败");
 			}
 			session.setAttribute("id", user.getId());
 			session.setAttribute("loginid", user.getLoginid());
@@ -73,7 +74,7 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 		return user;
 	}
 	
-	public void handlerErrorPassword(String loginid,String ip) throws Exception{
+	public void handlerErrorPassword(String loginid,String ip) throws SysException{
 		TbForbid disRecord = tbForbidMapper.findNotDisableRecordUserForLoginid(loginid);//根据id查询禁用记录
 		if(disRecord == null) {
 			//不存在禁用记录，插入禁用记录
@@ -82,11 +83,11 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 			//存在禁用记录
 			if(disRecord.getLogintimes() == DISABLE_TIMES) {
 				tbForbidMapper.updateTbForbid(disRecord.getId());
-				throw new Exception("该账号已经被禁用");
+				throw new SysException("该账号已经被禁用");
 			}else if(disRecord.getLogintimes() < DISABLE_TIMES){
 				tbForbidMapper.updateTbForbidTimes(disRecord.getId(), disRecord.getLogintimes()+1);
 			}else {
-				throw new Exception("该账号已经被禁用");
+				throw new SysException("该账号已经被禁用");
 			}
 		}
 	}
