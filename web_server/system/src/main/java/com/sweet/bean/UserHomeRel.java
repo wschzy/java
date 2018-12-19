@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class SysUserHomeRelation implements Serializable {
+public class UserHomeRel implements Serializable {
 	private static final long serialVersionUID = -1306408614508552268L;
 	private Integer id;
 	private Integer homeid;
