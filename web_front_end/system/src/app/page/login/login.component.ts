@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {UserLoginService} from './login.component.service';
 import * as $ from 'jquery';
+import { InterfaceService } from 'src/app/interface/interface.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
     selector: 'login',
     templateUrl: 'login.component.html',
@@ -20,16 +21,22 @@ export class LoginComponent implements OnInit {
     //        alert("请输入密码！");
     //     }
     //   }
-    constructor(private loginService:UserLoginService) { 
-        
+    constructor(private service:InterfaceService) { 
+       
     }
 
     ngOnInit() {
-
+        
     }
     submit(){
-        var data= {loginid:"hzy",password:"123456"};
-        this.loginService.login(data,
+        var username=$('#username').val();
+        var password = $("#password").val();    
+        var data= {loginid:username,password:password};
+        if(username == '' || password == '') {
+            alert("用户名或密码不能为空");
+            return;
+        }  
+        this.service.interface("SysUserInfo/findUser", data,
             function(data:any){
                 window.localStorage.setItem("user",JSON.stringify(data));//将用户信息放入缓存中
                 window.location.href="http://www.baidu.com";

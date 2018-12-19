@@ -1,43 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>登录界面</title>
-<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="../../../assets/iconfont/style.css" type="text/css" rel="stylesheet">
-<style>
-	
-	
-	
-</style>
-
-</head>
 
 <body>
-    
     <div class="container wrap1" style="height:450px;">
             <h2 class="mg-b20 text-center">宝宝记账登录页面</h2>
             <div class="col-sm-8 col-md-5 center-auto pd-sm-50 pd-xs-20 main_content">
                 <p class="text-center font16">用户登录</p>
                 <!-- <form> -->
+                <form ng-app="myApp" ng-controller="validateCtrl" name="myForm" novalidate>  
                     <div class="form-group mg-t20">
                         <i class="fa fa-user"></i>
-                        <input type="text" class="login_input" id="username" placeholder="请输入用户名" />
+                        <input type="text" class="login_input" id="username" placeholder="请输入用户名" name="username" ng-model="username" required/>
                     </div>
                     <div class="form-group mg-t20">
                         <i class="fa fa-unlock-alt"></i>
-                        <input type="password" class="login_input" id="password" placeholder="请输入密码" />
+                        <input type="password" class="login_input" id="password" placeholder="请输入密码" ng-moudle="password" required />   
                     </div>
                     <div class="checkbox mg-b25">
                         <label>
                             <input type="checkbox" />记住我的登录信息
                         </label>
                     </div>
-                    <button class="login_btn"  id="btn" (click)="submit()" >登 录</button>
-               <!-- </form> -->
+                    <input type="button" class="login_btn"  id="btn" (click)="submit()" value="登 录" >
+               </form>
         </div><!--row end-->
-    </div><!--container end-->
-           
+    </div><!--container end-->          
 </body>
-</html>
