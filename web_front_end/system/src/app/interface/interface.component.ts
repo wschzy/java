@@ -21,7 +21,7 @@ export class InterfaceService {
           if(data != undefined && data['state'] == '-1'){
               alert(data['message']);
           }else{
-            if(fun != null){
+            if(typeof fun === 'function'){
               eval(fun(data));
             }
           }
