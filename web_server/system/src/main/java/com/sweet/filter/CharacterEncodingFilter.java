@@ -11,11 +11,10 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import lombok.extern.slf4j.Slf4j;
 
 //字符编码过滤器
 @WebFilter(urlPatterns = "/*",filterName = "CharacterEncodingFilter")
-@Slf4j
+//@Slf4j
 public class CharacterEncodingFilter implements Filter{
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -25,8 +24,7 @@ public class CharacterEncodingFilter implements Filter{
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        log.info("过滤字符编码");
-        log.info(request.getRequestURI());
+        //log.info(request.getRequestURI());
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         filterChain.doFilter(request , response);
