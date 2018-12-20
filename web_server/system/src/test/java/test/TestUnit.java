@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = Action.class)
 public class TestUnit {
 
-	private MockMvc mockMvc; // 模拟MVC对象，通过MockMvcBuilders.webAppContextSetup(this.wac).build()初始化。  
+	private MockMvc mockMvc;
 	  
     @Autowired  
     private WebApplicationContext wac; // 注入WebApplicationContext  
