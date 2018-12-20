@@ -11,5 +11,5 @@ import com.sweet.bean.SysMenu;
 public interface SysMenuMapper {
 	
 	@Select("SELECT * FROM SYS_MENU ")
-	List<SysMenu>findMenuList();
+	List<SysMenu>getMenuList();
 }

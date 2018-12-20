@@ -1,5 +1,7 @@
 package com.sweet.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -40,6 +42,11 @@ public class SysUserInfoController extends BaseController {
 		 return sysUserInfoService.findUserByLoginidAndPassword(user.getLoginid(), user.getPassword(),session);
 	}
 	
+	//获取用户的菜单权限
+	@PostMapping(value="/getMenu.do")
+	public List<?> getMenu() throws Exception{
+		return sysUserInfoService.getMenu();
+	}
 }
 
 /*//多事务

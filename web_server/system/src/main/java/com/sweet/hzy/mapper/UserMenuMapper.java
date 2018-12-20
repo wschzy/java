@@ -11,5 +11,5 @@ import com.sweet.bean.UserMenu;
 public interface UserMenuMapper {
 	
 	@Select("SELECT * FROM USER_MENU ")
-	List<UserMenu>findMenuList();
+	List<UserMenu>getMenuList();
 }

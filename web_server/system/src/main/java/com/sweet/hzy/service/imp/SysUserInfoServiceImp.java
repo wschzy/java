@@ -11,11 +11,14 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sweet.bean.SysUserInfo;
 import com.sweet.bean.TbForbid;
+import com.sweet.hzy.mapper.SysMenuMapper;
 import com.sweet.hzy.mapper.SysUserInfoMapper;
 import com.sweet.hzy.mapper.TbForbidMapper;
+import com.sweet.hzy.mapper.UserMenuMapper;
 import com.sweet.hzy.service.SysUserInfoService;
 import com.sweet.util.MD5;
 import com.sweet.util.ServletUtil;
+import com.sweet.util.StringUtil;
 import com.sweet.util.SysException;
 
 
@@ -26,6 +29,11 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 	private SysUserInfoMapper sysUserInfoMapper;
 	@Resource
 	private TbForbidMapper tbForbidMapper;
+	@Resource
+	private SysMenuMapper sysMenuMapper;
+	@Resource
+	private UserMenuMapper userMenuMapper;
+	
 	@Transactional(rollbackFor=Exception.class,noRollbackFor=SysException.class)
 	public int addUser(String loginid, String password, String phone, Integer sex,String fullname,String email,String picture)throws Exception{
 		if(sysUserInfoMapper.findUserByLoginidAndPassword(loginid, MD5.getMD5(password.getBytes())) ==null) {
@@ -92,6 +100,19 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 			}
 		}
 	}
+	
+	
+	//获取用户的菜单权限
+	public List<?> getMenu() {
+		HttpSession session = ServletUtil.getSession();
+		String isadmin = ServletUtil.getSessionVal(session, "isadmin");
+		if(StringUtil.isEmpty(isadmin)) {
+			return userMenuMapper.getMenuList();
+		}else {
+			return sysMenuMapper.getMenuList();
+		}
+	}
+	
 }
 
 

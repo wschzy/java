@@ -13,5 +13,5 @@ public class UserMenu implements Serializable {
 	private Integer display;
 	private Integer level;
 	private String url;
-	
+	private String serial;
 }
