@@ -28,7 +28,7 @@ public class ServletUtil {
 	/**
 	 * 获取session 参数值
 	 */
-	public static String getSessionVal(HttpSession session,String param) {
-		return String.valueOf(StringUtil.getString(session.getAttribute(param)).toString());
+	public static String getSessionVal(String param) {
+		return StringUtil.getString(getSession().getAttribute(param));
 	}
 }

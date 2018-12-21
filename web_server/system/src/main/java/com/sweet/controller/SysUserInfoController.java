@@ -30,17 +30,18 @@ public class SysUserInfoController extends BaseController {
 		return sysUserInfoService.addUser(loginid, password, phone, sex, picture, picture, picture);
 	}
 	
+	//登录
+	@PostMapping(value="/findUser")
+	public SysUserInfo findUserByLoginidAndPassword(@Valid SysUserInfo user,HttpSession session) throws Exception{
+		return sysUserInfoService.findUserByLoginidAndPassword(user.getLoginid(), user.getPassword(),session);
+	}
+	
 	//查询用户列表
 	@PostMapping(value="/allUser.do")
 	public PageInfo<SysUserInfo> findUserList(Integer page,Integer pageSize) {
 		return sysUserInfoService.findUserList(page,pageSize);
 	}
 	
-	//登录
-	@PostMapping(value="/findUser")
-	public SysUserInfo findUserByLoginidAndPassword(@Valid SysUserInfo user,HttpSession session) throws Exception{
-		 return sysUserInfoService.findUserByLoginidAndPassword(user.getLoginid(), user.getPassword(),session);
-	}
 	
 	//获取用户的菜单权限
 	@PostMapping(value="/getMenu.do")

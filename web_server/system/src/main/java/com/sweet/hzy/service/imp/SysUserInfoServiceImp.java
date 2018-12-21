@@ -104,8 +104,7 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 	
 	//获取用户的菜单权限
 	public List<?> getMenu() {
-		HttpSession session = ServletUtil.getSession();
-		String isadmin = ServletUtil.getSessionVal(session, "isadmin");
+		String isadmin = ServletUtil.getSessionVal("isadmin");
 		if(StringUtil.isEmpty(isadmin)) {
 			return userMenuMapper.getMenuList();
 		}else {

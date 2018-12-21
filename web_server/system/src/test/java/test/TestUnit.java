@@ -13,6 +13,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.sweet.Action;
+import com.sweet.bean.UserHome;
+import com.sweet.hzy.mapper.UserHomeMapper;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -34,6 +36,8 @@ public class TestUnit {
 //    @Autowired  
 //    private MockHttpServletRequest request;
   
+    @Autowired
+    private UserHomeMapper homeMapper;
     @Before
     public void setup()  throws Exception{  
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
@@ -42,10 +46,15 @@ public class TestUnit {
 	
 	@Test
 	public void testMenu() throws Exception {
-		MvcResult result = mockMvc.perform(post("/SysUserInfo/getMenu"))
+		UserHome home = new UserHome();
+		home.setName("巴八宝");
+		int i  = homeMapper.insertHome(home);
+		System.out.println(i);
+		System.out.println(home);
+		/*MvcResult result = mockMvc.perform(post("/SysUserInfo/getMenu"))
     			.andExpect(status().isOk()).andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
     			.andReturn();
-    	System.out.println(result.getResponse().getContentAsString());  
+    	System.out.println(result.getResponse().getContentAsString());  */
 
 	}
 }
