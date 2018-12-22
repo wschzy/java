@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sweet.bean.SysUserInfo;
 import com.sweet.bean.UserHome;
+import com.sweet.hzy.mapper.SysUserInfoMapper;
 import com.sweet.hzy.mapper.UserHomeMapper;
 import com.sweet.hzy.mapper.UserHomeRelMapper;
 import com.sweet.util.ServletUtil;
@@ -20,6 +21,9 @@ public class UserHomeServiceImp {
 	
 	@Resource
 	private UserHomeRelMapper userHomeRelMapper;
+	
+	@Resource
+	private SysUserInfoMapper sysUserInfoMapper;
 	/**
 	 * 根据用户id查询home
 	 */
@@ -51,10 +55,27 @@ public class UserHomeServiceImp {
 			throw new SysException("已存在家庭");
 		}else {
 			int i = userHomeMapper.insertHome(home);
+			//添加home时，将改用户添加到此home
 			userHomeRelMapper.insertUserHomeRel(home.getId(), Integer.parseInt(ServletUtil.getSessionVal( "id")));
 			return i;
 		}
 	}
 	
-	
+	/**
+	 * 添加home中的人员
+	 */
+	@Transactional(rollbackFor=Exception.class,noRollbackFor=SysException.class)
+	public int addUserForHome (String loginid,Integer homeid) {
+		SysUserInfo user = sysUserInfoMapper.findUserByLoginid(loginid);
+		//删除该用户拥有的家庭
+		userHomeRelMapper.deleteUserHomeRelByUserid(user.getId());
+		return userHomeRelMapper.insertUserHomeRel(homeid, user.getId());
+	}
+	 
 }
+
+
+
+
+
+

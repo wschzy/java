@@ -31,6 +31,13 @@ public interface SysUserInfoMapper {
     })
 	SysUserInfo findUserByLoginidAndPassword(@Param("loginid") String loginid,@Param("password") String password);
 	
+	//根据用户名查询用户
+	@Select("SELECT * FROM SYS_USERINFO WHERE loginid = #{loginid} ")
+	@Results({
+        @Result(property = "lrsj",  column = "lrsj", javaType = Date.class)
+    })
+	SysUserInfo findUserByLoginid(@Param("loginid") String loginid);
+	
 	//删除用户
 	@Delete("DELETE SYS_USERINFO WHERE id = #{id}")
 	int deleteUserById(@Param("id") String id);

@@ -20,5 +20,8 @@ public interface UserHomeService {
 	//添加home
 	int insertHome(UserHome home);
 	
-	
+	/**
+	 * 添加home中的人员
+	 */
+	int addUserForHome (String loginid,String homeid);
 }
