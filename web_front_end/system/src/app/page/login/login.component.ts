@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
             function(data:any){
                  window.localStorage.setItem("user",JSON.stringify(data));//将用户信息放入缓存中
                 // window.location.href="http://www.baidu.com";
+                this.router.navigateByUrl("index") 
             }
         );
         

@@ -1,0 +1,21 @@
+body {
+	margin: 0;
+	background:#000;
+}
+.header-main{
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 40px 30px 30px;
+    z-index: 100;
+}
+#logo img{
+	display: block;
+    float: left;
+    width: 178px;
+    height: 41px;
+    text-indent: -9999em;
+    overflow: hidden;
+    pointer-events: auto;
+}
