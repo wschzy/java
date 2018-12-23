@@ -12,10 +12,11 @@ import com.sweet.bean.UserHome;
 import com.sweet.hzy.mapper.SysUserInfoMapper;
 import com.sweet.hzy.mapper.UserHomeMapper;
 import com.sweet.hzy.mapper.UserHomeRelMapper;
+import com.sweet.hzy.service.UserHomeService;
 import com.sweet.util.ServletUtil;
 import com.sweet.util.SysException;
 @Service
-public class UserHomeServiceImp {
+public class UserHomeServiceImp implements UserHomeService{
 	@Resource
 	private UserHomeMapper userHomeMapper;
 	
@@ -48,7 +49,7 @@ public class UserHomeServiceImp {
 	 * 添加home
 	 */
 	@Transactional(rollbackFor=Exception.class,noRollbackFor=SysException.class)
-	public int insertHome(UserHome home) throws SysException {
+	public int addHome(UserHome home) throws SysException {
 		//查询是否存在home
 		UserHome userHome = getHomeByUserid();
 		if(userHome != null) {
@@ -71,6 +72,7 @@ public class UserHomeServiceImp {
 		userHomeRelMapper.deleteUserHomeRelByUserid(user.getId());
 		return userHomeRelMapper.insertUserHomeRel(homeid, user.getId());
 	}
+
 	 
 }
 

@@ -4,9 +4,6 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 
-import com.sweet.bean.UserHomeRel;
-
-
 public interface UserHomeRelMapper {
 
 	@Insert("insert into user_home_rel (homeid,userid,lrsj) values (#{homeid},#{userid},now()}")
