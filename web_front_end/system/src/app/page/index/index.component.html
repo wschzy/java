@@ -1,40 +1,41 @@
-<body>
+
+<div class="main">
     <div class="header-main">
         <div id="logo">
-            <img src="../../../assets/img/bg.jpg">
+            <i class="iconfont icon-shouru1"></i>
         </div>
         <div>
             <i class="fa fa-bars" aria-hidden="true"></i>
             <nav class="main-nav">
                 <ul class="nav-links">
                     <li>
-                        <span>abb</span>
+                        <a [routerLink]="['/spend']">
+                            <span>支出</span>
+                        </a>
                     </li>
                     <li>
-                        <span>abb</span>
+                        <a [routerLink]="['/personal']">
+                            <span>个人中心</span>
+                        </a>
                     </li>
                     <li>
-                        <span>abb</span>
-                    </li>
-                    <li>
-                        <span>abb</span>
+                        <a [routerLink]="['/category']">
+                            <span>类别维护</span>
+                        </a>
                     </li>
                 </ul>
             </nav>
         </div>
-    </div>  
-    <div class="content">
-        aaaaa
     </div>
     <div class="show-handheld handheld-ctas">
-        <a class="handheld-cta-sml">
-            Call
+        <a class="handheld-cta-sml"[routerLink]="['/spend']">
+            支出
         </a>
-        <a class="handheld-cta-sml">
-            Map
+        <a class="handheld-cta-sml" [routerLink]="['/personal']">
+            个人中心
         </a>
-        <a class="handheld-cta-lrg internal-link">
-            Start a Project
+        <a class="handheld-cta-lrg internal-link" [routerLink]="['/category']">
+            类别维护
         </a>
     </div>  
-</body>
+</div>

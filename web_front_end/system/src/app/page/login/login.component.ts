@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
 import { InterfaceService } from 'src/app/interface/interface.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
+
 @Component({
     selector: 'login',
     templateUrl: 'login.component.html',
@@ -10,16 +10,18 @@ import {Router} from '@angular/router';
 })
 
 export class LoginComponent implements OnInit {
+    name:any="";
+    word:any="";
     constructor(private service:InterfaceService,private router: Router) { 
-       
+     
     }
 
     ngOnInit() {
         
     }
     submit(){
-        var username=$('#username').val();
-        var password = $("#password").val();    
+        var username=this.name;
+        var password =this.word;    
         var data= {loginid:username,password:password};
         var that = this;
         if(username == '' || password == '') {
