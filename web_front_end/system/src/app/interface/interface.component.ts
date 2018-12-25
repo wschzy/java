@@ -20,6 +20,8 @@ export class InterfaceService {
       data => {
           if(data != undefined && data['state'] == '-1'){
               alert(data['message']);
+          }else if(data == '-2'){//重定向
+            
           }else{
             if(typeof fun === 'function'){
               eval(fun(data));
