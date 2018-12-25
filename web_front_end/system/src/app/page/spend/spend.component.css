@@ -1,4 +1,7 @@
-#spend{
+
+.main {
+	margin: 0;
+    background:rgb(236, 198, 148);
     height: 100%;
 }
 .content{

@@ -1,4 +1,7 @@
-#personal{
+
+.main {
+	margin: 0;
+    background:rgb(209, 196, 245);
     height: 100%;
 }
 .content{

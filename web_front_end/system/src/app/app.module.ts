@@ -11,10 +11,14 @@ import { FormsModule } from '@angular/forms'
 import { SpendComponent } from './page/spend/spend.component';
 import { PersonalComponent } from './page/personal/personal.component';
 import { CategoryComponent } from './page/category/category.component';
+import { FooterComponent } from './page/footer/footer.component';
+import { HeaderComponent } from './page/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    FooterComponent,
+    HeaderComponent,
     LoginComponent,
     IndexComponent,
     SpendComponent,

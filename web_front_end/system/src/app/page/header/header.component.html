@@ -1,0 +1,27 @@
+<div class="header-main">
+    <div id="logo">
+        <i class="iconfont icon-shouru1" (click)="jump()"></i>
+    </div>
+    <div>
+        <i class="fa fa-bars" aria-hidden="true"></i>
+        <nav class="main-nav">
+            <ul class="nav-links">
+                <li>
+                    <a [routerLink]="['/spend']">
+                        <span>支出</span>
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/category']">
+                        <span>类别维护</span>
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/personal']">
+                        <span>个人中心</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

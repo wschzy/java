@@ -1,4 +1,7 @@
-#category{
+
+.main {
+	margin: 0;
+    background:rgb(245, 220, 235);
     height: 100%;
 }
 .content{
