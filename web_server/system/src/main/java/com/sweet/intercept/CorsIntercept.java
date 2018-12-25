@@ -8,8 +8,9 @@ import org.springframework.web.servlet.HandlerInterceptor;
 @Component
 public class CorsIntercept implements HandlerInterceptor {
 
+	
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)throws Exception {
-		 response.setHeader("Access-Control-Allow-Origin", "*");
+		 response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
 		 response.setHeader("Access-Control-Allow-Methods", "*");
 		 response.setHeader("Access-Control-Allow-Headers","*");
 		 response.setHeader("Access-Control-Allow-Credentials", "true");

@@ -5,10 +5,10 @@
     <div>
         <i class="fa fa-bars" aria-hidden="true"></i>
         <nav class="main-nav">
-            <ul class="nav-links">
+            <ul class="nav-links" id="pcmenu">
                 <li *ngFor="let item of list">
-                    <a [routerLink]="['/{{URL}}']">
-                        <span>{{NAME}}</span>
+                    <a routerLink="['/{{item.url}}']">
+                        <span>{{item.name}}</span>
                     </a>
                 </li>
                 <!-- <li>

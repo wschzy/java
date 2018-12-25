@@ -13,10 +13,12 @@ export class InterfaceService {
   public interface(url:any,data:any,fun:Function){
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/x-www-form-urlencoded',
-        'Access-Control-Allow-Origin': '*'
-      })
+        'Content-Type':  'application/x-www-form-urlencoded'
+      }),withCredentials: true
     };
+    if(data == null){
+      data={};
+    }
     this.http.post(this.userLoginURL+url,$.param(data),httpOptions).subscribe(
       data => {
           if(data != undefined && data['state'] == '-1'){

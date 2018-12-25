@@ -10,8 +10,9 @@ public class LoginInterceptConfiguration implements WebMvcConfigurer{
 
 	@Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginIntercept())
-                .addPathPatterns("/*/*.do");
+		registry.addInterceptor(new LoginIntercept())
+                .addPathPatterns("/*/*.do").order(2);
     }
+	
 
 }
