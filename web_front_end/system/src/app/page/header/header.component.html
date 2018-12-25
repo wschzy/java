@@ -7,8 +7,8 @@
         <nav class="main-nav">
             <ul class="nav-links">
                 <li *ngFor="let item of list">
-                    <a [routerLink]="['/spend']">
-                        <span>支出</span>
+                    <a [routerLink]="['/{{URL}}']">
+                        <span>{{NAME}}</span>
                     </a>
                 </li>
                 <!-- <li>

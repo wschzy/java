@@ -9,21 +9,22 @@ import { InterfaceService } from 'src/app/interface/interface.component';
 
 export class HeaderComponent implements OnInit {
     constructor(private myRouter:Router,private service:InterfaceService) { }
-
+    private list;
     ngOnInit() { 
         this.service.interface("SysUserInfo/getMenu.do", '',  
         function(data:any){
-            var str = '';
-            if(data != undefined && data.length > 0){
-                for(var i=0;i<data.length;i++){
-                     str+=`<li>
-                                <a [routerLink]="['/${data[i]['URL']}']">
-                                    <span>${data[i]['NAME']}</span>
-                                </a>
-                            </li>`;
-                }
+            this.list = data;
+            // var str = '';
+            // if(data != undefined && data.length > 0){
+            //     for(var i=0;i<data.length;i++){
+            //          str+=`<li>
+            //                     <a [routerLink]="['/${data[i]['URL']}']">
+            //                         <span>${data[i]['NAME']}</span>
+            //                     </a>
+            //                 </li>`;
+            //     }
                 
-            }
+            // }
            
         }
     );
