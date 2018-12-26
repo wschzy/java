@@ -19,10 +19,6 @@ export class HeaderComponent implements OnInit {
     }
     ngOnInit() { 
     }
-
-    
-    
-
     jump(){
         this.myRouter.navigateByUrl('index');
     }

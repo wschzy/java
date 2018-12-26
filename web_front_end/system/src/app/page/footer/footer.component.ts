@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { InterfaceService } from 'src/app/interface/interface.component';
 @Component({
     selector: 'storeFooter',
     templateUrl: 'footer.component.html',
@@ -7,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class FooterComponent implements OnInit {
-    constructor() { }
+    private list:any;
+    constructor(private service:InterfaceService) { 
+        var that=this;
+        this.service.interface("SysUserInfo/getMenu.do",null,
+            function(data:any){
+                that.list=data;
+            }
+        )
+    }
 
     ngOnInit() { }
 }
