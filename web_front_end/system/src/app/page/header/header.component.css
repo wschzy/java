@@ -22,7 +22,7 @@
     color:#FFF082;
     margin-top: -5px;
 }
-.fa-bars{
+.icon-leibieguanli{
     position: absolute;
     display: block;
     width: 30px;
@@ -71,7 +71,7 @@
     color:#fff;
 }
 @media (max-width: 480px){
-.fa-bars {
+.icon-leibieguanli{
     opacity: 1;
     }
 .main-nav {
@@ -80,12 +80,12 @@
 
 }
 @media (min-width: 481px)and(max-width: 767px){
-    .fa-bars,{
+    .icon-leibieguanli{
         display: none;
     }
 }
 @media (min-width: 768px){
-    .fa-bars{
+    .icon-leibieguanli{
         display: none;
     }
 

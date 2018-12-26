@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule} from '@angular/common/http';
+import { NgxEchartsModule} from 'ngx-echarts'
 import { AppRoutingModule } from './app-routing.module';
 import {RouterModule} from '@angular/router';  //导入路由
 import { AppComponent } from './app.component';
@@ -30,7 +31,8 @@ import { HeaderComponent } from './page/header/header.component';
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    NgxEchartsModule
     
   ],
   providers: [InterfaceService],

@@ -50,9 +50,9 @@ html {
     background:none;
   }
 
-	.fa{
+	.iconfont{
     position:absolute; 
-    bottom:15px; 
+    bottom:10px; 
     left:10px; 
     font-size:18px; 
     color:#3872f6;
@@ -93,10 +93,10 @@ html {
   @font-face {
     font-family: 'Glyphicons Halflings';
   
-    src: url('../../../assets/iconfont/fonts/icomoon.eot');
-    src: url('../../../assets/iconfont/fonts/icomoon.woff') format('woff'),
-         url('../../../assets/iconfont/fonts/icomoon.ttf') format('truetype'), 
-         url('../../../assets/iconfont/fonts/icomoon.svg') format('svg');
+    src: url('../../../assets/fonts/iconfont.eot');
+    src: url('../../../assets/fonts/iconfont.woff') format('woff'),
+         url('../../../assets/fonts/iconfont.ttf') format('truetype'), 
+         url('../../../assets/fonts/iconfont.svg') format('svg');
   }
   .glyphicon {
     position: relative;

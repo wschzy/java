@@ -24,11 +24,13 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/fonts/iconfont.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/fonts/iconfont.css"
+              
+
             ],
             "scripts": [
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/echarts/dist/echarts.min.js"
             ]
           },
           "configurations": {
