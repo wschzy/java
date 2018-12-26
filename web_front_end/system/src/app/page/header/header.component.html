@@ -7,25 +7,11 @@
         <nav class="main-nav">
             <ul class="nav-links" id="pcmenu">
                 <li *ngFor="let item of list">
-                    <a routerLink="['/{{item.url}}']">
+                    <a [routerLink]="item.url">
                         <span>{{item.name}}</span>
                     </a>
                 </li>
-                <!-- <li>
-                    <a [routerLink]="['/spend']">
-                        <span>支出</span>
-                    </a>
-                </li>
-                <li>
-                    <a [routerLink]="['/category']">
-                        <span>类别维护</span>
-                    </a>
-                </li>
-                <li>
-                    <a [routerLink]="['/personal']">
-                        <span>个人中心</span>
-                    </a>
-                </li> -->
+               
             </ul>
         </nav>
     </div>

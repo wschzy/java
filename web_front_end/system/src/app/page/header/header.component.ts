@@ -13,7 +13,12 @@ export class HeaderComponent implements OnInit {
         var that = this;
         this.service.interface("SysUserInfo/getMenu.do", null,  
             function(data:any){
-                that.list = data;
+                that.list = data; 
+                for(var i=0;i<data.length;i++){
+                    console.log(data[i].url);
+                     
+                }
+                // that.myRouter.navigateByUrl(data[i].url);
             }
         );
     }
