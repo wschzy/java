@@ -12,13 +12,12 @@ import lombok.extern.slf4j.Slf4j;
 public class LoginIntercept implements HandlerInterceptor {
 
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)throws Exception {
-		log.info("开始拦截登录请求....");
 		if (request.getSession().getAttribute("id") == null) {
 			response.getWriter().println("-2");
+			log.info("拦截");
 			return false;
-			//重定向
-			//response.sendRedirect("http://119.3.25.141:4200/");
 		}
+		log.info("放行");
 		return true;
 	}
 

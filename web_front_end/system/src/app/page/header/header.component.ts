@@ -8,18 +8,20 @@ import { InterfaceService } from 'src/app/interface/interface.component';
 })
 
 export class HeaderComponent implements OnInit {
+    private list:any;
     constructor(private myRouter:Router,private service:InterfaceService) {
+        var that = this;
+        this.service.interface("SysUserInfo/getMenu.do", null,  
+            function(data:any){
+                that.list = data;
+            }
+        );
     }
     ngOnInit() { 
     }
 
     
-    ai(){
-        this.service.interface("SysUserInfo/getMenu.do", null,  
-            function(data:any){
-            }
-        );
-    }
+    
 
     jump(){
         this.myRouter.navigateByUrl('index');
