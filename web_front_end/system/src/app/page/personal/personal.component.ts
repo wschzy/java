@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InterfaceService } from 'src/app/interface/interface.component';
 
 @Component({
     selector: 'storePersonal',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class PersonalComponent implements OnInit {
-    constructor() { }
+    constructor(private service:InterfaceService) { }
 
     ngOnInit() { }
+    ngAfterContentInit(){
+       this.service.interface("/home/getHome.do",null,
+       function(data:any){
+
+       })
+    }
 }

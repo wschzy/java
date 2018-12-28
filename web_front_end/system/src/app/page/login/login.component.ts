@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InterfaceService } from 'src/app/interface/interface.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
+import * as $ from 'jquery';
 
 @Component({
     selector: 'login',
@@ -12,10 +13,12 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
     name:any="";
     word:any="";
+    checked = false;
     constructor(private service:InterfaceService,private router: Router) { 
      
     }
-
+    ngAfterContentInit(){
+    }
     ngOnInit() {
         
     }
@@ -38,5 +41,16 @@ export class LoginComponent implements OnInit {
         );
       }
      
-    }  
+    }
+    SavePassword(){
+        var checked=this.checked;
+        var username=this.name;
+        var password =this.word; 
+        if(!checked){
+            
+        }
+        else{
+            localStorage.rmbPassword=false;
+        }
+    }    
 }

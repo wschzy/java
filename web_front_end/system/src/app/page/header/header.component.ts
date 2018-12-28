@@ -25,7 +25,4 @@ export class HeaderComponent implements OnInit {
     jump(){
         this.myRouter.navigateByUrl('index');
     }
-    jump1(){
-        this.myRouter.navigateByUrl('index');
-    }
 }
