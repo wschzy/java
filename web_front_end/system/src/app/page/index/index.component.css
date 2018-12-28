@@ -19,8 +19,16 @@
     left: 2.5%;
     height: 88%;
     top: 10%;
+    padding-bottom:60px;
 }
 .row div{
-    width: 200px;
     height: 400px;
+    text-align: center;
+}
+@media (max-width: 480px){
+    .row div{
+        height: 200px;
+        width: 160px;
+        padding-left: 15%
+    }
 }

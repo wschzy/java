@@ -12,8 +12,12 @@ export class FooterComponent implements OnInit {
         var that=this;
         this.service.interface("SysUserInfo/getMenu.do",null,
             function(data:any){
-                that.list=data;
+              for(var i=0;i<data.length;i++){
+                data[i].url = '../'+data[i].url;
+              }
+              that.list = data;
             }
+            
         )
     }
 

@@ -5,6 +5,10 @@
     width: 100%;
     text-align: center;
     z-index: 50;
+    height:50px;
+    margin-top:-50px;
+    position:fixed;
+    background: #fff;
 }
 .handheld-ctas .handheld-cta-sml {
     width: 33%;

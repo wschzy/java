@@ -1,6 +1,5 @@
 <div class="show-handheld handheld-ctas">
-   
-    <a class="handheld-cta-sml internal-link" *ngFor="let item of list" routerLink="['/{{item.url}}']">
+    <a class="handheld-cta-sml internal-link" *ngFor="let item of list" routerLink={{item.url}}>
         {{item.name}}
     </a>
 </div> 
