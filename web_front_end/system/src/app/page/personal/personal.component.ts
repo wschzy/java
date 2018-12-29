@@ -9,6 +9,8 @@ import {Router} from '@angular/router';
 })
 
 export class PersonalComponent implements OnInit {
+    // 判断 a的值 判断是否显示
+    a:any=false;
     constructor(private service:InterfaceService,private router:Router) {
 
      }
