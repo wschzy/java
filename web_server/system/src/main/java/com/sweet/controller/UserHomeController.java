@@ -19,7 +19,7 @@ import com.sweet.util.SysException;
 public class UserHomeController extends BaseController{
 
 	@Resource
-	UserHomeService userHomeService;
+	private UserHomeService userHomeService;
 	
 	@PostMapping(value="/getHome.do")
 	public UserHome getHomeByUserid() throws SysException {

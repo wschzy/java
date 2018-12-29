@@ -33,7 +33,7 @@ public class TestUnit {
 	
 	@Test
 	public void testMenu() throws Exception {
-		System.out.println(dic.getDictionaryList());
+		System.out.println(dic.deleteDictionaryById(5));
 	}
 }
 
