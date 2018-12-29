@@ -12,24 +12,43 @@
     height: 100%;
     display: flex;
     align-items: center;
-    padding: 20px 50px 0;
+    padding: 20px 20px 0;
     z-index: 20;
 }
-.permsg{
-    position: absolute;
-    top: 60px;
-    height: 100px;
-    width: 96%;
-}
-.permsg textarea{
-    display: inline-block;
-    height: 30px;
-    width: 200px;
-}
+
 .permsg div label{
     text-align: right;
     width:80px;
 }
-.permsg div input,.permsg div textarea{
+.permsg div input{
     margin-left: 10px;
+}
+.permsg .btn{
+    border-radius: 5px;
+    background: rgb(160, 206, 117);
+    height: 36px;
+    line-height:18px;
+    margin-left: 40px;
+    color:#fff;
+}
+@media (max-width: 480px){
+    .content{
+        text-align: center;
+    }
+    .permsg .btn {
+        margin-top: 30px;
+        width: 100%;
+    }
+    .permsg {
+        text-align: center;
+    }
+}
+@media (min-width: 481px){
+    .permsg{
+        position: absolute;
+        top: 60px;
+        height: 100px;
+        width: 88%;
+        text-align: center;
+    }
 }

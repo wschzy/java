@@ -2,14 +2,14 @@
         <storeHeader></storeHeader>
         <div class="content">
             <div class="permsg">
-                <div class="col-md-6 col-xs-12">
+                <div class="col-sm-12">
                     <label>姓名:</label>
                     <input type="text" placeholder="姓名" [(ngModel)]="name">
                     <label>备注信息:</label>
-                    <textarea placeholder="备注信息" [(ngModel)]="note"></textarea>
+                    <input type="text" placeholder="备注信息" [(ngModel)]="note">
+                    <input (click)="submit()" class="btn" type="button" value="提交">
                 </div>
             </div>
-            <button (click)="submit()">提交</button>
         </div>
         <storeFooter></storeFooter>
      </div>

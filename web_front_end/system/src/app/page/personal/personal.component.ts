@@ -21,16 +21,13 @@ export class PersonalComponent implements OnInit {
         this.router.navigateByUrl('add-family');
     }
     ngAfterContentInit(){
+        var that = this;
        this.service.interface("/home/getHome.do",null,
        function(data:any){
             if(data==null){
-                alert("抱歉，你没有家庭！请添加家庭");
+                that.a=true;
             }else{
-                    this.service.interface("/home/getUserList.do",null,
-                    function(data:any){
-                        alert(data);
-                    }
-                )
+                    console.log(data);
             }
        })
     }
