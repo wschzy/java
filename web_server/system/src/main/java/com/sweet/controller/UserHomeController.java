@@ -40,6 +40,11 @@ public class UserHomeController extends BaseController{
 	public int addUserForHome (@NotNull(message = "被邀请人不能为空")String loginid,@NotNull(message = "参数不能为空")Integer homeid) {
 		return userHomeService.addUserForHome(loginid, homeid);
 	}
+	
+	@PostMapping(value="/deleteUser.do")
+	public int deleteUserForHome (@NotNull(message = "参数不能为空")Integer userid) {
+		return userHomeService.deleteUserForHome(userid);
+	}
 }
 
 

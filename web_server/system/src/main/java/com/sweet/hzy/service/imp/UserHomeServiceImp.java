@@ -73,6 +73,11 @@ public class UserHomeServiceImp implements UserHomeService{
 		return userHomeRelMapper.insertUserHomeRel(homeid, user.getId());
 	}
 
+	@Transactional(rollbackFor=Exception.class,noRollbackFor=SysException.class)
+	public int deleteUserForHome(Integer userid) {
+		return userHomeRelMapper.deleteUserHomeRelByUserid(userid);
+	}
+
 	 
 }
 

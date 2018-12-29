@@ -24,4 +24,6 @@ public interface UserHomeService {
 	 * 添加home中的人员
 	 */
 	int addUserForHome (String loginid,Integer homeid);
+	
+	int deleteUserForHome(Integer userid);
 }
