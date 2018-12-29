@@ -14,7 +14,11 @@ export class PersonalComponent implements OnInit {
     ngAfterContentInit(){
        this.service.interface("/home/getHome.do",null,
        function(data:any){
-
+            if(data==null){
+                alert("抱歉，你没有家庭！");
+            }else{
+                alert("您的家庭成员有爸爸");
+            }
        })
     }
 }
