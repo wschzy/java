@@ -14,6 +14,7 @@ import { PersonalComponent } from './page/personal/personal.component';
 import { CategoryComponent } from './page/category/category.component';
 import { FooterComponent } from './page/footer/footer.component';
 import { HeaderComponent } from './page/header/header.component';
+import { AddFamilyComponent } from './page/add-family/add-family.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HeaderComponent } from './page/header/header.component';
     IndexComponent,
     SpendComponent,
     PersonalComponent,
-    CategoryComponent
+    CategoryComponent,
+    AddFamilyComponent
   ],
   imports: [
     BrowserModule,
