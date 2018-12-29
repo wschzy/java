@@ -17,7 +17,11 @@ export class PersonalComponent implements OnInit {
             if(data==null){
                 alert("抱歉，你没有家庭！");
             }else{
-                alert("您的家庭成员有爸爸");
+                this.service.interface("/home/getUserList.do",null,
+                    function(data:any){
+                        alert(data);
+                    }
+                )
             }
        })
     }
