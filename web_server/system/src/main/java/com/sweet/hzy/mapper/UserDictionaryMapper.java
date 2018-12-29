@@ -2,6 +2,7 @@ package com.sweet.hzy.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -22,4 +23,7 @@ public interface UserDictionaryMapper {
 	@Update("update USER_DICTIONARY set name = #{name},supnumber = #{supnumber},dicclass=#{dicclass}"
 			+ ",note=#{note},levels=#{levels},serial=#{serial},tagone=#{tagone},tagtwo=#{tagtwo} where id = #{id}")
 	int updateDictionary(UserDictionary dic);
+	
+	@Delete("delete user_dictionary where id = #{id}")
+	int deleteDictionaryById(Integer id);
 }
