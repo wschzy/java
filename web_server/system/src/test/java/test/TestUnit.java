@@ -5,21 +5,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-
 import com.sweet.Action;
-import com.sweet.bean.UserHome;
-import com.sweet.hzy.mapper.UserHomeMapper;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
+import com.sweet.hzy.mapper.UserDictionaryMapper;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Action.class)
@@ -30,14 +21,10 @@ public class TestUnit {
     @Autowired  
     private WebApplicationContext wac; // 注入WebApplicationContext  
   
-//    @Autowired  
-//    private MockHttpSession session; 
-    
-//    @Autowired  
-//    private MockHttpServletRequest request;
+
   
     @Autowired
-    private UserHomeMapper homeMapper;
+    private UserDictionaryMapper dic;
     @Before
     public void setup()  throws Exception{  
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
@@ -46,15 +33,17 @@ public class TestUnit {
 	
 	@Test
 	public void testMenu() throws Exception {
-		UserHome home = new UserHome();
-		home.setName("巴八宝");
-		int i  = homeMapper.insertHome(home);
-		System.out.println(i);
-		System.out.println(home);
-		/*MvcResult result = mockMvc.perform(post("/SysUserInfo/getMenu"))
-    			.andExpect(status().isOk()).andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-    			.andReturn();
-    	System.out.println(result.getResponse().getContentAsString());  */
-
+		System.out.println(dic.getDictionaryList());
 	}
 }
+
+//@Autowired  
+//private MockHttpSession session; 
+
+//@Autowired  
+//private MockHttpServletRequest request;
+
+/*MvcResult result = mockMvc.perform(post("/SysUserInfo/getMenu"))
+.andExpect(status().isOk()).andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+.andReturn();
+System.out.println(result.getResponse().getContentAsString());  */
