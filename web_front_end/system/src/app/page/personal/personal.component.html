@@ -2,7 +2,10 @@
 <div class="main">
     <storeHeader></storeHeader>
     <div class="content">
-        <button class="add" (click)="add()">添加家庭</button>
+        <div class="msg" ng-controller="VisibleController(a)">
+        <p id="prompt" *ngIf='a'>您还没有家庭，请先
+            <a (click)="add()">添加家庭</a></p>
+        </div>
     </div>
     <storeFooter></storeFooter>
  </div>

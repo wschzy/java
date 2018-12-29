@@ -16,3 +16,9 @@
     text-align: center;
     z-index: 20;
 }
+a:not([href]):not([tabindex]) {
+    color: #fff;
+}
+a:hover{
+    cursor: pointer;
+}
