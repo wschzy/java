@@ -15,7 +15,7 @@ export class PersonalComponent implements OnInit {
        this.service.interface("/home/getHome.do",null,
        function(data:any){
             if(data==null){
-                alert("抱歉，你没有家庭！");
+                alert("抱歉，你没有家庭丫丫丫丫啊！");
             }else{
                 this.service.interface("/home/getUserList.do",null,
                     function(data:any){
