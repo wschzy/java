@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 public interface UserHomeRelMapper {
 
-	@Insert("insert into user_home_rel (homeid,userid,lrsj) values (#{homeid},#{userid},now()}")
+	@Insert("insert into user_home_rel (homeid,userid,lrsj) values (#{homeid},#{userid},now())")
 	int insertUserHomeRel(@Param("homeid")Integer homeid,@Param("userid")Integer userid);
 	
 	@Delete("delete user_home_rel where userid = '#{userid}'")
