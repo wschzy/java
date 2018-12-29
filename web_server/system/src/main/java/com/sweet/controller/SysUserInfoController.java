@@ -20,7 +20,7 @@ import com.sweet.hzy.service.SysUserInfoService;
 public class SysUserInfoController extends BaseController {
 
 	@Resource
-	SysUserInfoService sysUserInfoService;
+	private SysUserInfoService sysUserInfoService;
 	
 	@Value("${server.port}")
 	private String port;

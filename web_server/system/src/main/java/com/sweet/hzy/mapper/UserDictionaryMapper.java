@@ -6,14 +6,12 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-
-import com.sweet.bean.SysMenu;
 import com.sweet.bean.UserDictionary;
 
 public interface UserDictionaryMapper {
 
 	@Select("SELECT * FROM USER_DICTIONARY ")
-	List<SysMenu>getDictionaryList();
+	List<UserDictionary>getDictionaryList();
 	
 	
 	@Insert("insert into USER_DICTIONARY (name,supnumber,dicclass,note,levels,serial,tagone,tagtwo) "
@@ -24,6 +22,6 @@ public interface UserDictionaryMapper {
 			+ ",note=#{note},levels=#{levels},serial=#{serial},tagone=#{tagone},tagtwo=#{tagtwo} where id = #{id}")
 	int updateDictionary(UserDictionary dic);
 	
-	@Delete("delete user_dictionary where id = #{id}")
+	@Delete("delete from user_dictionary where id = #{id}")
 	int deleteDictionaryById(Integer id);
 }
