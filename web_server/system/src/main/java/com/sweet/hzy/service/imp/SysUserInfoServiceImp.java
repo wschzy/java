@@ -71,11 +71,6 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 			}
 			session.setAttribute("id", user.getId());
 			session.setAttribute("loginid", user.getLoginid());
-			session.setAttribute("phone", user.getPhone());
-			session.setAttribute("sex", user.getSex());
-			session.setAttribute("fullname", user.getFullname());
-			session.setAttribute("email", user.getEmail());
-			session.setAttribute("lrsj", user.getLrsj());
 			session.setAttribute("isadmin", user.getIsadmin());
 		}
 		user.setPassword(null);//密码不反回客户端
