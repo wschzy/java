@@ -27,7 +27,7 @@ export class PersonalComponent implements OnInit {
             if(data==null){
                 that.a=true;
             }else{
-                window.localStorage.setItem("home",JSON.stringify(data));
+                console.log(data);
             }
        })
     }
