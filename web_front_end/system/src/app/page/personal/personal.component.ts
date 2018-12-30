@@ -18,9 +18,10 @@ export class PersonalComponent implements OnInit {
     phone:any="";
     picture:any="";
     sex:any="";
+
     constructor(private service:InterfaceService,private router:Router) {
 
-     }
+    }
     ngOnInit() { 
 
     }
@@ -28,23 +29,35 @@ export class PersonalComponent implements OnInit {
         this.router.navigateByUrl('add-family');
     }
     ngAfterContentInit(){
-        var that = this;
+       var that = this;
        this.service.interface("/home/getHome.do",null,
-       function(data:any){
-            if(data==null){
-                that.a=true;
-            }else{
-                console.log(data);
-                window.localStorage.setItem("home",JSON.stringify(data));
-                var msg=JSON.parse(localStorage.user);
-                console.log(msg);
-                // 给个人信息赋值
-                that.fullname=msg.fullname;
-                that.email=msg.email;
-                that.phone=msg.phone;
-                that.picture=msg.picture;
-                that.sex=msg.sex==0?"女":"男";
+            function(data:any){
+                if(data==null){
+                    that.a=true;
+                }else{
+                    console.log(data);
+                    window.localStorage.setItem("home",JSON.stringify(data));
+                    var msg=JSON.parse(localStorage.user);
+                    console.log(msg);
+                    // 给个人信息赋值
+                    that.fullname=msg.fullname;
+                    that.email=msg.email;
+                    that.phone=msg.phone;
+                    //that.picture=msg.picture;
+                    that.sex=msg.sex==0?"女":"男";
+                }
             }
-       })
+        )
+
+        //获取头像
+        this.service.interface("/file/getUserImg.do",null,
+            function(data:any){
+               that.picture = data;
+            }
+        )
+
     }
+
+
+
 }

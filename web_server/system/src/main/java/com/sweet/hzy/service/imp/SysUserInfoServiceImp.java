@@ -76,10 +76,10 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 			session.setAttribute("fullname", user.getFullname());
 			session.setAttribute("email", user.getEmail());
 			session.setAttribute("lrsj", user.getLrsj());
-			session.setAttribute("picture", user.getPicture());
 			session.setAttribute("isadmin", user.getIsadmin());
 		}
 		user.setPassword(null);//密码不反回客户端
+		user.setPicture(null);
 		return user;
 	}
 	

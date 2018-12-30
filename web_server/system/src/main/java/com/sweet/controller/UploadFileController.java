@@ -36,7 +36,7 @@ public class UploadFileController extends BaseController {
 	/**
 	 * 处理上载请求
 	 */
-	@PostMapping(value = "upload")
+	@PostMapping(value = "upload.do")
 	public void upload(MultipartFile image, String name, HttpServletRequest request) throws Exception {
 		String fileName = image.getOriginalFilename();
 		String type = fileName.indexOf(".") != -1 ? fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length()): null;
@@ -66,7 +66,7 @@ public class UploadFileController extends BaseController {
 		}
 	}
 	
-	@PostMapping(value = "/getUserImg")
+	@PostMapping(value = "/getUserImg.do")
     public byte[]  getImage() throws IOException {
 		SysUserInfo user = sysUserInfoService.findUserByid(Integer.parseInt(ServletUtil.getSessionVal("id")));
 		String path = rootDir + "\\" + user.getPicture();
