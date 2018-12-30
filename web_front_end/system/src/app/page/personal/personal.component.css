@@ -25,9 +25,44 @@ a:hover{
 }
 #showmsg h4{
     padding-bottom:20px;
+    padding-top:20px;
 }
 .showper{
     background: #eee;
     height:100px;
+    padding:40px 20px;
     
+}
+.showper label {
+    margin-right: 5px;
+   
+}
+.showper span{
+    margin-right: 100px;
+    color:rgb(167, 123, 248);
+}
+.img{
+    float: right;
+    width: 220px;
+    position: relative;
+    top: -44px;
+    height: 100px;
+}
+:host ::ng-deep i {
+    font-size: 32px;
+    color: #999;
+  }
+  :host ::ng-deep .ant-upload-text {
+    margin-top: 8px;
+    color: #666;
+  }
+@media (max-width: 481px){
+    .showper{
+        padding:10;
+        height: 200px;
+        background: #eee;
+    }
+    .showper span{
+        margin-right: 20px;
+    }
 }

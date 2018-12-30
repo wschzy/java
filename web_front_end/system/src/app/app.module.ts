@@ -15,6 +15,12 @@ import { CategoryComponent } from './page/category/category.component';
 import { FooterComponent } from './page/footer/footer.component';
 import { HeaderComponent } from './page/header/header.component';
 import { AddFamilyComponent } from './page/add-family/add-family.component';
+import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -34,10 +40,12 @@ import { AddFamilyComponent } from './page/add-family/add-family.component';
     HttpClientModule,
     RouterModule,
     FormsModule,
-    NgxEchartsModule
+    NgxEchartsModule,
+    NgZorroAntdModule,
+    BrowserAnimationsModule
     
   ],
-  providers: [InterfaceService],
+  providers: [InterfaceService, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
