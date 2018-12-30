@@ -10,7 +10,7 @@ import { NzMessageService, UploadFile } from 'ng-zorro-antd';
 })
 
 export class PersonalComponent implements OnInit {
-    userLoginURL = APPCONFIG.requestUrl;
+    uploadURL = APPCONFIG.requestUrl+"/file/upload.do";
     // 判断 a的值 判断是否显示
     a:any=false;
     // 初始化个人信息
@@ -67,7 +67,7 @@ fileList = [
       status: 'done',
       url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
     }
-  ];
+];
   previewImage = '';
   previewVisible = false;
 

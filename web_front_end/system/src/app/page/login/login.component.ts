@@ -41,16 +41,5 @@ export class LoginComponent implements OnInit {
         );
       }
      
-    }
-    SavePassword(){
-        var checked=this.checked;
-        var username=this.name;
-        var password =this.word; 
-        if(!checked){
-            
-        }
-        else{
-            localStorage.rmbPassword=false;
-        }
-    }    
+    }   
 }

@@ -24,29 +24,33 @@ a:hover{
     cursor: pointer;
 }
 #showmsg h4{
-    padding-bottom:20px;
-    padding-top:20px;
+    padding:10px 0;
+}
+.title{
+    margin-top:30px;
 }
 .showper{
     background: #eee;
-    height:100px;
-    padding:40px 20px;
+    height:120px;
+    padding:20px 20px;
     
 }
 .showper label {
     margin-right: 5px;
-   
+    text-align: right;
+    width: 80px;
 }
 .showper span{
     margin-right: 100px;
     color:rgb(167, 123, 248);
+    display: inline-block;
+    width:145px;
 }
 .img{
-    float: right;
-    width: 220px;
-    position: relative;
-    top: -44px;
+    position: absolute;
+    top: 45px;
     height: 100px;
+    right: 50px;
 }
 :host ::ng-deep i {
     font-size: 32px;
@@ -56,13 +60,51 @@ a:hover{
     margin-top: 8px;
     color: #666;
   }
-@media (max-width: 481px){
+@media (max-width:320px){
+    .showper span {
+        margin-right: 20px;
+        width: 65px;
+    }
+    .title{
+        margin-top: 80px;
+     }
+     .showper{
+         padding:10;
+         height: 200px;
+         background: #eee;       
+     }
+     .img{
+         position: absolute;
+         top: 50px;
+         left: 117px;
+         width: 80px;
+     }
+}  
+@media (min-width: 321px) and (max-width:480px){
+    .title{
+       margin-top: 80px;
+    }
     .showper{
         padding:10;
         height: 200px;
-        background: #eee;
+        background: #eee;       
     }
     .showper span{
         margin-right: 20px;
+        width: 90px;
     }
+    .img{
+        position: absolute;
+        top: 50px;
+        left: 144px;
+        width: 80px;
+    }
+}
+@media (min-width: 481px) and (max-width:800px){
+    .showper span{
+        margin-right: 100px;
+        color:rgb(167, 123, 248);
+        display: inline-block;
+        width:120px;
+    } 
 }
