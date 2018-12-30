@@ -2,9 +2,26 @@
 <div class="main">
     <storeHeader></storeHeader>
     <div class="content">
-        <div class="msg" ng-controller="VisibleController(a)">
+        <div class="msg">
         <p id="prompt" *ngIf='a'>您还没有家庭，请先
-            <a (click)="add()">添加家庭</a></p>
+            <a (click)="add()">添加家庭</a>
+        </p>
+        <div id="showmsg">
+            <h4>|个人信息</h4>
+            <div class="showper">
+                <label>全名：</label>
+                <span>{{fullname}}</span>
+                <label>邮箱：</label>
+                <span>{{email}}</span>
+                <label>联系方式：</label>
+                <span>{{phone}}</span>
+                <label>头像：</label>
+                <span>{{picture}}</span>
+                <label>性别：</label>
+                <span>{{sex}}</span>
+            </div>
+        </div>
+
         </div>
     </div>
     <storeFooter></storeFooter>
