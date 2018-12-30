@@ -3,7 +3,6 @@ package com.sweet.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,13 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.sweet.bean.SysUserInfo;
 import com.sweet.bean.UserHome;
 import com.sweet.hzy.service.SysUserInfoService;
 import com.sweet.hzy.service.UserHomeService;
 import com.sweet.util.FileUtil;
 import com.sweet.util.ServletUtil;
+import com.sweet.util.StringUtil;
 import com.sweet.util.SysException;
 
 @RestController
@@ -69,6 +68,7 @@ public class UploadFileController extends BaseController {
 	@PostMapping(value = "/getUserImg.do")
     public byte[]  getImage() throws IOException {
 		SysUserInfo user = sysUserInfoService.findUserByid(Integer.parseInt(ServletUtil.getSessionVal("id")));
+		if(StringUtil.isEmpty(user.getPicture()))return null;
 		String path = rootDir + "\\" + user.getPicture();
 		File file = new File(path);
         FileInputStream inputStream = new FileInputStream(file);
@@ -78,7 +78,18 @@ public class UploadFileController extends BaseController {
         return bytes;
     }
 
-
+	@PostMapping(value = "/getHomeImg.do")
+    public byte[]  getHomeImage() throws Exception {
+		UserHome home = userHomeService.getHomeByUserid();
+		if(StringUtil.isEmpty(home.getPicture()))return null;
+		String path = rootDir + "\\" + home.getPicture();
+		File file = new File(path);
+        FileInputStream inputStream = new FileInputStream(file);
+        byte[] bytes = new byte[inputStream.available()];
+        inputStream.read(bytes, 0, inputStream.available());
+        inputStream.close();
+        return bytes;
+    }
 
 	
 }
