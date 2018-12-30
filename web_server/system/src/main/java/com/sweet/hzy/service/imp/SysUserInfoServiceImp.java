@@ -111,6 +111,15 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 			return sysMenuMapper.getMenuList();
 		}
 	}
+
+	//修改用户头像
+	public int updateUserPictureById(String picture) {
+		return sysUserInfoMapper.updateUserPictureById(picture,Integer.parseInt(ServletUtil.getSessionVal("id")));
+	}
+
+	public SysUserInfo findUserByid(Integer id) {
+		return sysUserInfoMapper.findUserByid(id);
+	}
 	
 }
 

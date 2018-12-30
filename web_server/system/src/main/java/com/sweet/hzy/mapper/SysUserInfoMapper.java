@@ -44,5 +44,19 @@ public interface SysUserInfoMapper {
 	
 	//修改用户密码
 	@Update("Update SYS_USERINFO set password= #{password} WHERE id = #{id}")
-	int updateUserById(@Param("id") String id,@Param("password") String password);
+	int updateUserPasswordById(@Param("id") String id,@Param("password") String password);
+	
+	//修改用户头像
+	@Update("Update SYS_USERINFO set picture= #{picture} WHERE id = #{id}")
+	int updateUserPictureById(@Param("picture") String picture,@Param("id") Integer id);
+	
+	//根据用户名查询用户
+	@Select("SELECT * FROM SYS_USERINFO WHERE id = #{id} ")
+	@Results({
+        @Result(property = "lrsj",  column = "lrsj", javaType = Date.class)
+    })
+	SysUserInfo findUserByid(Integer id);
 }
+
+
+

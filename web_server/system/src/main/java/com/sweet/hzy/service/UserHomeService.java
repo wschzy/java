@@ -26,4 +26,6 @@ public interface UserHomeService {
 	int addUserForHome (String loginid,Integer homeid);
 	
 	int deleteUserForHome(Integer userid);
+	
+	int updateHomePictureById(String picture,Integer id);
 }

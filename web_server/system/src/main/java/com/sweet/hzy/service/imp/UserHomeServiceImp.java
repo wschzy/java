@@ -78,6 +78,10 @@ public class UserHomeServiceImp implements UserHomeService{
 		return userHomeRelMapper.deleteUserHomeRelByUserid(userid);
 	}
 
+	public int updateHomePictureById(String picture,Integer id) {
+		return userHomeMapper.updateHomePictureById(picture,id);
+	}
+
 	 
 }
 

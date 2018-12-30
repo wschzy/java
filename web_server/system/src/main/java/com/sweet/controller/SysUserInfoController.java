@@ -48,6 +48,12 @@ public class SysUserInfoController extends BaseController {
 	public List<?> getMenu() throws Exception{
 		return sysUserInfoService.getMenu();
 	}
+	
+	//注销用户
+	@RequestMapping("/logout.do")
+	public void logout(HttpSession session) {
+		session.invalidate();
+	}
 }
 
 /*//多事务
