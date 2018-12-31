@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import com.sweet.bean.SysUserInfo;
@@ -36,7 +37,7 @@ public class UploadFileController extends BaseController {
 	 * 处理上载请求
 	 */
 	@PostMapping(value = "upload.do")
-	public void upload(MultipartFile image, String name, HttpServletRequest request) throws Exception {
+	public void upload(@RequestParam("image") MultipartFile image, @RequestParam("name") String name, HttpServletRequest request) throws Exception {
 		String fileName = image.getOriginalFilename();
 		String type = fileName.indexOf(".") != -1 ? fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length()): null;
 		if (type != null) {
@@ -65,7 +66,7 @@ public class UploadFileController extends BaseController {
 		}
 	}
 	
-	@PostMapping(value = "/getUserImg.do")
+	@RequestMapping(value = "/getUserImg.do")
     public byte[]  getImage() throws IOException {
 		SysUserInfo user = sysUserInfoService.findUserByid(Integer.parseInt(ServletUtil.getSessionVal("id")));
 		if(StringUtil.isEmpty(user.getPicture()))return null;
@@ -78,7 +79,7 @@ public class UploadFileController extends BaseController {
         return bytes;
     }
 
-	@PostMapping(value = "/getHomeImg.do")
+	@RequestMapping(value = "/getHomeImg.do")
     public byte[]  getHomeImage() throws Exception {
 		UserHome home = userHomeService.getHomeByUserid();
 		if(StringUtil.isEmpty(home.getPicture()))return null;

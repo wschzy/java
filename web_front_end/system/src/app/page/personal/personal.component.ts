@@ -10,7 +10,7 @@ import { NzMessageService, UploadFile } from 'ng-zorro-antd';
 })
 
 export class PersonalComponent implements OnInit {
-    uploadURL = APPCONFIG.requestUrl+"/file/upload.do";
+    uploadURL = APPCONFIG.requestUrl+"file/getUserImg.do";
     // 判断 a的值 判断是否显示
     a:any=false;
     // 初始化个人信息
@@ -25,7 +25,7 @@ export class PersonalComponent implements OnInit {
     note:any="";
 
     constructor(private service:InterfaceService,private router:Router) {
-
+        
     }
     ngOnInit() { 
 
@@ -75,4 +75,19 @@ fileList = [
     this.previewImage = file.url || file.thumbUrl;
     this.previewVisible = true;
   }
+
+  handleUpload = (uploadFile: any) => {
+    const formData = new FormData();
+    formData.append('image', uploadFile.file);
+    formData.append('name', "1");
+    this.service.interface2("file/upload.do",formData).subscribe((event: any)=> {
+        window.location.reload();
+    }, (err) => {
+        alert("上传失败");
+    });
+
+  }
+
+
+
 }

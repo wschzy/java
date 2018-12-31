@@ -6,6 +6,7 @@
         <p id="prompt" *ngIf='a'>您还没有家庭，请先
             <a (click)="add()">添加家庭</a>
         </p>
+        <img src={{uploadURL}} style="width: 5%">
         <div id="showmsg">
             <h4 class="title" >|个人信息</h4>
             <div class="showper">
@@ -25,6 +26,7 @@
                   <nz-upload
                     nzAction={{uploadURL}}
                     nzListType="picture-card"
+                    [nzCustomRequest]="handleUpload"
                     [(nzFileList)]="fileList"
                     [nzShowButton]="fileList.length < 1"
                     [nzPreview]="handlePreview">
