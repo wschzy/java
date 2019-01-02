@@ -1,5 +1,5 @@
 
-<body>
+<div id="body">
     <div class="container wrap1" style="height:450px;">
             <h2 class="mg-b20 text-center">宝宝记账</h2>
             <div class="col-sm-8 col-md-5 center-auto pd-sm-50 pd-xs-20 main_content">
@@ -20,5 +20,14 @@
                     </div>
                     <button ng-disabled="!shyj" class="login_btn"  id="btn" (click)="submit()">登 录</button>
         </div><!--row end-->
-    </div><!--container end-->          
-</body>
+    </div><!--container end-->    
+    <footer class="footer">
+        <span> 联系我们 &nbsp;|</span>
+        <span (click)="contact()">&nbsp; 向我们捐款</span>
+    </footer>      
+</div>
+<div class="contact" *ngIf="show">
+        <i class="iconfont icon-close" (click)="close()"></i>
+        <img src="../../../assets/img/wx_contact.jpg">
+        <img src="../../../assets/img/zfb_contact.jpg">
+</div>

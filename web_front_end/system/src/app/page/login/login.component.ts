@@ -3,6 +3,7 @@ import { InterfaceService } from 'src/app/interface/interface.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
 import * as $ from 'jquery';
+import { makeStateKey } from '@angular/platform-browser';
 
 @Component({
     selector: 'login',
@@ -14,6 +15,8 @@ export class LoginComponent implements OnInit {
     name:any="";
     word:any="";
     checked = false;
+    //显示捐款
+    show = false;
     constructor(private service:InterfaceService,private router: Router) { 
      
     }
@@ -41,5 +44,29 @@ export class LoginComponent implements OnInit {
         );
       }
      
-    }   
+    }
+    mask(alpha){
+        $("#body").click(function () {
+            (<any>this).style.opacity=alpha/100;
+        });  
+    } 
+    // 联系我们
+    contact(){
+        if(this.show==false){
+            this.show=true;
+            this.mask(80);
+        }else{
+            this.show=false;
+            this.mask(100);
+        }
+    }
+    // 关闭
+    close(){
+        if(this.show==true){
+            this.show=false;
+            this.mask(100);
+            $("#body").click();
+        }
+    }
+        
 }
