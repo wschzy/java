@@ -24,7 +24,7 @@
     color:#FFF082;
     margin-top: -25px;
 }
-.icon-leibieguanli{
+.icon-icon_logout{
     position: absolute;
     display: block;
     width: 30px;
@@ -37,6 +37,7 @@
     margin-top: 0px;
     margin-right: 30px;
     font-size: 25px;
+    color:crimson;
 }
 .main-nav {
     float: right;
@@ -72,8 +73,15 @@
 .nav-links a{
     color:#fff;
 }
+.nav-links .logout{
+    font-size: 20px;
+    color: crimson;
+    display: inline-block;
+    position: relative;
+    right: -30px;
+}
 @media (max-width: 480px){
-.icon-leibieguanli{
+.icon-icon_logout{
     opacity: 1;
     }
 .main-nav {
@@ -82,12 +90,12 @@
 
 }
 @media (min-width: 481px)and(max-width: 767px){
-    .icon-leibieguanli{
+    .icon-icon_logout{
         display: none;
     }
 }
 @media (min-width: 768px){
-    .icon-leibieguanli{
+    .icon-icon_logout{
         display: none;
     }
 

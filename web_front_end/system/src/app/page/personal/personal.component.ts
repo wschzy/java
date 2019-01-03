@@ -13,6 +13,7 @@ export class PersonalComponent implements OnInit {
     uploadURL = APPCONFIG.requestUrl+"file/getUserImg.do";
     // 判断 a的值 判断是否显示
     a:any=false;
+    b:any=false;
     // 初始化个人信息
     fullname:any="";
     email:any="";
@@ -39,12 +40,15 @@ export class PersonalComponent implements OnInit {
             function(data:any){
                 if(data==null){
                     that.a=true;
+                    that.b=false;
                 }else{
+                    that.a=false;
+                    that.b=true;
                     window.localStorage.setItem("home",JSON.stringify(data));
                     var msg=JSON.parse(localStorage.user);
                     var fam=JSON.parse(localStorage.home);
                     console.log(msg);
-                    // 给个人信息赋值
+                    //给个人信息赋值
                     that.fullname=msg.fullname;
                     that.email=msg.email;
                     that.phone=msg.phone;
@@ -63,8 +67,8 @@ export class PersonalComponent implements OnInit {
 fileList = [
     {
       uid: -1,
-      name: 'xxx.png',
-      status: 'done',
+      name: '大头',
+      status: 'remove',
       url: this.uploadURL
     }
 ];
@@ -75,7 +79,7 @@ fileList = [
     this.previewImage = file.url || file.thumbUrl;
     this.previewVisible = true;
   }
-
+//上传个人图片
   handleUpload = (uploadFile: any) => {
     const formData = new FormData();
     formData.append('image', uploadFile.file);
@@ -87,7 +91,18 @@ fileList = [
     });
 
   }
+//上传家庭图片
+    UploadFamily = (uploadFile: any) => {
+    const formData = new FormData();
+    formData.append('image', uploadFile.file);
+    formData.append('name', "2");
+    this.service.interface2("file/getHomeImg.do",formData).subscribe((event: any)=> {
+        window.location.reload();
+    }, (err) => {
+        alert("上传失败");
+    });
 
+  }
 
 
 }

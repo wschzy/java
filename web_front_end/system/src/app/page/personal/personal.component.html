@@ -6,7 +6,7 @@
         <p id="prompt" *ngIf='a'>您还没有家庭，请先
             <a (click)="add()">添加家庭</a>
         </p>
-        <div id="showmsg">
+        <div id="showmsg" *ngIf="b">
             <h4 class="title" >|个人信息</h4>
             <div class="showper">
                 <div class="col-xs-12">
@@ -21,7 +21,7 @@
                   <label>邮箱：</label>
                   <span>{{email}}</span>
                 </div>  
-                <div class="clearfix img">
+                <div class="clearfix">
                   <nz-upload
                     nzAction={{uploadURL}}
                     nzListType="picture-card"
@@ -46,6 +46,23 @@
                 <label>备注信息：</label>
                 <span>{{note}}</span>
             </div>
+            <div class="family img">
+              <nz-upload
+                nzAction={{uploadURL}}
+                nzListType="picture-card"
+                [nzCustomRequest]="UploadFamily"
+                [(nzFileList)]="fileList"
+                [nzShowButton]="fileList.length < 1"
+                [nzPreview]="handlePreview">
+                  <i nz-icon type="plus"></i>
+                  <div class="ant-upload-text">Upload</div>
+              </nz-upload>
+              <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null" (nzOnCancel)="previewVisible=false">
+                <ng-template #modalContent>
+                  <img [src]="previewImage" [ngStyle]="{ 'width': '100%' }" />
+                </ng-template>
+              </nz-modal>
+            </div>            
         </div>
 
         </div>

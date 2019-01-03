@@ -13,11 +13,6 @@
                         <i class="iconfont icon-icon-mima"></i>
                         <input type="password" class="login_input" id="password" placeholder="请输入密码" [(ngModel)]     ="word"/> 
                     </div>
-                    <div class="checkbox mg-b25">
-                        <label>
-                            <input type="checkbox" name="savePassword" id="savePassword"  [(ngModel)]="checked" (click)="SavePassword()" />记住密码
-                        </label>
-                    </div>
                     <button ng-disabled="!shyj" class="login_btn"  id="btn" (click)="submit()">登 录</button>
         </div><!--row end-->
     </div><!--container end-->    

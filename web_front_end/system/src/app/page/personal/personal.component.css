@@ -31,7 +31,7 @@ a:hover{
 }
 .showper{
     background: #eee;
-    height:120px;
+    height:130px;
     padding:20px 20px;
     
 }
@@ -45,11 +45,18 @@ a:hover{
     color:rgb(167, 123, 248);
     display: inline-block;
     width:145px;
+    text-overflow :ellipsis; 
 }
-.img{
+.clearfix{
     position: absolute;
     top: 45px;
     height: 100px;
+    right: 50px;
+}
+.family{
+    position: absolute;
+    top:330px;
+    height: 90px;
     right: 50px;
 }
 :host ::ng-deep i {
@@ -62,8 +69,12 @@ a:hover{
   }
 @media (max-width:320px){
     .showper span {
-        margin-right: 20px;
-        width: 65px;
+        width: 85px;
+        margin-right: 10px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        height: 20px;
     }
     .title{
         margin-top: 80px;
@@ -95,12 +106,19 @@ a:hover{
     .showper span{
         margin-right: 20px;
         width: 90px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        height: 20px;
     }
-    .img{
+    .clearfix{
         position: absolute;
         top: 50px;
         left: 144px;
         width: 80px;
+    }
+    .family{
+
     }
 }
 @media (min-width: 481px) and (max-width:800px){
@@ -109,5 +127,9 @@ a:hover{
         color:rgb(167, 123, 248);
         display: inline-block;
         width:120px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        height: 20px;
     } 
 }
