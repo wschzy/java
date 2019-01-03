@@ -3,7 +3,6 @@ import { InterfaceService } from 'src/app/interface/interface.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
 import * as $ from 'jquery';
-import { makeStateKey } from '@angular/platform-browser';
 
 @Component({
     selector: 'login',
