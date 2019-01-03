@@ -48,18 +48,18 @@
             </div>
             <div class="family img">
               <nz-upload
-                nzAction={{uploadURL}}
+                nzAction={{uploadURLFam}}
                 nzListType="picture-card"
-                [nzCustomRequest]="UploadFamily"
-                [(nzFileList)]="fileList"
-                [nzShowButton]="fileList.length < 1"
-                [nzPreview]="handlePreview">
+                [nzCustomRequest]="uploadFamily"
+                [(nzFileList)]="fileListFam"
+                [nzShowButton]="fileListFam.length < 1"
+                [nzPreview]="handlePreviewFam">
                   <i nz-icon type="plus"></i>
                   <div class="ant-upload-text">Upload</div>
               </nz-upload>
-              <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null" (nzOnCancel)="previewVisible=false">
+              <nz-modal [nzVisible]="previewVisibleFam" [nzContent]="modalContent" [nzFooter]="null" (nzOnCancel)="previewVisibleFam=false">
                 <ng-template #modalContent>
-                  <img [src]="previewImage" [ngStyle]="{ 'width': '100%' }" />
+                  <img [src]="previewImageFam" [ngStyle]="{ 'width': '100%' }" />
                 </ng-template>
               </nz-modal>
             </div>            

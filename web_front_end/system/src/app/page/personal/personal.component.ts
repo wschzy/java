@@ -63,7 +63,7 @@ export class PersonalComponent implements OnInit {
 
 
     }
-// 上传文件
+// 上传个人文件
 fileList = [
     {
       uid: -1,
@@ -79,30 +79,41 @@ fileList = [
     this.previewImage = file.url || file.thumbUrl;
     this.previewVisible = true;
   }
-//上传个人图片
   handleUpload = (uploadFile: any) => {
+    this.uploadImg(uploadFile,1);
+  }
+//上传家庭图片
+uploadURLFam = APPCONFIG.requestUrl+"file/getHomeImg.do";
+fileListFam = [
+    {
+      uid: -1,
+      name: '大头',
+      status: 'remove',
+      url: this.uploadURLFam
+    }
+];
+  previewImageFam = '';
+  previewVisibleFam = false;
+
+  handlePreviewFam = (file: UploadFile) => {
+    this.previewImageFam = file.url || file.thumbUrl;
+    this.previewVisibleFam = true;
+  }
+uploadFamily = (uploadFile: any) => {
+    this.uploadImg(uploadFile,2)
+  }
+
+
+  //上传
+  uploadImg(uploadFile,name){
     const formData = new FormData();
     formData.append('image', uploadFile.file);
-    formData.append('name', "1");
+    formData.append('name', name);
     this.service.interface2("file/upload.do",formData).subscribe((event: any)=> {
         window.location.reload();
     }, (err) => {
         alert("上传失败");
     });
-
   }
-//上传家庭图片
-    UploadFamily = (uploadFile: any) => {
-    const formData = new FormData();
-    formData.append('image', uploadFile.file);
-    formData.append('name', "2");
-    this.service.interface2("file/getHomeImg.do",formData).subscribe((event: any)=> {
-        window.location.reload();
-    }, (err) => {
-        alert("上传失败");
-    });
-
-  }
-
 
 }
