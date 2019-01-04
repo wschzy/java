@@ -55,8 +55,8 @@
                   <i nz-icon type="plus"></i>
                   <div class="ant-upload-text">Upload</div>
               </nz-upload>
-              <nz-modal [nzVisible]="previewVisibleFam" [nzContent]="modalContent" [nzFooter]="null" (nzOnCancel)="previewVisibleFam=false">
-                <ng-template #modalContent>
+              <nz-modal [nzVisible]="previewVisibleFam" [nzContent]="modalContentFam" [nzFooter]="null" (nzOnCancel)="previewVisibleFam=false">
+                <ng-template #modalContentFam>
                   <img [src]="previewImageFam" [ngStyle]="{ 'width': '100%' }" />
                 </ng-template>
               </nz-modal>
