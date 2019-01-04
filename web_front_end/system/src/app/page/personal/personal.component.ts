@@ -58,10 +58,11 @@ export class PersonalComponent implements OnInit {
                     that.name=fam.name;
                     that.note=fam.note;
                 }
-            }
-        )
-
-
+            });
+    }
+    // 跳转家庭列表页面
+    family(){
+        this.router.navigateByUrl("family-list");
     }
 // 上传个人文件
 fileList = [
@@ -99,11 +100,9 @@ fileListFam = [
     this.previewImageFam = file.url || file.thumbUrl;
     this.previewVisibleFam = true;
   }
-uploadFamily = (uploadFile: any) => {
-    this.uploadImg(uploadFile,2)
+    uploadFamily = (uploadFile: any) => {
+        this.uploadImg(uploadFile,2)
   }
-
-
   //上传
   uploadImg(uploadFile,name){
     const formData = new FormData();
