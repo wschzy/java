@@ -40,9 +40,10 @@ public class UserHomeServiceImp implements UserHomeService{
 	
 	/**
 	 * 根据homeid查询用户列表
+	 * @throws SysException 
 	 */
-	public List<SysUserInfo> getUserListByHomeid(Integer homeid){
-		return userHomeMapper.getUserListByHomeid(homeid);
+	public List<SysUserInfo> getUserListByHomeid() throws SysException{
+		return userHomeMapper.getUserListByHomeid(getHomeByUserid().getId());
 	}
 	
 	/**
@@ -66,11 +67,11 @@ public class UserHomeServiceImp implements UserHomeService{
 	 * 添加home中的人员
 	 */
 	@Transactional(rollbackFor=Exception.class,noRollbackFor=SysException.class)
-	public int addUserForHome (String loginid,Integer homeid) {
+	public int addUserForHome (String loginid) throws SysException {
 		SysUserInfo user = sysUserInfoMapper.findUserByLoginid(loginid);
 		//删除该用户拥有的家庭
 		userHomeRelMapper.deleteUserHomeRelByUserid(user.getId());
-		return userHomeRelMapper.insertUserHomeRel(homeid, user.getId());
+		return userHomeRelMapper.insertUserHomeRel(getHomeByUserid().getId(), user.getId());
 	}
 
 	@Transactional(rollbackFor=Exception.class,noRollbackFor=SysException.class)

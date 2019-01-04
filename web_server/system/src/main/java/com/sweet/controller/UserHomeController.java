@@ -27,8 +27,8 @@ public class UserHomeController extends BaseController{
 	}
 	
 	@PostMapping(value="/getUserList.do")
-	public List<SysUserInfo> getUserListByHomeid(@NotNull(message = "参数不能为空")Integer homeid){
-		return userHomeService.getUserListByHomeid(homeid);
+	public List<SysUserInfo> getUserListByHomeid() throws SysException{
+		return userHomeService.getUserListByHomeid();
 	}
 	
 	@PostMapping(value="/addHome.do")
@@ -37,8 +37,8 @@ public class UserHomeController extends BaseController{
 	}
 	
 	@PostMapping(value="/addUser.do")
-	public int addUserForHome (@NotNull(message = "被邀请人不能为空")String loginid,@NotNull(message = "参数不能为空")Integer homeid) {
-		return userHomeService.addUserForHome(loginid, homeid);
+	public int addUserForHome (@NotNull(message = "被邀请人不能为空")String loginid) throws SysException{
+		return userHomeService.addUserForHome(loginid);
 	}
 	
 	@PostMapping(value="/deleteUser.do")

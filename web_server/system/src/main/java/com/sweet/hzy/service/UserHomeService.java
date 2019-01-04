@@ -15,7 +15,7 @@ public interface UserHomeService {
 	/**
 	 * 根据homeid查询用户列表
 	 */
-	List<SysUserInfo> getUserListByHomeid(Integer homeid);
+	List<SysUserInfo> getUserListByHomeid()throws SysException;
 	
 	//添加home
 	int addHome(UserHome home)throws SysException;
@@ -23,7 +23,7 @@ public interface UserHomeService {
 	/**
 	 * 添加home中的人员
 	 */
-	int addUserForHome (String loginid,Integer homeid);
+	int addUserForHome (String loginid)throws SysException;
 	
 	int deleteUserForHome(Integer userid);
 	
