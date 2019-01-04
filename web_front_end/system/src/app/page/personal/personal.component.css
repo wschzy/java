@@ -11,7 +11,7 @@
     width: 100%;
     height: 100%;
     display: flex;
-    padding: 60px 50px 0;
+    padding: 60px 25px 0;
     z-index: 20;
 }
 .msg{
@@ -44,12 +44,10 @@ a:hover{
     margin-right: 100px;
     color:rgb(167, 123, 248);
     display: inline-block;
-    width:145px;
-    text-overflow :ellipsis; 
 }
 .clearfix{
     position: absolute;
-    top: 45px;
+    top: 160px;
     height: 100px;
     right: 50px;
 }
@@ -69,22 +67,20 @@ a:hover{
   }
 @media (max-width:320px){
     .showper span {
-        width: 85px;
+        width: 130px;
         margin-right: 10px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
         height: 20px;
     }
     .title{
         margin-top: 80px;
      }
      .showper{
-         padding:10;
-         height: 200px;
-         background: #eee;       
+        height: 200px;
+        background: #eee;
+        width: 290px;  
+        margin-left: -10px;     
      }
-     .img{
+     .clearfix{
          position: absolute;
          top: 50px;
          left: 117px;
@@ -92,6 +88,12 @@ a:hover{
      }
      .msg{
          height:550px;
+     }
+     .family{
+        position: absolute;
+        top:450px;
+        height: 90px;
+        right: 50px;
      }
 }  
 @media (min-width: 321px) and (max-width:480px){
@@ -105,11 +107,8 @@ a:hover{
     }
     .showper span{
         margin-right: 20px;
-        width: 90px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
         height: 20px;
+        width: 160px;
     }
     .clearfix{
         position: absolute;
@@ -118,7 +117,10 @@ a:hover{
         width: 80px;
     }
     .family{
-
+        position: absolute;
+        top:450px;
+        height: 90px;
+        right: 50px;
     }
 }
 @media (min-width: 481px) and (max-width:800px){
@@ -126,10 +128,6 @@ a:hover{
         margin-right: 100px;
         color:rgb(167, 123, 248);
         display: inline-block;
-        width:120px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
         height: 20px;
     } 
 }

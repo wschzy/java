@@ -25,4 +25,7 @@ export class HeaderComponent implements OnInit {
     jump(){
         this.myRouter.navigateByUrl('index');
     }
+    logout(){
+        this.service.interface("SysUserInfo/logout.do",null,null);
+    }
 }
