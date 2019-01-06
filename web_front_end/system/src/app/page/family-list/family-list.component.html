@@ -1,0 +1,27 @@
+<div class="main">
+    <storeHeader></storeHeader>
+    <div class="content">
+        <nz-list
+            class="demo-loadmore-list"
+            [nzDataSource]="list"
+            [nzItemLayout]="'horizontal'"
+            [nzLoading]="initLoading"
+            [nzRenderItem]="item"
+            [nzLoadMore]="loadMore">
+            <ng-template #item let-item>
+                <nz-list-item>
+                    <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="item.loading">
+                        <nz-list-item-meta
+                            [nzTitle]="nzTitle"
+                            nzDescription="大家好，我是{{item.fullname}},我今年{{item.id}},我是一个活泼又可爱的小天使,我的手机号是{{item.phone}}">
+                            <ng-template #nzTitle>
+                            <a>{{item.fullname}}</a>
+                            </ng-template>
+                        </nz-list-item-meta>
+                    </nz-skeleton>
+                </nz-list-item>
+            </ng-template>
+        </nz-list>
+    </div>
+    <storeFooter></storeFooter>
+ </div>

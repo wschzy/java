@@ -35,6 +35,9 @@ a:hover{
     padding:20px 20px;
     
 }
+.showper span:first-child:hover{
+    cursor: pointer;
+} 
 .showper label {
     margin-right: 5px;
     text-align: right;
