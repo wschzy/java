@@ -1,5 +1,8 @@
 package test;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.context.WebApplicationContext;
 import com.sweet.Action;
 import com.sweet.hzy.mapper.UserDictionaryMapper;
@@ -30,11 +34,24 @@ public class TestUnit {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     }  
 
+    @Test
+    public void test() throws FileNotFoundException {
+    	File file = ResourceUtils.getFile("classpath:static/image.png");
+    	System.out.println(file.getPath());
+        /*if(file.exists()){
+            File[] files = file.listFiles();
+            if(files != null){
+                for(File childFile:files){
+                    System.out.println(childFile.getPath());
+                }
+            }
+        }*/
+    }
 	
-	@Test
+	/*@Test
 	public void testMenu() throws Exception {
 		System.out.println(dic.deleteDictionaryById(5));
-	}
+	}*/
 }
 
 //@Autowired  

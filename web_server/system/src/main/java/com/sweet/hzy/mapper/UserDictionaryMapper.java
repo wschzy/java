@@ -10,12 +10,13 @@ import com.sweet.bean.UserDictionary;
 
 public interface UserDictionaryMapper {
 
-	@Select("SELECT * FROM USER_DICTIONARY ")
-	List<UserDictionary>getDictionaryList();
+	@Select("SELECT * FROM USER_DICTIONARY where userid = #{userid}"
+			+ " or userid in (select userid from user_home_rel where homeid in (select homeid from user_home_rel where userid = #{userid}))")
+	List<UserDictionary>getDictionaryList(Integer userid);
 	
 	
-	@Insert("insert into USER_DICTIONARY (name,supnumber,dicclass,note,levels,serial,tagone,tagtwo) "
-			+ "values (#{name},#{supnumber},#{dicclass},#{note},#{levels},#{serial},#{tagone},#{tagtwo})")
+	@Insert("insert into USER_DICTIONARY (name,supnumber,dicclass,note,levels,serial,tagone,tagtwo,userid) "
+			+ "values (#{name},#{supnumber},#{dicclass},#{note},#{levels},#{serial},#{tagone},#{tagtwo},#{userid})")
 	int insertDictionary(UserDictionary dic);
 	
 	@Update("update USER_DICTIONARY set name = #{name},supnumber = #{supnumber},dicclass=#{dicclass}"

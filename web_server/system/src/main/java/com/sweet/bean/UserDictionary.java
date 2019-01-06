@@ -22,4 +22,5 @@ public class UserDictionary implements Serializable {
 	private Integer serial;
 	private String tagone;
 	private String tagtwo;
+	private Integer userid;
 }

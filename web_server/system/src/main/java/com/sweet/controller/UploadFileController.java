@@ -1,11 +1,10 @@
 package com.sweet.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,31 +65,34 @@ public class UploadFileController extends BaseController {
 		}
 	}
 	
+	//获取家庭成员的头像
+	@RequestMapping(value = "/getUserImg.do/{picture}")
+    public byte[]  getHomeUserImage(@PathVariable("picture") String picture) throws IOException {
+		if(StringUtil.isEmpty(picture)) {
+			return  FileUtil.getDefaultImg();//默认图片
+		}else {
+			return FileUtil.getFile(rootDir +  "\\" + picture);
+		}
+    }
+	
 	@RequestMapping(value = "/getUserImg.do")
     public byte[]  getImage() throws IOException {
 		SysUserInfo user = sysUserInfoService.findUserByid(Integer.parseInt(ServletUtil.getSessionVal("id")));
-		if(StringUtil.isEmpty(user.getPicture()))return null;
-		String path = rootDir + "\\" + user.getPicture();
-		File file = new File(path);
-        FileInputStream inputStream = new FileInputStream(file);
-        byte[] bytes = new byte[inputStream.available()];
-        inputStream.read(bytes, 0, inputStream.available());
-        inputStream.close();
-        return bytes;
+		if(StringUtil.isEmpty(user.getPicture())) {
+			return  FileUtil.getDefaultImg();//默认图片
+		}else {
+			return FileUtil.getFile( rootDir +  "\\" +user.getPicture());
+		}
     }
 
 	@RequestMapping(value = "/getHomeImg.do")
     public byte[]  getHomeImage() throws Exception {
 		UserHome home = userHomeService.getHomeByUserid();
-		if(StringUtil.isEmpty(home.getPicture()))return null;
-		String path = rootDir + "\\" + home.getPicture();
-		File file = new File(path);
-        FileInputStream inputStream = new FileInputStream(file);
-        byte[] bytes = new byte[inputStream.available()];
-        inputStream.read(bytes, 0, inputStream.available());
-        inputStream.close();
-        return bytes;
+		if(StringUtil.isEmpty(home.getPicture())) {
+			return  FileUtil.getDefaultImg();//默认图片
+		}else {
+			return FileUtil.getFile(rootDir +  "\\" + home.getPicture());
+		}
     }
-
 	
 }
