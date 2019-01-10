@@ -66,8 +66,8 @@ public class UploadFileController extends BaseController {
 	}
 	
 	//获取家庭成员的头像
-	@RequestMapping(value = "/getUserImg.do/{picture}")
-    public byte[]  getHomeUserImage(@PathVariable("picture") String picture) throws IOException {
+	@RequestMapping(value = "/getUserListImg.do")
+    public byte[]  getHomeUserImage(String picture) throws IOException {
 		if(StringUtil.isEmpty(picture)) {
 			return  FileUtil.getDefaultImg();//默认图片
 		}else {
