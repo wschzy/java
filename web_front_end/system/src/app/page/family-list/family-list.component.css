@@ -40,9 +40,14 @@
 [placeholder]{
     padding-left: 10px;
 }
+.delete{
+    position: absolute;
+    right: 0px;
+}
 /* 家庭列表 */
 :host ::ng-deep .demo-loadmore-list {
     min-height: 350px;
+    width: 100%;
   }
 :host ::ng-deep .loadmore {
     text-align: center;

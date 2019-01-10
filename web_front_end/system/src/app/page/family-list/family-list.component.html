@@ -18,9 +18,10 @@
                         <nz-list-item-meta
                             [nzTitle]="nzTitle"
                             nzAvatar={{portrait}}{{item.picture}}
-                            nzDescription="{{item.fullname}},{{item.id}},{{item.phone}}">
+                            nzDescription="{{item.phone}}">
                             <ng-template #nzTitle>
                             <a>{{item.fullname}}</a>
+                                <button nz-button nzType="danger" class="delete" (click)="delete(item.id)">删除用户</button>
                             </ng-template>
                         </nz-list-item-meta>
                     </nz-skeleton>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,NgZone } from '@angular/core';
 import { InterfaceService } from 'src/app/interface/interface.component';
 import {Router} from '@angular/router';
 import { APPCONFIG } from '../../config';
@@ -11,12 +11,13 @@ import { APPCONFIG } from '../../config';
 export class FamilyListComponent implements OnInit {
     // 展示头像
     portrait = APPCONFIG.requestUrl+"file/getUserListImg.do?picture=";
+
     //邀请人 
-    username:any=""
+    username:any="";
     // 展示家庭列表
     list = [];
     description:any="";
-    constructor(private service:InterfaceService,private router:Router) { }
+    constructor(private service:InterfaceService,private router:Router,public ngZone: NgZone) { }
 
     ngOnInit() {
         var that = this; 
@@ -31,7 +32,18 @@ export class FamilyListComponent implements OnInit {
         var inviter={loginid:name}
         this.service.interface("/home/addUser.do",inviter,
             function(){
-                console.log(inviter);
-            })
+               window.location.reload();
+               })
+    }
+    // 删除用户
+    delete(id){
+        this.service.interface("/home/deleteUser.do",{userid:id},
+        function(){
+            window.location.reload();
+        })
+    }
+
+    uploadImg(path){
+        this.service.interface("file/getUserListImg.do",{picture:path},function(data){console.log(data)});
     }
 }
