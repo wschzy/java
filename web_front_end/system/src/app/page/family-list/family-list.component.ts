@@ -12,7 +12,7 @@ export class FamilyListComponent implements OnInit {
     // 展示头像
     portrait = APPCONFIG.requestUrl+"file/getUserListImg.do?picture=";
     //邀请人 
-    inviter:any="";
+    username:any=""
     // 展示家庭列表
     list = [];
     description:any="";
@@ -27,9 +27,11 @@ export class FamilyListComponent implements OnInit {
     }
     // 增加家庭成员
     add(){
-        this.service.interface("/home/addUser.do",null,
-            function(data){
-                console.log(data);
-            })    
+        var name =this.username;
+        var inviter={loginid:name}
+        this.service.interface("/home/addUser.do",inviter,
+            function(){
+                console.log(inviter);
+            })
     }
 }

@@ -2,8 +2,8 @@
     <storeHeader></storeHeader>
     <div class="content">
         <div class="members">
-            <input type="text" placeholder="请输入用户名" class="box">
-            <input type="button" value="添加" class="increase" (click)="add()">
+            <input type="text" placeholder="请输入用户名" class="box" [(ngModel)]="username">
+            <input type="button" value="添加" class="increase" (click)="add()" >
         </div>
         <nz-list
             class="demo-loadmore-list"
