@@ -4,7 +4,6 @@ import java.io.IOException;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,8 +65,8 @@ public class UploadFileController extends BaseController {
 	}
 	
 	//获取家庭成员的头像
-	@RequestMapping(value = "/getUserImg.do/{picture}")
-    public byte[]  getHomeUserImage(@PathVariable("picture") String picture) throws IOException {
+	@RequestMapping(value = "/getUserListImg.do")
+    public byte[]  getHomeUserImage(String picture) throws IOException {
 		if(StringUtil.isEmpty(picture)) {
 			return  FileUtil.getDefaultImg();//默认图片
 		}else {
