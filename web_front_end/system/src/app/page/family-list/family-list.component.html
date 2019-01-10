@@ -13,7 +13,8 @@
                     <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="item.loading">
                         <nz-list-item-meta
                             [nzTitle]="nzTitle"
-                            nzDescription="大家好，我是{{item.fullname}},我今年{{item.id}},我是一个活泼又可爱的小天使,我的手机号是{{item.phone}}">
+                            nzAvatar={{portrait}}{{item.picture}}
+                            nzDescription="{{item.fullname}},{{item.id}},{{item.phone}}">
                             <ng-template #nzTitle>
                             <a>{{item.fullname}}</a>
                             </ng-template>

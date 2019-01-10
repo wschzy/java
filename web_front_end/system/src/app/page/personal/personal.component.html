@@ -6,7 +6,7 @@
         <p id="prompt" *ngIf='a'>您还没有家庭，请先
             <a (click)="add()">添加家庭</a>
         </p>
-        <div id="showmsg" *ngIf="b">
+        <div id="showmsg">
             <h4 class="title" >|个人信息</h4>
             <div class="showper">
                 <div class="col-xs-12">
@@ -39,12 +39,12 @@
                   </nz-modal>
                 </div>
             </div>
-            <h4>|家庭信息</h4>
+            <h4  *ngIf="b">|家庭信息</h4>
             <div class="showper" style="height:100px;">
-                <span>{{name}}</span>
+                <span (click)="family()">{{name}}</span>
                 <span>{{note}}</span>
             </div>
-            <div class="family img">
+            <div class="family img" *ngIf="b">
               <nz-upload
                 nzAction={{uploadURLFam}}
                 nzListType="picture-card"

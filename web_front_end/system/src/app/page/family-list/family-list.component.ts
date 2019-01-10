@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InterfaceService } from 'src/app/interface/interface.component';
 import {Router} from '@angular/router';
+import { APPCONFIG } from '../../config';
 @Component({
     selector: 'storeFamilyList',
     templateUrl: 'family-list.component.html',
@@ -8,6 +9,8 @@ import {Router} from '@angular/router';
 })
 
 export class FamilyListComponent implements OnInit {
+    // 展示头像
+    portrait = APPCONFIG.requestUrl+"file/getUserImg.do/";
     // 展示家庭列表
     list = [];
     description:any="";
@@ -18,7 +21,6 @@ export class FamilyListComponent implements OnInit {
         this.service.interface("/home/getUserList.do",null,
             function(data){
                 that.list=data;
-                console.log(that.list);
             })
     }   
 }

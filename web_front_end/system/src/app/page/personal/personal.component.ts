@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InterfaceService } from 'src/app/interface/interface.component';
 import {Router} from '@angular/router';
 import { APPCONFIG } from '../../config';
-import { NzMessageService, UploadFile } from 'ng-zorro-antd';
+import { UploadFile } from 'ng-zorro-antd';
 @Component({
     selector: 'storePersonal',
     templateUrl: 'personal.component.html',
@@ -38,22 +38,22 @@ export class PersonalComponent implements OnInit {
        var that = this;
        this.service.interface("/home/getHome.do",null,
             function(data:any){
+                window.localStorage.setItem("home",JSON.stringify(data));
+                var msg=JSON.parse(localStorage.user);
+                var fam=JSON.parse(localStorage.home);
+                console.log(msg);
+                //给个人信息赋值
+                that.fullname=msg.fullname;
+                that.email=msg.email;
+                that.phone=msg.phone;
+                //that.picture=msg.picture;
+                that.sex=msg.sex==0?"女":"男";
                 if(data==null){
                     that.a=true;
                     that.b=false;
                 }else{
                     that.a=false;
                     that.b=true;
-                    window.localStorage.setItem("home",JSON.stringify(data));
-                    var msg=JSON.parse(localStorage.user);
-                    var fam=JSON.parse(localStorage.home);
-                    console.log(msg);
-                    //给个人信息赋值
-                    that.fullname=msg.fullname;
-                    that.email=msg.email;
-                    that.phone=msg.phone;
-                    //that.picture=msg.picture;
-                    that.sex=msg.sex==0?"女":"男";
                     // 给家庭信息赋值
                     that.name=fam.name;
                     that.note=fam.note;
