@@ -2,6 +2,7 @@ import { Component, OnInit,NgZone } from '@angular/core';
 import { InterfaceService } from 'src/app/interface/interface.component';
 import {Router} from '@angular/router';
 import { APPCONFIG } from '../../config';
+import throttleByAnimationFrame from 'ng-zorro-antd/core/util/throttleByAnimationFrame';
 @Component({
     selector: 'storeFamilyList',
     templateUrl: 'family-list.component.html',
@@ -28,22 +29,22 @@ export class FamilyListComponent implements OnInit {
     }
     // 增加家庭成员
     add(){
+        var that=this;
         var name =this.username;
         var inviter={loginid:name}
         this.service.interface("/home/addUser.do",inviter,
             function(){
-               window.location.reload();
+               that.ngOnInit();
                })
     }
+    
     // 删除用户
     delete(id){
+        var that=this;
         this.service.interface("/home/deleteUser.do",{userid:id},
         function(){
-            window.location.reload();
+            that.ngOnInit();
         })
     }
-
-    uploadImg(path){
-        this.service.interface("file/getUserListImg.do",{picture:path},function(data){console.log(data)});
-    }
+    
 }

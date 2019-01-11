@@ -34,10 +34,17 @@
     right: 0;
     background: transparent;
     overflow: hidden;
-    margin-top: 0px;
+    margin-top: 7px;
     margin-right: 30px;
-    font-size: 25px;
-    color:crimson;
+    font-size: 21px;
+    color: crimson;
+}
+.user{
+    float: right;
+    position: absolute;
+    right: 66px;
+    height: 30px;
+    top:12px;
 }
 .main-nav {
     float: right;
@@ -56,6 +63,8 @@
     padding: 0;
     list-style: none;
     z-index: 1;
+    right: 80px;
+
 }
 .nav-links li {
     position: relative;
@@ -78,10 +87,10 @@
     color: crimson;
     display: inline-block;
     position: relative;
-    right: -30px;
+    right: -10px;
 }
 @media (max-width: 480px){
-.icon-icon_logout{
+.icon-icon_logout,{
     opacity: 1;
     }
 .main-nav {
@@ -90,14 +99,10 @@
 
 }
 @media (min-width: 481px)and(max-width: 767px){
-    .icon-icon_logout{
-        display: none;
-    }
+    
 }
 @media (min-width: 768px){
-    .icon-icon_logout{
-        display: none;
-    }
+
 
 }
     

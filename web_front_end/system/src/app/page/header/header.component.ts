@@ -9,6 +9,7 @@ import { InterfaceService } from 'src/app/interface/interface.component';
 
 export class HeaderComponent implements OnInit {
     private list:any;
+    user=JSON.parse(localStorage.user);
     constructor(private myRouter:Router,private service:InterfaceService) {
         var that = this;
         this.service.interface("SysUserInfo/getMenu.do", null,  

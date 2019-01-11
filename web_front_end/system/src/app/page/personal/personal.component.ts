@@ -105,11 +105,30 @@ fileListFam = [
   }
   //上传
   uploadImg(uploadFile,name){
+    var that=this;
     const formData = new FormData();
     formData.append('image', uploadFile.file);
     formData.append('name', name);
     this.service.interface2("file/upload.do",formData).subscribe((event: any)=> {
-        window.location.reload();
+        if(name == 1){
+            that.fileList = [
+                {
+                  uid: -1,
+                  name: '大头',
+                  status: 'remove',
+                  url: that.uploadURL+"?a="+Math.random()
+                }
+            ];
+        }else{
+            that.fileListFam = [
+                {
+                  uid: -1,
+                  name: '大头',
+                  status: 'remove',
+                  url: that.uploadURLFam+"?a="+Math.random()
+                }
+            ];
+        }
     }, (err) => {
         alert("上传失败");
     });
