@@ -2,7 +2,48 @@
 <div class="main">
     <storeHeader></storeHeader>
     <div class="content">
-        类别维护页
+        <div class="operation">
+            <button (click)="add()">添加</button>
+            <button>删除</button>
+            <button>编辑</button>
+        </div>
+        <nz-table
+        #rowSelectionTable
+        [nzData]="dataSet"
+        [nzPageSize]="5"
+        (nzPageIndexChange)="refreshStatus()"
+        (nzPageSizeChange)="refreshStatus()">
+        <thead>
+            <tr>
+            <th nzShowCheckbox [nzSelections]="listOfSelection" [(nzChecked)]="allChecked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="checkAll($event)"></th>
+            <th>名称</th>
+            <th>分类</th>
+            <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of rowSelectionTable.data">
+            <td nzShowCheckbox [(nzChecked)]="data.checked" (nzCheckedChange)="refreshStatus()"></td>
+            <td>{{data.name}}</td>
+            <td>{{data.dicclass}}</td>
+            <td>
+                <nz-popconfirm [nzTitle]="'Sure to delete?'" (nzOnConfirm)="deleteRow(data.key)">
+                    <a nz-popconfirm>Delete</a>
+                </nz-popconfirm>
+            </td>
+            </tr>
+        </tbody>
+        </nz-table>    
+        
+        <div class="add" *ngIf="show" >
+            <div class="msg">
+                <label>名称：</label>
+                <input type="text" placeholder="name" [(ngModel)]="name">
+                <label>分类：</label>
+                <input type="text" placeholder="dicclass" [(ngModel)]="dicclass">
+                <button (click)="submit()" class="submit">提交</button>
+            </div>
+        </div>
     </div>
     <storeFooter></storeFooter>
  </div>

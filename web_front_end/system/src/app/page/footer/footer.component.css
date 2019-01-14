@@ -27,6 +27,9 @@
     font-family: "GT Walsheim Bold", "GT Walsheim Regular", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 13px;
 }
+.handheld-ctas a:active{
+    background: rgb(21, 243, 195);
+}
 /* .handheld-ctas a:not(:first-child) {
     border-left: 1px solid #36393b;
 } */
