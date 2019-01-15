@@ -70,6 +70,8 @@ public class UserHomeServiceImp implements UserHomeService{
 	public int addUserForHome (String loginid) throws SysException {
 		SysUserInfo user = sysUserInfoMapper.findUserByLoginid(loginid);
 		//删除该用户拥有的家庭
+		if(user == null)
+			throw new SysException("不存在改用户");
 		userHomeRelMapper.deleteUserHomeRelByUserid(user.getId());
 		return userHomeRelMapper.insertUserHomeRel(getHomeByUserid().getId(), user.getId());
 	}

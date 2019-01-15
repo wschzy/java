@@ -11,6 +11,7 @@ import lombok.Data;
 public class UserDictionary implements Serializable {
 	private static final long serialVersionUID = -376514074939215877L;
 	private Integer id;
+	@Pattern(regexp="^\\S*$",message="名称格式错误")
 	@NotNull(message = "名称不能为空")
 	@Size(max = 39, message = "用户名最大39位")
 	private String name;
