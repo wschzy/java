@@ -39,6 +39,10 @@ public class UserDictionaryController extends BaseController{
 		return userDictionaryService.deleteDictionaryById(id);
 	}
 	
+	@PostMapping(value="/getPayWayList.do")
+	public List<UserDictionary>getPayWayList(){
+		return userDictionaryService.getPayWayList();
+	}
 	
 }
 

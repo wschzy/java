@@ -29,4 +29,8 @@ public class UserPay implements Serializable{
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date time;
 	private String note;
+	
+	private Object obj;
+	private Object obj2;
+	private Object obj3;
 }

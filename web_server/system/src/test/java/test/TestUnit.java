@@ -3,6 +3,8 @@ package test;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+import javax.annotation.Resource;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +17,7 @@ import org.springframework.util.ResourceUtils;
 import org.springframework.web.context.WebApplicationContext;
 import com.sweet.Action;
 import com.sweet.hzy.mapper.UserDictionaryMapper;
+import com.sweet.hzy.mapper.UserPayMapper;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Action.class)
@@ -27,8 +30,8 @@ public class TestUnit {
   
 
   
-    @Autowired
-    private UserDictionaryMapper dic;
+    @Resource
+	private UserPayMapper userPayMapper;
     @Before
     public void setup()  throws Exception{  
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
@@ -36,8 +39,9 @@ public class TestUnit {
 
     @Test
     public void test() throws FileNotFoundException {
-    	File file = ResourceUtils.getFile("classpath:static/image.png");
-    	System.out.println(file.getPath());
+    	System.out.println(userPayMapper.getUserPayList(19));
+    	/*File file = ResourceUtils.getFile("classpath:static/image.png");
+    	System.out.println(file.getPath());*/
         /*if(file.exists()){
             File[] files = file.listFiles();
             if(files != null){
