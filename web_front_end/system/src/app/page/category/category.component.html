@@ -4,18 +4,13 @@
     <div class="content">
         <div class="operation">
             <button (click)="add()">添加</button>
-            <button>删除</button>
-            <button>编辑</button>
         </div>
-        <nz-table
+         <nz-table
         #rowSelectionTable
         [nzData]="dataSet"
-        [nzPageSize]="5"
-        (nzPageIndexChange)="refreshStatus()"
-        (nzPageSizeChange)="refreshStatus()">
+        [nzPageSize]="5">
         <thead>
             <tr>
-            <th nzShowCheckbox [nzSelections]="listOfSelection" [(nzChecked)]="allChecked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="checkAll($event)"></th>
             <th>名称</th>
             <th>分类</th>
             <th>Action</th>
@@ -23,18 +18,31 @@
         </thead>
         <tbody>
             <tr *ngFor="let data of rowSelectionTable.data">
-            <td nzShowCheckbox [(nzChecked)]="data.checked" (nzCheckedChange)="refreshStatus()"></td>
-            <td>{{data.name}}</td>
-            <td>{{data.dicclass}}</td>
-            <td>
-                <nz-popconfirm [nzTitle]="'Sure to delete?'" (nzOnConfirm)="deleteRow(data.key)">
-                    <a nz-popconfirm>Delete</a>
-                </nz-popconfirm>
-            </td>
+                <td>{{data.name}}</td>
+                <td>{{data.dicclass}}</td>
+                <td>
+                    <nz-popconfirm [nzTitle]="'Sure to delete?'" (nzOnConfirm)="deleteRow(data.id)">
+                        <a nz-popconfirm>Delete</a>
+                    </nz-popconfirm>       
+                </td>
             </tr>
         </tbody>
-        </nz-table>    
-        
+        </nz-table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div class="add" *ngIf="show" >
             <div class="msg">
                 <label>名称：</label>
