@@ -14,6 +14,8 @@ public interface UserDictionaryMapper {
 			+ " or userid in (select userid from user_home_rel where homeid in (select homeid from user_home_rel where userid = #{userid})) order by dicclass")
 	List<UserDictionary>getDictionaryList(Integer userid);
 	
+	@Select("select id,name from user_dictionary where userid is null")
+	List<UserDictionary>getPayWayList();
 	
 	@Insert("insert into USER_DICTIONARY (name,supnumber,dicclass,note,levels,serial,tagone,tagtwo,userid) "
 			+ "values (#{name},#{supnumber},#{dicclass},#{note},#{levels},#{serial},#{tagone},#{tagtwo},#{userid})")

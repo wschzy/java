@@ -7,6 +7,8 @@ public interface UserDictionaryService {
 
 	List<UserDictionary>getDictionaryList();
 	
+	List<UserDictionary>getPayWayList();
+	
 	int insertDictionary(UserDictionary dic);
 	
 	int updateDictionary(UserDictionary dic);
