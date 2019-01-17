@@ -23,12 +23,21 @@ export class CategoryComponent implements OnInit {
         this.show=true;
       }
      }
-
+    cancel(){
+      if(this.show == true){
+        this.show=false;
+      }
+    } 
     ngOnInit(){
       var that=this;
-      this.service.interface("/category/getUserDictionaryList.do",null,
+      var url = "/category/getUserDictionaryList.do";
+      if(JSON.parse(localStorage.user).isadmin == 1){
+        url = "category/getPayWayList.do";
+      }
+      this.service.interface(url,null,
         function(data){  
             that.dataSet=data;
+            window.localStorage.setItem("category",JSON.stringify(data))
         })
       }
    
@@ -37,8 +46,6 @@ export class CategoryComponent implements OnInit {
       var that=this;
       var obj = {id:i};
       this.service.interface("/category/deleteUserDictionary.do",obj,function(){
-          // const dataSet = that.dataSet.filter(d => d.id !== i);
-          // this.dataSet = dataSet;
           that.ngOnInit();
       })
     } 

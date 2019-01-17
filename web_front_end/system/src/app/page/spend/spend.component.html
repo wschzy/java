@@ -60,16 +60,15 @@
                 </div>   -->
                 <div class="msg-group">
                     <label>分类：</label>
-                    <nz-select style="width: 80px;" [(ngModel)]="selectedProvince" (ngModelChange)="provinceChange($event)">
-                        <nz-option  [nzValue]="p" [nzLabel]="p"></nz-option>
-                    </nz-select>
-                    <nz-select style="width: 80px;" [(ngModel)]="selectedCity">
-                        <nz-option  [nzValue]="c" [nzLabel]="c"></nz-option>
-                    </nz-select>
+                    <nz-select style="width: 120px;" [(ngModel)]="selectedDicclass" (ngModelChange)="provinceChange($event)">
+                        <nz-option *ngFor="let p of dicclass" [nzValue]="p" [nzLabel]="p"></nz-option>
+                      </nz-select>
+                      <nz-select style="width:120px;" [(ngModel)]="selectedName">
+                        <nz-option *ngFor="let c of obj[selectedDicclass]" [nzValue]="c" [nzLabel]="c"></nz-option>
+                      </nz-select>
                 </div>
                 <button (click)="cancel()" class="btn" style="background:rgb(230, 152, 121)">取消</button> 
                 <button (click)="submit()" class="btn" style="background:rgb(71, 214, 195)">提交</button>
-                   
             </div>
         </div>
     </div>

@@ -30,7 +30,7 @@
     outline:none;
 }
 .add{
-    width: 300px;
+    width: 340px;
     height: 460px;
     justify-content: center;
     align-items: center;
@@ -62,6 +62,7 @@
   .msg input{
       border:1px solid #eee;
       outline: none;
+      padding-left:5px;
   }
   .btn{
     width: 40%;
@@ -76,7 +77,4 @@
   }
   nz-select {
     margin-right: 8px;
-  }
-  [placeholder]{
-      padding-left:5px;
   }

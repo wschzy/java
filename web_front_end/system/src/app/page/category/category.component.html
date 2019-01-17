@@ -46,10 +46,11 @@
         <div class="add" *ngIf="show" >
             <div class="msg">
                 <label>名称：</label>
-                <input type="text" placeholder="name" [(ngModel)]="name">
+                <input type="text"  [(ngModel)]="name">
                 <label>分类：</label>
-                <input type="text" placeholder="dicclass" [(ngModel)]="dicclass">
-                <button (click)="submit()" class="submit">提交</button>
+                <input type="text" [(ngModel)]="dicclass">
+                <button (click)="cancel()" class="btn" style="background:rgb(230, 152, 121)">取消</button> 
+                <button (click)="submit()" class="btn" style="background:rgb(71, 214, 195)">提交</button>
             </div>
         </div>
     </div>
