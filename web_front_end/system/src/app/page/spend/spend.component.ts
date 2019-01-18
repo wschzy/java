@@ -14,8 +14,10 @@ export class SpendComponent implements OnInit {
     editCache = {};
     dataSet = [];
     selectedDicclass='伙食';
-    selectedName="早饭";
+    selectedName="早餐";
+    selectedId="47";
     dicclass:any=[];
+    name:any=[];
     obj:object={};
     constructor(private service:InterfaceService,private router:Router){}
     addRow(){
@@ -27,10 +29,19 @@ export class SpendComponent implements OnInit {
             if(this.obj[d.dicclass] == undefined){
                 this.obj[d.dicclass] = [];
             }
-            this.obj[d.dicclass].push(d.name);
+            var obj2={};
+            obj2[d.name]=d.id;
+            this.obj[d.dicclass].push(obj2);
+            console.log(obj2);
+
         }
-        for(var dic in this.obj){
-            this.dicclass.push(dic);
+        var v=this.selectedDicclass;
+        var a=this.obj[v];
+        for ( var name in a){
+            var o=a[name];
+            for(var n in o){
+                this.name.push(n);
+            }
         }
     }
     provinceChange(value: string): void {
