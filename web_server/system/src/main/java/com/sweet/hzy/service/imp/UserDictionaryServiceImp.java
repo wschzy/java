@@ -7,6 +7,7 @@ import com.sweet.bean.UserDictionary;
 import com.sweet.hzy.mapper.UserDictionaryMapper;
 import com.sweet.hzy.service.UserDictionaryService;
 import com.sweet.util.ServletUtil;
+import com.sweet.util.StringUtil;
 @Service
 public class UserDictionaryServiceImp implements UserDictionaryService {
 
@@ -20,7 +21,9 @@ public class UserDictionaryServiceImp implements UserDictionaryService {
 	
 	@Override
 	public int insertDictionary(UserDictionary dic) {
-		dic.setUserid(Integer.valueOf(ServletUtil.getSessionVal("id")));//设置该用户
+		if(StringUtil.isEmpty(ServletUtil.getSessionVal("isadmin"))){
+			dic.setUserid(Integer.valueOf(ServletUtil.getSessionVal("id")));//设置该用户
+		}
 		return userDictionaryMapper.insertDictionary(dic);
 	}
 	
