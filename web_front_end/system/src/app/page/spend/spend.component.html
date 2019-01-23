@@ -33,11 +33,11 @@
                         <div class="editable-cell-text-wrapper">
                             <ng-container >
                             {{data.note}}
-                            <i nz-icon type="edit" class="editable-cell-icon" (click)="startEdit(data.id)"></i>
+                            <i nz-icon type="edit" class="editable-cell-icon" ></i>
                             </ng-container>
                             <ng-container >
                             <!-- <input type="text" nz-input [(ngModel)]="editCache[data.id].note"> -->
-                            <i nz-icon type="check editable-cell-icon-check" (click)="finishEdit(data.id)"></i>
+                            <i nz-icon type="check"></i>
                             </ng-container>
                         </div>
                         </div>
@@ -60,12 +60,31 @@
                 </div>   -->
                 <div class="msg-group">
                     <label>分类：</label>
-                    <nz-select style="width: 120px;" [(ngModel)]="selectedDicclass" (ngModelChange)="provinceChange($event)">
-                        <nz-option *ngFor="let dicclass of dicclass" [nzValue]="dicclass" [nzLabel]="dicclass"></nz-option>
-                      </nz-select>
-                      <nz-select style="width:120px;" [(ngModel)]="selectedName">
-                        <nz-option *ngFor="let name of name" [nzValue]="name" [nzLabel]="name"></nz-option>
-                      </nz-select>
+                    <nz-form-item>
+                        <nz-form-control>
+                          <nz-select nzAllowClear nzShowSearch style="width:100px" [(ngModel)]="selectedDicclass" (ngModelChange)="provinceChange($event)">
+                            <nz-option *ngFor="let dicclass of dicclass" [nzLabel]="dicclass" [nzValue]="dicclass">
+                            </nz-option>
+                          </nz-select>
+                        </nz-form-control>
+                      </nz-form-item>
+         
+                       <nz-form-item>
+                        <nz-form-control nzXs="24" nzSm="12" nzMd="10" (click)="change()"> 
+                          <nz-select nzAllowClear nzShowSearch style="width:100px" >
+                            <nz-option *ngFor="let name of name" [nzLabel]="name"
+                                       [nzValue]="name"></nz-option>
+                          </nz-select>
+                        </nz-form-control>
+                      </nz-form-item>
+                      <nz-form-item>
+                        <nz-form-control nzXs="24" nzSm="12" nzMd="10" (click)="changeId()"> 
+                          <nz-select nzAllowClear nzShowSearch style="width:100px" >
+                            <nz-option *ngFor="let id of id" [nzLabel]="id"
+                                       [nzValue]="id"></nz-option>
+                          </nz-select>
+                        </nz-form-control>
+                      </nz-form-item>
                 </div>
                 <button (click)="cancel()" class="btn" style="background:rgb(230, 152, 121)">取消</button> 
                 <button (click)="submit()" class="btn" style="background:rgb(71, 214, 195)">提交</button>
