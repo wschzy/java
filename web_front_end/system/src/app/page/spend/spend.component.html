@@ -60,7 +60,7 @@
                 </div>   -->
                 <div class="msg-group">
                     <label>分类：</label>
-                    <nz-form-item>
+                    <nz-form-item class="classification">
                         <nz-form-control>
                           <nz-select nzAllowClear nzShowSearch style="width:100px" [(ngModel)]="selectedDicclass" (ngModelChange)="provinceChange($event)">
                             <nz-option *ngFor="let dicclass of dicclass" [nzLabel]="dicclass" [nzValue]="dicclass">
@@ -69,15 +69,15 @@
                         </nz-form-control>
                       </nz-form-item>
          
-                       <nz-form-item>
+                       <nz-form-item class="classification">
                         <nz-form-control nzXs="24" nzSm="12" nzMd="10" (click)="change()"> 
-                          <nz-select nzAllowClear nzShowSearch style="width:100px" >
+                          <nz-select nzAllowClear nzShowSearch style="width:100px" [(ngModel)]="selectedName">
                             <nz-option *ngFor="let name of name" [nzLabel]="name"
                                        [nzValue]="name"></nz-option>
                           </nz-select>
                         </nz-form-control>
                       </nz-form-item>
-                      <nz-form-item>
+                      <nz-form-item class="classification">
                         <nz-form-control nzXs="24" nzSm="12" nzMd="10" (click)="changeId()"> 
                           <nz-select nzAllowClear nzShowSearch style="width:100px" >
                             <nz-option *ngFor="let id of id" [nzLabel]="id"

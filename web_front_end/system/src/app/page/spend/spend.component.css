@@ -30,7 +30,7 @@
     outline:none;
 }
 .add{
-    width: 340px;
+    width: 400px;
     height: 460px;
     justify-content: center;
     align-items: center;
@@ -59,6 +59,9 @@
   .msg-group{
       margin-bottom: 15px;
   }
+  .msg-group>label{
+    line-height: 40px;
+  }
   .msg input{
       border:1px solid #eee;
       outline: none;
@@ -74,4 +77,9 @@
     height: 40px;
     color: aliceblue;
     outline: none;
+  }
+  .classification{
+      width: 100px;
+      display: inline-block;
+      margin-right: 10px;
   }
