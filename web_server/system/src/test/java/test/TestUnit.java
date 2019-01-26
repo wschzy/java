@@ -39,7 +39,7 @@ public class TestUnit {
 
     @Test
     public void test() throws FileNotFoundException {
-    	System.out.println(userPayMapper.getUserPayList(19));
+    	//System.out.println(userPayMapper.getMoneyListByWeek(19,null));
     	/*File file = ResourceUtils.getFile("classpath:static/image.png");
     	System.out.println(file.getPath());*/
         /*if(file.exists()){

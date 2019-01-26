@@ -1,5 +1,6 @@
 package com.sweet.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -39,5 +40,20 @@ public class UserPayController extends BaseController{
 	@PostMapping(value="/updateUserPay.do")
 	public int updateUserPay(@Valid UserPay pay) {
 		return userPayService.updateUserPay(pay);
+	}
+	
+	@PostMapping(value="/getMoneyListByWeek.do")
+	public List<UserPay> getMoneyListByWeek(Date time) {
+		return userPayService.getMoneyListByWeek(time);
+	}
+
+	@PostMapping(value="/getMoneyListByMonth.do")
+	public List<UserPay> getMoneyListByMonth(Date time) {
+		return userPayService.getMoneyListByMonth(time);
+	}
+
+	@PostMapping(value="/getMoneyListByYear.do")
+	public List<UserPay> getMoneyListByYear(Date time) {
+		return userPayService.getMoneyListByYear(time);
 	}
 }

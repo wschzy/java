@@ -1,5 +1,6 @@
 package com.sweet.hzy.service.imp;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -35,6 +36,21 @@ public class UserPayServiceImp implements UserPayService{
 	@Override
 	public int updateUserPay(UserPay pay) {
 		return userPayMapper.updateUserPay(pay);
+	}
+
+	@Override
+	public List<UserPay> getMoneyListByWeek(Date time) {
+		return userPayMapper.getMoneyListByWeek(Integer.valueOf(ServletUtil.getSessionVal("id")), time);
+	}
+
+	@Override
+	public List<UserPay> getMoneyListByMonth(Date time) {
+		return userPayMapper.getMoneyListByMonth(Integer.valueOf(ServletUtil.getSessionVal("id")), time);
+	}
+
+	@Override
+	public List<UserPay> getMoneyListByYear(Date time) {
+		return userPayMapper.getMoneyListByYear(Integer.valueOf(ServletUtil.getSessionVal("id")), time);
 	}
 
 }
