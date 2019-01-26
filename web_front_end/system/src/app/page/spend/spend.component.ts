@@ -54,6 +54,13 @@ export class SpendComponent implements OnInit {
     // 第三级
     changeId(){
         this.id=[];
+        var a=this.selectedDicclass;
+        var b=this.selectedName;
+        for(var i of this.obj[a]){
+            var c=i[b];
+            this.id.push(c);
+        }
+        
     }
     cancel(){
         if(this.add == true){
