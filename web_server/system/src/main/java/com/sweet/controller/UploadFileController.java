@@ -15,7 +15,6 @@ import com.sweet.hzy.service.SysUserInfoService;
 import com.sweet.hzy.service.UserHomeService;
 import com.sweet.util.FileUtil;
 import com.sweet.util.ServletUtil;
-import com.sweet.util.StringUtil;
 import com.sweet.util.SysException;
 
 @RestController
@@ -67,31 +66,19 @@ public class UploadFileController extends BaseController {
 	//获取家庭成员的头像
 	@RequestMapping(value = "/getUserListImg.do")
     public byte[]  getHomeUserImage(String picture) throws IOException {
-		if(StringUtil.isEmpty(picture)) {
-			return  FileUtil.getDefaultImg();//默认图片
-		}else {
-			return FileUtil.getFile(rootDir +  "\\" + picture);
-		}
+		return FileUtil.getAllImage(picture,rootDir);
     }
 	
 	@RequestMapping(value = "/getUserImg.do")
-    public byte[]  getImage() throws IOException {
+    public byte[]  getUserImage() throws IOException {
 		SysUserInfo user = sysUserInfoService.findUserByid(Integer.parseInt(ServletUtil.getSessionVal("id")));
-		if(StringUtil.isEmpty(user.getPicture())) {
-			return  FileUtil.getDefaultImg();//默认图片
-		}else {
-			return FileUtil.getFile( rootDir +  "\\" +user.getPicture());
-		}
+		return FileUtil.getAllImage(user.getPicture(),rootDir);
     }
 
 	@RequestMapping(value = "/getHomeImg.do")
     public byte[]  getHomeImage() throws Exception {
 		UserHome home = userHomeService.getHomeByUserid();
-		if(StringUtil.isEmpty(home.getPicture())) {
-			return  FileUtil.getDefaultImg();//默认图片
-		}else {
-			return FileUtil.getFile(rootDir +  "\\" + home.getPicture());
-		}
+		return FileUtil.getAllImage(home.getPicture(),rootDir);
     }
 	
 }

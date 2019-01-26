@@ -50,4 +50,12 @@ public class FileUtil {
 		inputStream.read(bytes, 0, inputStream.available());
 		return bytes;
 	}
+	
+	public static byte[]  getAllImage(String picture,String rootDir) throws IOException {
+		if(StringUtil.isEmpty(picture)) {
+			return  getDefaultImg();//默认图片
+		}else {
+			return getFile(rootDir +  "\\" + picture);
+		}
+    }
 }
