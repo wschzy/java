@@ -11,6 +11,9 @@ export class HeaderComponent implements OnInit {
     private list:any;
     user=JSON.parse(localStorage.user);
     constructor(private myRouter:Router,private service:InterfaceService) {
+        
+    }
+    ngOnInit() { 
         var that = this;
         this.service.interface("SysUserInfo/getMenu.do", null,  
             function(data:any){
@@ -21,7 +24,8 @@ export class HeaderComponent implements OnInit {
             }
         );
     }
-    ngOnInit() { 
+    ngAfterViewChecked(){
+        
     }
     jump(){
         this.myRouter.navigateByUrl('index');

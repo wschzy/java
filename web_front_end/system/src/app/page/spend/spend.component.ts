@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InterfaceService } from 'src/app/interface/interface.component';
 import {Router} from '@angular/router';
-import throttleByAnimationFrame from 'ng-zorro-antd/core/util/throttleByAnimationFrame';
-import { discoverDirectives } from '@angular/core/src/render3/context_discovery';
 @Component({
     selector: 'storeSpend',
     templateUrl: 'spend.component.html',

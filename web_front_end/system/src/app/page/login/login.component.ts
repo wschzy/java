@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InterfaceService } from 'src/app/interface/interface.component';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NzMessageService } from 'ng-zorro-antd';
 import {Router} from '@angular/router';
 import * as $ from 'jquery';
 
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     checked = false;
     //显示捐款
     show = false;
-    constructor(private service:InterfaceService,private router: Router) { 
+    constructor(private service:InterfaceService,private router: Router,private message: NzMessageService) { 
      
     }
     ngAfterContentInit(){
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
         var data= {loginid:username,password:password};
         var that = this;
         if(username == '' || password == '') {
-            alert("用户名或密码不能为空");
+            this.message.info("用户名或密码不能为空");
             return;
         }else if(username !=='') { 
         this.service.interface("SysUserInfo/findUser", data,  
@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
       }
      
     }
+
     mask(alpha){
         $("#body").click(function () {
             (<any>this).style.opacity=alpha/100;

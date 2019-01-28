@@ -9,22 +9,24 @@
             <nz-table
                 #editRowTable
                 nzBordered
-                [nzData]="dataSet">
+                [nzData]="dataSet"
+                [nzPageSize]="5"
+                [nzScroll]="{x:'800px'}">
                 <thead>
                     <tr>
-                        <th>消费者</th>
-                        <th>支付方式</th>
-                        <th>支付类型</th>
+                        <th nzWidth="80px" nzLeft="0px">消费者</th>
+                        <th nzWidth="100px" nzLeft="80px">支付方式</th>
+                        <th class="money">支付类型</th>
                         <th>支付时间</th>
-                        <th>金额</th>
+                        <th class="money">金额</th>
                         <th>备注</th>
-                        <th>操作</th>
+                        <th  nzWidth="80px" nzRight="0px">操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let data of editRowTable.data">
-                        <td>{{data.obj}}</td>
-                        <td>{{data.obj3}}</td>
+                        <td nzLeft="0px">{{data.obj}}</td>
+                        <td nzLeft="80px">{{data.obj3}}</td>
                         <td>{{data.obj2}}</td>
                         <td>{{data.time}}</td>
                         <td>{{data.money}}</td>
@@ -43,7 +45,7 @@
                         </div>
                     </td>
                     
-                    <td>
+                    <td nzRight="0px">
                         <nz-popconfirm [nzTitle]="'Sure to delete?'" (nzOnConfirm)="deleteRow(data.id)">
                         <a nz-popconfirm>Delete</a>
                         </nz-popconfirm>
