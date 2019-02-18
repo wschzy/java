@@ -77,7 +77,10 @@ public class UserHomeServiceImp implements UserHomeService{
 	}
 
 	@Transactional(rollbackFor=Exception.class,noRollbackFor=SysException.class)
-	public int deleteUserForHome(Integer userid) {
+	public int deleteUserForHome(Integer userid) throws SysException {
+		if(Integer.parseInt(ServletUtil.getSessionVal( "id")) == userid) {
+			throw new SysException("不能删除本人");
+		}
 		return userHomeRelMapper.deleteUserHomeRelByUserid(userid);
 	}
 

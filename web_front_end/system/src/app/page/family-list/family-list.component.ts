@@ -25,6 +25,10 @@ export class FamilyListComponent implements OnInit {
         this.service.interface("/home/getUserList.do",null,
             function(data){
                 that.list=data;
+                for(var b in that.list){
+                    that.list[b].picture = that.portrait + encodeURIComponent( data[b].picture);
+
+                }
             });  
     }
     // 增加家庭成员

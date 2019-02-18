@@ -25,7 +25,7 @@ public interface UserHomeService {
 	 */
 	int addUserForHome (String loginid)throws SysException;
 	
-	int deleteUserForHome(Integer userid);
+	int deleteUserForHome(Integer userid)throws SysException;
 	
 	int updateHomePictureById(String picture,Integer id);
 }

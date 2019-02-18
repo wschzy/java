@@ -42,7 +42,7 @@ public class UserHomeController extends BaseController{
 	}
 	
 	@PostMapping(value="/deleteUser.do")
-	public int deleteUserForHome (@NotNull(message = "参数不能为空")Integer userid) {
+	public int deleteUserForHome (@NotNull(message = "参数不能为空")Integer userid) throws SysException{
 		return userHomeService.deleteUserForHome(userid);
 	}
 }
