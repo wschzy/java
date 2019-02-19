@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.sweet.bean.UserPay;
+import com.sweet.util.SysException;
 
 public interface UserPayService {
 
@@ -11,7 +12,7 @@ public interface UserPayService {
 	
 	int insertUserPay(UserPay pay);
 	
-	int deleteUserPay(Integer id);
+	int deleteUserPay(Integer id)throws SysException;
 	
 	int updateUserPay(UserPay pay);
 	

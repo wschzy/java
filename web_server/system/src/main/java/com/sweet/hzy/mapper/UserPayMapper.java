@@ -33,6 +33,9 @@ public interface UserPayMapper {
 	@Delete("delete from user_pay where id = #{id}")
 	int deleteUserPay(Integer id);
 	
+	@Select("select time from user_pay where id = #{id}")
+	UserPay getDeletePayTime(Integer id);
+	
 	@Update("update user_pay set dicid=#{dicid},way=#{way},money=#{money},note=#{note} where id = #{id}")
 	int updateUserPay(UserPay pay);
 	

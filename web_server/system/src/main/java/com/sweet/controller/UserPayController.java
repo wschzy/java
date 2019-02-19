@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sweet.bean.UserPay;
 import com.sweet.hzy.service.UserPayService;
+import com.sweet.util.SysException;
 
 @RestController
 @RequestMapping(value="/pay")
@@ -33,7 +34,7 @@ public class UserPayController extends BaseController{
 	}
 	
 	@PostMapping(value="/deleteUserPay.do")
-	public int deleteUserPay(@NotNull(message = "参数不能为空")Integer id) {
+	public int deleteUserPay(@NotNull(message = "参数不能为空")Integer id) throws SysException{
 		return userPayService.deleteUserPay(id);
 	}
 	

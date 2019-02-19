@@ -1,5 +1,6 @@
 package com.sweet.hzy.service.imp;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import com.sweet.bean.UserPay;
 import com.sweet.hzy.mapper.UserPayMapper;
 import com.sweet.hzy.service.UserPayService;
 import com.sweet.util.ServletUtil;
+import com.sweet.util.SysException;
 @Service
 public class UserPayServiceImp implements UserPayService{
 
@@ -29,7 +31,12 @@ public class UserPayServiceImp implements UserPayService{
 	}
 
 	@Override
-	public int deleteUserPay(Integer id) {
+	public int deleteUserPay(Integer id) throws SysException {
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		UserPay pay = userPayMapper.getDeletePayTime(id);
+		String now = df.format(new Date());
+		String del = df.format(pay.getTime());
+		if(!now.equals(del)) throw new SysException("只能删除当天记录");
 		return userPayMapper.deleteUserPay(id);
 	}
 
