@@ -33,10 +33,17 @@ export class CategoryComponent implements OnInit {
       var url = "/category/getUserDictionaryList.do";
       if(JSON.parse(localStorage.user).isadmin == 1){
         url = "category/getPayWayList.do";
+      }else{
+        //如果是非管理员登录，也需要存储支付方式
+        this.service.interface("category/getPayWayList.do",null,
+          function(data){
+              window.localStorage.setItem("payway",JSON.stringify(data))
+          })
       }
       this.service.interface(url,null,
-        function(data){  
+        function(data){
             that.dataSet=data;
+            //存储支付类型
             window.localStorage.setItem("category",JSON.stringify(data))
         })
       }

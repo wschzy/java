@@ -4,14 +4,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import javax.validation.constraints.NotNull;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.multipart.MultipartFile;
 
 public class FileUtil {
 
-	public static void saveFile(@NotNull(message = "目录不能为空") String dirPath,@NotNull(message = "文件地址不能为空")String fileName,
-			@NotNull(message = "不能为空")MultipartFile image) throws Exception {
+	public static void saveFile(String dirPath,String fileName,MultipartFile image) throws Exception {
 		File dir = new File(dirPath);
 		if(!dir.exists()) {
 			dir.mkdirs();
@@ -26,7 +24,6 @@ public class FileUtil {
         if(file.exists() && file.isFile())
             file.delete();
     }
-	
 	
 	public static byte[] getFile(String path) throws IOException{
 		File file = new File(path);

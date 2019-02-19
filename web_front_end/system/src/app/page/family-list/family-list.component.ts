@@ -26,7 +26,7 @@ export class FamilyListComponent implements OnInit {
             function(data){
                 that.list=data;
                 for(var b in that.list){
-                    that.list[b].picture = that.portrait + encodeURIComponent( data[b].picture);
+                    that.list[b].picture = that.portrait + encodeURIComponent( data[b].picture == null ? '' : data[b].picture);
 
                 }
             });  
