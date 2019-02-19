@@ -13,11 +13,14 @@ export class SpendComponent implements OnInit {
     editCache = {};
     dataSet = [];
     selectedDicclass='伙食';
+    selectedPayway='支付宝';
     selectedName="早餐";
     dicclass:any=[];
+    payway:any=[];
     name:any=[];
     id:any=[];
     obj:object={};
+    demoValue = 100;
     constructor(private service:InterfaceService,private router:Router){}
     addRow(){
         if(this.add == false){
@@ -36,6 +39,12 @@ export class SpendComponent implements OnInit {
         for (var dic in this.obj){
             this.dicclass.push(dic);
         }
+        var payData=JSON.parse(localStorage.payway);
+        for(var pay of payData){
+            this.payway.push(pay.name);
+            
+        }
+        console.log(this.payway);
     }
      //  第二级
     change(){
@@ -49,17 +58,17 @@ export class SpendComponent implements OnInit {
             
     }
 
-    // 第三级
-    changeId(){
-        this.id=[];
-        var a=this.selectedDicclass;
-        var b=this.selectedName;
-        for(var i of this.obj[a]){
-            var c=i[b];
-            this.id.push(c);
-        }
+    //第三级
+    // changeId(){
+    //     this.id=[];
+    //     var a=this.selectedDicclass;
+    //     var b=this.selectedName;
+    //     for(var i of this.obj[a]){
+    //         var c=i[b];
+    //         this.id.push(c);
+    //     }
         
-    }
+    // }
     cancel(){
         if(this.add == true){
             this.add=false;
@@ -67,12 +76,15 @@ export class SpendComponent implements OnInit {
     } 
     
     ngOnInit(): void {
+        
         var that=this;
         this.service.interface("/pay/getUserPayList.do",null,
             function(data:any){
                 that.dataSet=data;
-            });
-            
+            });    
+            var that = this;
+            var msg=JSON.parse(localStorage.payway);
+            console.log(msg);
     }
     deleteRow(i: string): void {
         var that=this;
@@ -86,4 +98,8 @@ export class SpendComponent implements OnInit {
     provinceChange(value: string): void {
         this.selectedName = this.obj[ value ][ 0 ];
       }
+    // 输入金额
+    formatterDollar = value => `￥ ${value}`;
+    parserDollar = value => value.replace('￥ ', '');
+    
 }

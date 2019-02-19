@@ -90,7 +90,7 @@
     right: -10px;
 }
 @media (max-width: 480px){
-.icon-icon_logout,{
+.icon-icon_logout{
     opacity: 1;
     }
 .main-nav {

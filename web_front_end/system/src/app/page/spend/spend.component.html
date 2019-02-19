@@ -10,12 +10,20 @@
                 #editRowTable
                 nzBordered
                 [nzData]="dataSet"
-                [nzPageSize]="5"
+                [nzPageSize]="10"
                 [nzScroll]="{x:'800px'}">
                 <thead>
                     <tr>
-                        <th nzWidth="80px" nzLeft="0px">消费者</th>
-                        <th nzWidth="100px" nzLeft="80px">支付方式</th>
+                        <th nzWidth="100px" nzLeft="0px" nzCustomFilter>消费者
+                            <nz-dropdown nzTrigger="click" [nzClickHide]="false" #dropdown>
+                                <i nz-icon type="smile-o" class="ant-table-filter-icon" [class.ant-table-filter-open]="dropdown.nzVisible" nz-dropdown></i>
+                                <div class="custom-filter-dropdown">
+                                    <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue">
+                                    <button nz-button [nzType]="'primary'" (click)="search()">Search</button>
+                                </div>
+                            </nz-dropdown>
+                        </th>
+                        <th nzWidth="100px" nzLeft="100px">支付方式</th>
                         <th class="money">支付类型</th>
                         <th>支付时间</th>
                         <th class="money">金额</th>
@@ -26,7 +34,7 @@
                 <tbody>
                     <tr *ngFor="let data of editRowTable.data">
                         <td nzLeft="0px">{{data.obj}}</td>
-                        <td nzLeft="80px">{{data.obj3}}</td>
+                        <td nzLeft="100px">{{data.obj3}}</td>
                         <td>{{data.obj2}}</td>
                         <td>{{data.time}}</td>
                         <td>{{data.money}}</td>
@@ -69,29 +77,48 @@
                             </nz-option>
                           </nz-select>
                         </nz-form-control>
-                      </nz-form-item>
-         
-                       <nz-form-item class="classification">
+                    </nz-form-item>
+                    <nz-form-item class="classification">
                         <nz-form-control nzXs="24" nzSm="12" nzMd="10" (click)="change()"> 
                           <nz-select nzAllowClear nzShowSearch style="width:100px" [(ngModel)]="selectedName">
                             <nz-option *ngFor="let name of name" [nzLabel]="name"
                                        [nzValue]="name"></nz-option>
                           </nz-select>
                         </nz-form-control>
-                      </nz-form-item>
-                      <nz-form-item class="classification">
+                    </nz-form-item>
+                    <nz-input-number [(ngModel)]="demoValue" [nzMin]="0.01"  [nzStep]="1" [nzFormatter]="formatterDollar" [nzParser]="parserDollar">
+                    </nz-input-number>
+                    
+                    <label>详情：</label>
+                    <input nz-input placeholder="消费详情" nzSize="default">
+                    <br>
+                    <label>支付方式：</label>
+                    <nz-form-item class="classification" style="margin-right:190px;">
+                        <nz-form-control>
+                            <nz-select nzAllowClear nzShowSearch style="width:150px" [(ngModel)]="selectedPayway" (ngModelChange)="provinceChange($event)">
+                            <nz-option *ngFor="let payway of payway" [nzLabel]="payway" [nzValue]="payway">
+                            </nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                      
+                      <!-- <nz-form-item class="classification">
                         <nz-form-control nzXs="24" nzSm="12" nzMd="10" (click)="changeId()"> 
                           <nz-select nzAllowClear nzShowSearch style="width:100px" >
                             <nz-option *ngFor="let id of id" [nzLabel]="id"
                                        [nzValue]="id"></nz-option>
                           </nz-select>
                         </nz-form-control>
-                      </nz-form-item>
+                      </nz-form-item> -->
                 </div>
-                <button (click)="cancel()" class="btn" style="background:rgb(230, 152, 121)">取消</button> 
-                <button (click)="submit()" class="btn" style="background:rgb(71, 214, 195)">提交</button>
+                <button nz-button [nzSize]="size" nzType="danger" (click)="cancel()" style="width: 80px;
+                margin-right: 20px;">取消</button>
+                <button nz-button [nzSize]="size" nzType="primary" (click)="submit()" style="width: 80px;">提交</button>
+                
             </div>
         </div>
     </div>
     <storeFooter></storeFooter>
  </div>
+
+ 
