@@ -8,6 +8,8 @@ import { InterfaceService } from 'src/app/interface/interface.component';
 
 export class IndexComponent implements OnInit {
     optionsByWeek:any;
+    optionsByMoney:any;
+    optionsByYear:any;
     constructor(private service:InterfaceService) { }
    
     ngOnInit() {
@@ -43,9 +45,84 @@ export class IndexComponent implements OnInit {
                         }
                    },
                     data: [dt.Mon,dt.Tue,dt.Wed,dt.Thu,dt.Fri,dt.Sat,dt.Sun],
-                    type: 'line'
+                    type: 'bar'
                 }]
               };
         })
+
+        this.service.interface("pay/getMoneyListByMonth.do",null,
+            function(data){
+                var dt = [];
+                var money = [];
+                for(var i of data){
+                    dt.push(i.obj);
+                    money.push(i.money);
+                }
+                that.optionsByMoney = {
+                    legend: {
+                        data:['本月每天消费情况']
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: dt
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: [{
+                        name:'本月每天消费情况',
+                        label: {
+                            normal: {
+                                show: true,
+                                textStyle: {
+                                color: 'black'
+                                }
+                            }
+                    },
+                        data: money,
+                        type: 'line'
+                    }]
+                };
+            }
+        )
+
+        this.service.interface("pay/getMoneyListByYear.do",null,
+            function(data){
+                var dt = [];
+                var money = [];
+                for(var i of data){
+                    dt.push(i.obj);
+                    money.push(i.money);
+                }
+                that.optionsByYear = {
+                    legend: {
+                        data:['本年每月消费情况']
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: dt
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: [{
+                        name:'本年每月消费情况',
+                        label: {
+                            normal: {
+                                show: true,
+                                textStyle: {
+                                color: 'black'
+                                }
+                            }
+                    },
+                        data: money,
+                        type: 'line'
+                    }]
+                };
+            }
+        )
+
+
     }
+
 }

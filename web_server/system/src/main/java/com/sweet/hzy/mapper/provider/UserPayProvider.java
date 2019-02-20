@@ -25,14 +25,14 @@ public class UserPayProvider {
 	
 	public String getMoneyListByMonth(Integer userid,Date time) {
 		String timeWhere = getTime(time);
-		return "SELECT money,date_format(TIME,'%Y-%m-%d')time FROM user_pay WHERE (userid = "+userid+" or  userid in" + 
-		"(select userid from user_home_rel where homeid in (select homeid from user_home_rel where userid = "+userid+"))" + 
-		"and date_format(time, '%Y-%m')  = date_format("+timeWhere+", '%Y-%m') order by time";
+		return "SELECT sum(money) money,date_format(TIME,'%d')obj FROM user_pay WHERE (userid = "+userid+" or  userid in" + 
+		"(select userid from user_home_rel where homeid in (select homeid from user_home_rel where userid = "+userid+")))" + 
+		"and date_format(time, '%Y-%m')  = date_format("+timeWhere+", '%Y-%m') group by date_format(TIME,'%Y-%m-%d') order by time";
 	}
 	
 	public String getMoneyListByYear(Integer userid,Date time) {
 		String timeWhere = getTime(time);
-		return "SELECT sum(MONEY)money,date_format(TIME,'%m')time FROM user_pay WHERE (userid = "+userid+" or userid in "
+		return "SELECT sum(MONEY)money,date_format(TIME,'%m')obj FROM user_pay WHERE (userid = "+userid+" or userid in "
 		+ "(select userid from user_home_rel where homeid in (select homeid from user_home_rel where userid = "+userid+"))) "
 		+ "and date_format(time, '%Y')  = date_format("+timeWhere+", '%Y') group by date_format(TIME,'%Y-%m')";
 	}
