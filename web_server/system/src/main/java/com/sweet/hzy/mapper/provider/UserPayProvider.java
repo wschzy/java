@@ -30,6 +30,13 @@ public class UserPayProvider {
 		"and date_format(time, '%Y-%m')  = date_format("+timeWhere+", '%Y-%m') group by date_format(TIME,'%Y-%m-%d') order by time";
 	}
 	
+	public String getMoneyListByMonthWeek(Integer userid,Date time) {
+		String timeWhere = getTime(time);
+		return "SELECT sum(money) money,date_format(TIME,'%Y-%u')obj FROM user_pay WHERE (userid = "+userid+" or  userid in" + 
+		"(select userid from user_home_rel where homeid in (select homeid from user_home_rel where userid = "+userid+")))" + 
+		"and date_format(time, '%Y-%m')  = date_format("+timeWhere+", '%Y-%m') group by date_format(TIME,'%Y-%u') order by time";
+	}
+	
 	public String getMoneyListByYear(Integer userid,Date time) {
 		String timeWhere = getTime(time);
 		return "SELECT sum(MONEY)money,date_format(TIME,'%m')obj FROM user_pay WHERE (userid = "+userid+" or userid in "

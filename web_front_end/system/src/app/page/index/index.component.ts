@@ -8,7 +8,8 @@ import { InterfaceService } from 'src/app/interface/interface.component';
 
 export class IndexComponent implements OnInit {
     optionsByWeek:any;
-    optionsByMoney:any;
+    optionsByMonth:any;
+    optionsByMonthWeek:any;
     optionsByYear:any;
     constructor(private service:InterfaceService) { }
    
@@ -58,7 +59,7 @@ export class IndexComponent implements OnInit {
                     dt.push(i.obj);
                     money.push(i.money);
                 }
-                that.optionsByMoney = {
+                that.optionsByMonth = {
                     legend: {
                         data:['本月每天消费情况']
                     },
@@ -71,6 +72,44 @@ export class IndexComponent implements OnInit {
                     },
                     series: [{
                         name:'本月每天消费情况',
+                        label: {
+                            normal: {
+                                show: true,
+                                textStyle: {
+                                color: 'black'
+                                }
+                            }
+                    },
+                        data: money,
+                        type: 'line'
+                    }]
+                };
+            }
+        )
+
+        this.service.interface("pay/getMoneyListByMonthWeek.do",null,
+            function(data){
+                var dt = [];
+                var money = [];
+                var j = 1;
+                for(var i of data){
+                    dt.push(j);
+                    money.push(i.money);
+                    j ++;
+                }
+                that.optionsByMonthWeek = {
+                    legend: {
+                        data:['本月每周消费情况']
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: dt
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: [{
+                        name:'本月每周消费情况',
                         label: {
                             normal: {
                                 show: true,

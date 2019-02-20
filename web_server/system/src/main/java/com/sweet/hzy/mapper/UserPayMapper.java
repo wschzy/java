@@ -52,6 +52,12 @@ public interface UserPayMapper {
 	List<UserPay> getMoneyListByMonth(Integer userid,Date time);
 	
 	/**
+	 * 查询本月每周消费
+	 */
+	@SelectProvider(type = UserPayProvider.class, method = "getMoneyListByMonthWeek")
+	List<UserPay> getMoneyListByMonthWeek(Integer userid,Date time);
+	
+	/**
 	 * 查询本年每月消费
 	 */
 	@SelectProvider(type = UserPayProvider.class, method = "getMoneyListByYear")

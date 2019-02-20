@@ -60,4 +60,9 @@ public class UserPayServiceImp implements UserPayService{
 		return userPayMapper.getMoneyListByYear(Integer.valueOf(ServletUtil.getSessionVal("id")), time);
 	}
 
+	@Override
+	public List<UserPay> getMoneyListByMonthWeek(Date time) {
+		return userPayMapper.getMoneyListByMonthWeek(Integer.valueOf(ServletUtil.getSessionVal("id")), time);
+	}
+
 }

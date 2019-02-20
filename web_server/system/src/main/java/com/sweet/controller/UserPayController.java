@@ -52,6 +52,11 @@ public class UserPayController extends BaseController{
 	public List<UserPay> getMoneyListByMonth(Date time) {
 		return userPayService.getMoneyListByMonth(time);
 	}
+	
+	@PostMapping(value="/getMoneyListByMonthWeek.do")
+	public List<UserPay> getMoneyListByMonthWeek(Date time) {
+		return userPayService.getMoneyListByMonthWeek(time);
+	}
 
 	@PostMapping(value="/getMoneyListByYear.do")
 	public List<UserPay> getMoneyListByYear(Date time) {

@@ -20,5 +20,7 @@ public interface UserPayService {
 	
 	List<UserPay> getMoneyListByMonth(Date time);
 	
+	List<UserPay> getMoneyListByMonthWeek(Date time);
+	
 	List<UserPay> getMoneyListByYear(Date time);
 }
