@@ -24,10 +24,3 @@
     height: 400px;
     text-align: center;
 }
-@media (max-width: 480px){
-    .row div{
-        height: 200px;
-        width: 160px;
-        padding-left: 15%
-    }
-}
