@@ -8,6 +8,7 @@ import com.sweet.hzy.mapper.UserDictionaryMapper;
 import com.sweet.hzy.service.UserDictionaryService;
 import com.sweet.util.ServletUtil;
 import com.sweet.util.StringUtil;
+import com.sweet.util.SysException;
 @Service
 public class UserDictionaryServiceImp implements UserDictionaryService {
 
@@ -33,7 +34,11 @@ public class UserDictionaryServiceImp implements UserDictionaryService {
 	}
 	
 	@Override
-	public int deleteDictionaryById(Integer id) {
+	public int deleteDictionaryById(Integer id) throws SysException {
+		int param = userDictionaryMapper.inPayByid(id);
+		if(0 != param) {
+			throw new SysException("已经存在支付中，不能删除");
+		}
 		return userDictionaryMapper.deleteDictionaryById(id);
 	}
 

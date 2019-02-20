@@ -27,4 +27,10 @@ public interface UserDictionaryMapper {
 	
 	@Delete("delete from user_dictionary where id = #{id}")
 	int deleteDictionaryById(Integer id);
+	
+	/**
+	 * 判断用户类别是否存在支付中
+	 */
+	@Select("select count(*) from user_pay where dicid = #{id} or way = #{id}")
+	int inPayByid(Integer id);
 }

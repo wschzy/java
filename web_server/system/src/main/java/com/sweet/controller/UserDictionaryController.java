@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sweet.bean.UserDictionary;
 import com.sweet.hzy.service.UserDictionaryService;
+import com.sweet.util.SysException;
 
 @RestController
 @RequestMapping(value="/category")
@@ -35,7 +36,7 @@ public class UserDictionaryController extends BaseController{
 	}
 	
 	@PostMapping(value="/deleteUserDictionary.do")
-	public int deleteDictionaryById(@NotNull(message = "参数不能为空") Integer id) {
+	public int deleteDictionaryById(@NotNull(message = "参数不能为空") Integer id) throws SysException {
 		return userDictionaryService.deleteDictionaryById(id);
 	}
 	
