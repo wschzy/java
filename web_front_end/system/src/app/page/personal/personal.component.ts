@@ -3,6 +3,7 @@ import { InterfaceService } from 'src/app/interface/interface.component';
 import {Router} from '@angular/router';
 import { APPCONFIG } from '../../config';
 import { UploadFile } from 'ng-zorro-antd';
+import { NzMessageService } from 'ng-zorro-antd';
 @Component({
     selector: 'storePersonal',
     templateUrl: 'personal.component.html',
@@ -25,7 +26,7 @@ export class PersonalComponent implements OnInit {
     name:any="";
     note:any="";
 
-    constructor(private service:InterfaceService,private router:Router) {
+    constructor(private service:InterfaceService,private router:Router,private message: NzMessageService) {
         
     }
     ngOnInit() { 
@@ -130,7 +131,7 @@ fileListFam = [
             ];
         }
     }, (err) => {
-        alert("上传失败");
+        that.message.info("上传失败");
     });
   }
 
