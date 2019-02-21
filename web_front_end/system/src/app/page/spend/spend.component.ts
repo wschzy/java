@@ -17,9 +17,10 @@ export class SpendComponent implements OnInit {
     selectedName="早餐";
     dicclass:any=[];
     payway:any=[];
-    name:any=[];
+    dicValue:any=[];
     id:any=[];
     obj:object={};
+    xq:any;
     demoValue = 100;
     constructor(private service:InterfaceService,private router:Router){}
     addRow(){
@@ -27,35 +28,27 @@ export class SpendComponent implements OnInit {
           this.add=true;
         }
         var data= JSON.parse(localStorage.category);
+        this.obj = {};
         for (var d of data){
             if(this.obj[d.dicclass] == undefined){
                 this.obj[d.dicclass] = [];
             }
             var obj2 = {};
-            obj2[d.name]=d.id;
+            obj2['name'] = d.name;
+            obj2['id'] = d.id;
             this.obj[d.dicclass].push(obj2);  
         }
         // 第一级 是数组
+        this.dicclass = [];
         for (var dic in this.obj){
             this.dicclass.push(dic);
         }
-        var payData=JSON.parse(localStorage.payway);
-        for(var pay of payData){
-            this.payway.push(pay.name);
-            
-        }
-        console.log(this.payway);
+        this.payway = JSON.parse(localStorage.payway);
     }
      //  第二级
     change(){
-        this.name = [];
         var a=this.selectedDicclass;
-        for(var o of this.obj[a]){
-            for(var n in o ){
-                this.name.push(n);
-            }
-        }
-            
+        this.dicValue = this.obj[a]
     }
 
     //第三级
@@ -101,5 +94,12 @@ export class SpendComponent implements OnInit {
     // 输入金额
     formatterDollar = value => `￥ ${value}`;
     parserDollar = value => value.replace('￥ ', '');
-    
+    submit(){
+        var that = this;
+        var param = {dicid:this.selectedName,way:this.selectedPayway,money:this.demoValue,note:this.xq};
+        this.service.interface("/pay//addUserPay.do",param,function(data){
+            that.add=false;
+            that.ngOnInit();
+        });
+    }
 }

@@ -81,8 +81,8 @@
                     <nz-form-item class="classification">
                         <nz-form-control nzXs="24" nzSm="12" nzMd="10" (click)="change()"> 
                           <nz-select nzAllowClear nzShowSearch style="width:100px" [(ngModel)]="selectedName">
-                            <nz-option *ngFor="let name of name" [nzLabel]="name"
-                                       [nzValue]="name"></nz-option>
+                            <nz-option *ngFor="let v of dicValue" [nzLabel]="v.name"
+                                       [nzValue]="v.id"></nz-option>
                           </nz-select>
                         </nz-form-control>
                     </nz-form-item>
@@ -90,13 +90,13 @@
                     </nz-input-number>
                     
                     <label>详情：</label>
-                    <input nz-input placeholder="消费详情" nzSize="default">
+                    <input nz-input placeholder="消费详情" [(ngModel)]="xq" nzSize="default">
                     <br>
                     <label>支付方式：</label>
                     <nz-form-item class="classification" style="margin-right:190px;">
                         <nz-form-control>
                             <nz-select nzAllowClear nzShowSearch style="width:150px" [(ngModel)]="selectedPayway" (ngModelChange)="provinceChange($event)">
-                            <nz-option *ngFor="let payway of payway" [nzLabel]="payway" [nzValue]="payway">
+                            <nz-option *ngFor="let payway of payway" [nzLabel]="payway.name" [nzValue]="payway.id">
                             </nz-option>
                             </nz-select>
                         </nz-form-control>
