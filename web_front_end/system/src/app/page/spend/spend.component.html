@@ -14,7 +14,12 @@
                 [nzScroll]="{x:'800px'}">
                 <thead>
                     <tr>
-                        <th nzWidth="100px" nzLeft="0px" nzCustomFilter>消费者
+                        <th nzWidth="100px" nzLeft="0px" class="money">支付类型</th>
+                        <th nzWidth="100px" nzLeft="100px"class="money">金额</th>
+                        <th >支付方式</th>
+                        <th>支付时间</th>
+                        <th>备注</th>
+                        <th nzCustomFilter>消费者
                             <nz-dropdown nzTrigger="click" [nzClickHide]="false" #dropdown>
                                 <i nz-icon type="smile-o" class="ant-table-filter-icon" [class.ant-table-filter-open]="dropdown.nzVisible" nz-dropdown></i>
                                 <div class="custom-filter-dropdown">
@@ -23,21 +28,20 @@
                                 </div>
                             </nz-dropdown>
                         </th>
-                        <th nzWidth="100px" nzLeft="100px">支付方式</th>
-                        <th class="money">支付类型</th>
-                        <th>支付时间</th>
-                        <th class="money">金额</th>
-                        <th>备注</th>
                         <th  nzWidth="80px" nzRight="0px">操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let data of editRowTable.data">
-                        <td nzLeft="0px">{{data.obj}}</td>
-                        <td nzLeft="100px">{{data.obj3}}</td>
-                        <td>{{data.obj2}}</td>
+                        
+                        
+                        <!--    支付类型 -->
+                        <td nzLeft="0px">{{data.obj2}}</td>
+                        <td nzLeft="100px">{{data.money}}</td>
+                        <!-- 支付方式 -->
+                        <td>{{data.obj3}}</td>
                         <td>{{data.time}}</td>
-                        <td>{{data.money}}</td>
+                        
                         <td>
                         <div class="editable-cell">
                         <div class="editable-cell-text-wrapper">
@@ -52,7 +56,7 @@
                         </div>
                         </div>
                     </td>
-                    
+                    <td >{{data.obj}}</td>
                     <td nzRight="0px">
                         <nz-popconfirm [nzTitle]="'Sure to delete?'" (nzOnConfirm)="deleteRow(data.id)">
                         <a nz-popconfirm>Delete</a>
