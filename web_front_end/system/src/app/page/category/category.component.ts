@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InterfaceService } from 'src/app/interface/interface.component';
 import {Router} from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd';
 @Component({
     selector: 'storeCategory',
     templateUrl: 'category.component.html',
@@ -14,7 +15,7 @@ export class CategoryComponent implements OnInit {
     show:any=false;
     dataSet= [];
     indeterminate = false;
-    constructor(private service:InterfaceService,private router:Router) { }
+    constructor(private service:InterfaceService,private router:Router,private message: NzMessageService) { }
 
 
     // 弹出添加页面
@@ -62,7 +63,7 @@ export class CategoryComponent implements OnInit {
        var dicclass=this.dicclass;
        var data={name:name,dicclass:dicclass};
        if(name=="" || dicclass==""){
-         alert("请填写正确信息");
+        this.message.info("请填写正确信息");
          return;
        }else{
          var that=this;
