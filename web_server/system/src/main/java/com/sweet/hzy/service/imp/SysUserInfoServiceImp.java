@@ -35,7 +35,7 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 	private UserMenuMapper userMenuMapper;
 	
 	@Transactional(rollbackFor=Exception.class,noRollbackFor=SysException.class)
-	public int addUser(String loginid, String password, String phone, Integer sex,String fullname,String email,String picture)throws Exception{
+	public int addUser(String loginid, String password, String phone, Integer sex,String fullname,String email,String picture)throws SysException{
 		if(sysUserInfoMapper.findUserByLoginidAndPassword(loginid, MD5.getMD5(password.getBytes())) ==null) {
 			return sysUserInfoMapper.addUser(loginid, MD5.getMD5(password.getBytes()), phone, sex, picture, picture, picture);
 		}else {
@@ -53,7 +53,7 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 	}
 
 	@Transactional(rollbackFor=Exception.class,noRollbackFor=SysException.class)
-	public SysUserInfo findUserByLoginidAndPassword(String loginid, String password,HttpSession session) throws Exception {
+	public SysUserInfo findUserByLoginidAndPassword(String loginid, String password,HttpSession session) throws SysException {
 		//查询改用户是否被禁用
 		TbForbid disRecord = tbForbidMapper.findDisableUserForLoginid(loginid);
 		if(disRecord != null) {

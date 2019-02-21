@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.pagehelper.PageInfo;
 import com.sweet.bean.SysUserInfo;
 import com.sweet.hzy.service.SysUserInfoService;
+import com.sweet.util.SysException;
 
 
 @RestController
@@ -26,13 +27,13 @@ public class SysUserInfoController extends BaseController {
 	private String port;
 	//添加用户
 	@PostMapping(value="/addUser")
-	public int addUser(String loginid,String password,String phone,Integer sex,String fullname,String email,String picture)throws Exception{
+	public int addUser(String loginid,String password,String phone,Integer sex,String fullname,String email,String picture)throws SysException{
 		return sysUserInfoService.addUser(loginid, password, phone, sex, picture, picture, picture);
 	}
 	
 	//登录
 	@PostMapping(value="/findUser")
-	public SysUserInfo findUserByLoginidAndPassword(@Valid SysUserInfo user,HttpSession session) throws Exception{
+	public SysUserInfo findUserByLoginidAndPassword(@Valid SysUserInfo user,HttpSession session) throws SysException{
 		return sysUserInfoService.findUserByLoginidAndPassword(user.getLoginid(), user.getPassword(),session);
 	}
 	
@@ -45,7 +46,7 @@ public class SysUserInfoController extends BaseController {
 	
 	//获取用户的菜单权限
 	@PostMapping(value="/getMenu.do")
-	public List<?> getMenu() throws Exception{
+	public List<?> getMenu(){
 		return sysUserInfoService.getMenu();
 	}
 	
