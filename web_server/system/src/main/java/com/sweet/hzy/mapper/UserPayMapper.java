@@ -62,4 +62,10 @@ public interface UserPayMapper {
 	 */
 	@SelectProvider(type = UserPayProvider.class, method = "getMoneyListByYear")
 	List<UserPay> getMoneyListByYear(Integer userid,Date time);
+	
+	/**
+	 * 查询本年各类消费
+	 */
+	@SelectProvider(type = UserPayProvider.class, method = "getMoneyListByDic")
+	List<UserPay> getMoneyListByDic(Integer userid,Date time);
 }

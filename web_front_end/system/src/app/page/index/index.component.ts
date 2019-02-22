@@ -11,6 +11,7 @@ export class IndexComponent implements OnInit {
     optionsByMonth:any;
     optionsByMonthWeek:any;
     optionsByYear:any;
+    optionsByDic:any;
     constructor(private service:InterfaceService) { }
    
     ngOnInit() {
@@ -160,6 +161,44 @@ export class IndexComponent implements OnInit {
                 };
             }
         )
+
+
+        this.service.interface("pay/getMoneyListByDic.do",null,
+            function(data){
+                var dt = [];
+                var money = [];
+                for(var i of data){
+                    dt.push(i.obj);
+                    money.push(i.money);
+                }
+                that.optionsByDic = {
+                    legend: {
+                        data:['本年各类消费情况']
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: dt
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: [{
+                        name:'本年各类消费情况',
+                        label: {
+                            normal: {
+                                show: true,
+                                textStyle: {
+                                color: 'black'
+                                }
+                            }
+                    },
+                        data: money,
+                        type: 'line'
+                    }]
+                };
+            }
+        )
+
 
 
     }

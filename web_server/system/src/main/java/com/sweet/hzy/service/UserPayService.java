@@ -23,4 +23,6 @@ public interface UserPayService {
 	List<UserPay> getMoneyListByMonthWeek(Date time);
 	
 	List<UserPay> getMoneyListByYear(Date time);
+	
+	List<UserPay> getMoneyListByDic(Date time);
 }
