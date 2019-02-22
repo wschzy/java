@@ -18,9 +18,7 @@ public abstract class BaseController {
 	public ResponseResult<Void> handlerException(Exception e,HttpServletRequest request) {
 		ResponseResult<Void> rr = new ResponseResult<Void>();
 		e.printStackTrace();
-		if(e instanceof RuntimeException) {
-			rr.setMessage("发生了意想不到的错误");
-		}else if(e instanceof BindException) {//校验框架
+		if(e instanceof BindException) {//校验框架
 			BindingResult bindingResult = ((BindException) e).getBindingResult();
 	        StringBuffer errorMesssage = new StringBuffer();
 	        for (FieldError fieldError : bindingResult.getFieldErrors()) {
