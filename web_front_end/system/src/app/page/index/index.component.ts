@@ -55,22 +55,22 @@ export class IndexComponent implements OnInit {
         this.service.interface("pay/getMoneyListByMonth.do",null,
             function(data){
                 var dt = [];
-                var money = [];
                 for(var i of data){
-                    dt.push(i.obj);
-                    money.push(i.money);
+                    var obj = {};
+                    obj['name']=i.obj;
+                    obj['value']=i.money;
+                    dt.push(obj);
                 }
                 that.optionsByMonth = {
                     legend: {
                         data:['本月每天消费情况']
                     },
-                    xAxis: {
-                        type: 'category',
-                        data: dt
+                    tooltip : {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b}号 : 消费{c}元 ({d}%)"
                     },
-                    yAxis: {
-                        type: 'value'
-                    },
+                    data:[
+                    ],
                     series: [{
                         name:'本月每天消费情况',
                         label: {
@@ -78,11 +78,16 @@ export class IndexComponent implements OnInit {
                                 show: true,
                                 textStyle: {
                                 color: 'black'
-                                }
+                                },
+                                position: 'outer',// 可选值：'outer' ¦ 'inner'
+                                // formatter: '{a} {b} : {c}个 ({d}%)'   设置标签显示内容 ，默认显示{b}
+                                // {a}指series.name  {b}指series.data的name
+                                // {c}指series.data的value  {d}%指这一部分占总数的百分比
+                                formatter: '{c}'
                             }
-                    },
-                        data: money,
-                        type: 'line'
+                        },
+                        data: dt,
+                        type: 'pie',
                     }]
                 };
             }
