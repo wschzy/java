@@ -69,11 +69,16 @@ public class UserHomeServiceImp implements UserHomeService{
 	@Transactional(rollbackFor=Exception.class,noRollbackFor=SysException.class)
 	public int addUserForHome (String loginid) throws SysException {
 		SysUserInfo user = sysUserInfoMapper.findUserByLoginid(loginid);
-		//删除该用户拥有的家庭
-		if(user == null)
-			throw new SysException("不存在改用户");
+		if(user == null) throw new SysException("不存在此用户");
+		//获取此家庭id
+		int homeid = getHomeByUserid().getId();
+		int i = userHomeRelMapper.isUserByUserHomeRel(homeid, user.getId());
+		if(i != 0) {
+			throw new SysException("存在此用户");
+		}
+		//删除家庭中此人
 		userHomeRelMapper.deleteUserHomeRelByUserid(user.getId());
-		return userHomeRelMapper.insertUserHomeRel(getHomeByUserid().getId(), user.getId());
+		return userHomeRelMapper.insertUserHomeRel(homeid, user.getId());
 	}
 
 	@Transactional(rollbackFor=Exception.class,noRollbackFor=SysException.class)
