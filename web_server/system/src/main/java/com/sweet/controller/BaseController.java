@@ -6,7 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.sweet.bean.ResponseResult;
+import com.sweet.bean.SysResponse;
 import com.sweet.util.SysException;
 
 public abstract class BaseController {
@@ -15,8 +15,8 @@ public abstract class BaseController {
 	 * 全局捕获异常
 	 */
 	@ExceptionHandler
-	public ResponseResult<Void> handlerException(Exception e,HttpServletRequest request) {
-		ResponseResult<Void> rr = new ResponseResult<Void>();
+	public SysResponse<Void> handlerException(Exception e,HttpServletRequest request) {
+		SysResponse<Void> rr = new SysResponse<Void>();
 		e.printStackTrace();
 		if(e instanceof BindException) {//校验框架
 			BindingResult bindingResult = ((BindException) e).getBindingResult();
@@ -30,7 +30,7 @@ public abstract class BaseController {
 		}else {
 			rr.setMessage("发生了意想不到的错误");
 		}
-		rr.setState(ResponseResult.STATE_ERROR);
+		rr.setState(SysResponse.STATE_ERROR);
 		return rr;
 	}
 }
