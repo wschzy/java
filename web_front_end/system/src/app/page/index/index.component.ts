@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InterfaceService } from 'src/app/interface/interface.component';
+import { en_US, zh_CN, NzI18nService } from 'ng-zorro-antd';
 @Component({
     selector: 'storeIndex',
     templateUrl: 'index.component.html',
@@ -12,12 +13,16 @@ export class IndexComponent implements OnInit {
     optionsByMonthWeek:any;
     optionsByYear:any;
     optionsByDic:any;
-    constructor(private service:InterfaceService) { }
+    date = null; // new Date();
+    // dateRange = []; // [ new Date(), addDays(new Date(), 3) ];
+    // isEnglish = false;
+    constructor(private service:InterfaceService,
+                private i18n: NzI18nService) { }
    
     ngOnInit() {
         //查询本周每天消费
         var that = this;
-        this.service.interface("pay/getMoneyListByWeek.do",null,
+        this.service.interface("pay/getMoneyListByWeek.do",this.date,
           function(data){
               var dt = {'Mon':0,'Tue':0,'Wed':0,'Thu':0,'Fri':0,'Sat':0,'Sun':0};
               for(var i of data){
@@ -52,7 +57,7 @@ export class IndexComponent implements OnInit {
               };
         })
 
-        this.service.interface("pay/getMoneyListByMonth.do",null,
+        this.service.interface("pay/getMoneyListByMonth.do",this.date,
             function(data){
                 var dt = [];
                 for(var i of data){
@@ -93,7 +98,7 @@ export class IndexComponent implements OnInit {
             }
         )
 
-        this.service.interface("pay/getMoneyListByMonthWeek.do",null,
+        this.service.interface("pay/getMoneyListByMonthWeek.do",this.date,
             function(data){
                 var dt = [];
                 var money = [];
@@ -131,7 +136,7 @@ export class IndexComponent implements OnInit {
             }
         )
 
-        this.service.interface("pay/getMoneyListByYear.do",null,
+        this.service.interface("pay/getMoneyListByYear.do",this.date,
             function(data){
                 var dt = [];
                 var money = [];
@@ -168,7 +173,7 @@ export class IndexComponent implements OnInit {
         )
 
 
-        this.service.interface("pay/getMoneyListByDic.do",null,
+        this.service.interface("pay/getMoneyListByDic.do",this.date,
             function(data){
                 var dt = [];
                 var money = [];
@@ -207,5 +212,14 @@ export class IndexComponent implements OnInit {
 
 
     }
+    onChange(date): void {
+        if(date==null){
+            date=null;
+        }else{
+            date={time:date};
+            console.log(date);
+        }
+    }
+    
 
 }

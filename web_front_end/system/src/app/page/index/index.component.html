@@ -1,6 +1,7 @@
 
 <div class="main">
    <storeHeader></storeHeader>
+   <nz-date-picker style="z-index:10000;position:relative;top:7%;right:45%;width:130px;" [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-date-picker>
    <div class="content">
        <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-4" echarts [options]="optionsByWeek" ></div>
