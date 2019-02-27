@@ -11,7 +11,7 @@ public class UserPayProvider {
 			timeWhere = "now()";
 		}else {
 			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd"); 
-			timeWhere = sdf.format(time);
+			timeWhere = "'"+sdf.format(time)+"'";
 		}
 		return timeWhere;
 	}
