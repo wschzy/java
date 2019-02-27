@@ -1,9 +1,9 @@
 
 <div class="main">
    <storeHeader></storeHeader>
-   <nz-date-picker style="z-index:10000;position:relative;top:7%;right:45%;width:130px;" [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-date-picker>
+   <nz-date-picker id="picker"  [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-date-picker>
    <div class="content">
-       <div class="row">
+       <div class="row" style="padding-bottom: 20px;">
             <div class="col-xs-12 col-sm-6 col-md-4" echarts [options]="optionsByWeek" ></div>
             <div class="col-xs-12 col-sm-6 col-md-4" echarts [options]="optionsByMonth" ></div>
             <div class="col-xs-12 col-sm-6 col-md-4" echarts [options]="optionsByYear" ></div>
