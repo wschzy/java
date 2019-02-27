@@ -16,8 +16,7 @@ export class IndexComponent implements OnInit {
     date = null; // new Date();
     // dateRange = []; // [ new Date(), addDays(new Date(), 3) ];
     // isEnglish = false;
-    constructor(private service:InterfaceService,
-                private i18n: NzI18nService) { }
+    constructor(private service:InterfaceService) { }
    
     ngOnInit() {
         //查询本周每天消费
@@ -213,12 +212,11 @@ export class IndexComponent implements OnInit {
 
     }
     onChange(date): void {
-        if(date==null){
-            date=null;
-        }else{
-            date={time:date};
-            console.log(date);
+        console.log(date+"哈哈");
+        if(date!=null){
+            this.date={time:date};
         }
+        this.ngOnInit();
     }
     
 
