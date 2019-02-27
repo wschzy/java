@@ -3,6 +3,7 @@ package com.sweet.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.pagehelper.PageInfo;
 import com.sweet.bean.SysUserInfo;
 import com.sweet.hzy.service.SysUserInfoService;
-import com.sweet.util.ServletUtil;
 import com.sweet.util.SysException;
 
 
@@ -33,8 +33,8 @@ public class SysUserInfoController extends BaseController {
 	
 	//登录
 	@PostMapping(value="/findUser")
-	public SysUserInfo findUserByLoginidAndPassword(@Valid SysUserInfo user) throws SysException{
-		return sysUserInfoService.findUserByLoginidAndPassword(user.getLoginid(), user.getPassword(),ServletUtil.getSession());
+	public SysUserInfo findUserByLoginidAndPassword(@Valid SysUserInfo user,HttpSession session) throws SysException{
+		return sysUserInfoService.findUserByLoginidAndPassword(user.getLoginid(), user.getPassword(),session);
 	}
 	
 	//查询用户列表
@@ -52,8 +52,8 @@ public class SysUserInfoController extends BaseController {
 	
 	//注销用户
 	@RequestMapping("/logout.do")
-	public void logout() {
-		ServletUtil.getSession().invalidate();
+	public void logout(HttpSession session) {
+		session.invalidate();
 	}
 }
 
