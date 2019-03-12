@@ -3,7 +3,10 @@
     <storeHeader></storeHeader>
     <div class="content">
         <div class="operation">
-            <button (click)="addRow()">添加</button>
+            <!-- <button (click)="addRow()">添加</button> -->
+           <button nz-button nzType="primary" (click)="addRow()">
+                <span>添加</span>
+           </button>
         </div>
         <div class="tab">
             <nz-table

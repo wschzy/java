@@ -13,7 +13,14 @@
                 </li>
             </ul>
         </nav>
+        <div>
         <i class="iconfont icon-icon_logout logout" (click)="logout()"></i>
         <span class="user">{{user.fullname}}</span>
+        <a id="task">
+            <nz-badge [nzCount]="999">
+                <a class="iconfont icon-renwu-daibanrenwu" style="color:#8a8a8a; font-size:30px"></a>
+            </nz-badge>
+        </a>
+        </div>
     </div>
 </div>
