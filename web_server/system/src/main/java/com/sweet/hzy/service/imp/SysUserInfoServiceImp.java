@@ -4,9 +4,13 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
+/*
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;*/
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+//import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sweet.bean.SysUserInfo;
@@ -33,6 +37,12 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 	private SysMenuMapper sysMenuMapper;
 	@Resource
 	private UserMenuMapper userMenuMapper;
+	/*
+	@Resource
+    RedisTemplate redisTemplate;
+
+	@Resource
+    StringRedisTemplate stringRedisTemplate;*/
 	
 	@Transactional(rollbackFor=Exception.class,noRollbackFor=SysException.class)
 	public int addUser(String loginid, String password, String phone, Integer sex,String fullname,String email,String picture)throws SysException{
@@ -43,13 +53,13 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 		}
 	}
 	
-	public PageInfo<SysUserInfo> findUserList(Integer page,Integer pageSize) {
+	public List<SysUserInfo> findUserList(Integer page,Integer pageSize) {
 		page = page == null ? 1 : page;
-		pageSize = pageSize == null ? 15 : pageSize;
+		pageSize = pageSize == null ? 8 : pageSize;
 		PageHelper.startPage(page,pageSize);
 		List<SysUserInfo> list = sysUserInfoMapper.findUserList();
 		PageInfo<SysUserInfo> pageInfoSysUserInfoList = new PageInfo<SysUserInfo>(list);
-		return pageInfoSysUserInfoList;
+		return pageInfoSysUserInfoList.getList();
 	}
 
 	@Transactional(rollbackFor=Exception.class,noRollbackFor=SysException.class)
@@ -101,7 +111,10 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 	public List<?> getMenu() {
 		String isadmin = ServletUtil.getSessionVal("isadmin");
 		if(StringUtil.isEmpty(isadmin)) {
-			return userMenuMapper.getMenuList();
+			List<?> list = userMenuMapper.getMenuList();
+			/*redisTemplate.opsForList().leftPush("USER_MENU", JSON.toJSONString(list));
+	        stringRedisTemplate.opsForValue().set("USER_MENU_2", JSON.toJSONString(list));*/
+	        return list;
 		}else {
 			return sysMenuMapper.getMenuList();
 		}

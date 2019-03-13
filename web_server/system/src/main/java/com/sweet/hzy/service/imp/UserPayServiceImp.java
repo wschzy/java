@@ -8,6 +8,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sweet.bean.UserPay;
 import com.sweet.hzy.mapper.UserPayMapper;
 import com.sweet.hzy.service.UserPayService;
@@ -20,8 +22,13 @@ public class UserPayServiceImp implements UserPayService{
 	private UserPayMapper userPayMapper;
 	
 	@Override
-	public List<UserPay> getUserPayList() {
-		return userPayMapper.getUserPayList(Integer.valueOf(ServletUtil.getSessionVal("id")));
+	public List<UserPay> getUserPayList(Integer page,Integer pageSize) {
+		page = page == null ? 1 : page;
+		pageSize = pageSize == null ? 8 : pageSize;
+		PageHelper.startPage(page,pageSize);
+		List<UserPay> list = userPayMapper.getUserPayList(Integer.valueOf(ServletUtil.getSessionVal("id")));
+		PageInfo<UserPay> pageInfo = new PageInfo<UserPay>(list);
+		return pageInfo.getList();
 	}
 
 	@Override
