@@ -23,8 +23,8 @@ public class UserPayController extends BaseController{
 	private UserPayService userPayService;
 	
 	@PostMapping(value="/getUserPayList.do")
-	public List<UserPay> getUserPayList() {
-		return userPayService.getUserPayList();
+	public List<UserPay> getUserPayList(Integer page,Integer pageSize) {
+		return userPayService.getUserPayList(page,pageSize);
 	}
 	
 	

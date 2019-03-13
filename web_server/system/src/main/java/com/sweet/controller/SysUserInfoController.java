@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.github.pagehelper.PageInfo;
 import com.sweet.bean.SysUserInfo;
 import com.sweet.hzy.service.SysUserInfoService;
 import com.sweet.util.SysException;
@@ -39,7 +38,7 @@ public class SysUserInfoController extends BaseController {
 	
 	//查询用户列表
 	@PostMapping(value="/allUser.do")
-	public PageInfo<SysUserInfo> findUserList(Integer page,Integer pageSize) {
+	public List<SysUserInfo> findUserList(Integer page,Integer pageSize) {
 		return sysUserInfoService.findUserList(page,pageSize);
 	}
 	

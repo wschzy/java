@@ -8,7 +8,7 @@ import com.sweet.util.SysException;
 
 public interface UserPayService {
 
-	List<UserPay> getUserPayList();
+	List<UserPay> getUserPayList(Integer page,Integer pageSize);
 	
 	int insertUserPay(UserPay pay);
 	
