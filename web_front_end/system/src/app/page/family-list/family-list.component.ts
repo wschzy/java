@@ -3,6 +3,7 @@ import { InterfaceService } from 'src/app/interface/interface.component';
 import {Router} from '@angular/router';
 import { APPCONFIG } from '../../config';
 import throttleByAnimationFrame from 'ng-zorro-antd/core/util/throttleByAnimationFrame';
+import { NzMessageService } from 'ng-zorro-antd';
 @Component({
     selector: 'storeFamilyList',
     templateUrl: 'family-list.component.html',
@@ -18,7 +19,7 @@ export class FamilyListComponent implements OnInit {
     // 展示家庭列表
     list = [];
     description:any="";
-    constructor(private service:InterfaceService,private router:Router,public ngZone: NgZone) { }
+    constructor(private service:InterfaceService,private router:Router,public ngZone: NgZone,private message: NzMessageService) { }
 
     ngOnInit() {
         var that = this; 
@@ -38,8 +39,8 @@ export class FamilyListComponent implements OnInit {
         var inviter={loginid:name}
         this.service.interface("/home/addUser.do",inviter,
             function(){
-               that.ngOnInit();
-               })
+                that.message.info("申请已发出");
+            })
     }
     
     // 删除用户

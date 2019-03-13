@@ -9,9 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sweet.bean.SysUserInfo;
 import com.sweet.bean.UserHome;
+import com.sweet.bean.UserSpbz;
 import com.sweet.hzy.mapper.SysUserInfoMapper;
 import com.sweet.hzy.mapper.UserHomeMapper;
 import com.sweet.hzy.mapper.UserHomeRelMapper;
+import com.sweet.hzy.mapper.UserSpbzMapper;
 import com.sweet.hzy.service.UserHomeService;
 import com.sweet.util.ServletUtil;
 import com.sweet.util.SysException;
@@ -25,6 +27,9 @@ public class UserHomeServiceImp implements UserHomeService{
 	
 	@Resource
 	private SysUserInfoMapper sysUserInfoMapper;
+	
+	@Resource
+	private UserSpbzMapper userSpbzMapper;
 	/**
 	 * 根据用户id查询home
 	 */
@@ -76,9 +81,17 @@ public class UserHomeServiceImp implements UserHomeService{
 		if(i != 0) {
 			throw new SysException("存在此用户");
 		}
-		//删除家庭中此人
-		userHomeRelMapper.deleteUserHomeRelByUserid(user.getId());
-		return userHomeRelMapper.insertUserHomeRel(homeid, user.getId());
+		//删除已有代办
+		userSpbzMapper.deleteUserSpbz("USER_HOME_REL", user.getId(),homeid);
+		UserSpbz userSpbz = new UserSpbz();
+		userSpbz.setUserid(user.getId());//代办人
+		userSpbz.setRelateid(homeid);//关联人
+		userSpbz.setXbbj(1);
+		userSpbz.setTaskname("家庭成员申请");
+		userSpbz.setTaskdesc("用户名："+loginid+"，"+"全名："+user.getFullname());
+		userSpbz.setRelatetable("USER_HOME_REL");
+		//插入审批代办
+		return userSpbzMapper.addUserSpbz(userSpbz);
 	}
 
 	@Transactional(rollbackFor=Exception.class,noRollbackFor=SysException.class)
