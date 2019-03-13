@@ -38,7 +38,14 @@ export class LoginComponent implements OnInit {
                 that.router.navigateByUrl('/index');  
                 window.localStorage.setItem("user",JSON.stringify(data));//将用户信息放入缓存中
                 //  window.location.href="http://www.baidu.com"; 
-                       
+                that.service.interface("SysUserInfo/getMenu.do", null,  
+                function(msg:any){
+                    for(var i=0;i<msg.length;i++){
+                    msg[i].url = '../'+msg[i].url;
+                    }
+                    window.localStorage.setItem("menu",JSON.stringify(msg));
+                }
+            );       
             }
         );
       }

@@ -8,18 +8,11 @@ import { InterfaceService } from 'src/app/interface/interface.component';
 
 export class FooterComponent implements OnInit {
     private list:any;
+    menu=JSON.parse(localStorage.menu);
     constructor(private service:InterfaceService) { 
-        var that=this;
-        this.service.interface("SysUserInfo/getMenu.do",null,
-            function(data:any){
-              for(var i=0;i<data.length;i++){
-                data[i].url = '../'+data[i].url;
-              }
-              that.list = data;
-            }
-            
-        )
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+      this.list=this.menu;
+     }
 }

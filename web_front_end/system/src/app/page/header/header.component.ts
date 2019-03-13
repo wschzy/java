@@ -10,19 +10,13 @@ import { InterfaceService } from 'src/app/interface/interface.component';
 export class HeaderComponent implements OnInit {
     private list:any;
     user=JSON.parse(localStorage.user);
+    menu=JSON.parse(localStorage.menu);
     constructor(private myRouter:Router,private service:InterfaceService) {
         
     }
     ngOnInit() { 
-        var that = this;
-        this.service.interface("SysUserInfo/getMenu.do", null,  
-            function(data:any){
-                for(var i=0;i<data.length;i++){
-                  data[i].url = '../'+data[i].url;
-                }
-                that.list = data;
-            }
-        );
+        
+        this.list=this.menu;
     }
     ngAfterViewChecked(){
         
