@@ -9,6 +9,7 @@ import { InterfaceService } from 'src/app/interface/interface.component';
 
 export class HeaderComponent implements OnInit {
     private list:any;
+    private counts=5;
     user=JSON.parse(localStorage.user);
     menu=JSON.parse(localStorage.menu);
     constructor(private myRouter:Router,private service:InterfaceService) {

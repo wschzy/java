@@ -8,6 +8,9 @@ import {Router} from '@angular/router';
 })
 
 export class SpendComponent implements OnInit {
+    // 页码
+    pageIndex = 1;
+    pageSize = 10;
     i = 1;
     add:any=false;
     editCache = {};
