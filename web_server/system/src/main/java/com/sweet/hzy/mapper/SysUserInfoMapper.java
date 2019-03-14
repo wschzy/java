@@ -41,7 +41,7 @@ public interface SysUserInfoMapper {
 	int updateUserPictureById(@Param("picture") String picture,@Param("id") Integer id);
 	
 	//根据用户名查询用户
-	@Select("SELECT * FROM SYS_USERINFO WHERE id = #{id} ")
+	@Select("SELECT loginid,fullname FROM SYS_USERINFO WHERE id = #{id} ")
 	SysUserInfo findUserByid(Integer id);
 }
 

@@ -88,7 +88,9 @@ public class UserHomeServiceImp implements UserHomeService{
 		userSpbz.setRelateid(homeid);//关联人
 		userSpbz.setXbbj(1);
 		userSpbz.setTaskname("家庭成员申请");
-		userSpbz.setTaskdesc("用户名："+loginid+"，"+"全名："+user.getFullname());
+		//邀请人
+		SysUserInfo newUser = sysUserInfoMapper.findUserByid(Integer.valueOf(ServletUtil.getSessionVal("id")));
+		userSpbz.setTaskdesc("用户名："+newUser.getLoginid()+"，"+"全名："+newUser.getFullname());
 		userSpbz.setRelatetable("USER_HOME_REL");
 		//插入审批代办
 		return userSpbzMapper.addUserSpbz(userSpbz);
