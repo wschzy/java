@@ -2,15 +2,10 @@
 /* You can add global styles to this file, and also import other style files */
 html,body{
 	width:100%;
-  height: auto;
-  background: rgb(236, 198, 148);
+  background:rgb(236, 198, 148);
 }
 table{
   table-layout: fixed;
-}
-.main {
-	margin: 0;
-    height: 100%;
 }
 article,
 aside,

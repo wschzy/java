@@ -1,11 +1,11 @@
 
 .content{
-    width: 95%;
     position: absolute;
-    left: 2.5%;
-    height: 88%;
-    top: 10%;
-    padding-bottom:60px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background: blanchedalmond;
 }
 #picker{
     z-index:10000;
