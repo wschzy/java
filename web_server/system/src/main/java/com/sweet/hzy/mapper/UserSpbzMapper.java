@@ -13,7 +13,7 @@ import com.sweet.bean.UserSpbz;
 
 public interface UserSpbzMapper {
 
-	@Select("select * from user_spbz where userid = #{id}")
+	@Select("select * from user_spbz where id = #{id}")
 	UserSpbz getUserSpbz(Integer id);
 	
 	@Select("select * from user_spbz where userid = #{userid} and xbbj = 1")
