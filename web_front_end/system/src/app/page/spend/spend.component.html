@@ -13,7 +13,10 @@
                 #editRowTable
                 nzBordered
                 [nzData]="dataSet"
-                [nzPageSize]="10"
+                [nzLoading]="loading"
+                [nzTotal]="total"
+                [(nzPageIndex)]="pageIndex"
+                [(nzPageSize)]="pageSize"
                 [nzScroll]="{x:'800px'}">
                 <thead>
                     <tr>

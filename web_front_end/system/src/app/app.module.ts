@@ -16,10 +16,12 @@ import { FamilyListComponent } from './page/family-list/family-list.component'
 import { FooterComponent } from './page/footer/footer.component';
 import { HeaderComponent } from './page/header/header.component';
 import { AddFamilyComponent } from './page/add-family/add-family.component';
+import { TaskComponent } from './page/task/task.component';
 import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+
 
 registerLocaleData(en);
 
@@ -34,7 +36,8 @@ registerLocaleData(en);
     PersonalComponent,
     CategoryComponent,
     AddFamilyComponent,
-    FamilyListComponent
+    FamilyListComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,

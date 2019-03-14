@@ -7,6 +7,7 @@ import { SpendComponent } from './page/spend/spend.component';
 import { CategoryComponent } from './page/category/category.component';
 import { AddFamilyComponent } from './page/add-family/add-family.component';
 import { FamilyListComponent } from './page/family-list/family-list.component';
+import { TaskComponent } from './page/task/task.component';
 const routes: Routes = [
   { path:'login',component:LoginComponent,pathMatch:'full' },
   { path:'',component:LoginComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path:'spend',component:SpendComponent},
   {path:'category',component:CategoryComponent},
   {path:'add-family',component:AddFamilyComponent},
-  {path:'family-list',component:FamilyListComponent}
+  {path:'family-list',component:FamilyListComponent},
+  {path:'task',component:TaskComponent}
 ];
 
 @NgModule({
