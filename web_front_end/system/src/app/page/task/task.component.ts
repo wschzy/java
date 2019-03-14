@@ -1,9 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
-
-const count = 5;
-const fakeDataUrl = 'https://randomuser.me/api/?results=5&inc=name,gender,email,nat&noinfo';
+import { InterfaceService } from 'src/app/interface/interface.component';
 
 @Component({
     selector: 'task',
@@ -13,35 +11,28 @@ const fakeDataUrl = 'https://randomuser.me/api/?results=5&inc=name,gender,email,
 
 export class TaskComponent implements OnInit {
     initLoading = true; // bug
-    loadingMore = false;
-    data = [];
     list = [];
+    
   
-    constructor(private http: HttpClient, private msg: NzMessageService) {}
+    constructor(private http: HttpClient, private msg: NzMessageService, private service:InterfaceService) {}
   
-    ngOnInit(): void {
-      this.getData((res: any) => {
-        this.data = res.results;
-        this.list = res.results;
-        this.initLoading = false;
-      });
+    ngOnInit(){
+      var that=this;
+      
+      this.service.interface("/userspbz/getUserSpbzList.do",null,
+        function(data){
+          that.list=data;
+          console.log(data);
+        })
+    }
+    isagree(item,approval){
+      var that=this;
+      console.log(item.id)
+      var data={id:item.id,approval:approval}
+      this.service.interface("userspbz/approvalUserHome.do",data,
+        function(){
+          that.ngOnInit();
+        })
     }
   
-    getData(callback: (res: any) => void): void {
-      this.http.get(fakeDataUrl).subscribe((res: any) => callback(res));
-    }
-  
-    onLoadMore(): void {
-      this.loadingMore = true;
-      this.list = this.data.concat([...Array(count)].fill({}).map(() => ({ loading: true, name: {} })));
-      this.http.get(fakeDataUrl).subscribe((res: any) => {
-        this.data = this.data.concat(res.results);
-        this.list = [...this.data];
-        this.loadingMore = false;
-      });
-    }
-  
-    edit(item: any): void {
-      this.msg.success(item.email);
-    }
   }

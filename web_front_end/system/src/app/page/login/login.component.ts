@@ -17,10 +17,9 @@ export class LoginComponent implements OnInit {
     //显示捐款
     show = false;
     constructor(private service:InterfaceService,private router: Router,private message: NzMessageService) { 
-     
+        
     }
-    ngAfterContentInit(){
-    }
+    //content = '< a href="tencent://message/?uin=1312783878&amp;Site=&amp;Menu=yes">'+'</ a>'
     ngOnInit() {
         
     }
@@ -57,8 +56,8 @@ export class LoginComponent implements OnInit {
             (<any>this).style.opacity=alpha/100;
         });  
     } 
-    // 联系我们
-    contact(){
+    // 捐款
+    donations(){
         if(this.show==false){
             this.show=true;
             this.mask(80);
@@ -66,6 +65,10 @@ export class LoginComponent implements OnInit {
             this.show=false;
             this.mask(100);
         }
+    }
+    // 联系我们
+    contact(){
+
     }
     // 关闭
     close(){
