@@ -1,24 +1,11 @@
 
-.main {
-	margin: 0;
+.content{
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    /* display: flex; */
-    align-items: center;
-    padding: 20px 50px 20px;
-    text-align: center;
-    z-index: 20;
-}
-.content{
-    width: 95%;
-    position: absolute;
-    left: 2.5%;
-    height: 88%;
-    top: 10%;
-    padding-bottom:60px;
+    height: auto;
+    background: blanchedalmond;
 }
 #picker{
     z-index:10000;
