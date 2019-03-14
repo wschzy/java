@@ -1,18 +1,19 @@
 
 .content{
     position: absolute;
-    top: 0;
+    /* top: 79px; */
     left: 0;
     width: 100%;
     height: auto;
+    padding-top: 50px;
     background: blanchedalmond;
 }
 #picker{
-    z-index:10000;
-    position:relative;
-    top:7%;
-    right:45%;
-    width:130px;
+    z-index: 10000;
+    position: relative;
+    top: 5%;
+    left: 1%;
+    width: 130px;
 }
 .row div{
     height: 400px;
@@ -37,7 +38,7 @@
     #picker{
         z-index: 10000;
         position: relative;
-        top: 8px;
+        top: 40px;
         right: auto;
         width: 130px;
     }
