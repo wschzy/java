@@ -34,18 +34,19 @@ export class LoginComponent implements OnInit {
         }else if(username !=='') { 
         this.service.interface("SysUserInfo/findUser", data,  
             function(data:any){
-                that.router.navigateByUrl('/index');  
                 window.localStorage.setItem("user",JSON.stringify(data));//将用户信息放入缓存中
-                //  window.location.href="http://www.baidu.com"; 
                 that.service.interface("SysUserInfo/getMenu.do", null,  
                 function(msg:any){
                     for(var i=0;i<msg.length;i++){
-                    msg[i].url = '../'+msg[i].url;
+                        msg[i].url = '../'+msg[i].url;
                     }
                     window.localStorage.setItem("menu",JSON.stringify(msg));
+                    that.router.navigateByUrl('/index');  //菜单缓存成功，在登录成功跳转
+                    //加载用户类别、支付等缓存
+                    that.service.userDicCash(null);       
                 }
-            );       
-            }
+            );
+          }
         );
       }
      

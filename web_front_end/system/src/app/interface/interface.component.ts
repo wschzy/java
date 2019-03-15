@@ -48,6 +48,31 @@ export class InterfaceService {
     const req = new HttpRequest('POST',this.userLoginURL+url, formData, httpOptions);
     return  this.http.request(req).pipe(filter(e => e instanceof HttpResponse));
   }
+
+  public userDicCash(func:Function){
+    var url;
+    if(JSON.parse(localStorage.user).isadmin == 1){
+        url = "category/getPayWayList.do";
+    }else{
+        url = "/category/getUserDictionaryList.do";
+        //如果是非管理员登录，也需要存储支付方式
+        if(func == null){//如果 func为null的话，为更新列表。不为null的话 为登录成功 需要缓存
+          this.interface("category/getPayWayList.do",null,
+          function(data){
+              window.localStorage.setItem("payway",JSON.stringify(data))
+          })
+        }
+    }
+    this.interface(url,null,
+        function(data){
+            //存储支付类型
+            window.localStorage.setItem("category",JSON.stringify(data))
+            if(typeof func === 'function'){
+              eval(func());
+            }
+    })
+  }
   
+
 }
 
