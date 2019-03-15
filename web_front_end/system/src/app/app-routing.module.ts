@@ -8,6 +8,7 @@ import { CategoryComponent } from './page/category/category.component';
 import { AddFamilyComponent } from './page/add-family/add-family.component';
 import { FamilyListComponent } from './page/family-list/family-list.component';
 import { TaskComponent } from './page/task/task.component';
+import { UserComponent } from './page/user/user.component';
 const routes: Routes = [
   { path:'login',component:LoginComponent,pathMatch:'full' },
   { path:'',component:LoginComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path:'category',component:CategoryComponent},
   {path:'add-family',component:AddFamilyComponent},
   {path:'family-list',component:FamilyListComponent},
-  {path:'task',component:TaskComponent}
+  {path:'task',component:TaskComponent},
+  {path:'user',component:UserComponent}
 ];
 
 @NgModule({

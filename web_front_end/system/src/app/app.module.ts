@@ -21,6 +21,7 @@ import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { UserComponent } from './page/user/user.component';
 
 
 registerLocaleData(en);
@@ -37,7 +38,8 @@ registerLocaleData(en);
     CategoryComponent,
     AddFamilyComponent,
     FamilyListComponent,
-    TaskComponent
+    TaskComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
