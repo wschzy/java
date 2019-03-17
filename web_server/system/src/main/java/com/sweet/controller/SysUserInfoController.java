@@ -25,7 +25,7 @@ public class SysUserInfoController extends BaseController {
 	@Value("${server.port}")
 	private String port;
 	//添加用户
-	@PostMapping(value="/addUser")
+	@PostMapping(value="/addUser.do")
 	public int addUser(String loginid,String password,String phone,Integer sex,String fullname,String email,String picture)throws SysException{
 		return sysUserInfoService.addUser(loginid, password, phone, sex, picture, picture, picture);
 	}
