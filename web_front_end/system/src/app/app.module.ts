@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { UserComponent } from './page/user/user.component';
+import { AddUserComponent } from './page/add-user/add-user.component';
 
 
 registerLocaleData(en);
@@ -39,7 +40,8 @@ registerLocaleData(en);
     AddFamilyComponent,
     FamilyListComponent,
     TaskComponent,
-    UserComponent
+    UserComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
