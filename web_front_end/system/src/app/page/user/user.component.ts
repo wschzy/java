@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InterfaceService } from 'src/app/interface/interface.component';
 import {Router} from '@angular/router';
 import { APPCONFIG } from '../../config';
+import { take } from 'rxjs/operators';
 @Component({
     selector: 'store-user',
     templateUrl: 'user.component.html',
@@ -12,7 +13,7 @@ import { APPCONFIG } from '../../config';
 export class UserComponent implements OnInit {
   loading = true;
   // 页面显示数据条数
-  pageSize = 10;
+  pageSize = 8;
   // 搜索条件
   keyword: any = '';
   users: any = [];
@@ -41,7 +42,10 @@ export class UserComponent implements OnInit {
     var that=this;
     this.service.interface("/SysUserInfo/allUser.do",data,
       function(data){
-        that.users=data;
+        
+        that.total=data.count;
+        that.users=data.list;
+        console.log(data.list);
       })
   }
   /* 页码变化时*/
