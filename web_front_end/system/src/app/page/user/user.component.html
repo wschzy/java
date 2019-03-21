@@ -1,7 +1,7 @@
 <div class="main">
     <storeHeader></storeHeader>
     <div class="content">
-        <button class="add" nz-button nzType="primary" [routerLink]="['/add-user']">
+        <button class="add" nz-button nzType="primary" [routerLink]="['/add-user']" style="background: darkgreen; border-color: darkgreen;">
           <i nz-icon type="plus" theme="outline" style="vertical-align: text-top;"></i>添加</button>
     <nz-table #nzTable
               nzSize="small"
@@ -14,7 +14,7 @@
               (nzPageIndexChange)="indexChange()"
               (nzPageSizeChange)="sizeChange()"
               nzShowQuickJumper
-              style="margin: 50px auto;">       
+              style="margin: 32px auto;">       
       <thead>
       <tr>
         <th nzShowCheckbox [(nzChecked)]="allChecked" [nzIndeterminate]="indeterminate"
