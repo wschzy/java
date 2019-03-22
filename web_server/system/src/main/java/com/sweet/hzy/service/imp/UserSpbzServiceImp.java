@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.sweet.bean.UserSpbz;
 import com.sweet.hzy.mapper.UserHomeRelMapper;
 import com.sweet.hzy.mapper.UserSpbzMapper;
-import com.sweet.hzy.service.UserHomeService;
 import com.sweet.hzy.service.UserSpbzService;
 import com.sweet.util.ServletUtil;
 import com.sweet.util.SysException;
@@ -24,8 +23,6 @@ public class UserSpbzServiceImp implements UserSpbzService {
 	@Resource
 	private UserHomeRelMapper userHomeRelMapper;
 	
-	@Resource
-	private UserHomeService userHomeService;
 	@Override
 	public List<UserSpbz> getUserSpbzList() {
 		return userSpbzMapper.getUserSpbzList(Integer.valueOf(ServletUtil.getSessionVal("id")));

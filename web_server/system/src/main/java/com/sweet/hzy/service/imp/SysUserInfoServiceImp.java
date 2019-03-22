@@ -1,6 +1,8 @@
 package com.sweet.hzy.service.imp;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -28,7 +30,7 @@ import com.sweet.util.SysException;
 
 @Service
 public class SysUserInfoServiceImp implements SysUserInfoService{
-	public static final Integer DISABLE_TIMES = 6;
+	private static final Integer DISABLE_TIMES = 6;
 	@Resource
 	private SysUserInfoMapper sysUserInfoMapper;
 	@Resource
@@ -45,21 +47,25 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
     StringRedisTemplate stringRedisTemplate;*/
 	
 	@Transactional(rollbackFor=Exception.class,noRollbackFor=SysException.class)
-	public int addUser(String loginid, String password, String phone, Integer sex,String fullname,String email,String picture)throws SysException{
-		if(sysUserInfoMapper.findUserByLoginidAndPassword(loginid, MD5.getMD5(password.getBytes())) ==null) {
-			return sysUserInfoMapper.addUser(loginid, MD5.getMD5(password.getBytes()), phone, sex, picture, picture, picture);
+	public int addUser(SysUserInfo user)throws SysException{
+		user.setPassword(MD5.getMD5(user.getPassword().getBytes()));
+		if(sysUserInfoMapper.findUserByLoginidAndPassword(user.getLoginid(),user.getPassword() ) == null) {
+			return sysUserInfoMapper.addUser(user);
 		}else {
 			throw new SysException("该用户已经注册");
 		}
 	}
-	
-	public List<SysUserInfo> findUserList(Integer page,Integer pageSize) {
+
+	public Map<String,Object> findUserList(Integer page,Integer pageSize) {
 		page = page == null ? 1 : page;
 		pageSize = pageSize == null ? 8 : pageSize;
 		PageHelper.startPage(page,pageSize);
 		List<SysUserInfo> list = sysUserInfoMapper.findUserList();
 		PageInfo<SysUserInfo> pageInfoSysUserInfoList = new PageInfo<SysUserInfo>(list);
-		return pageInfoSysUserInfoList.getList();
+		Map<String,Object> map = new HashMap();
+		map.put("list",pageInfoSysUserInfoList.getList());
+		map.put("count",sysUserInfoMapper.findUserCount());
+		return map;
 	}
 
 	@Transactional(rollbackFor=Exception.class,noRollbackFor=SysException.class)
@@ -83,12 +89,10 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 			session.setAttribute("loginid", user.getLoginid());
 			session.setAttribute("isadmin", user.getIsadmin());
 		}
-		user.setPassword(null);//密码不反回客户端
-		user.setPicture(null);
 		return user;
 	}
 	
-	public void handlerErrorPassword(String loginid,String ip) throws SysException{
+	private void handlerErrorPassword(String loginid,String ip) throws SysException{
 		TbForbid disRecord = tbForbidMapper.findNotDisableRecordUserForLoginid(loginid);//根据id查询禁用记录
 		if(disRecord == null) {
 			//不存在禁用记录，插入禁用记录
@@ -128,7 +132,17 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 	public SysUserInfo findUserByid(Integer id) {
 		return sysUserInfoMapper.findUserByid(id);
 	}
-	
+
+	@Override
+	public int deleteUserById(Integer id) {
+		return sysUserInfoMapper.deleteUserById(id);
+	}
+
+	@Override
+	public int updateUserById(SysUserInfo user) {
+		return sysUserInfoMapper.updateUserById(user);
+	}
+
 }
 
 

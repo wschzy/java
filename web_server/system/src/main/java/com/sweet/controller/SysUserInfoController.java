@@ -1,6 +1,7 @@
 package com.sweet.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -25,9 +26,9 @@ public class SysUserInfoController extends BaseController {
 	@Value("${server.port}")
 	private String port;
 	//添加用户
-	@PostMapping(value="/addUser.do")
-	public int addUser(String loginid,String password,String phone,Integer sex,String fullname,String email,String picture)throws SysException{
-		return sysUserInfoService.addUser(loginid, password, phone, sex, picture, picture, picture);
+	@PostMapping(value="/add.do")
+	public int addUser(@Valid SysUserInfo user)throws SysException{
+		return sysUserInfoService.addUser(user);
 	}
 	
 	//登录
@@ -38,11 +39,10 @@ public class SysUserInfoController extends BaseController {
 	
 	//查询用户列表
 	@PostMapping(value="/allUser.do")
-	public List<SysUserInfo> findUserList(Integer page,Integer pageSize) {
+	public Map<String,Object> findUserList(Integer page, Integer pageSize) {
 		return sysUserInfoService.findUserList(page,pageSize);
 	}
-	
-	
+
 	//获取用户的菜单权限
 	@PostMapping(value="/getMenu.do")
 	public List<?> getMenu(){
@@ -53,6 +53,16 @@ public class SysUserInfoController extends BaseController {
 	@RequestMapping("/logout.do")
 	public void logout(HttpSession session) {
 		session.invalidate();
+	}
+
+	@RequestMapping("/delete.do")
+	public int deleteUserById(Integer id){
+		return sysUserInfoService.deleteUserById(id);
+	}
+
+	@RequestMapping("/update.do")
+	public int updateUserById(SysUserInfo user) {
+		return sysUserInfoService.updateUserById(user);
 	}
 }
 
