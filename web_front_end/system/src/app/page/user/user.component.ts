@@ -11,6 +11,7 @@ import { take } from 'rxjs/operators';
 
   
 export class UserComponent implements OnInit {
+  i = 1; 
   loading = true;
   // 页面显示数据条数
   pageSize = 8;
@@ -56,6 +57,14 @@ export class UserComponent implements OnInit {
   sizeChange() {
     this.reloadData();
   }
+  // 删除信息
+  deleteRow(i: string): void {
+    var that=this;
+    var obj = {id:i};
+    this.service.interface("/SysUserInfo/delete.do",obj,function(){
+        that.ngOnInit();
+    })
+  } 
    //  复选框触发事件
    onChange(data: any, che: any) {
     if (che === 'all') {

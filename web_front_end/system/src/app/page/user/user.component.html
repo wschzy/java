@@ -23,6 +23,7 @@
             <th><span>全名</span></th>
             <th><span>性别</span></th>
             <th><span>联系方式</span></th>
+            <th><span>Action</span></th>
       </tr>
       </thead>
       <tbody>
@@ -40,6 +41,14 @@
         </td>
         <td>
           <span>{{user.phone}}</span>
+        </td>
+        <td>
+          <nz-popconfirm [nzTitle]="'Sure to delete?'" (nzOnConfirm)="deleteRow(user.id)">
+              <a nz-popconfirm>Delete</a>
+          </nz-popconfirm> 
+          <nz-popconfirm  (nzOnConfirm)="update(user.id)" style="margin-left:10px;">
+              <a nz-popconfirm >Update</a>
+          </nz-popconfirm>
         </td>
       </tr>
       </tbody>
