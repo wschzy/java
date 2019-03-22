@@ -1,28 +1,57 @@
 <div class="main">
     <storeHeader></storeHeader>
     <div class="content">
-        <button class="add" nz-button nzType="default">添加</button>
-        <nz-table #rowSelectionTable
-      nzShowSizeChanger
-      [nzData]="listOfAllData"
-      (nzCurrentPageDataChange)="currentPageDataChange($event)">
+        <button class="add" nz-button nzType="primary" [routerLink]="['/add-user']" style="background: darkgreen; border-color: darkgreen;">
+          <i nz-icon type="plus" theme="outline" style="vertical-align: text-top;"></i>添加</button>
+    <nz-table #nzTable
+              nzSize="small"
+              [nzData]="users"
+              nzShowSizeChanger
+              [nzFrontPagination]="false"
+              [(nzPageSize)]="pageSize"
+              [(nzPageIndex)]="pageIndex"
+              [nzTotal]="total"
+              (nzPageIndexChange)="indexChange()"
+              (nzPageSizeChange)="sizeChange()"
+              nzShowQuickJumper
+              style="margin: 32px auto;">       
       <thead>
-        <tr>
-          <th nzShowCheckbox [nzSelections]="listOfSelection" [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate" (nzCheckedChange)="checkAll($event)"></th>
-          <th>Name</th>
-          <th>Age</th>
-          <th>Address</th>
-        </tr>
+      <tr>
+        <th nzShowCheckbox [(nzChecked)]="allChecked" [nzIndeterminate]="indeterminate"
+            (nzCheckedChange)="onChange(users,'all')"></th>
+            <th><span>用户名</span></th>
+            <th><span>全名</span></th>
+            <th><span>性别</span></th>
+            <th><span>联系方式</span></th>
+            <th><span>Action</span></th>
+      </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let data of rowSelectionTable.data">
-          <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" (nzCheckedChange)="refreshStatus()"></td>
-          <td>{{data.name}}</td>
-          <td>{{data.age}}</td>
-          <td>{{data.address}}</td>
-        </tr>
+      <tr *ngFor="let user of nzTable.data">
+        <td nzShowCheckbox [(nzChecked)]="user.checked" [nzDisabled]="user.disabled"
+            (nzCheckedChange)="onChange(user,'single')"></td>
+        <td>
+          <span>{{user.loginid}}</span>
+        </td>
+        <td>
+          <span>{{user.fullname}}</span>
+        </td>
+        <td>
+          <span>{{user.sex==0?"女":"男"}}</span>
+        </td>
+        <td>
+          <span>{{user.phone}}</span>
+        </td>
+        <td>
+          <nz-popconfirm [nzTitle]="'Sure to delete?'" (nzOnConfirm)="deleteRow(user.id)">
+              <a nz-popconfirm>Delete</a>
+          </nz-popconfirm> 
+          <nz-popconfirm  (nzOnConfirm)="update(user.id)" style="margin-left:10px;">
+              <a nz-popconfirm >Update</a>
+          </nz-popconfirm>
+        </td>
+      </tr>
       </tbody>
     </nz-table>
     </div>
-    <storeFooter></storeFooter>
  </div>
