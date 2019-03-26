@@ -49,7 +49,7 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 	@Transactional(rollbackFor=Exception.class,noRollbackFor=SysException.class)
 	public int addUser(SysUserInfo user)throws SysException{
 		user.setPassword(MD5.getMD5(user.getPassword().getBytes()));
-		if(sysUserInfoMapper.findUserByLoginidAndPassword(user.getLoginid(),user.getPassword() ) == null) {
+		if(sysUserInfoMapper.findUserByLoginid(user.getLoginid()) == null) {
 			return sysUserInfoMapper.addUser(user);
 		}else {
 			throw new SysException("该用户已经注册");
@@ -75,12 +75,15 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 		if(disRecord != null) {
 			throw new SysException("该账号已经被禁用");
 		}
-		SysUserInfo user = sysUserInfoMapper.findUserByLoginidAndPassword(loginid, MD5.getMD5(password.getBytes()));
+		SysUserInfo user = sysUserInfoMapper.findUserByLoginid(loginid);
 		HttpServletRequest request = ServletUtil.getRequset();
 		if(user == null) {
-			handlerErrorPassword(loginid, request.getRemoteAddr());
-			throw new SysException("账号或者密码错误");
+			throw new SysException("用户名不存在");
 		}else {
+			if(!MD5.getMD5(password.getBytes()).equals(user.getPassword())){//密码错误
+				handlerErrorPassword(loginid, request.getRemoteAddr());
+				throw new SysException("账号或者密码错误");
+			}
 			int r = tbForbidMapper.updateTbForbidEnable(loginid);
 			if(r > 1) {
 				throw new SysException("登录失败");
@@ -89,6 +92,7 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 			session.setAttribute("loginid", user.getLoginid());
 			session.setAttribute("isadmin", user.getIsadmin());
 		}
+		user.setPassword(null);
 		return user;
 	}
 	

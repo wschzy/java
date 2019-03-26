@@ -33,12 +33,12 @@ public class TestUnit {
     @Resource
 	private UserPayMapper userPayMapper;
     @Before
-    public void setup()  throws Exception{  
+    public void setup() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     }  
 
     @Test
-    public void test() throws FileNotFoundException {
+    public void test() {
     	//System.out.println(userPayMapper.getMoneyListByWeek(19,null));
     	/*File file = ResourceUtils.getFile("classpath:static/image.png");
     	System.out.println(file.getPath());*/

@@ -19,17 +19,11 @@ public class ListUtil {
 	}
 	
 	public static boolean isNotEmpty(Collection list){
-		if(list!=null && list.size()>0)
-			return true;
-		else
-			return false;
+        return list != null && list.size() > 0;
 	}
 	
 	public static boolean isNotEmpty(Map map){
-		if(map!=null && map.size()>0)
-			return true;
-		else
-			return false;
+        return map != null && map.size() > 0;
 	}
 	
 	public static boolean isEmpty(Map map){
@@ -37,10 +31,7 @@ public class ListUtil {
 	}
 	
 	public static boolean isNotEmpty(Object[] arr){
-		if(arr!=null && arr.length>0)
-			return true;
-		else
-			return false;
+        return arr != null && arr.length > 0;
 	}
 	
 	static List<String> strToList(String str, String regex){

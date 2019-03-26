@@ -19,6 +19,7 @@ public class SysUserInfo implements Serializable {
 	private Integer id;
 	@NotNull(message = "用户名不能为空")
 	@Size(max = 39, message = "用户名最大39位")
+	@Size(min = 3, message = "用户名最小3位")
 	private String loginid;
 	
 	@NotNull(message = "密码不能为空")

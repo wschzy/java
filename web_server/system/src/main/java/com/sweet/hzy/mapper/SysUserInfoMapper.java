@@ -22,12 +22,8 @@ public interface SysUserInfoMapper {
             + "(#{loginid}, #{password}, #{phone}, #{sex},#{fullname},#{email},now())")
     int addUser(SysUserInfo user);
 
-    //根据用户名密码查询用户
-    @Select("SELECT id,loginid,isadmin FROM SYS_USERINFO WHERE loginid = #{loginid} and password= #{password}")
-    SysUserInfo findUserByLoginidAndPassword(@Param("loginid") String loginid, @Param("password") String password);
-
     //根据用户名查询用户
-    @Select("SELECT id FROM SYS_USERINFO WHERE loginid = #{loginid} ")
+    @Select("SELECT id,loginid,isadmin,password,phone,sex,fullname,email,lrsj FROM SYS_USERINFO WHERE loginid = #{loginid} ")
     SysUserInfo findUserByLoginid(@Param("loginid") String loginid);
 
     //删除用户

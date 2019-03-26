@@ -54,7 +54,7 @@ public class MyBatisConfig2 {
 
 	@Bean(name = "wscSqlSessionTemplate")
 	public SqlSessionTemplate testSqlSessionTemplate(
-			@Qualifier("wscSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
+			@Qualifier("wscSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
 		return new SqlSessionTemplate(sqlSessionFactory);
 	}
 }

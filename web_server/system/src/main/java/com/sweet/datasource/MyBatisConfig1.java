@@ -55,7 +55,7 @@ public class MyBatisConfig1 {
 
 	@Bean(name = "hzySqlSessionTemplate")
 	public SqlSessionTemplate testSqlSessionTemplate(
-			@Qualifier("hzySqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
+			@Qualifier("hzySqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
 		return new SqlSessionTemplate(sqlSessionFactory);
 	}
 }
