@@ -10,6 +10,7 @@ import { FamilyListComponent } from './page/family-list/family-list.component';
 import { TaskComponent } from './page/task/task.component';
 import { UserComponent } from './page/user/user.component';
 import { AddUserComponent } from './page/add-user/add-user.component';
+import { OverviewComponent } from './page/overview/overview.component';
 const routes: Routes = [
   { path:'login',component:LoginComponent,pathMatch:'full' },
   { path:'',component:LoginComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path:'family-list',component:FamilyListComponent},
   {path:'task',component:TaskComponent},
   {path:'user',component:UserComponent},
-  {path:'add-user',component:AddUserComponent}
+  {path:'add-user',component:AddUserComponent},
+  {path:'overview',component:OverviewComponent}
 ];
 
 @NgModule({

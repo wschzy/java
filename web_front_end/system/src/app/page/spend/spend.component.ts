@@ -8,6 +8,8 @@ import {Router} from '@angular/router';
 })
 
 export class SpendComponent implements OnInit {
+    // 编辑备注
+    editId: string | null;
     // 页码
     pageIndex = 1;
     pageSize = 10;
@@ -48,6 +50,7 @@ export class SpendComponent implements OnInit {
         }
         this.payway = JSON.parse(localStorage.payway);
     }
+   
      //  第二级
     change(){
         var a=this.selectedDicclass;
