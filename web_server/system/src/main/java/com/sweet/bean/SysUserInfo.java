@@ -38,4 +38,5 @@ public class SysUserInfo implements Serializable {
 	private Date lrsj;
 	private String picture;
 	private Integer isadmin;
+	private Integer tag;
 }

@@ -80,6 +80,9 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 		if(user == null) {
 			throw new SysException("用户名不存在");
 		}else {
+			if(user.getTag() == 0){
+				throw new SysException("该用户已经注销");
+			}
 			if(!MD5.getMD5(password.getBytes()).equals(user.getPassword())){//密码错误
 				handlerErrorPassword(loginid, request.getRemoteAddr());
 				throw new SysException("账号或者密码错误");
