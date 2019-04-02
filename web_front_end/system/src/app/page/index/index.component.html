@@ -1,13 +1,10 @@
 
-   <storeHeader></storeHeader>
-   <nz-date-picker id="picker"  [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-date-picker>
-   <div class="content">
-       <div class="row" style="padding-bottom: 20px;width: 100%; margin: 0 auto;">
-            <div class="col-xs-12 col-sm-6 col-md-4" echarts [options]="optionsByWeek" ></div>
-            <div class="col-xs-12 col-sm-6 col-md-4" echarts [options]="optionsByMonth" ></div>
-            <div class="col-xs-12 col-sm-6 col-md-4" echarts [options]="optionsByYear" ></div>
-            <div class="col-xs-12 col-sm-6 col-md-4" echarts [options]="optionsByMonthWeek" ></div>
-            <div class="col-xs-12 col-sm-6 col-md-4" echarts [options]="optionsByDic" ></div>
-       </div>
-   </div>
-   <storeFooter></storeFooter>
+ <div class="main">
+    <storeHeader></storeHeader>
+    <div class="content">
+        <input nz-input placeholder="default size" nzSize="default" style="width:200px" [(ngModel)]="city"/>
+        <button nz-button nzType="primary" (click)="search()">查询</button>
+        <iframe scrolling="no" src="https://tianqiapi.com/api.php?style=tr&skin=pitaya" frameborder="0" width="325" height="220" allowtransparency="true"></iframe>
+    </div>
+    <storeFooter></storeFooter>
+ </div>

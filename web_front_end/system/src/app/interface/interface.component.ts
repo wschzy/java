@@ -10,6 +10,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 @Injectable()
 export class InterfaceService {
   public userLoginURL = APPCONFIG.requestUrl;
+  public cityUrl=APPCONFIG.cityUrl;
   constructor(public http:HttpClient,private router: Router,private message: NzMessageService){};
   
   //统一接口分装
@@ -39,7 +40,7 @@ export class InterfaceService {
       }
     );
   }
-
+ 
 
   interface2(url:any,formData:FormData):Observable<any>{
     const httpOptions = {
@@ -48,6 +49,15 @@ export class InterfaceService {
     const req = new HttpRequest('POST',this.userLoginURL+url, formData, httpOptions);
     return  this.http.request(req).pipe(filter(e => e instanceof HttpResponse));
   }
+  
+  weather(city:any,data:any):Observable<any>{
+    const httpOptions = {
+      withCredentials: true
+    };
+    const req = new HttpRequest('GET',this.cityUrl+city,data,httpOptions);
+    return  this.http.request(req).pipe(filter(e => e instanceof HttpResponse));
+  }
+ 
 
   public userDicCash(func:Function){
     var url;
