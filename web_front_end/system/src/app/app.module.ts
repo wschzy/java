@@ -12,7 +12,7 @@ import { FormsModule ,ReactiveFormsModule} from '@angular/forms'
 import { SpendComponent } from './page/spend/spend.component';
 import { PersonalComponent } from './page/personal/personal.component';
 import { CategoryComponent } from './page/category/category.component';
-import { FamilyListComponent } from './page/family-list/family-list.component'
+import { FamilyListComponent } from './page/family-list/family-list.component';
 import { FooterComponent } from './page/footer/footer.component';
 import { HeaderComponent } from './page/header/header.component';
 import { AddFamilyComponent } from './page/add-family/add-family.component';
@@ -23,6 +23,7 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { UserComponent } from './page/user/user.component';
 import { AddUserComponent } from './page/add-user/add-user.component';
+import { OverviewComponent } from './page/overview/overview.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AddUserComponent } from './page/add-user/add-user.component';
     FamilyListComponent,
     TaskComponent,
     UserComponent,
-    AddUserComponent
+    AddUserComponent,
+    OverviewComponent,
   ],
   imports: [
     BrowserModule,
