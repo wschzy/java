@@ -3,13 +3,12 @@ import { InterfaceService } from 'src/app/interface/interface.component';
 import {Router} from '@angular/router';
 import { APPCONFIG } from '../../config';
 import {HttpClient} from '@angular/common/http';
-import { DomSanitizer } from '@angular/platform-browser'
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
     selector: 'storeIndex',
     templateUrl: 'index.component.html',
     styleUrls:['index.component.css']
 })
-
 export class IndexComponent implements OnInit {
     city:string;
     public all:any=[];                         //存储所有的城市数据
@@ -17,10 +16,11 @@ export class IndexComponent implements OnInit {
     cityURL:any;
     cityUrl="https://tianqiapi.com/api.php?style=tw&skin=pitaya";
     constructor(private service:InterfaceService,private router:Router,public http: HttpClient,private sanitizer: DomSanitizer){
-        this.setAll();
+        
+
     }
     ngOnInit(){ 
-        
+        this.setAll();
     }
     search(){
         console.log(this.city);
@@ -35,9 +35,12 @@ export class IndexComponent implements OnInit {
           let that =this;
           for (let i = 0; i < this.all.length; i++){
             const value = this.all[i];
+            if(that.city==null){
+                this.cityURL= this.sanitizer.bypassSecurityTrustResourceUrl(this.cityUrl);
+            }
             if(value['cityZh']===that.city){             
                 this.cityUrl+="&cityid="+value['id'];
-                this.cityURL= this.sanitizer.bypassSecurityTrustHtml(this.cityUrl);
+                this.cityURL= this.sanitizer.bypassSecurityTrustResourceUrl(this.cityUrl);
             }
           }
         },
