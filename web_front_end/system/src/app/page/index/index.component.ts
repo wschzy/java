@@ -40,6 +40,8 @@ export class IndexComponent implements OnInit {
             }
             if(value['cityZh']===that.city){             
                 this.cityUrl+="&cityid="+value['id'];
+                // angular 安全限制
+                // error： unsafe value used in a resource URL context
                 this.cityURL= this.sanitizer.bypassSecurityTrustResourceUrl(this.cityUrl);
             }
           }
