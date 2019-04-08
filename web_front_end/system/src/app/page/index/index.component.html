@@ -2,7 +2,7 @@
  <div class="main">
     <storeHeader></storeHeader>
     <div class="content">
-        <input nz-input placeholder="default size" nzSize="default" style="width:200px" [(ngModel)]="city"/>
+        <input nz-input placeholder="请输入城市名" nzSize="default" style="width:200px;" [(ngModel)]="city" class="city" />
         <button nz-button nzType="primary" (click)="search()" style="margin-bottom: 10px;">查询</button>
         <br>
         <iframe scrolling="no" [src]="cityURL"  frameborder="0" width="300" height="500" allowtransparency="true" class="iframe1"></iframe>
