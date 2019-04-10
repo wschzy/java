@@ -28,7 +28,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let user of nzTable.data">
+      <tr *ngFor="let user of nzTable.data"> 
         <td nzShowCheckbox [(nzChecked)]="user.checked" [nzDisabled]="user.disabled"
             (nzCheckedChange)="onChange(user,'single')"></td>
         <td>
