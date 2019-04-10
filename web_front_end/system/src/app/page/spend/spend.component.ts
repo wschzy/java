@@ -10,9 +10,12 @@ import {Router} from '@angular/router';
 export class SpendComponent implements OnInit {
     // 编辑备注
     editId: string | null;
-    // 页码
-    pageIndex = 1;
-    pageSize = 10;
+    // 当前页码
+    pageIndex: any = 1;
+    pageSize =8;
+    spend: any = [];
+  // 当前数据总数量
+    total: any = 0;
     i = 1;
     add:any=false;
     editCache = {};
@@ -75,16 +78,30 @@ export class SpendComponent implements OnInit {
     } 
     
     ngOnInit(): void {
-        
+        this.reloadData();
+    }
+    reloadData(){
+        var page=this.pageIndex;
+        var pageSize=this.pageSize;
+        var data={page:page,pageSize:pageSize};
         var that=this;
-        this.service.interface("/pay/getUserPayList.do",null,
+        this.service.interface("/pay/getUserPayList.do",data,
             function(data:any){
-                that.dataSet=data;
+                that.total=data.count;
+                that.dataSet=data.list;
             });    
             var that = this;
             var msg=JSON.parse(localStorage.payway);
             console.log(msg);
     }
+     /* 页码变化时*/
+  indexChange() {
+    this.reloadData();
+  }
+  /* 每页显示数据变化时*/
+  sizeChange() {
+    this.reloadData();
+  }
     deleteRow(i: string): void {
         var that=this;
         var obj = {id:i};
