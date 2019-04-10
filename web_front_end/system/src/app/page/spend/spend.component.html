@@ -10,14 +10,18 @@
         </div>
         <div class="tab">
             <nz-table
-                #editRowTable
-                nzBordered
-                [nzData]="dataSet"
-                [nzLoading]="loading"
-                [nzTotal]="total"
-                [(nzPageIndex)]="pageIndex"
-                [(nzPageSize)]="pageSize"
-                [nzScroll]="{x:'800px'}">
+            #nzTable
+            nzSize="small"
+            [nzData]="dataSet"
+            nzShowSizeChanger
+            [nzFrontPagination]="false"
+            [(nzPageSize)]="pageSize"
+            [(nzPageIndex)]="pageIndex"
+            [nzTotal]="total"
+            (nzPageIndexChange)="indexChange()"
+            (nzPageSizeChange)="sizeChange()"
+            nzShowQuickJumper 
+            [nzScroll]="{x:'800px'}">
                 <thead>
                     <tr>
                         <th nzWidth="100px" nzLeft="0px" class="money">支付类型</th>
@@ -38,7 +42,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let data of editRowTable.data">
+                    <tr *ngFor="let data of nzTable.data">
                         
                         
                         <!--    支付类型 -->

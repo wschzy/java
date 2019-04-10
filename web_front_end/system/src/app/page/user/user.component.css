@@ -1,5 +1,9 @@
 
-.add{
-    position: absolute;
-    right: 10%;
+
+::ng-deep .ant-table table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    border-radius: 4px 4px 0 0;
+    margin-top: 45px;
 }

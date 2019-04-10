@@ -12,7 +12,8 @@ export class InterfaceService {
   public userLoginURL = APPCONFIG.requestUrl;
   public cityUrl=APPCONFIG.cityUrl;
   constructor(public http:HttpClient,private router: Router,private message: NzMessageService){};
-  
+  public isAdd: boolean;
+  public commonObj: any;
   //统一接口分装
   public interface(url:any,data:any,fun:Function){
       const httpOptions = {
@@ -58,7 +59,19 @@ export class InterfaceService {
     return  this.http.request(req).pipe(filter(e => e instanceof HttpResponse));
   }
  
+// 添加/编辑用户数据
+public editList(url: any, data: any) {
+  url = APPCONFIG.requestUrl + url;
+  if (this.isAdd) {
+    return this.http.post(url, data);
+  } else {
+    console.log(data);
+      data['id'] = this.commonObj.Id;
+  
+    return this.http.put(url, data);
+  }
 
+}
   public userDicCash(func:Function){
     var url;
     if(JSON.parse(localStorage.user).isadmin == 1){

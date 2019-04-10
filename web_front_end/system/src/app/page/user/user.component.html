@@ -1,8 +1,9 @@
 <div class="main">
     <storeHeader></storeHeader>
-    <div class="content">
-        <button class="add" nz-button nzType="primary" [routerLink]="['/add-user']" style="background: darkgreen; border-color: darkgreen;">
-          <i nz-icon type="plus" theme="outline" style="vertical-align: text-top;"></i>添加</button>
+    <div class="content" style="padding-top:50px">
+         <button nz-button nzType="primary" (click)="add()" style="background: darkgreen; border-color: darkgreen; margin-left: 50px;">
+          <i nz-icon type="plus" theme="outline" style="vertical-align: text-top;"></i>
+          添加</button> 
     <nz-table #nzTable
               nzSize="small"
               [nzData]="users"
@@ -13,7 +14,7 @@
               [nzTotal]="total"
               (nzPageIndexChange)="indexChange()"
               (nzPageSizeChange)="sizeChange()"
-              nzShowQuickJumper
+              nzShowQuickJumper 
               style="margin: 32px auto;">       
       <thead>
       <tr>
@@ -23,11 +24,11 @@
             <th><span>全名</span></th>
             <th><span>性别</span></th>
             <th><span>联系方式</span></th>
-            <th><span>Action</span></th>
+            <th><span>操作</span></th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let user of nzTable.data">
+      <tr *ngFor="let user of nzTable.data"> 
         <td nzShowCheckbox [(nzChecked)]="user.checked" [nzDisabled]="user.disabled"
             (nzCheckedChange)="onChange(user,'single')"></td>
         <td>
@@ -43,12 +44,11 @@
           <span>{{user.phone}}</span>
         </td>
         <td>
-          <nz-popconfirm [nzTitle]="'Sure to delete?'" (nzOnConfirm)="deleteRow(user.id)">
-              <a nz-popconfirm>Delete</a>
-          </nz-popconfirm> 
-          <nz-popconfirm  (nzOnConfirm)="update(user.id)" style="margin-left:10px;">
-              <a nz-popconfirm >Update</a>
-          </nz-popconfirm>
+            <span>{{user.email}}</span>
+        </td>
+        <td>
+          <button nz-button  nzType="danger" (click)="delete(user.id)">Delete</button>
+          <button nz-button nzType="default" (click)="update(user)" style="margin-left:10px;">Update</button>
         </td>
       </tr>
       </tbody>

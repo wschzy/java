@@ -3,6 +3,7 @@ import { InterfaceService } from 'src/app/interface/interface.component';
 import {Router} from '@angular/router';
 import { APPCONFIG } from '../../config';
 import { take } from 'rxjs/operators';
+import {NzMessageService, NzModalService} from 'ng-zorro-antd';
 @Component({
     selector: 'store-user',
     templateUrl: 'user.component.html',
@@ -29,21 +30,31 @@ export class UserComponent implements OnInit {
   // 选中数据存储对像
   userInfos: any = [];
 
-  constructor(private service:InterfaceService,private router:Router){
+  constructor(private service:InterfaceService,private modalService: NzModalService,private router:Router){
 
   }
   ngOnInit(){
     this.reloadData();
   }
+  add(){
+    this.service.isAdd = true;
+    this.router.navigateByUrl('add-user');
+  }
+  //跳转到编辑页面
+  update(info: any) {
+    this.service.isAdd = false;
+     this.service.commonObj = info;
+     console.log(info);
+    this.router.navigateByUrl('add-user');
+  }
   // 加载数据
   reloadData(){
     var page=this.pageIndex;
     var pageSize=this.pageSize;
-    var data={page:page,pageSize:pageSize};
+    var data={page:page,pageSize:pageSize}; 
     var that=this;
     this.service.interface("/SysUserInfo/allUser.do",data,
-      function(data){
-        
+      function(data){ 
         that.total=data.count;
         that.users=data.list;
         console.log(data.list);
@@ -58,13 +69,22 @@ export class UserComponent implements OnInit {
     this.reloadData();
   }
   // 删除信息
-  deleteRow(i: string): void {
+  confirmDelete(i: string): void {
     var that=this;
     var obj = {id:i};
     this.service.interface("/SysUserInfo/delete.do",obj,function(){
         that.ngOnInit();
     })
   } 
+  delete(info: any) {
+    this.onChange(info, 'delete');
+    this.modalService.confirm({
+      nzTitle: '<i>是否确定删除数据 ？</i>',
+      nzContent: '<b></b>',
+      nzOnOk: () => this.confirmDelete(info)
+    });
+    this.reloadData();
+  }
    //  复选框触发事件
    onChange(data: any, che: any) {
     if (che === 'all') {
