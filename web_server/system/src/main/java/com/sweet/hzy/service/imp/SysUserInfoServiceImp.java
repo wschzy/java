@@ -146,7 +146,8 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 	}
 
 	@Override
-	public int updateUserById(SysUserInfo user) {
+	@Transactional(rollbackFor=Exception.class)
+	public Integer updateUserById(SysUserInfo user) {
 		return sysUserInfoMapper.updateUserById(user);
 	}
 

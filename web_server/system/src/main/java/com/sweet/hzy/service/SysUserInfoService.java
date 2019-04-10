@@ -14,5 +14,5 @@ public interface SysUserInfoService {
 	int updateUserPictureById(String picture);
 	SysUserInfo findUserByid(Integer id);
 	int deleteUserById(Integer id);
-	int updateUserById(SysUserInfo user);
+	Integer updateUserById(SysUserInfo user);
 }

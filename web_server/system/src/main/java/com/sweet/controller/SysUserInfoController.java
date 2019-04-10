@@ -61,7 +61,7 @@ public class SysUserInfoController extends BaseController {
 	}
 
 	@RequestMapping("/update.do")
-	public int updateUserById(SysUserInfo user) {
+	public Integer updateUserById(SysUserInfo user) {
 		return sysUserInfoService.updateUserById(user);
 	}
 }

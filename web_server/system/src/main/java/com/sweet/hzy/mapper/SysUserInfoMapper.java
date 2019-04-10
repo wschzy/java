@@ -1,10 +1,9 @@
 package com.sweet.hzy.mapper;
 
 import java.util.List;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+
+import com.sweet.hzy.mapper.provider.SysUserInfoProvider;
+import org.apache.ibatis.annotations.*;
 import com.sweet.bean.SysUserInfo;
 
 public interface SysUserInfoMapper {
@@ -35,8 +34,8 @@ public interface SysUserInfoMapper {
     int updateUserPictureById(@Param("picture") String picture, @Param("id") Integer id);
 
     //修改用户基本信息
-    @Update("Update SYS_USERINFO set password= #{password},phone=#{phone},sex=#{sex},fullname=#{fullname},email=#{email} WHERE id = #{id}")
-    int updateUserById(SysUserInfo user);
+    @UpdateProvider(type = SysUserInfoProvider.class, method = "updateUserById")
+    Integer updateUserById(SysUserInfo user);
 
     //根据id查询用户
     @Select("SELECT loginid,fullname FROM SYS_USERINFO WHERE id = #{id} ")

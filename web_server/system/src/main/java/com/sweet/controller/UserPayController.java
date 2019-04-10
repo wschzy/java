@@ -2,6 +2,7 @@ package com.sweet.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -23,7 +24,7 @@ public class UserPayController extends BaseController{
 	private UserPayService userPayService;
 	
 	@PostMapping(value="/getUserPayList.do")
-	public List<UserPay> getUserPayList(Integer page,Integer pageSize) {
+	public Map<String,Object> getUserPayList(Integer page, Integer pageSize) {
 		return userPayService.getUserPayList(page,pageSize);
 	}
 	

@@ -2,13 +2,14 @@ package com.sweet.hzy.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import com.sweet.bean.UserPay;
 import com.sweet.util.SysException;
 
 public interface UserPayService {
 
-	List<UserPay> getUserPayList(Integer page,Integer pageSize);
+	Map<String,Object> getUserPayList(Integer page, Integer pageSize);
 	
 	int insertUserPay(UserPay pay);
 	

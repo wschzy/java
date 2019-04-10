@@ -2,7 +2,9 @@ package com.sweet.hzy.service.imp;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -22,13 +24,17 @@ public class UserPayServiceImp implements UserPayService{
 	private UserPayMapper userPayMapper;
 	
 	@Override
-	public List<UserPay> getUserPayList(Integer page,Integer pageSize) {
+	public Map<String,Object> getUserPayList(Integer page,Integer pageSize) {
 		page = page == null ? 1 : page;
 		pageSize = pageSize == null ? 8 : pageSize;
 		PageHelper.startPage(page,pageSize);
-		List<UserPay> list = userPayMapper.getUserPayList(Integer.valueOf(ServletUtil.getSessionVal("id")));
+		Integer id = Integer.valueOf(ServletUtil.getSessionVal("id"));
+		List<UserPay> list = userPayMapper.getUserPayList(id);
 		PageInfo<UserPay> pageInfo = new PageInfo<UserPay>(list);
-		return pageInfo.getList();
+		Map<String,Object> map = new HashMap();
+		map.put("list",pageInfo.getList());
+		map.put("count",userPayMapper.getUserPayCount(id));
+		return map;
 	}
 
 	@Override

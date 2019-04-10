@@ -26,7 +26,10 @@ public interface UserPayMapper {
         @Result(property = "obj3",  column = "zfws", javaType = Object.class)
     })
 	List<UserPay> getUserPayList(Integer userid);
-	
+
+	@Select("SELECT count(*) FROM user_pay where userid = #{userid} or userid in (select userid from user_home_rel where homeid in (select homeid from user_home_rel where userid = #{userid})) ")
+	int getUserPayCount(Integer userid);
+
 	@Insert("insert into user_pay (userid,dicid,way,money,time,note) values (#{userid},#{dicid},#{way},#{money},now(),#{note})")
 	int insertUserPay(UserPay pay);
 	
