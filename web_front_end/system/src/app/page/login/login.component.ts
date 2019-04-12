@@ -23,6 +23,11 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
         
     }
+    start(){
+        this.service.interface("cmd/start",null,function(){
+          alert("十秒钟时候再试试呗！")
+        })
+    }
     submit(){
         var username=this.name;
         var password =this.word;    
