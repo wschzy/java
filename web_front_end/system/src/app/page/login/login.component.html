@@ -14,9 +14,12 @@
                         <input type="password" class="login_input" id="password" placeholder="请输入密码" [(ngModel)]="word"/> 
                     </div>
                     <button ng-disabled="!shyj" class="login_btn"  id="btn" (click)="submit()">登 录</button>
+                    <button (click)="start()" style="border:none; background:none;">出现意外了？点我试试</button>
         </div><!--row end-->
+        
     </div><!--container end-->    
     <footer class="footer">
+        
         <a href="tencent://message/?uin=1312783878&amp;Site=&amp;Menu=yes">联系我们 </a>
         <span (click)="donations()">&nbsp;|&nbsp; 向我们捐款</span>
     </footer>      
