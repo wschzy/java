@@ -208,7 +208,7 @@ export class OverviewComponent implements OnInit {
                 };
             }
         )  
-        this.service.interface("pay/getMoneyListByDic.do",this.date,
+        this.service.interface("pay/getMoneyListByDicMonth.do",this.date,
         function(data){
             var dt = [];
             var money = [];
@@ -229,7 +229,11 @@ export class OverviewComponent implements OnInit {
                 xAxis: {
                     type : 'category',
                     splitLine: {show:false},
-                    data : dt
+                    data : dt,
+                    axisLabel : {//坐标轴刻度标签的相关设置。
+                        interval:0,
+                        rotate:"45"
+                    }
                 },
                 yAxis: {
                     type : 'value'
@@ -239,7 +243,7 @@ export class OverviewComponent implements OnInit {
                         name: '本月每类消费总额',
                         type: 'bar',
                         stack:  'null',
-                        barGap: '-100%',
+                        // barGap: '-100%',
                         itemStyle: {
                             normal: {
                                 barBorderColor: 'rgba(0,0,0,0)',
