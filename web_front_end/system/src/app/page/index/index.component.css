@@ -8,11 +8,10 @@
     position: absolute;
     top: 0;
     left: 0;
-    /* padding: 60px 30px 0; */
     z-index: 20;
     display: block;
     text-align: center;
-    /* margin: 50px 20px; */
+    margin-bottom: 50px;
     margin-top: 50px;
     width: 100%;
     background:blanchedalmond;

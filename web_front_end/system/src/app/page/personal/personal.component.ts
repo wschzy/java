@@ -69,7 +69,7 @@ export class PersonalComponent implements OnInit {
 fileList = [
     {
       uid: -1,
-      name: '大头',
+      name: ' ',
       status: 'remove',
       url: this.uploadURL
     }
@@ -89,7 +89,7 @@ uploadURLFam = APPCONFIG.requestUrl+"file/getHomeImg.do";
 fileListFam = [
     {
       uid: -1,
-      name: '大头',
+      name: ' ',
       status: 'remove',
       url: this.uploadURLFam
     }

@@ -13,6 +13,7 @@ export class OverviewComponent implements OnInit {
     optionsByMonthWeek:any;
     optionsByYear:any;
     optionsByDic:any;
+    optionsByEvery:any;
     date = null; // new Date();
     // dateRange = []; // [ new Date(), addDays(new Date(), 3) ];
     // isEnglish = false;
@@ -206,13 +207,71 @@ export class OverviewComponent implements OnInit {
                     }]
                 };
             }
-        )
-
-
-
+        )  
+        this.service.interface("pay/getMoneyListByMonthWeek.do",this.date,
+        function(data){
+            var dt = [];
+            var money = [];
+            var j = 1;
+            for(var i of data){
+                dt.push(j);
+                money.push(i.money);
+                j ++;
+            }
+            that.optionsByEvery = {
+                title: {
+                    text: '本月每类消费总额',
+                },
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    },
+                },
+                xAxis: {
+                    type : 'category',
+                    splitLine: {show:false},
+                    data : ['总费用','房租','水电费','交通费','伙食费','日用品数']
+                },
+                yAxis: {
+                    type : 'value'
+                },
+                series: [
+                    {
+                        name: '辅助',
+                        type: 'bar',
+                        stack:  '总量',
+                        itemStyle: {
+                            normal: {
+                                barBorderColor: 'rgba(0,0,0,0)',
+                                color: 'rgba(0,0,0,0)'
+                            },
+                            emphasis: {
+                                barBorderColor: 'rgba(0,0,0,0)',
+                                color: 'rgba(0,0,0,0)'
+                            }
+                        },
+                        data: [0, 1700, 1400, 1200, 300, 0]
+                    },
+                    {
+                        name: '生活费',
+                        type: 'bar',
+                        stack: '总量',
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'inside'
+                            }
+                        },
+                        data:[2900, 1200, 300, 200, 900, 300]
+                    }
+                ]
+            };
+        }
+    )
+          
     }
     onChange(date): void {
-        console.log(date+"哈哈");
         if(date!=null){
             this.date={time:date};
         }

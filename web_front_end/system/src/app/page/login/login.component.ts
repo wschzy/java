@@ -24,8 +24,9 @@ export class LoginComponent implements OnInit {
         
     }
     start(){
+        var that=this;
         this.service.interface("cmd/start",null,function(){
-          alert("十秒钟时候再试试呗！")
+            that.message.info("过一会再试试");
         })
     }
     submit(){
