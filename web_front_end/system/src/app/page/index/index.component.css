@@ -1,12 +1,14 @@
 
 .main {
 	margin: 0;
-    background:blanchedalmond;
+    background:url(../../../assets/img/index.jpg) no-repeat ;
     height: 100%;
+    width: 100%;
+    background-size: 100% 100%;
 }
 .content{
     position: absolute;
-    top: 0;
+    top: 30px;
     left: 0;
     z-index: 20;
     display: block;
@@ -14,7 +16,15 @@
     margin-bottom: 50px;
     margin-top: 50px;
     width: 100%;
-    background:blanchedalmond;
+}
+@media (max-width:800px){
+    .main {
+        margin: 0;
+         background:url(../../../assets/img/index-2.jpg) no-repeat ;
+        height: 100%;
+        width: 100%;
+        background-size: 100% 100%;
+    }
 }
 @media (max-width:320px){
     .content {

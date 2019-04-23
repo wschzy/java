@@ -208,19 +208,17 @@ export class OverviewComponent implements OnInit {
                 };
             }
         )  
-        this.service.interface("pay/getMoneyListByMonthWeek.do",this.date,
+        this.service.interface("pay/getMoneyListByDic.do",this.date,
         function(data){
             var dt = [];
             var money = [];
-            var j = 1;
             for(var i of data){
-                dt.push(j);
+                dt.push(i.obj);
                 money.push(i.money);
-                j ++;
             }
             that.optionsByEvery = {
-                title: {
-                    text: '本月每类消费总额',
+                legend: {
+                    data: ['本月每类消费总额'],
                 },
                 tooltip : {
                     trigger: 'axis',
@@ -231,16 +229,17 @@ export class OverviewComponent implements OnInit {
                 xAxis: {
                     type : 'category',
                     splitLine: {show:false},
-                    data : ['总费用','房租','水电费','交通费','伙食费','日用品数']
+                    data : dt
                 },
                 yAxis: {
                     type : 'value'
                 },
                 series: [
                     {
-                        name: '辅助',
+                        name: '本月每类消费总额',
                         type: 'bar',
-                        stack:  '总量',
+                        stack:  'null',
+                        barGap: '-100%',
                         itemStyle: {
                             normal: {
                                 barBorderColor: 'rgba(0,0,0,0)',
@@ -251,19 +250,20 @@ export class OverviewComponent implements OnInit {
                                 color: 'rgba(0,0,0,0)'
                             }
                         },
-                        data: [0, 1700, 1400, 1200, 300, 0]
+                        // data: [0, 1700, 1400, 1200, 300, 0]
                     },
                     {
                         name: '生活费',
                         type: 'bar',
-                        stack: '总量',
+                        stack: 'null',
                         label: {
                             normal: {
                                 show: true,
                                 position: 'inside'
                             }
                         },
-                        data:[2900, 1200, 300, 200, 900, 300]
+                        data:money,
+                        
                     }
                 ]
             };
