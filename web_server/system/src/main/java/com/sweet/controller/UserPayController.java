@@ -68,4 +68,9 @@ public class UserPayController extends BaseController{
 	public List<UserPay> getMoneyListByDic(Date time) {
 		return userPayService.getMoneyListByDic(time);
 	}
+
+	@PostMapping(value="/getMoneyListByDicMonth.do")
+	public List<UserPay> getMoneyListByDicMonth(Date time) {
+		return userPayService.getMoneyListByDicMonth(time);
+	}
 }

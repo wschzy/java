@@ -50,4 +50,11 @@ public class UserPayProvider {
 		"(select userid from user_home_rel where homeid in (select homeid from user_home_rel where userid = "+userid+")))" + 
 		"and date_format(time, '%Y')  = date_format("+timeWhere+", '%Y') group by dicid order by time)a left join user_dictionary d on a.dicid = d.id)b group by dicclass";
 	}
+
+	public String getMoneyListByDicMonth(Integer userid,Date time) {
+		String timeWhere = getTime(time);
+		return "select sum(money)money,CONCAT(dicclass,'-',name) obj from (select a.money,d.dicclass,d.name from (SELECT sum(money) money,dicid FROM user_pay WHERE (userid = "+userid+" or  userid in" +
+				"(select userid from user_home_rel where homeid in (select homeid from user_home_rel where userid = "+userid+")))" +
+				"and date_format(time, '%Y-%m')  = date_format("+timeWhere+", '%Y-%m') group by dicid order by time)a left join user_dictionary d on a.dicid = d.id)b group by dicclass,name";
+	}
 }

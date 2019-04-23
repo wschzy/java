@@ -71,4 +71,10 @@ public interface UserPayMapper {
 	 */
 	@SelectProvider(type = UserPayProvider.class, method = "getMoneyListByDic")
 	List<UserPay> getMoneyListByDic(Integer userid,Date time);
+
+	/**
+	 * 查询本月各类消费
+	 */
+	@SelectProvider(type = UserPayProvider.class, method = "getMoneyListByDicMonth")
+	List<UserPay> getMoneyListByDicMonth(Integer userid,Date time);
 }

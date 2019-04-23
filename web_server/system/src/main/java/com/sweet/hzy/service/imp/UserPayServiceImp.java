@@ -83,4 +83,9 @@ public class UserPayServiceImp implements UserPayService{
 		return userPayMapper.getMoneyListByDic(Integer.valueOf(ServletUtil.getSessionVal("id")), time);
 	}
 
+	@Override
+	public List<UserPay> getMoneyListByDicMonth(Date time) {
+		return userPayMapper.getMoneyListByDicMonth(Integer.valueOf(ServletUtil.getSessionVal("id")), time);
+	}
+
 }
