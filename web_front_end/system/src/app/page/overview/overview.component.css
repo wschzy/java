@@ -1,4 +1,9 @@
-
+.main {
+    margin: 0;
+    background:url(../../../assets/img/overview.jpg) no-repeat ;
+    height: 100%;
+    /* background-size: cover; */
+  }
 .content{
     position: absolute;
     /* top: 79px; */
@@ -6,7 +11,8 @@
     width: 100%;
     height: auto;
     padding-top: 50px;
-    background: blanchedalmond;
+    background:url(../../../assets/img/overview.jpg) no-repeat ;
+    background-size: cover;
 }
 #picker{
     z-index: 10000;

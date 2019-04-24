@@ -1,9 +1,10 @@
 
 .main {
 	margin: 0;
-    background:rgb(209, 196, 245);
     min-height: 100%;  
     height: 802px;
+    background:url(../../../assets/img/personal.jpg) no-repeat ;
+    background-size: 100% 100%;
 }
 .content{
     position: absolute;

@@ -1,8 +1,8 @@
 .main {
   margin: 0;
-  background:url(../../../assets/img/spend.jpg) no-repeat ;
+  background:url(../../../assets/img/spend1.jpg) no-repeat ;
   height: 100%;
-  background-size: 100% 100%;
+  background-size: cover;
 }
 
 .content{
@@ -96,6 +96,15 @@
       display: inline-block;
       margin-right: 10px;
   }
+  @media (max-width:800px){
+    .main {
+        margin: 0;
+         background:url(../../../assets/img/spend1.jpg) no-repeat ;
+        height: 100%;
+        width: 100%;
+        background-size: 100% 100%;
+    }
+}
   @media (min-width: 320px) and (max-width:480px){
       table th,tr{
         font-size: 10px;

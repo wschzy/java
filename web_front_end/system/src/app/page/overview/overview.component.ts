@@ -213,7 +213,11 @@ export class OverviewComponent implements OnInit {
             var dt = [];
             var money = [];
             for(var i of data){
+                // 截取 '-' 之后的字段
+                var index=i.obj.lastIndexOf("\-");
+                i.obj=i.obj.substring(index+1,i.obj.length);
                 dt.push(i.obj);
+                
                 money.push(i.money);
             }
             that.optionsByEvery = {
@@ -281,6 +285,11 @@ export class OverviewComponent implements OnInit {
         }
         this.ngOnInit();
     }
-    
+    getCaption(obj){
+        var index=obj.lastIndexOf("\-");
+        obj=obj.substring(index+1,obj.length);
+        //  console.log(obj);
+        return obj;
+}
 
 }
