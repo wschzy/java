@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2019-04-23 14:56:41
+Date: 2019-04-25 10:31:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -136,7 +136,7 @@ CREATE TABLE `user_dictionary` (
   `userid` int(10) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `重复导入` (`name`,`dicclass`,`userid`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_dictionary
@@ -163,10 +163,7 @@ INSERT INTO `user_dictionary` VALUES ('43', '牛奶', null, '零食', null, null
 INSERT INTO `user_dictionary` VALUES ('44', '羽绒服', null, '服装', null, null, null, null, null, '19');
 INSERT INTO `user_dictionary` VALUES ('45', '夜宵', null, '伙食', null, null, null, null, null, '19');
 INSERT INTO `user_dictionary` VALUES ('46', '项链', null, '饰品', null, null, null, null, null, '19');
-INSERT INTO `user_dictionary` VALUES ('48', '压岁钱', null, '礼物', null, null, null, null, null, '19');
-INSERT INTO `user_dictionary` VALUES ('49', '手机', null, '礼物', null, null, null, null, null, '19');
 INSERT INTO `user_dictionary` VALUES ('51', '小吃', null, '伙食', null, null, null, null, null, '19');
-INSERT INTO `user_dictionary` VALUES ('52', '微信红包', null, '礼物', null, null, null, null, null, '19');
 INSERT INTO `user_dictionary` VALUES ('53', '话费', null, '充值', null, null, null, null, null, '19');
 INSERT INTO `user_dictionary` VALUES ('54', '游戏', null, '充值', null, null, null, null, null, '19');
 INSERT INTO `user_dictionary` VALUES ('55', '电影票', null, '娱乐', null, null, null, null, null, '19');
@@ -182,7 +179,6 @@ INSERT INTO `user_dictionary` VALUES ('64', '美容', null, '休闲', null, null
 INSERT INTO `user_dictionary` VALUES ('65', '电脑', null, '办公', null, null, null, null, null, '21');
 INSERT INTO `user_dictionary` VALUES ('66', '租房', null, '生活', null, null, null, null, null, '21');
 INSERT INTO `user_dictionary` VALUES ('67', '网吧', null, '娱乐', null, null, null, null, null, '21');
-INSERT INTO `user_dictionary` VALUES ('69', '生日礼物', null, '礼物', null, null, null, null, null, '19');
 INSERT INTO `user_dictionary` VALUES ('70', '额外支出', null, '生活', null, null, null, null, null, '19');
 INSERT INTO `user_dictionary` VALUES ('71', '矿泉水、饮料', null, '零食', null, null, null, null, null, '21');
 INSERT INTO `user_dictionary` VALUES ('73', '裤', null, '服装', null, null, null, null, null, '21');
@@ -190,15 +186,14 @@ INSERT INTO `user_dictionary` VALUES ('75', '内衣', null, '服装', null, null
 INSERT INTO `user_dictionary` VALUES ('76', '晾衣架', null, '生活', null, null, null, null, null, '19');
 INSERT INTO `user_dictionary` VALUES ('78', '袜子', null, '服装', null, null, null, null, null, '21');
 INSERT INTO `user_dictionary` VALUES ('81', '招商信用卡', null, '支出方式', null, null, null, null, null, null);
-INSERT INTO `user_dictionary` VALUES ('82', '礼品', null, '礼物', null, null, null, null, null, '21');
 INSERT INTO `user_dictionary` VALUES ('83', '丝袜', null, '服装', null, null, null, null, null, '21');
 INSERT INTO `user_dictionary` VALUES ('84', '发饰', null, '饰品', null, null, null, null, null, '21');
 INSERT INTO `user_dictionary` VALUES ('85', '鞋', null, '服装', null, null, null, null, null, '21');
 INSERT INTO `user_dictionary` VALUES ('86', 'T恤', null, '服装', null, null, null, null, null, '21');
 INSERT INTO `user_dictionary` VALUES ('87', '外套', null, '服装', null, null, null, null, null, '19');
-INSERT INTO `user_dictionary` VALUES ('88', '药品', null, '生活', null, null, null, null, null, '19');
 INSERT INTO `user_dictionary` VALUES ('89', '帽', null, '服装', null, null, null, null, null, '21');
 INSERT INTO `user_dictionary` VALUES ('90', '医疗', null, '生活', null, null, null, null, null, '21');
+INSERT INTO `user_dictionary` VALUES ('91', '礼物', null, '生活', null, null, null, null, null, '21');
 
 -- ----------------------------
 -- Table structure for user_home
@@ -273,7 +268,7 @@ CREATE TABLE `user_pay` (
   `time` datetime DEFAULT NULL,
   `note` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=258 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=264 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_pay
@@ -281,16 +276,16 @@ CREATE TABLE `user_pay` (
 INSERT INTO `user_pay` VALUES ('1', '21', '46', '3', '998.00', '2019-01-31 17:00:42', '新年礼物项链');
 INSERT INTO `user_pay` VALUES ('2', '19', '33', '9', '60.00', '2019-02-12 12:03:27', '二月份地铁卡充值');
 INSERT INTO `user_pay` VALUES ('3', '21', '33', '9', '60.00', '2019-02-15 12:04:10', '二月份地铁卡充值');
-INSERT INTO `user_pay` VALUES ('4', '21', '48', '9', '400.00', '2019-02-04 12:10:19', '萱萱、悦悦压岁钱');
-INSERT INTO `user_pay` VALUES ('5', '21', '48', '9', '500.00', '2019-02-09 12:11:26', '王意林压岁钱');
-INSERT INTO `user_pay` VALUES ('6', '21', '49', '10', '1499.00', '2019-02-14 12:15:31', '王士成老爸手机');
+INSERT INTO `user_pay` VALUES ('4', '21', '91', '9', '400.00', '2019-02-04 12:10:19', '萱萱、悦悦压岁钱');
+INSERT INTO `user_pay` VALUES ('5', '21', '91', '9', '500.00', '2019-02-09 12:11:26', '王意林压岁钱');
+INSERT INTO `user_pay` VALUES ('6', '21', '91', '10', '1499.00', '2019-02-14 12:15:31', '王士成老爸手机');
 INSERT INTO `user_pay` VALUES ('7', '19', '34', '2', '50.00', '2019-02-12 13:20:42', '公交卡充值');
 INSERT INTO `user_pay` VALUES ('8', '21', '41', '2', '100.00', '2019-02-17 13:21:57', '好人小吃充值100');
 INSERT INTO `user_pay` VALUES ('9', '19', '34', '2', '2.00', '2019-02-13 13:23:14', '上班公交');
 INSERT INTO `user_pay` VALUES ('10', '21', '51', '2', '42.50', '2019-02-16 13:27:19', '萱萱、悦悦肯德基');
 INSERT INTO `user_pay` VALUES ('11', '21', '18', '2', '102.24', '2019-02-01 13:32:00', '2月19日之前微信滴滴打车总计');
 INSERT INTO `user_pay` VALUES ('12', '21', '55', '1', '293.48', '2019-02-04 13:49:49', '看电影');
-INSERT INTO `user_pay` VALUES ('13', '21', '52', '2', '144.48', '2019-02-01 13:34:37', '2月19日之前微信红包总计');
+INSERT INTO `user_pay` VALUES ('13', '21', '91', '2', '144.48', '2019-02-01 13:34:37', '2月19日之前微信红包总计');
 INSERT INTO `user_pay` VALUES ('14', '21', '54', '2', '6.00', '2019-02-13 13:36:04', '三国手游充值');
 INSERT INTO `user_pay` VALUES ('15', '21', '34', '2', '3.00', '2019-02-01 13:37:23', '2月19日之前微信公交总计');
 INSERT INTO `user_pay` VALUES ('16', '21', '56', '1', '6.00', '2019-02-02 13:46:37', '优酷VIP');
@@ -303,7 +298,7 @@ INSERT INTO `user_pay` VALUES ('23', '21', '60', '1', '25.51', '2019-02-15 14:05
 INSERT INTO `user_pay` VALUES ('24', '21', '53', '1', '33.57', '2019-02-19 14:06:45', '2月19日之前支付宝话费充值总计');
 INSERT INTO `user_pay` VALUES ('25', '21', '61', '1', '15.00', '2019-02-19 19:33:48', '小番茄 、猕猴桃');
 INSERT INTO `user_pay` VALUES ('26', '21', '51', '2', '13.50', '2019-02-20 11:53:05', '鸡排');
-INSERT INTO `user_pay` VALUES ('27', '21', '52', '2', '88.00', '2019-02-20 17:31:27', '胡军生日微信红包');
+INSERT INTO `user_pay` VALUES ('27', '21', '91', '2', '88.00', '2019-02-20 17:31:27', '胡军生日微信红包');
 INSERT INTO `user_pay` VALUES ('35', '21', '34', '2', '20.00', '2019-02-21 07:48:10', '市民卡充值');
 INSERT INTO `user_pay` VALUES ('36', '21', '62', '1', '8.80', '2019-02-21 13:31:06', '午饭');
 INSERT INTO `user_pay` VALUES ('37', '19', '41', '1', '19.52', '2019-02-21 13:32:04', '中午饭 （未带饭）');
@@ -339,7 +334,7 @@ INSERT INTO `user_pay` VALUES ('66', '21', '53', '1', '10.00', '2019-02-27 13:46
 INSERT INTO `user_pay` VALUES ('68', '19', '62', '1', '104.10', '2019-02-27 14:15:23', '零食  104.11111111');
 INSERT INTO `user_pay` VALUES ('69', '21', '40', '2', '4.00', '2019-02-28 10:09:33', '华东院早餐');
 INSERT INTO `user_pay` VALUES ('70', '21', '62', '2', '5.50', '2019-02-28 10:10:29', '两瓶矿泉水');
-INSERT INTO `user_pay` VALUES ('71', '19', '69', '2', '143.10', '2019-02-28 10:19:45', '胡子扬妈妈生日礼物');
+INSERT INTO `user_pay` VALUES ('71', '19', '91', '2', '143.10', '2019-02-28 10:19:45', '胡子扬妈妈生日礼物');
 INSERT INTO `user_pay` VALUES ('72', '21', '41', '2', '10.30', '2019-02-28 13:05:29', '华东院午餐');
 INSERT INTO `user_pay` VALUES ('73', '21', '42', '1', '10.00', '2019-02-28 20:46:45', '兰州拉面（华东院）');
 INSERT INTO `user_pay` VALUES ('74', '21', '40', '2', '5.00', '2019-03-01 09:10:35', '华东院早餐');
@@ -385,12 +380,12 @@ INSERT INTO `user_pay` VALUES ('114', '21', '32', '1', '65.50', '2019-03-10 12:3
 INSERT INTO `user_pay` VALUES ('115', '21', '70', '1', '22.00', '2019-03-10 12:30:52', '验孕棒');
 INSERT INTO `user_pay` VALUES ('116', '21', '62', '1', '9.00', '2019-03-10 12:31:21', '关东煮');
 INSERT INTO `user_pay` VALUES ('117', '21', '73', '1', '355.00', '2019-03-10 12:32:51', '两条裤子');
-INSERT INTO `user_pay` VALUES ('118', '21', '70', '1', '27.10', '2019-03-10 12:33:15', '王士成口腔溃疡 （药）');
+INSERT INTO `user_pay` VALUES ('118', '21', '90', '1', '27.10', '2019-03-10 12:33:15', '王士成口腔溃疡 （药）');
 INSERT INTO `user_pay` VALUES ('119', '21', '18', '1', '9.79', '2019-03-10 12:33:49', '步行街到家（王士成支付宝）');
 INSERT INTO `user_pay` VALUES ('120', '21', '62', '1', '7.00', '2019-03-11 17:07:01', '冰淇淋');
 INSERT INTO `user_pay` VALUES ('121', '21', '34', '2', '50.00', '2019-03-11 19:08:37', '王士成');
 INSERT INTO `user_pay` VALUES ('122', '21', '42', '1', '15.00', '2019-03-11 19:40:22', '兰州拉面');
-INSERT INTO `user_pay` VALUES ('124', '19', '70', '1', '31.00', '2019-03-12 09:44:41', '口腔溃疡含片两盒');
+INSERT INTO `user_pay` VALUES ('124', '19', '90', '1', '31.00', '2019-03-12 09:44:41', '口腔溃疡含片两盒');
 INSERT INTO `user_pay` VALUES ('125', '21', '71', '1', '1.98', '2019-03-12 09:44:58', '昨天矿泉水');
 INSERT INTO `user_pay` VALUES ('126', '19', '75', '1', '72.52', '2019-03-12 09:46:03', '一套内衣');
 INSERT INTO `user_pay` VALUES ('127', '21', '18', '2', '8.00', '2019-03-12 09:47:11', '都市118到爱鑫宾馆');
@@ -414,7 +409,7 @@ INSERT INTO `user_pay` VALUES ('144', '19', '73', '1', '157.00', '2019-03-16 21:
 INSERT INTO `user_pay` VALUES ('146', '21', '71', '1', '12.00', '2019-03-16 21:51:42', '');
 INSERT INTO `user_pay` VALUES ('147', '21', '51', '1', '19.00', '2019-03-16 21:52:12', '');
 INSERT INTO `user_pay` VALUES ('148', '21', '62', '1', '11.47', '2019-03-16 21:53:28', '今天订单金额多笔支付合计');
-INSERT INTO `user_pay` VALUES ('149', '21', '82', '9', '162.00', '2019-03-16 21:56:21', '宝宝北京之行礼物 ****');
+INSERT INTO `user_pay` VALUES ('149', '21', '91', '9', '162.00', '2019-03-16 21:56:21', '宝宝北京之行礼物 ****');
 INSERT INTO `user_pay` VALUES ('150', '21', '61', '2', '19.00', '2019-03-17 15:07:38', '梨子');
 INSERT INTO `user_pay` VALUES ('151', '21', '59', '1', '14.50', '2019-03-17 21:08:19', '老爸火车票');
 INSERT INTO `user_pay` VALUES ('152', '19', '41', '1', '49.00', '2019-03-18 11:29:06', '串串 加 奶茶 加 锅盔');
@@ -443,7 +438,7 @@ INSERT INTO `user_pay` VALUES ('174', '21', '51', '1', '23.00', '2019-03-30 11:4
 INSERT INTO `user_pay` VALUES ('175', '21', '84', '2', '22.50', '2019-03-30 12:28:30', '宝宝 发卡');
 INSERT INTO `user_pay` VALUES ('176', '21', '71', '2', '10.30', '2019-03-30 14:32:21', '');
 INSERT INTO `user_pay` VALUES ('177', '21', '51', '1', '83.00', '2019-03-31 11:48:07', '烤肉');
-INSERT INTO `user_pay` VALUES ('178', '21', '70', '1', '58.00', '2019-03-31 11:48:36', '药');
+INSERT INTO `user_pay` VALUES ('178', '21', '90', '1', '58.00', '2019-03-31 11:48:36', '药');
 INSERT INTO `user_pay` VALUES ('179', '21', '41', '1', '140.98', '2019-03-31 15:43:51', '烤鱼');
 INSERT INTO `user_pay` VALUES ('180', '21', '70', '1', '8.90', '2019-03-31 15:45:35', '茶杯');
 INSERT INTO `user_pay` VALUES ('181', '21', '85', '1', '99.00', '2019-03-31 15:47:47', '多走路鞋');
@@ -475,7 +470,7 @@ INSERT INTO `user_pay` VALUES ('207', '21', '33', '5', '10.04', '2019-04-09 13:0
 INSERT INTO `user_pay` VALUES ('208', '19', '40', '2', '4.50', '2019-04-09 13:05:16', '手抓饼');
 INSERT INTO `user_pay` VALUES ('209', '19', '86', '1', '45.90', '2019-04-09 13:06:07', '小猪刺绣短袖T恤');
 INSERT INTO `user_pay` VALUES ('210', '19', '87', '1', '147.25', '2019-04-09 13:07:37', '针织外套');
-INSERT INTO `user_pay` VALUES ('211', '19', '88', '1', '236.80', '2019-04-09 13:08:50', '过敏药加维生素');
+INSERT INTO `user_pay` VALUES ('211', '19', '90', '1', '236.80', '2019-04-09 13:08:50', '过敏药加维生素');
 INSERT INTO `user_pay` VALUES ('212', '19', '63', '2', '20.50', '2019-04-09 13:18:16', '奶茶加手抓饼');
 INSERT INTO `user_pay` VALUES ('213', '21', '42', '2', '17.00', '2019-04-09 18:21:16', '华东院晚餐');
 INSERT INTO `user_pay` VALUES ('214', '21', '53', '1', '19.66', '2019-04-10 08:18:24', '');
@@ -521,6 +516,12 @@ INSERT INTO `user_pay` VALUES ('254', '21', '42', '1', '72.34', '2019-04-21 16:1
 INSERT INTO `user_pay` VALUES ('255', '21', '43', '1', '37.50', '2019-04-21 21:51:06', '牛奶啤酒');
 INSERT INTO `user_pay` VALUES ('256', '19', '73', '1', '57.63', '2019-04-22 17:21:24', '牛仔短裙');
 INSERT INTO `user_pay` VALUES ('257', '19', '34', '1', '2.00', '2019-04-22 17:22:41', '上下班公交');
+INSERT INTO `user_pay` VALUES ('258', '21', '53', '1', '20.00', '2019-04-23 22:22:09', '王士成');
+INSERT INTO `user_pay` VALUES ('259', '19', '40', '2', '9.00', '2019-04-24 09:11:56', '今天和昨天的手抓饼钱');
+INSERT INTO `user_pay` VALUES ('260', '19', '34', '1', '2.00', '2019-04-24 09:12:19', '上下班公交');
+INSERT INTO `user_pay` VALUES ('261', '21', '33', '5', '6.00', '2019-04-25 09:16:05', '上班');
+INSERT INTO `user_pay` VALUES ('262', '19', '40', '2', '4.50', '2019-04-25 09:27:31', '手抓饼');
+INSERT INTO `user_pay` VALUES ('263', '19', '34', '1', '2.00', '2019-04-25 09:27:48', '上下班公交');
 
 -- ----------------------------
 -- Table structure for user_spbz
