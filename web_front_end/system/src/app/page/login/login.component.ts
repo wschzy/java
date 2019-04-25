@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { InterfaceService } from 'src/app/interface/interface.component';
 import { NzMessageService } from 'ng-zorro-antd';
 import {Router} from '@angular/router';
 import * as $ from 'jquery';
+import { query } from '@angular/core/src/render3';
 
 @Component({
     selector: 'login',
@@ -16,13 +17,26 @@ export class LoginComponent implements OnInit {
     checked = false;
     //显示捐款
     show = false;
-    constructor(private service:InterfaceService,private router: Router,private message: NzMessageService) { 
+    constructor(
+        private el:ElementRef,
+        private service:InterfaceService,
+        private router: Router,
+        private message: NzMessageService) { 
         
     }
     //content = '< a href="tencent://message/?uin=1312783878&amp;Site=&amp;Menu=yes">'+'</ a>'
     ngOnInit() {
-        
+        var that = this;
+        // 利用 enter 直接登录
+        var input = this.el.nativeElement.querySelector('#myInput');
+        input.addEventListener("keyup", function(event) {
+            event.preventDefault();
+            if (event.keyCode === 13) {
+                that.submit()
+            }
+        });
     }
+    
     start(){
         var that=this;
         this.service.interface("cmd/start",null,function(){
