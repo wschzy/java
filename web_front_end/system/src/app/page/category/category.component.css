@@ -1,8 +1,10 @@
 
 .main {
-	  margin: 0;
-    background:rgb(245, 220, 235);
+    margin: 0;
+    background:url(../../../assets/img/category.jpg) no-repeat ;
     height: 100%;
+    width: 100%;
+    background-size: 100% 100%;
 }
 .content{
     position: absolute;
