@@ -1,7 +1,7 @@
 
 .main {
 	margin: 0;
-    background:url(../../../assets/img/index.jpg) no-repeat ;
+    background:url(../../../assets/img/bg10.jpg) no-repeat ;
     height: 100%;
     width: 100%;
     background-size: 100% 100%;
@@ -20,7 +20,7 @@
 @media (max-width:800px){
     .main {
         margin: 0;
-         background:url(../../../assets/img/index-2.jpg) no-repeat ;
+         background:url(../../../assets/img/bg10.jpg) no-repeat ;
         height: 100%;
         width: 100%;
         background-size: 100% 100%;

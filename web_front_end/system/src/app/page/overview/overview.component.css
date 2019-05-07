@@ -1,6 +1,6 @@
 .main {
     margin: 0;
-    background:url(../../../assets/img/overview.jpg) no-repeat ;
+    background:url(../../../assets/img/bg7.jpg) no-repeat ;
     height: 100%;
     background-size: cover;
   }
@@ -11,7 +11,7 @@
     width: 100%;
     height: auto;
      padding-top: 50px;
-     background:url(../../../assets/img/overview.jpg) no-repeat ; 
+     background:url(../../../assets/img/bg7.jpg) no-repeat ; 
     background-size: cover;
 }
 #picker{
@@ -38,7 +38,6 @@
         padding: 20px 50px 20px;
         text-align: center;
         z-index: 20;
-        margin-top:20px;
 
     }
     #picker{
