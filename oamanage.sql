@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2019-05-07 10:09:43
+Date: 2019-05-13 11:21:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -271,7 +271,7 @@ CREATE TABLE `user_pay` (
   `time` datetime DEFAULT NULL,
   `note` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=314 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=326 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_pay
@@ -573,6 +573,17 @@ INSERT INTO `user_pay` VALUES ('310', '21', '34', '1', '10.00', '2019-05-05 19:1
 INSERT INTO `user_pay` VALUES ('311', '21', '70', '1', '26.49', '2019-05-05 19:19:37', '手机壳');
 INSERT INTO `user_pay` VALUES ('312', '21', '62', '2', '6.00', '2019-05-06 15:48:12', '烤肠');
 INSERT INTO `user_pay` VALUES ('313', '21', '53', '1', '20.00', '2019-05-07 10:08:46', '');
+INSERT INTO `user_pay` VALUES ('314', '21', '51', '1', '3.50', '2019-05-12 12:03:06', '');
+INSERT INTO `user_pay` VALUES ('315', '21', '34', '1', '10.00', '2019-05-12 12:03:24', '');
+INSERT INTO `user_pay` VALUES ('316', '21', '53', '1', '49.90', '2019-05-12 12:03:40', '');
+INSERT INTO `user_pay` VALUES ('317', '21', '51', '1', '56.75', '2019-05-12 12:04:02', '');
+INSERT INTO `user_pay` VALUES ('318', '21', '18', '2', '73.47', '2019-05-12 12:06:28', '');
+INSERT INTO `user_pay` VALUES ('319', '19', '51', '2', '10.00', '2019-05-12 12:07:40', '8号');
+INSERT INTO `user_pay` VALUES ('320', '19', '70', '1', '23.00', '2019-05-12 12:08:38', '8号 手机膜');
+INSERT INTO `user_pay` VALUES ('322', '19', '34', '1', '20.00', '2019-05-12 12:09:36', '10号');
+INSERT INTO `user_pay` VALUES ('323', '19', '41', '1', '18.50', '2019-05-12 12:09:55', '10号');
+INSERT INTO `user_pay` VALUES ('324', '19', '42', '9', '160.00', '2019-05-13 11:18:52', '11号 王士成老爸');
+INSERT INTO `user_pay` VALUES ('325', '21', '40', '1', '5.00', '2019-05-13 11:20:59', '');
 
 -- ----------------------------
 -- Table structure for user_spbz
