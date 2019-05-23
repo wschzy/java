@@ -14,7 +14,9 @@
                         <input type="password" class="login_input" id="password" placeholder="请输入密码" [(ngModel)]="word" id="myInput"/> 
                     </div>
                     <button ng-disabled="!shyj" class="login_btn"  id="btn" (click)="submit()" id="myBtn">登 录</button>
-                    <button (click)="start()" style="border:none; background:none;">出现意外了？点我试试</button>
+                    <!-- <button  style="border:none; background:none;">出现意外了？点我试试</button> -->
+                    <i class="iconfont icon-start" aria-hidden="true" (click)="start()" style="float: left"></i>
+                    <i class="iconfont icon-jinggao" aria-hidden="true" (click)="stop()"  style="float: right;"></i>
         </div><!--row end-->
         
     </div><!--container end-->    

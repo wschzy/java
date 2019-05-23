@@ -14,6 +14,10 @@ html {
     font-family:"微软雅黑";
     font-size:14px;
   }
+  i{
+    font-size: 18px;
+    display: inline-block;
+  }
   .wrap1{
     position:absolute;
     top:0; 
