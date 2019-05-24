@@ -125,12 +125,16 @@ export class SpendComponent implements OnInit {
         // 如果写成.xlsx,可能不能打开下载的文件，这可能与Excel版本有关
     }
     exportFile(){
-        let json = this.dataSet;
         //这个dataSet ，是要导出的json数据
+        let json = this.dataSet;
+        // 创建worksheet;将JS对象数组转换为工作表。
         const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
+        //WorkBook对象为主要对象，对象中的SheetNames表示传入的sheet名称。Sheets所对应的数据。两者一一对应。
         const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
-        const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+        //使用XLSX.write方法写入
         //这里类型如果不正确，下载出来的可能是类似xml文件的东西或者是类似二进制的东西等
+        const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+        //保存文件
         this.saveAsExcelFile(excelBuffer, "spend");
     } 
     // 导入文件  
