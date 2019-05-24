@@ -117,6 +117,13 @@ export class SpendComponent implements OnInit {
         
     }
   //导出文件
+  private saveAsExcelFile(buffer: any, fileName: string) {
+    const data: Blob = new Blob([buffer], {
+    type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'
+    });
+    FileSaver.saveAs(data, fileName + '_' + new Date().getTime() + '.xls');
+        // 如果写成.xlsx,可能不能打开下载的文件，这可能与Excel版本有关
+    }
     exportFile(){
         let json = this.dataSet;
         //这个dataSet ，是要导出的json数据
@@ -173,13 +180,7 @@ export class SpendComponent implements OnInit {
 //         reader.readAsBinaryString(target.files[0]);
  
     }
-    private saveAsExcelFile(buffer: any, fileName: string) {
-          const data: Blob = new Blob([buffer], {
-          type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'
-    });
-    FileSaver.saveAs(data, fileName + '_' + new Date().getTime() + '.xls');
-            // 如果写成.xlsx,可能不能打开下载的文件，这可能与Excel版本有关
-}
+   
       
     provinceChange(value: string): void {
         this.selectedName = this.obj[ value ][ 0 ];
