@@ -3,14 +3,14 @@ Navicat MySQL Data Transfer
 
 Source Server         : 腾讯云
 Source Server Version : 50540
-Source Host           : 129.204.116.56:3306
+Source Host           : 129.204.116.56:8080
 Source Database       : oamanage
 
 Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2019-05-22 10:18:49
+Date: 2019-05-24 09:06:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -272,7 +272,7 @@ CREATE TABLE `user_pay` (
   `time` datetime DEFAULT NULL,
   `note` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=362 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=372 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_pay
@@ -619,6 +619,16 @@ INSERT INTO `user_pay` VALUES ('358', '21', '42', '2', '10.30', '2019-05-22 10:1
 INSERT INTO `user_pay` VALUES ('359', '21', '40', '2', '5.00', '2019-05-22 10:14:22', '');
 INSERT INTO `user_pay` VALUES ('360', '21', '71', '2', '3.00', '2019-05-22 10:14:57', '');
 INSERT INTO `user_pay` VALUES ('361', '19', '34', '1', '10.00', '2019-05-22 10:16:48', '公交卡充值');
+INSERT INTO `user_pay` VALUES ('362', '21', '42', '2', '12.80', '2019-05-23 15:12:18', '');
+INSERT INTO `user_pay` VALUES ('363', '21', '40', '2', '5.00', '2019-05-23 15:12:25', '');
+INSERT INTO `user_pay` VALUES ('364', '21', '62', '2', '3.00', '2019-05-23 15:12:33', '');
+INSERT INTO `user_pay` VALUES ('365', '21', '41', '1', '10.00', '2019-05-23 15:14:16', '');
+INSERT INTO `user_pay` VALUES ('366', '21', '62', '1', '16.00', '2019-05-23 15:14:35', '');
+INSERT INTO `user_pay` VALUES ('367', '21', '62', '1', '3.00', '2019-05-23 15:14:53', '');
+INSERT INTO `user_pay` VALUES ('368', '21', '41', '1', '12.00', '2019-05-23 15:15:02', '');
+INSERT INTO `user_pay` VALUES ('369', '21', '42', '2', '20.00', '2019-05-24 08:49:48', '');
+INSERT INTO `user_pay` VALUES ('370', '21', '40', '2', '5.00', '2019-05-24 08:50:13', '');
+INSERT INTO `user_pay` VALUES ('371', '21', '71', '1', '8.50', '2019-05-24 08:51:05', '');
 
 -- ----------------------------
 -- Table structure for user_spbz

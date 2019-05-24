@@ -22,6 +22,19 @@ public class Cmd {
         }
     }
 
+    @RequestMapping(value="/stop")
+    public void stop(){
+        try {
+            List<String> paramList = new ArrayList<String>();
+            paramList.add("C:\\Users\\Administrator\\Desktop\\stopmysql.bat");
+            /** 创建ProcessBuilder对象，设置指令列表*/
+            ProcessBuilder processBuilder = new ProcessBuilder(paramList);
+            processBuilder.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @GetMapping(value = "reset/{id}")
     public String restFulG(@PathVariable Integer id){
         return "查询："+id;
