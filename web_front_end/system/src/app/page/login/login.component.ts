@@ -36,11 +36,18 @@ export class LoginComponent implements OnInit {
             }
         });
     }
-    
+    //启动mysql 
     start(){
         var that=this;
         this.service.interface("cmd/start",null,function(){
-            that.message.info("过一会再试试");
+            that.message.info("已启动数据库");
+        })
+    }
+    // 停止MySQL
+    stop(){
+        var that=this;
+        this.service.interface("cmd/stop", null, function(){
+            that.message.info("已终止数据库运行");
         })
     }
     submit(){
