@@ -7,10 +7,43 @@
                 <i class="anticon anticon-upload"></i>
                 <span>导出</span>
             </button>
-            <button type="button" nz-button (click)="importFile(evel)">
-                <i class="anticon anticon-download"></i>
+            <button type="button" nz-button (click)="importFile()">
+                <i class="anticon anticon-upload"></i>
                 <span>导入</span>
-            </button>    
+                <nz-modal
+                    [(nzVisible)]="isUploadVisible"
+                    [nzTitle]="uploadTitle"
+                    [nzContent]="uploadContent"
+                    [nzFooter]="uploadFooter"
+                    [nzMaskClosable]="false"
+                    [nzClosable]="false">
+                    <ng-template #uploadTitle>
+                    上传文件
+                    </ng-template>
+                    <ng-template #uploadContent>
+                    <nz-upload
+                        [nzMultiple]="false"
+                        [nzLimit]="1"
+                        [nzAccept]=accept
+                        [nzAction]=importPath
+                        (nzChange)="handleChange($event)"
+                        [nzFileList]="fileList">
+                        <button type="button" nz-button>
+                        <i class="anticon anticon-upload"></i><span>上传</span>
+                        </button>
+                        <span>文件类型为（.xlsx）格式</span>
+                    </nz-upload>
+                    <div style="margin-top: 10px;font-size: 14px;" *ngIf="importMsg">
+                        {{importMsg}}
+                    </div>
+                    </ng-template>
+                    <ng-template #uploadFooter>
+                    <button type="button" nz-button nzSize="small" nzType="default" (click)="download()">下载模板</button>
+                    <!--<button type="button" nz-button nzType="default" (click)="handleCancel()">退出</button>-->
+                    <button type="button" nz-button nzSize="small" nzType="primary" (click)="handleOk()">关闭</button>
+                    </ng-template>
+                </nz-modal>
+            </button> 
             <!-- <button (click)="addRow()">添加</button> -->
            <button nz-button nzType="primary" (click)="addRow()">
                 <span>添加</span>

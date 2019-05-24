@@ -128,7 +128,31 @@ export class SpendComponent implements OnInit {
     } 
     // 导入文件  
     // excelData = [];
-    importFile(evt: any){      /* wire up file reader */
+    fileList = [];  // 已上传文件列表
+    importMsg = ''; // 导入信息
+    isUploadVisible = false;  // 上传窗口可见
+    isDownVisible = false;    // 下载窗口可见
+    isDownLoading = false;
+    downFileName = ''; // 文件名
+    download() {
+        open(APPCONFIG.requestUrl + 'spend_template.xlsx');
+        this.fileList = [];
+      }
+    
+    handleOk() {
+        this.isUploadVisible = false;
+        this.reloadData();
+        this.fileList = [];
+        this.importMsg = '';
+      }
+    handleChange({file, fileList}): void {
+        const status = file.status;
+        if (file.response && ('message' in file.response))
+          this.importMsg = file.response.message;
+      }
+    importFile(){
+        this.isUploadVisible = true;
+              /* wire up file reader */
 //         const target: DataTransfer = <DataTransfer>(evt.target);
 //         if (target.files.length !== 1) throw new Error('Cannot use multiple files');
 //         const reader: FileReader = new FileReader();
