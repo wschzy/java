@@ -59,19 +59,25 @@ export class InterfaceService {
     return  this.http.request(req).pipe(filter(e => e instanceof HttpResponse));
   }
  
-// 添加/编辑用户数据
-public editList(url: any, data: any) {
-  url = APPCONFIG.requestUrl + url;
-  if (this.isAdd) {
-    return this.http.post(url, data);
-  } else {
-    console.log(data);
-      data['id'] = this.commonObj.Id;
-  
-    return this.http.put(url, data);
+  // 添加/编辑用户数据
+  public editList(url: any, data: any) {
+    url = APPCONFIG.requestUrl + url;
+    if (this.isAdd) {
+      return this.http.post(url, data);
+    } else {
+      console.log(data);
+        data['id'] = this.commonObj.Id;
+    
+      return this.http.put(url, data);
+    }
+
+  }
+  // 查询支出信息，导出
+  public exSpendList(url: any) {
+    let spendURL = APPCONFIG.requestUrl + url;
+    return this.http.get(spendURL);
   }
 
-}
   public userDicCash(func:Function){
     var url;
     if(JSON.parse(localStorage.user).isadmin == 1){
