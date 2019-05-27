@@ -117,18 +117,53 @@ export class SpendComponent implements OnInit {
         
     }
   //导出文件
+  private saveAsExcelFile(buffer: any, fileName: string) {
+    const data: Blob = new Blob([buffer], {
+    type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'
+    });
+    FileSaver.saveAs(data, fileName + '_' + new Date().getTime() + '.xls');
+        // 如果写成.xlsx,可能不能打开下载的文件，这可能与Excel版本有关
+    }
     exportFile(){
-        let json = this.dataSet;
         //这个dataSet ，是要导出的json数据
+        let json = this.dataSet;
+        // 创建worksheet;将JS对象数组转换为工作表。
         const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
+        //WorkBook对象为主要对象，对象中的SheetNames表示传入的sheet名称。Sheets所对应的数据。两者一一对应。
         const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
-        const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+        //使用XLSX.write方法写入
         //这里类型如果不正确，下载出来的可能是类似xml文件的东西或者是类似二进制的东西等
+        const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+        //保存文件
         this.saveAsExcelFile(excelBuffer, "spend");
     } 
     // 导入文件  
     // excelData = [];
-    importFile(evt: any){      /* wire up file reader */
+    fileList = [];  // 已上传文件列表
+    importMsg = ''; // 导入信息
+    isUploadVisible = false;  // 上传窗口可见
+    isDownVisible = false;    // 下载窗口可见
+    isDownLoading = false;
+    downFileName = ''; // 文件名
+    download() {
+        open(APPCONFIG.requestUrl + 'spend_template.xlsx');
+        this.fileList = [];
+      }
+    
+    handleOk() {
+        this.isUploadVisible = false;
+        this.reloadData();
+        this.fileList = [];
+        this.importMsg = '';
+      }
+    handleChange({file, fileList}): void {
+        const status = file.status;
+        if (file.response && ('message' in file.response))
+          this.importMsg = file.response.message;
+      }
+    importFile(){
+        this.isUploadVisible = true;
+              /* wire up file reader */
 //         const target: DataTransfer = <DataTransfer>(evt.target);
 //         if (target.files.length !== 1) throw new Error('Cannot use multiple files');
 //         const reader: FileReader = new FileReader();
@@ -149,13 +184,7 @@ export class SpendComponent implements OnInit {
 //         reader.readAsBinaryString(target.files[0]);
  
     }
-    private saveAsExcelFile(buffer: any, fileName: string) {
-          const data: Blob = new Blob([buffer], {
-          type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'
-    });
-    FileSaver.saveAs(data, fileName + '_' + new Date().getTime() + '.xls');
-            // 如果写成.xlsx,可能不能打开下载的文件，这可能与Excel版本有关
-}
+   
       
     provinceChange(value: string): void {
         this.selectedName = this.obj[ value ][ 0 ];

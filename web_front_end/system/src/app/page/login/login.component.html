@@ -15,19 +15,22 @@
                     </div>
                     <button ng-disabled="!shyj" class="login_btn"  id="btn" (click)="submit()" id="myBtn">登 录</button>
                     <!-- <button  style="border:none; background:none;">出现意外了？点我试试</button> -->
-                    <i class="iconfont icon-start" aria-hidden="true" (click)="start()" style="float: left"></i>
-                    <i class="iconfont icon-jinggao" aria-hidden="true" (click)="stop()"  style="float: right;"></i>
+                    <a title="启动MySQL数据库">
+                        <i class="iconfont icon-start" aria-hidden="true" (click)="start()" style="float: left"></i>
+                    </a>
+                    <a title="停止MySQL数据库">
+                        <i class="iconfont icon-jinggao" aria-hidden="true" (click)="stop()"  style="float: right;"></i>
+                    </a>
         </div><!--row end-->
         
     </div><!--container end-->    
     <footer class="footer">
-        
         <a href="tencent://message/?uin=1312783878&amp;Site=&amp;Menu=yes">联系我们 </a>
         <span (click)="donations()">&nbsp;|&nbsp; 向我们捐款</span>
     </footer>      
 </div>
 <div class="contact" *ngIf="show">
-        <i class="iconfont icon-close" (click)="close()"></i>
-        <img src="../../../assets/img/wx_contact.jpg">
-        <img src="../../../assets/img/zfb_contact.jpg">
+    <i class="iconfont icon-close" (click)="close()"></i>
+    <img src="../../../assets/img/wx_contact.jpg">
+    <img src="../../../assets/img/zfb_contact.jpg">
 </div>
