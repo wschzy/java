@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2019-05-24 09:06:12
+Date: 2019-05-27 10:38:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -272,7 +272,7 @@ CREATE TABLE `user_pay` (
   `time` datetime DEFAULT NULL,
   `note` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=372 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=389 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_pay
@@ -626,9 +626,25 @@ INSERT INTO `user_pay` VALUES ('365', '21', '41', '1', '10.00', '2019-05-23 15:1
 INSERT INTO `user_pay` VALUES ('366', '21', '62', '1', '16.00', '2019-05-23 15:14:35', '');
 INSERT INTO `user_pay` VALUES ('367', '21', '62', '1', '3.00', '2019-05-23 15:14:53', '');
 INSERT INTO `user_pay` VALUES ('368', '21', '41', '1', '12.00', '2019-05-23 15:15:02', '');
-INSERT INTO `user_pay` VALUES ('369', '21', '42', '2', '20.00', '2019-05-24 08:49:48', '');
-INSERT INTO `user_pay` VALUES ('370', '21', '40', '2', '5.00', '2019-05-24 08:50:13', '');
-INSERT INTO `user_pay` VALUES ('371', '21', '71', '1', '8.50', '2019-05-24 08:51:05', '');
+INSERT INTO `user_pay` VALUES ('369', '19', '34', '1', '20.00', '2019-05-27 09:48:28', '两人公交卡充值');
+INSERT INTO `user_pay` VALUES ('370', '19', '62', '1', '270.10', '2019-05-27 09:51:35', '喜多多椰果王＋三只松鼠');
+INSERT INTO `user_pay` VALUES ('372', '21', '62', '1', '8.50', '2019-05-27 10:24:43', '');
+INSERT INTO `user_pay` VALUES ('373', '21', '41', '1', '15.00', '2019-05-27 10:25:04', '');
+INSERT INTO `user_pay` VALUES ('374', '21', '71', '1', '4.00', '2019-05-27 10:25:15', '');
+INSERT INTO `user_pay` VALUES ('375', '21', '71', '1', '5.00', '2019-05-27 10:26:34', '');
+INSERT INTO `user_pay` VALUES ('376', '21', '53', '1', '19.98', '2019-05-27 10:26:48', '');
+INSERT INTO `user_pay` VALUES ('377', '21', '43', '1', '34.60', '2019-05-27 10:27:45', '牛奶 方便面');
+INSERT INTO `user_pay` VALUES ('378', '21', '32', '1', '46.20', '2019-05-27 10:28:16', '');
+INSERT INTO `user_pay` VALUES ('379', '21', '71', '1', '29.80', '2019-05-27 10:28:41', '');
+INSERT INTO `user_pay` VALUES ('380', '21', '32', '1', '46.50', '2019-05-27 10:28:55', '');
+INSERT INTO `user_pay` VALUES ('381', '21', '71', '1', '15.00', '2019-05-27 10:29:11', '');
+INSERT INTO `user_pay` VALUES ('382', '21', '71', '1', '8.38', '2019-05-27 10:29:35', '');
+INSERT INTO `user_pay` VALUES ('383', '21', '63', '1', '15.00', '2019-05-27 10:29:45', '一点点');
+INSERT INTO `user_pay` VALUES ('384', '21', '51', '1', '25.00', '2019-05-27 10:30:06', '');
+INSERT INTO `user_pay` VALUES ('385', '21', '70', '1', '44.80', '2019-05-27 10:30:22', '蚊香液');
+INSERT INTO `user_pay` VALUES ('386', '21', '42', '2', '20.00', '2019-05-27 10:33:10', '23号晚餐');
+INSERT INTO `user_pay` VALUES ('387', '21', '40', '2', '5.00', '2019-05-27 10:34:26', '24号');
+INSERT INTO `user_pay` VALUES ('388', '21', '42', '2', '270.00', '2019-05-27 10:34:48', '25号 聚餐');
 
 -- ----------------------------
 -- Table structure for user_spbz

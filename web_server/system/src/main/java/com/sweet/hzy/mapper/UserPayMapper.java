@@ -16,7 +16,7 @@ import com.sweet.hzy.mapper.provider.UserPayProvider;
 
 public interface UserPayMapper {
 
-	@Select("select a.id,a.money,a.time,a.note,b.fullname,c.name zflx,d.name zfws from (SELECT * FROM user_pay where userid = #{userid} "
+	@Select("select a.id,a.money,a.time,a.note,a.userid,a.dicid,a.way,b.fullname,c.name zflx,d.name zfws from (SELECT * FROM user_pay where userid = #{userid} "
 			+ "or userid in (select userid from user_home_rel where homeid in (select homeid from user_home_rel where userid = #{userid})) order by time desc) a "
 			+ "left join sys_userinfo b on a.userid = b.id "
 			+ "left join user_dictionary c on a.dicid = c.id left join user_dictionary d on a.way = d.id")
