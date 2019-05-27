@@ -12,7 +12,7 @@ import java.util.Map;
 @RequestMapping(value="/chat")
 public class WeChatController {
     //全局用户信息
-    private static Map<String, List<String>> map = new HashMap<String,List<String>>();
+    private static  Map<String, List<String>> map = new HashMap<String,List<String>>();
 
     /**
      * 客服获取所有用户的信息
@@ -20,7 +20,9 @@ public class WeChatController {
      */
     @RequestMapping(value="/getAllUserMessage")
     public Map<String, List<String>> getAllMessage(){
-        return map;
+        Map<String, List<String>> maps =map;
+        map.clear();
+        return maps;
     }
 
     /**
