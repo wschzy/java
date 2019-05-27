@@ -15,6 +15,15 @@ public class WeChatController {
     private static Map<String, List<String>> map = new HashMap<String,List<String>>();
 
     /**
+     * 客服获取所有用户的信息
+     * @return
+     */
+    @RequestMapping(value="/getAllUserMessage")
+    public Map<String, List<String>> getAllMessage(){
+        return map;
+    }
+
+    /**
      * 客服获取用户信息
      * @param id 用户主键
      * @return 用户发送的信息
