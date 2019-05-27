@@ -21,7 +21,7 @@ public class WeChatController {
     @RequestMapping(value="/getAllUserMessage")
     public Map<String, List<String>> getAllMessage(){
         Map<String, List<String>> maps =map;
-        map.clear();
+        map= new HashMap<String,List<String>>();
         return maps;
     }
 
