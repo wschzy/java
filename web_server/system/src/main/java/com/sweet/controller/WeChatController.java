@@ -1,5 +1,6 @@
 package com.sweet.controller;
 
+import com.sweet.util.StringUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,13 +16,22 @@ public class WeChatController {
     private static  Map<String, List<String>> map = new HashMap<String,List<String>>();
 
     /**
+     *删除客服和用户消息
+     */
+    @RequestMapping(value="/removeMessage")
+    public void removeMessage(String id){
+        map.remove(id);//删除用户信息
+        service.remove(id);//删除用户信息
+    }
+
+    /**
      * 客服获取所有用户的信息
      * @return
      */
     @RequestMapping(value="/getAllUserMessage")
     public Map<String, List<String>> getAllMessage(){
         Map<String, List<String>> maps =map;
-        map= new HashMap<String,List<String>>();
+        //map= new HashMap<String,List<String>>();//删除用户消息
         return maps;
     }
 
@@ -34,7 +44,7 @@ public class WeChatController {
     public List<String> getMessage(String id){
         //获取用户信息
         List<String> list = map.get(id);
-        map.remove(id);//删除以获取的用户信息
+        //map.remove(id);//删除以获取的用户信息
         return list;
     }
 
@@ -52,7 +62,7 @@ public class WeChatController {
             list = new ArrayList<String>();
             map.put(id,list);
         }
-        list.add(message);
+        list.add(StringUtil.getSystemDate()+"_"+message);
     }
 
     //全局客服信息
@@ -72,7 +82,7 @@ public class WeChatController {
             list = new ArrayList<String>();
             service.put(id,list);
         }
-        list.add(message);
+        list.add(StringUtil.getSystemDate()+"_"+ message);
     }
 
     /**
@@ -84,7 +94,8 @@ public class WeChatController {
     public List<String> getServiceMessage(String id){
         //获取用户信息
         List<String> list = service.get(id);
-        service.remove(id);//删除以获取的用户信息
+        //service.remove(id);//删除以获取的客服信息
         return list;
     }
+
 }

@@ -3,8 +3,14 @@ package com.sweet.util;
 
 import groovy.lang.GroovyShell;
 
+import java.text.SimpleDateFormat;
+
 public class StringUtil {
 	private StringUtil() {
+	}
+
+	public static String getSystemDate(){
+		return (new SimpleDateFormat("HH-mm-ss").format(System.currentTimeMillis()));
 	}
 
 	public static boolean isEmpty(String str) {
