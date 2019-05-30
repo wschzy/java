@@ -32,6 +32,9 @@ public class WeChatController {
     public Map<String, List<String>> getAllMessage(){
         Map<String, List<String>> maps =map;
         //map= new HashMap<String,List<String>>();//删除用户消息
+        List<String> list = new ArrayList<String>();
+        list.add("1");//1 用户消息  2 客服消息
+        map.put("type",list);
         return maps;
     }
 
