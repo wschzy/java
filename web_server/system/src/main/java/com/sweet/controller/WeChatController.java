@@ -3,17 +3,11 @@ package com.sweet.controller;
 import com.sweet.bean.SysResponse;
 import com.sweet.bean.WeChat;
 import com.sweet.hzy.service.WeChatService;
-import com.sweet.util.StringUtil;
 import com.sweet.util.SysResponseUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.annotation.Resource;
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping(value="/chat")
