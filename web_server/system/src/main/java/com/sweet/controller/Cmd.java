@@ -1,5 +1,6 @@
 package com.sweet.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -9,6 +10,10 @@ import java.util.List;
 @RestController
 @RequestMapping(value="/cmd")
 public class Cmd {
+
+    @Value("${server.port}")
+    private String port;
+
     @RequestMapping(value="/start")
     public void start(){
         try {
@@ -37,7 +42,7 @@ public class Cmd {
 
     @GetMapping(value = "reset/{id}")
     public String restFulG(@PathVariable Integer id){
-        return "查询："+id;
+        return "查询："+id+port;
     }
 
     @GetMapping(value = "reset/{id}/{name}")

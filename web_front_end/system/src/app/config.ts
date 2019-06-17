@@ -3,7 +3,7 @@ function getAppConfig() {
 
     const AppConfig = {
       // http请求地址
-       requestUrl: "http://129.204.116.56:8088/",
+       requestUrl: "http://www.hbwb.xyz:8081/",
        cityUrl:"http://wthrcdn.etouch.cn/weather_mini?city="
       //requestUrl: "http://192.168.137.162:8088/"
     };

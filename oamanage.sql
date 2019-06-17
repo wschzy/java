@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2019-06-12 13:59:10
+Date: 2019-06-17 17:34:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -138,7 +138,7 @@ CREATE TABLE `user_dictionary` (
   `userid` int(10) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `重复导入` (`name`,`dicclass`,`userid`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_dictionary
@@ -199,6 +199,8 @@ INSERT INTO `user_dictionary` VALUES ('91', '礼物', null, '生活', null, null
 INSERT INTO `user_dictionary` VALUES ('92', '自驾', null, '出行', null, null, null, null, null, '21');
 INSERT INTO `user_dictionary` VALUES ('93', '旅行', null, '休闲', null, null, null, null, null, '21');
 INSERT INTO `user_dictionary` VALUES ('95', '理发', null, '生活', null, null, null, null, null, '19');
+INSERT INTO `user_dictionary` VALUES ('96', '基础护肤', null, '生活', null, null, null, null, null, '19');
+INSERT INTO `user_dictionary` VALUES ('97', '衬衫', null, '服装', null, null, null, null, null, '21');
 
 -- ----------------------------
 -- Table structure for user_home
@@ -273,7 +275,7 @@ CREATE TABLE `user_pay` (
   `time` datetime DEFAULT NULL,
   `note` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=455 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=479 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_pay
@@ -707,6 +709,30 @@ INSERT INTO `user_pay` VALUES ('450', '21', '71', '2', '3.50', '2019-06-12 09:08
 INSERT INTO `user_pay` VALUES ('451', '21', '40', '2', '5.00', '2019-06-12 09:09:11', '');
 INSERT INTO `user_pay` VALUES ('452', '21', '41', '2', '13.30', '2019-06-12 13:55:16', '');
 INSERT INTO `user_pay` VALUES ('454', '21', '62', '2', '4.00', '2019-06-12 13:55:47', '雪糕');
+INSERT INTO `user_pay` VALUES ('455', '21', '42', '2', '10.30', '2019-06-13 19:23:49', '');
+INSERT INTO `user_pay` VALUES ('456', '21', '40', '2', '5.00', '2019-06-13 19:23:59', '');
+INSERT INTO `user_pay` VALUES ('457', '21', '41', '2', '10.30', '2019-06-13 19:24:06', '');
+INSERT INTO `user_pay` VALUES ('458', '21', '42', '2', '13.30', '2019-06-13 19:24:15', '');
+INSERT INTO `user_pay` VALUES ('459', '21', '62', '1', '6.00', '2019-06-13 19:25:49', '12-6冰淇淋');
+INSERT INTO `user_pay` VALUES ('460', '19', '53', '1', '49.90', '2019-06-13 19:27:39', '王士成他妈');
+INSERT INTO `user_pay` VALUES ('461', '19', '34', '1', '2.00', '2019-06-17 09:33:11', '');
+INSERT INTO `user_pay` VALUES ('462', '19', '18', '1', '5.37', '2019-06-17 09:33:57', '上海城到永旺');
+INSERT INTO `user_pay` VALUES ('463', '19', '91', '2', '5.20', '2019-06-17 09:36:11', '爸爸 父亲节红包');
+INSERT INTO `user_pay` VALUES ('464', '19', '62', '2', '19.80', '2019-06-17 09:36:33', '椰青');
+INSERT INTO `user_pay` VALUES ('465', '19', '41', '2', '47.00', '2019-06-17 09:37:02', '蜜桃餐厅');
+INSERT INTO `user_pay` VALUES ('466', '19', '96', '1', '99.00', '2019-06-17 09:39:58', '屈臣氏的卸妆水和化妆棉');
+INSERT INTO `user_pay` VALUES ('467', '21', '40', '2', '5.80', '2019-06-17 10:26:29', '14号');
+INSERT INTO `user_pay` VALUES ('468', '21', '41', '2', '13.30', '2019-06-17 10:26:44', '14号');
+INSERT INTO `user_pay` VALUES ('469', '21', '71', '2', '4.00', '2019-06-17 10:27:08', '15号');
+INSERT INTO `user_pay` VALUES ('470', '21', '43', '2', '14.60', '2019-06-17 10:27:29', '椰青');
+INSERT INTO `user_pay` VALUES ('471', '21', '91', '2', '5.20', '2019-06-17 10:27:56', '父亲节红包');
+INSERT INTO `user_pay` VALUES ('472', '21', '97', '2', '399.00', '2019-06-17 10:29:22', '');
+INSERT INTO `user_pay` VALUES ('473', '21', '18', '2', '12.11', '2019-06-17 10:29:37', '永旺到家');
+INSERT INTO `user_pay` VALUES ('474', '21', '63', '1', '14.00', '2019-06-17 10:31:59', '');
+INSERT INTO `user_pay` VALUES ('475', '21', '70', '1', '10.00', '2019-06-17 10:32:25', '栀子花');
+INSERT INTO `user_pay` VALUES ('476', '21', '33', '5', '6.00', '2019-06-17 17:33:39', '');
+INSERT INTO `user_pay` VALUES ('477', '21', '62', '2', '5.50', '2019-06-17 17:33:53', '');
+INSERT INTO `user_pay` VALUES ('478', '21', '63', '2', '13.00', '2019-06-17 17:34:01', '');
 
 -- ----------------------------
 -- Table structure for user_spbz
