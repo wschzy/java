@@ -122,10 +122,7 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 	public List<?> getMenu() {
 		String isadmin = ServletUtil.getSessionVal("isadmin");
 		if(StringUtil.isEmpty(isadmin)) {
-			List<?> list = userMenuMapper.getMenuList();
-			/*redisTemplate.opsForList().leftPush("USER_MENU", JSON.toJSONString(list));
-	        stringRedisTemplate.opsForValue().set("USER_MENU_2", JSON.toJSONString(list));*/
-	        return list;
+			return userMenuMapper.getMenuList();
 		}else {
 			return sysMenuMapper.getMenuList();
 		}
