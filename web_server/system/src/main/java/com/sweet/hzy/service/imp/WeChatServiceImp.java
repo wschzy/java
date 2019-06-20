@@ -1,8 +1,6 @@
 package com.sweet.hzy.service.imp;
 
 import com.sweet.bean.WeChat;
-import com.sweet.hzy.mapper.WeChatMapper;
-import com.sweet.hzy.service.WeChatService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
