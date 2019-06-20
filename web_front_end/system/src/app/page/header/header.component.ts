@@ -11,13 +11,16 @@ import { FunctionExpr } from '@angular/compiler';
 export class HeaderComponent implements OnInit {
     private list:any;
     private counts;
-    user=JSON.parse(localStorage.user);
-    menu=JSON.parse(localStorage.menu);
+    private user;
     constructor(private myRouter:Router,private service:InterfaceService) {
-        
+        let ur = localStorage.user;
+        if(ur == undefined){
+            this.myRouter.navigateByUrl('login');
+        }
+        this.user=JSON.parse(ur);
     }
     ngOnInit() { 
-        this.list=this.menu;
+        this.list=JSON.parse(localStorage.menu);
         var that=this;
         this.service.interface("userspbz/getUserSpbzCount.do",null,
             function(data:any){

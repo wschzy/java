@@ -24,24 +24,33 @@ export class InterfaceService {
     if(data == null){
       data={};
     }
-    this.http.post(this.userLoginURL+url,$.param(data),httpOptions).subscribe(
+   
+    this.callback(this.http.post(this.userLoginURL+url,$.param(data),httpOptions),fun);
+  }
+ 
+  callback(http,fun){
+    var that = this;
+    http.subscribe(
       data => {
-          if(data != undefined && data['state'] == '-1'){
-              this.message.info(data['message']);
-          }else if(data == '-2'){//重定向
-            this.router.navigateByUrl('login');
-          }else{
-            if(typeof fun === 'function'){
-              eval(fun(data));
-            }
-          }
+          that.ajax(data,fun);
       },
       err => {
           console.log(err);
       }
     );
   }
- 
+  
+  ajax(data,fun){
+    if(data != undefined && data['state'] == '-1'){
+      this.message.info(data['message']);
+    }else if(data == '-2'){//重定向
+      this.router.navigateByUrl('login');
+    }else{
+      if(typeof fun === 'function'){
+        eval(fun(data));
+      }
+    }
+  }
 
   interface2(url:any,formData:FormData):Observable<any>{
     const httpOptions = {
