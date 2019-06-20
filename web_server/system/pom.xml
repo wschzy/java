@@ -165,13 +165,13 @@
             <version>2.5.0</version>
         </dependency>
 
-       <!-- 将作为Redis对象序列化器
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.47</version>
-        </dependency>-->
-        
+		<dependency>
+			<groupId>code</groupId>
+			<artifactId>sendcode</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+
     </dependencies>
     
     
