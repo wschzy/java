@@ -1,6 +1,7 @@
 package com.sweet.util;
 
 import com.sweet.bean.SysResponse;
+import com.sweet.bean.SysUserInfo;
 
 import java.lang.reflect.Field;
 
@@ -22,6 +23,7 @@ public class SysResponseUtil {
     public static boolean beanIsNull(Object o){
         try {
             for (Field field : o.getClass().getDeclaredFields()) {
+                if("serialVersionUID".equals(field.getName()))continue;
                 field.setAccessible(true);
                 Object object = field.get(o);
                 if (object instanceof CharSequence) {
@@ -38,5 +40,6 @@ public class SysResponseUtil {
         }
         return true;
     }
+    
 
 }
