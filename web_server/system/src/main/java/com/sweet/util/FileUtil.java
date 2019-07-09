@@ -1,5 +1,6 @@
 package com.sweet.util;
-
+import java.io.Writer;
+import java.io.FileWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -18,9 +19,34 @@ public class FileUtil {
 		delFile(dirPath,fileName);
 		image.transferTo(file);
 	}
-	
-	public static void delFile(String path,String filename){
-        File file=new File(path+"/"+filename);
+
+	public static void main(String[] args) throws IOException{
+		saveFileContent("D:\\a.html","xxxxx");
+	}
+
+	/**
+	 *
+	 * @param 文件地址
+	 * @param 文件内容
+	 * @throws IOException
+	 */
+	public static void saveFileContent(String path,String content) throws IOException{
+		delFile(path);//删除文件
+		File file =new File(path);
+		file.createNewFile();//创建文件
+		try(Writer out =new FileWriter(file);){
+			out.write(content);//写入内容
+		}
+	}
+
+	public static void delFile(String path){
+		File file=new File(path);
+		if(file.exists() && file.isFile())
+			file.delete();
+	}
+
+	public static void delFile(String dir,String filename){
+        File file=new File(dir+"/"+filename);
         if(file.exists() && file.isFile())
             file.delete();
     }
