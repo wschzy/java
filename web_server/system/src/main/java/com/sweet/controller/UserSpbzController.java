@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,17 +20,17 @@ public class UserSpbzController extends BaseController{
 	@Resource
 	private UserSpbzService userSpbzService;
 	
-	@PostMapping(value="/getUserSpbzList.do")
+	@GetMapping(value="/getUserSpbzList")
 	public List<UserSpbz> getUserSpbzList() {
 		return userSpbzService.getUserSpbzList();
 	}
 	
-	@PostMapping(value="/getUserSpbzCount.do")
+	@GetMapping(value="/getUserSpbzCount")
 	public int getUserSpbzCount() {
 		return userSpbzService.getUserSpbzCount();
 	}
 	
-	@PostMapping(value="/approvalUserHome.do")
+	@PostMapping(value="/approvalUserHome")
 	public int approvalUserHome(Integer id,Integer approval) throws SysException {
 		return userSpbzService.approvalUserHome(id,approval);
 	}

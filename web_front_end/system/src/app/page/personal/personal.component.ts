@@ -11,7 +11,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 })
 
 export class PersonalComponent implements OnInit {
-    uploadURL = APPCONFIG.requestUrl+"file/getUserImg.do";
+    uploadURL = APPCONFIG.requestUrl+"file/getUserImg";
     // 判断 a的值 判断是否显示
     a:any=false;
     b:any=false;
@@ -37,7 +37,7 @@ export class PersonalComponent implements OnInit {
     }
     ngAfterContentInit(){
        var that = this;
-       this.service.interface("/home/getHome.do",null,
+       this.service.get("/home/getHome",
             function(data:any){
                 window.localStorage.setItem("home",JSON.stringify(data));
                 var msg=JSON.parse(localStorage.user);
@@ -85,7 +85,7 @@ fileList = [
     this.uploadImg(uploadFile,1);
   }
 //上传家庭图片
-uploadURLFam = APPCONFIG.requestUrl+"file/getHomeImg.do";
+uploadURLFam = APPCONFIG.requestUrl+"file/getHomeImg";
 fileListFam = [
     {
       uid: -1,
@@ -110,7 +110,7 @@ fileListFam = [
     const formData = new FormData();
     formData.append('image', uploadFile.file);
     formData.append('name', name);
-    this.service.interface2("file/upload.do",formData).subscribe((event: any)=> {
+    this.service.interface2("file/upload",formData).subscribe((event: any)=> {
         if(name == 1){
             that.fileList = [
                 {

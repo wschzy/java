@@ -24,7 +24,7 @@ export class AddFamilyComponent implements OnInit {
             this.message.info("请填写信息");
             return;
         }else{
-            this.service.interface("/home/addHome.do",data,
+            this.service.post("/home/addHome",data,
                 function(data:any){
                     that.router.navigateByUrl("/personal")
                 });

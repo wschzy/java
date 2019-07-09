@@ -33,7 +33,7 @@ public class UploadFileController extends BaseController {
 	/**
 	 * 处理上载请求
 	 */
-	@PostMapping(value = "upload.do")
+	@PostMapping(value = "upload")
 	public void upload(@RequestParam("image") MultipartFile image, @RequestParam("name") String name, HttpServletRequest request) throws Exception {
 		String fileName = image.getOriginalFilename();
 		String type = fileName.indexOf(".") != -1 ? fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length()): null;
@@ -64,18 +64,18 @@ public class UploadFileController extends BaseController {
 	}
 	
 	//获取家庭成员的头像
-	@RequestMapping(value = "/getUserListImg.do")
+	@RequestMapping(value = "/getUserListImg")
     public byte[]  getHomeUserImage(String picture) throws IOException {
 		return FileUtil.getAllImage(picture,rootDir);
     }
 	
-	@RequestMapping(value = "/getUserImg.do")
+	@RequestMapping(value = "/getUserImg")
     public byte[]  getUserImage() throws IOException {
 		SysUserInfo user = sysUserInfoService.findUserByid(Integer.parseInt(ServletUtil.getSessionVal("id")));
 		return FileUtil.getAllImage(user.getPicture(),rootDir);
     }
 
-	@RequestMapping(value = "/getHomeImg.do")
+	@RequestMapping(value = "/getHomeImg")
     public byte[]  getHomeImage() throws Exception {
 		UserHome home = userHomeService.getHomeByUserid();
 		return FileUtil.getAllImage(home.getPicture(),rootDir);

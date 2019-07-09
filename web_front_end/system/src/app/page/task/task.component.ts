@@ -19,7 +19,7 @@ export class TaskComponent implements OnInit {
     ngOnInit(){
       var that=this;
       
-      this.service.interface("/userspbz/getUserSpbzList.do",null,
+      this.service.get("/userspbz/getUserSpbzList",
         function(data){
           that.list=data;
           console.log(data);
@@ -29,7 +29,7 @@ export class TaskComponent implements OnInit {
       var that=this;
       console.log(item.id)
       var data={id:item.id,approval:approval}
-      this.service.interface("userspbz/approvalUserHome.do",data,
+      this.service.post("userspbz/approvalUserHome",data,
         function(){
           that.ngOnInit();
         })

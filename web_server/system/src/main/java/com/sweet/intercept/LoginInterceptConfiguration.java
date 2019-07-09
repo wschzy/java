@@ -11,7 +11,7 @@ public class LoginInterceptConfiguration implements WebMvcConfigurer{
 	@Override
     public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new LoginIntercept())
-                .addPathPatterns("/*/*.do").order(2);
+                .addPathPatterns("/**/**").excludePathPatterns("/SysUserInfo/findUser","/cmd/start","/cmd/stop").order(2);
     }
 	
 

@@ -5,9 +5,8 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.*;
 
 import com.sweet.bean.SysUserInfo;
 import com.sweet.bean.UserHome;
@@ -21,28 +20,28 @@ public class UserHomeController extends BaseController{
 	@Resource
 	private UserHomeService userHomeService;
 	
-	@PostMapping(value="/getHome.do")
+	@GetMapping(value="/getHome")
 	public UserHome getHomeByUserid() throws SysException {
 		return userHomeService.getHomeByUserid();
 	}
 	
-	@PostMapping(value="/getUserList.do")
+	@GetMapping(value="/getUserList")
 	public List<SysUserInfo> getUserListByHomeid() throws SysException{
 		return userHomeService.getUserListByHomeid();
 	}
 	
-	@PostMapping(value="/addHome.do")
+	@PostMapping(value="/addHome")
 	public int addHome(@Valid UserHome home) throws SysException {
 		return userHomeService.addHome(home);
 	}
 	
-	@PostMapping(value="/addUser.do")
+	@PostMapping(value="/addUser")
 	public int addUserForHome (@NotNull(message = "被邀请人不能为空")String loginid) throws SysException{
 		return userHomeService.addUserForHome(loginid);
 	}
 	
-	@PostMapping(value="/deleteUser.do")
-	public int deleteUserForHome (@NotNull(message = "参数不能为空")Integer userid) throws SysException{
+	@DeleteMapping(value="/deleteUser/{userid}")
+	public int deleteUserForHome (@NotNull(message = "参数不能为空")@PathVariable Integer userid) throws SysException{
 		return userHomeService.deleteUserForHome(userid);
 	}
 }

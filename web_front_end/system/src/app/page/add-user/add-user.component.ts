@@ -38,13 +38,13 @@ export class AddUserComponent implements OnInit {
         var data={loginid:loginid,password:pwd,phone:phone,sex:sex,fullname:fullname,email:email};
         var data1={loginid:loginid,password:pwd,phone:phone,sex:sex,fullname:fullname,email:email,id:id};
         if (this.isAddStatus) {
-        this.service.interface("SysUserInfo/add.do",data,
+        this.service.post("SysUserInfo/add",data,
           function(){
             console.log('添加用户信息成功');
             that.router.navigateByUrl('user');
           })
         }else {
-          this.service.interface("SysUserInfo/update.do",data1,
+          this.service.put("SysUserInfo/update",data1,
             function(data){
               console.log(data);
               console.log('编辑用户信息成功');

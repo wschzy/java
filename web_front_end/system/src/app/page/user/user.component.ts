@@ -53,7 +53,7 @@ export class UserComponent implements OnInit {
     var pageSize=this.pageSize;
     var data={page:page,pageSize:pageSize}; 
     var that=this;
-    this.service.interface("/SysUserInfo/allUser.do",data,
+    this.service.post("/SysUserInfo/allUser",data,
       function(data){ 
         that.total=data.count;
         that.users=data.list;
@@ -71,8 +71,7 @@ export class UserComponent implements OnInit {
   // 删除信息
   confirmDelete(i: string): void {
     var that=this;
-    var obj = {id:i};
-    this.service.interface("/SysUserInfo/delete.do",obj,function(){
+    this.service.delete("/SysUserInfo/delete/"+i,function(){
         that.ngOnInit();
     })
   } 

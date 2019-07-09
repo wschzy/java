@@ -38,7 +38,7 @@ public interface SysUserInfoMapper {
     Integer updateUserById(SysUserInfo user);
 
     //根据id查询用户
-    @Select("SELECT loginid,fullname FROM SYS_USERINFO WHERE id = #{id} ")
+    @Select("SELECT loginid,fullname,picture FROM SYS_USERINFO WHERE id = #{id} ")
     SysUserInfo findUserByid(Integer id);
 }
 

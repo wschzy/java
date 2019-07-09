@@ -39,14 +39,14 @@ export class LoginComponent implements OnInit {
     //启动mysql 
     start(){
         var that=this;
-        this.service.interface("cmd/start",null,function(){
+        this.service.get("cmd/start",function(){
             that.message.info("已启动数据库");
         })
     }
     // 停止MySQL
     stop(){
         var that=this;
-        this.service.interface("cmd/stop", null, function(){
+        this.service.get("cmd/stop", function(){
             that.message.info("已终止数据库运行");
         })
     }
@@ -59,10 +59,10 @@ export class LoginComponent implements OnInit {
             this.message.info("用户名或密码不能为空");
             return;
         }else if(username !=='') { 
-        this.service.interface("SysUserInfo/findUser", data,  
+        this.service.post("SysUserInfo/findUser", data,  
             function(data:any){
                 window.localStorage.setItem("user",JSON.stringify(data));//将用户信息放入缓存中
-                that.service.interface("SysUserInfo/getMenu.do", null,  
+                that.service.get("SysUserInfo/getMenu",  
                 function(msg:any){
                     for(var i=0;i<msg.length;i++){
                         msg[i].url = '../'+msg[i].url;

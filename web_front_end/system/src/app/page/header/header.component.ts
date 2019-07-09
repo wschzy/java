@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
     ngOnInit() { 
         this.list=JSON.parse(localStorage.menu);
         var that=this;
-        this.service.interface("userspbz/getUserSpbzCount.do",null,
+        this.service.get("userspbz/getUserSpbzCount",
             function(data:any){
                that.counts=data 
             }
@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
         this.myRouter.navigateByUrl('index');
     }
     logout(){
-        this.service.interface("SysUserInfo/logout.do",null,null);
+        this.service.get("SysUserInfo/logout",null);
         this.myRouter.navigateByUrl('login');
     }
 }

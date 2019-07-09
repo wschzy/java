@@ -91,7 +91,7 @@ export class SpendComponent implements OnInit {
         var pageSize=this.pageSize;
         var data={page:page,pageSize:pageSize};
         var that=this;
-        this.service.interface("/pay/getUserPayList.do",data,
+        this.service.post("/pay/getUserPayList",data,
             function(data:any){
                 console.log(data)
                 that.total=data.count;
@@ -109,8 +109,7 @@ export class SpendComponent implements OnInit {
 //   删除数据
     deleteRow(i: string): void {
         var that=this;
-        var obj = {id:i};
-        this.service.interface("pay/deleteUserPay.do",obj,
+        this.service.delete("pay/delete/"+  i,
         function(){
             that.ngOnInit();
         })
@@ -195,7 +194,7 @@ export class SpendComponent implements OnInit {
     submit(){
         var that = this;
         var param = {dicid:this.selectedName,way:this.selectedPayway,money:this.demoValue,note:this.xq};
-        this.service.interface("/pay//addUserPay.do",param,function(data){
+        this.service.post("/pay//addUserPay",param,function(data){
             that.add=false;
             that.ngOnInit();
     });

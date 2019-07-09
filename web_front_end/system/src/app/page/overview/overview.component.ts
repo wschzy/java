@@ -22,7 +22,7 @@ export class OverviewComponent implements OnInit {
     ngOnInit() {
         //查询本周每天消费
         var that = this;
-        this.service.interface("pay/getMoneyListByWeek.do",this.date,
+        this.service.post("pay/getMoneyListByWeek",this.date,
           function(data){
               var dt = {'Mon':0,'Tue':0,'Wed':0,'Thu':0,'Fri':0,'Sat':0,'Sun':0};
               for(var i of data){
@@ -57,7 +57,7 @@ export class OverviewComponent implements OnInit {
               };
         })
 
-        this.service.interface("pay/getMoneyListByMonth.do",this.date,
+        this.service.post("pay/getMoneyListByMonth",this.date,
             function(data){
                 var dt = [];
                 for(var i of data){
@@ -98,7 +98,7 @@ export class OverviewComponent implements OnInit {
             }
         )
 
-        this.service.interface("pay/getMoneyListByMonthWeek.do",this.date,
+        this.service.post("pay/getMoneyListByMonthWeek",this.date,
             function(data){
                 var dt = [];
                 var money = [];
@@ -136,7 +136,7 @@ export class OverviewComponent implements OnInit {
             }
         )
 
-        this.service.interface("pay/getMoneyListByYear.do",this.date,
+        this.service.post("pay/getMoneyListByYear",this.date,
             function(data){
                 var dt = [];
                 var money = [];
@@ -173,7 +173,7 @@ export class OverviewComponent implements OnInit {
         )
 
 
-        this.service.interface("pay/getMoneyListByDic.do",this.date,
+        this.service.post("pay/getMoneyListByDic",this.date,
             function(data){
                 var dt = [];
                 var money = [];
@@ -208,7 +208,7 @@ export class OverviewComponent implements OnInit {
                 };
             }
         )  
-        this.service.interface("pay/getMoneyListByDicMonth.do",this.date,
+        this.service.post("pay/getMoneyListByDicMonth",this.date,
         function(data){
             var dt = [];
             var money = [];

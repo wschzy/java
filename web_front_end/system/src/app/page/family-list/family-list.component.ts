@@ -12,7 +12,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 
 export class FamilyListComponent implements OnInit {
     // 展示头像
-    portrait = APPCONFIG.requestUrl+"file/getUserListImg.do?picture=";
+    portrait = APPCONFIG.requestUrl+"file/getUserListImg?picture=";
 
     //邀请人 
     username:any="";
@@ -23,7 +23,7 @@ export class FamilyListComponent implements OnInit {
 
     ngOnInit() {
         var that = this; 
-        this.service.interface("/home/getUserList.do",null,
+        this.service.get("/home/getUserList",
             function(data){
                 that.list=data;
                 for(var b in that.list){
@@ -37,7 +37,7 @@ export class FamilyListComponent implements OnInit {
         var that=this;
         var name =this.username;
         var inviter={loginid:name}
-        this.service.interface("/home/addUser.do",inviter,
+        this.service.post("/home/addUser",inviter,
             function(){
                 that.message.info("申请已发出");
             })
@@ -46,7 +46,7 @@ export class FamilyListComponent implements OnInit {
     // 删除用户
     delete(id){
         var that=this;
-        this.service.interface("/home/deleteUser.do",{userid:id},
+        this.service.delete("/home/deleteUser/"+id,
         function(){
             that.ngOnInit();
         })

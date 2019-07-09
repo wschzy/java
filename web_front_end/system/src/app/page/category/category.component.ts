@@ -36,8 +36,7 @@ export class CategoryComponent implements OnInit {
      //删除信息
     deleteRow(i: string): void {
       var that=this;
-      var obj = {id:i};
-      this.service.interface("/category/deleteUserDictionary.do",obj,function(){
+      this.service.delete("/category/delete/"+i,function(){
           //更新用户类别缓存 并刷新列表
           that.service.userDicCash(function(){that.ngOnInit();});
       })
@@ -52,7 +51,7 @@ export class CategoryComponent implements OnInit {
          return;
        }else{
          var that=this;
-        this.service.interface("/category/addUserDictionary.do",data,
+         this.service.post("/category/add",data,
           function(){
             that.show=false;
             //更新用户类别缓存 并刷新列表

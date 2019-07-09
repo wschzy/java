@@ -15,17 +15,33 @@ export class InterfaceService {
   public isAdd: boolean;
   public commonObj: any;
   //统一接口分装
-  public interface(url:any,data:any,fun:Function){
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type':  'application/x-www-form-urlencoded'
-        }),withCredentials: true
-      };
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/x-www-form-urlencoded'
+    }),withCredentials: true
+  };
+
+
+  public delete(url:any,fun:Function){
+    this.callback(this.http.delete(this.userLoginURL+url ,this.httpOptions),fun);
+  }
+
+  public get(url:any,fun:Function){
+    this.callback(this.http.get(this.userLoginURL+url,this.httpOptions),fun);
+  }
+
+  public put(url:any,data:any,fun:Function){
     if(data == null){
       data={};
     }
-   
-    this.callback(this.http.post(this.userLoginURL+url,$.param(data),httpOptions),fun);
+    this.callback(this.http.put(this.userLoginURL+url,$.param(data),this.httpOptions),fun);
+  }
+
+  public post(url:any,data:any,fun:Function){
+    if(data == null){
+      data={};
+    }
+    this.callback(this.http.post(this.userLoginURL+url,$.param(data),this.httpOptions),fun);
   }
  
   callback(http,fun){
@@ -68,19 +84,7 @@ export class InterfaceService {
     return  this.http.request(req).pipe(filter(e => e instanceof HttpResponse));
   }
  
-  // 添加/编辑用户数据
-  public editList(url: any, data: any) {
-    url = APPCONFIG.requestUrl + url;
-    if (this.isAdd) {
-      return this.http.post(url, data);
-    } else {
-      console.log(data);
-        data['id'] = this.commonObj.Id;
-    
-      return this.http.put(url, data);
-    }
-
-  }
+  
   // 查询支出信息，导出
   public exSpendList(url: any) {
     let spendURL = APPCONFIG.requestUrl + url;
@@ -90,18 +94,18 @@ export class InterfaceService {
   public userDicCash(func:Function){
     var url;
     if(JSON.parse(localStorage.user).isadmin == 1){
-        url = "category/getPayWayList.do";
+        url = "category/getPayWayList";
     }else{
-        url = "/category/getUserDictionaryList.do";
+        url = "/category/getUserDictionaryList";
         //如果是非管理员登录，也需要存储支付方式
         if(func == null){//如果 func为null的话，为更新列表。不为null的话 为登录成功 需要缓存
-          this.interface("category/getPayWayList.do",null,
+          this.get("category/getPayWayList",
           function(data){
               window.localStorage.setItem("payway",JSON.stringify(data))
           })
         }
     }
-    this.interface(url,null,
+    this.get(url,
         function(data){
             //存储支付类型
             window.localStorage.setItem("category",JSON.stringify(data))
