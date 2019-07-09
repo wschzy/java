@@ -33,4 +33,7 @@ public class SDKTestSendTemplateSMS {
 		}*/
 	}
 
+	public static void main(String[] args) {
+		sendSMS("",new String[]{"大宝贝","18852969161","xxoo","哈哈哈哈"});
+	}
 }
