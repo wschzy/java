@@ -16,7 +16,7 @@ public class FileUtil {
 			dir.mkdirs();
 		}
 		File file = new File(dir,fileName);
-		delFile(dirPath,fileName);
+		delFile(file);
 		image.transferTo(file);
 	}
 
@@ -31,25 +31,19 @@ public class FileUtil {
 	 * @throws IOException
 	 */
 	public static void saveFileContent(String path,String content) throws IOException{
-		delFile(path);//删除文件
 		File file =new File(path);
+		delFile(file);//删除文件
 		file.createNewFile();//创建文件
 		try(Writer out =new FileWriter(file);){
 			out.write(content);//写入内容
 		}
 	}
 
-	public static void delFile(String path){
-		File file=new File(path);
+	public static void delFile(File file){
 		if(file.exists() && file.isFile())
 			file.delete();
 	}
 
-	public static void delFile(String dir,String filename){
-        File file=new File(dir+"/"+filename);
-        if(file.exists() && file.isFile())
-            file.delete();
-    }
 	
 	public static byte[] getFile(String path) throws IOException{
 		File file = new File(path);
