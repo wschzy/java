@@ -30,7 +30,7 @@ public class SysUserInfoController extends BaseController {
 	}
 	
 	//登录
-	@PostMapping(value="/findUser")
+	@GetMapping(value="/findUser")
 	public SysUserInfo findUserByLoginidAndPassword(@Valid SysUserInfo user,HttpSession session) throws SysException{
 		return sysUserInfoService.findUserByLoginidAndPassword(user.getLoginid(), user.getPassword(),session);
 	}

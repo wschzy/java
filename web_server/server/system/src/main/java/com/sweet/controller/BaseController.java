@@ -33,4 +33,6 @@ public abstract class BaseController {
 		rr.setState(SysResponse.STATE_ERROR);
 		return rr;
 	}
+
+
 }

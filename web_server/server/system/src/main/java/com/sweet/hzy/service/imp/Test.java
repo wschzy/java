@@ -1,6 +1,9 @@
 package com.sweet.hzy.service.imp;
 
+import org.springframework.web.client.RestTemplate;
+
 import java.util.*;
+import java.util.concurrent.CountDownLatch;
 
 public class Test {
     //双端队列
@@ -83,8 +86,33 @@ public class Test {
         }
         System.out.println(queue);
     }
+    public static class ThreadTest implements Runnable{
+        RestTemplate restTemplate;
+        ThreadTest(RestTemplate restTemplate){
+            this.restTemplate = restTemplate;
+        }
+
+        @Override
+        public void run() {
+            try {
+                count.await();//阻塞
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Object obj = restTemplate.postForObject("http://localhost:8089/SysUserInfo/findUser?loginid=wsc&password=123456",Object.class,null);
+            System.out.println(obj);
+        }
+    }
+    public static CountDownLatch count = new CountDownLatch(200);
     public static void main(String[] args) throws Exception{
-        //B();
+        RestTemplate restTemplate = new RestTemplate();
+
+        for (int i=0;i<200;i++){
+            new Thread(new ThreadTest(restTemplate)).start();
+            count.countDown();
+        }
+
+
         /*ThreadTest t1 = new ThreadTest("A");
         ThreadTest t2 = new ThreadTest("B");
         t1.start();
@@ -94,7 +122,6 @@ public class Test {
         //t1.join();
         t2.start();
         System.out.println("over");*/
-
     }
        /* String[] atp = {"Rafael Nadal", "Novak Djokovic",
                 "Stanislas Wawrinka",
@@ -115,6 +142,7 @@ public class Test {
         players.forEach(System.out::print);
     }*/
 }
+/*
 class ThreadTest extends Thread {
     private String name;
     public ThreadTest(String name){
@@ -125,4 +153,4 @@ class ThreadTest extends Thread {
             System.out.println(name+"-"+i);
         }
     }
-}
+}*/
