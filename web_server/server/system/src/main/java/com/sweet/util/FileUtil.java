@@ -1,10 +1,6 @@
 package com.sweet.util;
-import java.io.Writer;
-import java.io.FileWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,21 +17,16 @@ public class FileUtil {
 	}
 
 	public static void main(String[] args) throws IOException{
-		saveFileContent("D:\\a.html","xxxxx");
+		saveFileContent("D:\\a.html","safasdf撒打发斯蒂芬");
 	}
 
-	/**
-	 *
-	 * @param 文件地址
-	 * @param 文件内容
-	 * @throws IOException
-	 */
 	public static void saveFileContent(String path,String content) throws IOException{
 		File file =new File(path);
 		delFile(file);//删除文件
 		file.createNewFile();//创建文件
-		try(Writer out =new FileWriter(file);){
+		try(Writer out =new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8"));){
 			out.write(content);//写入内容
+			out.flush();
 		}
 	}
 
