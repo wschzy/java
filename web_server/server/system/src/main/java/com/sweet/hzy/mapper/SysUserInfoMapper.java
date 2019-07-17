@@ -6,6 +6,7 @@ import com.sweet.hzy.mapper.provider.SysUserInfoProvider;
 import org.apache.ibatis.annotations.*;
 import com.sweet.bean.SysUserInfo;
 
+@CacheNamespace(implementation=com.sweet.redis.RedisCache.class)//不能加括号
 public interface SysUserInfoMapper {
 
     //查询所有用户

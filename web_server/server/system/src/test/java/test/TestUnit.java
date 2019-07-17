@@ -25,7 +25,7 @@ import com.sweet.hzy.mapper.UserPayMapper;
 @SpringBootTest(classes = Action.class)*/
 public class TestUnit {
 
-    private static  final  int c = 200;
+    private static  final  int c = 5;
     public static class ThreadTest implements Runnable{
         RestTemplate restTemplate;
         ThreadTest(RestTemplate restTemplate){
@@ -37,7 +37,9 @@ public class TestUnit {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            Object obj = restTemplate.getForObject("http://localhost:8088/SysUserInfo/findUser?loginid=wsc&password=123456",Object.class);
+            String dl = "http://localhost:8088/SysUserInfo/findUser?loginid=wsc&password=123456";
+            String all = "http://localhost:8088/SysUserInfo/allUser";
+            Object obj = restTemplate.getForObject(all,Object.class);
             System.out.println(obj);
         }
     }

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2019-07-01 10:18:09
+Date: 2019-07-17 09:52:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -277,7 +277,7 @@ CREATE TABLE `user_pay` (
   `time` datetime DEFAULT NULL,
   `note` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=537 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=602 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_pay
@@ -789,6 +789,70 @@ INSERT INTO `user_pay` VALUES ('533', '21', '42', '2', '9.00', '2019-07-01 10:09
 INSERT INTO `user_pay` VALUES ('534', '21', '41', '2', '29.00', '2019-07-01 10:09:53', '27 午+晚');
 INSERT INTO `user_pay` VALUES ('535', '21', '41', '2', '12.30', '2019-07-01 10:10:46', '28');
 INSERT INTO `user_pay` VALUES ('536', '21', '71', '2', '43.50', '2019-07-01 10:11:19', '29');
+INSERT INTO `user_pay` VALUES ('537', '19', '40', '2', '4.50', '2019-07-02 10:19:10', '');
+INSERT INTO `user_pay` VALUES ('538', '19', '34', '1', '10.00', '2019-07-03 11:29:28', '');
+INSERT INTO `user_pay` VALUES ('539', '19', '34', '1', '10.00', '2019-07-03 11:29:32', '');
+INSERT INTO `user_pay` VALUES ('540', '19', '41', '1', '10.79', '2019-07-03 11:29:45', '');
+INSERT INTO `user_pay` VALUES ('541', '19', '63', '1', '15.00', '2019-07-05 13:07:23', '');
+INSERT INTO `user_pay` VALUES ('542', '19', '40', '2', '4.50', '2019-07-05 13:07:53', '');
+INSERT INTO `user_pay` VALUES ('543', '19', '34', '1', '10.00', '2019-07-05 13:08:10', '');
+INSERT INTO `user_pay` VALUES ('544', '19', '41', '1', '12.90', '2019-07-05 13:08:53', '7.03');
+INSERT INTO `user_pay` VALUES ('545', '19', '60', '1', '40.00', '2019-07-05 13:09:21', '');
+INSERT INTO `user_pay` VALUES ('546', '19', '60', '1', '36.49', '2019-07-05 13:09:33', '');
+INSERT INTO `user_pay` VALUES ('547', '19', '41', '1', '10.79', '2019-07-05 13:09:58', '');
+INSERT INTO `user_pay` VALUES ('548', '19', '41', '1', '17.50', '2019-07-05 13:10:12', '');
+INSERT INTO `user_pay` VALUES ('549', '19', '41', '1', '19.00', '2019-07-05 13:10:38', '');
+INSERT INTO `user_pay` VALUES ('550', '21', '40', '2', '21.00', '2019-07-08 10:08:43', '上周 4天早餐');
+INSERT INTO `user_pay` VALUES ('551', '21', '63', '2', '11.00', '2019-07-08 10:09:20', '上周');
+INSERT INTO `user_pay` VALUES ('552', '21', '71', '2', '7.00', '2019-07-08 10:09:43', '昨天雪碧');
+INSERT INTO `user_pay` VALUES ('553', '21', '41', '1', '19.00', '2019-07-08 10:11:10', '7月1号');
+INSERT INTO `user_pay` VALUES ('554', '21', '34', '1', '20.00', '2019-07-08 10:12:01', '7月1号');
+INSERT INTO `user_pay` VALUES ('555', '21', '41', '1', '17.50', '2019-07-08 10:12:28', '7月2号');
+INSERT INTO `user_pay` VALUES ('556', '21', '34', '1', '20.00', '2019-07-08 10:13:09', '7月2号 3号 两笔');
+INSERT INTO `user_pay` VALUES ('557', '21', '41', '1', '10.79', '2019-07-08 10:13:34', '7月3号 ');
+INSERT INTO `user_pay` VALUES ('558', '21', '18', '1', '76.49', '2019-07-08 10:14:16', '7月3号 面试');
+INSERT INTO `user_pay` VALUES ('559', '21', '51', '1', '12.90', '2019-07-08 10:14:44', '小吃 炸鸡');
+INSERT INTO `user_pay` VALUES ('560', '21', '34', '1', '10.00', '2019-07-08 10:17:26', '');
+INSERT INTO `user_pay` VALUES ('561', '21', '63', '1', '15.00', '2019-07-08 10:17:56', '');
+INSERT INTO `user_pay` VALUES ('562', '21', '42', '1', '119.00', '2019-07-08 10:18:09', '');
+INSERT INTO `user_pay` VALUES ('563', '21', '71', '1', '2.88', '2019-07-08 10:18:34', '');
+INSERT INTO `user_pay` VALUES ('564', '21', '42', '1', '23.98', '2019-07-08 10:18:54', '和府捞面');
+INSERT INTO `user_pay` VALUES ('565', '21', '62', '1', '5.00', '2019-07-08 10:19:22', '');
+INSERT INTO `user_pay` VALUES ('566', '21', '41', '1', '43.00', '2019-07-08 10:19:49', '鲜芋仙');
+INSERT INTO `user_pay` VALUES ('567', '21', '41', '1', '33.00', '2019-07-08 10:20:03', '肉肉');
+INSERT INTO `user_pay` VALUES ('568', '21', '41', '1', '27.00', '2019-07-08 10:20:13', '锅盔');
+INSERT INTO `user_pay` VALUES ('569', '21', '41', '1', '9.00', '2019-07-08 10:20:25', '锅盔');
+INSERT INTO `user_pay` VALUES ('570', '21', '51', '1', '9.00', '2019-07-08 10:20:42', '');
+INSERT INTO `user_pay` VALUES ('571', '21', '42', '1', '344.00', '2019-07-08 10:21:06', '海底捞');
+INSERT INTO `user_pay` VALUES ('572', '21', '18', '1', '11.00', '2019-07-08 10:21:18', '');
+INSERT INTO `user_pay` VALUES ('573', '19', '40', '2', '4.50', '2019-07-10 10:11:42', '');
+INSERT INTO `user_pay` VALUES ('574', '19', '34', '1', '10.00', '2019-07-10 10:12:12', '');
+INSERT INTO `user_pay` VALUES ('575', '19', '34', '1', '10.00', '2019-07-11 09:49:15', '');
+INSERT INTO `user_pay` VALUES ('576', '19', '41', '1', '31.00', '2019-07-11 15:35:15', '胡子扬和我的午饭');
+INSERT INTO `user_pay` VALUES ('577', '19', '41', '2', '43.00', '2019-07-12 14:06:47', '肯德基');
+INSERT INTO `user_pay` VALUES ('578', '19', '41', '2', '19.80', '2019-07-12 14:07:13', '香天下活锅两张代金券');
+INSERT INTO `user_pay` VALUES ('579', '19', '34', '1', '10.00', '2019-07-12 14:07:47', '');
+INSERT INTO `user_pay` VALUES ('580', '19', '41', '1', '28.00', '2019-07-15 09:26:55', '和府捞面 和 鸡蛋灌饼');
+INSERT INTO `user_pay` VALUES ('581', '19', '61', '1', '36.69', '2019-07-15 09:28:40', '水果');
+INSERT INTO `user_pay` VALUES ('582', '19', '34', '1', '10.00', '2019-07-15 09:28:54', '');
+INSERT INTO `user_pay` VALUES ('583', '19', '42', '1', '258.00', '2019-07-15 09:29:33', '香天下');
+INSERT INTO `user_pay` VALUES ('584', '19', '40', '1', '20.70', '2019-07-15 09:30:01', '手抓饼');
+INSERT INTO `user_pay` VALUES ('585', '19', '98', '1', '25.40', '2019-07-15 09:30:38', '姨妈巾');
+INSERT INTO `user_pay` VALUES ('586', '19', '51', '1', '12.40', '2019-07-15 09:31:11', '');
+INSERT INTO `user_pay` VALUES ('587', '19', '51', '1', '40.00', '2019-07-15 09:31:40', '');
+INSERT INTO `user_pay` VALUES ('588', '19', '51', '1', '29.90', '2019-07-15 09:33:21', '乌云冰淇淋');
+INSERT INTO `user_pay` VALUES ('589', '19', '40', '2', '4.50', '2019-07-16 09:56:41', '');
+INSERT INTO `user_pay` VALUES ('590', '19', '34', '1', '10.00', '2019-07-17 09:24:02', '');
+INSERT INTO `user_pay` VALUES ('591', '21', '41', '2', '6.00', '2019-07-17 09:31:48', '');
+INSERT INTO `user_pay` VALUES ('592', '21', '41', '2', '8.50', '2019-07-17 09:31:59', '12号');
+INSERT INTO `user_pay` VALUES ('593', '21', '40', '2', '5.00', '2019-07-17 09:32:16', '15号');
+INSERT INTO `user_pay` VALUES ('594', '21', '41', '2', '13.00', '2019-07-17 09:34:43', '15号');
+INSERT INTO `user_pay` VALUES ('595', '21', '70', '2', '11.40', '2019-07-17 09:36:16', '玉米和面条');
+INSERT INTO `user_pay` VALUES ('596', '21', '41', '2', '14.00', '2019-07-17 09:36:57', '陕西面');
+INSERT INTO `user_pay` VALUES ('597', '21', '71', '2', '7.00', '2019-07-17 09:37:10', '');
+INSERT INTO `user_pay` VALUES ('598', '21', '70', '2', '13.00', '2019-07-17 09:37:39', '馄饨');
+INSERT INTO `user_pay` VALUES ('599', '21', '62', '2', '5.00', '2019-07-17 09:38:08', '冰淇淋');
+INSERT INTO `user_pay` VALUES ('601', '21', '33', '5', '100.00', '2019-07-17 09:48:58', '月卡');
 
 -- ----------------------------
 -- Table structure for user_spbz

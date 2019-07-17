@@ -2,12 +2,9 @@ package com.sweet.hzy.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import com.sweet.bean.UserDictionary;
-
+@CacheNamespace(implementation=com.sweet.redis.RedisCache.class)
 public interface UserDictionaryMapper {
 
 	@Select("SELECT * FROM USER_DICTIONARY where userid = #{userid}"

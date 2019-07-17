@@ -28,11 +28,12 @@ public class SysUserInfoController extends BaseController {
 	public int addUser(@Valid SysUserInfo user)throws SysException{
 		return sysUserInfoService.addUser(user);
 	}
-	
 	//登录
-	@GetMapping(value="/findUser")
+	@RequestMapping(value="/findUser")
 	public SysUserInfo findUserByLoginidAndPassword(@Valid SysUserInfo user,HttpSession session) throws SysException{
-		return sysUserInfoService.findUserByLoginidAndPassword(user.getLoginid(), user.getPassword(),session);
+		SysUserInfo user2 =  sysUserInfoService.findUserByLoginidAndPassword(user.getLoginid(), user.getPassword(),session);
+		user2.setPassword(null);
+		return user2;
 	}
 	
 	//查询用户列表

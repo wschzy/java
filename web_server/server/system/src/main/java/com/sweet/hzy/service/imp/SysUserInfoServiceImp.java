@@ -91,11 +91,10 @@ public class SysUserInfoServiceImp implements SysUserInfoService{
 			if(r > 1) {
 				throw new SysException("登录失败");
 			}
-			session.setAttribute("id", user.getId());
+ 			session.setAttribute("id", user.getId());
 			session.setAttribute("loginid", user.getLoginid());
 			session.setAttribute("isadmin", user.getIsadmin());
 		}
-		user.setPassword(null);
 		return user;
 	}
 	

@@ -3,17 +3,11 @@ package com.sweet.hzy.mapper;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectProvider;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import com.sweet.bean.UserPay;
 import com.sweet.hzy.mapper.provider.UserPayProvider;
-
+@CacheNamespace(implementation=com.sweet.redis.RedisCache.class)
 public interface UserPayMapper {
 
 	@Select("select a.id,a.money,a.time,a.note,a.userid,a.dicid,a.way,b.fullname,c.name zflx,d.name zfws from (SELECT * FROM user_pay where userid = #{userid} "
