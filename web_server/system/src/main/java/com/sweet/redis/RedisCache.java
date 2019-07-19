@@ -6,11 +6,12 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.cache.Cache;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 @Slf4j
 public class RedisCache implements Cache{
     private String id;
-    private Jedis redisClient=createRedis();  //创建一个jedis连接
+    private JedisPool redisClient=createRedis();
     private ReadWriteLock readWriteLock = new ReentrantReadWriteLock(); //读写锁
 
     public void setReadWriteLock(ReadWriteLock readWriteLock) {
@@ -32,43 +33,48 @@ public class RedisCache implements Cache{
     /**从连接池中取
      * @return
      */
-    private  static Jedis createRedis() {
-                 //从连接池获取redis连接
-        Jedis jedis =RedisPool.getPool().getResource();
-        return jedis;
+    private static JedisPool createRedis() {//从连接池获取redis连接
+        return RedisPool.getPool();
     }
 
     public void putObject(Object key, Object value) {
         byte[] keybyte=SerializableUtil.serialize(key);
         byte[]valuebyte=SerializableUtil.serialize(value);
-        this.redisClient.set(keybyte, valuebyte);
+        try (Jedis jedis = this.redisClient.getResource();){
+            jedis.set(keybyte, valuebyte);
+        }
     }
 
     public Object getObject(Object key) {
         //缓存穿透
-
-        byte[] values=this.redisClient.get(SerializableUtil.serialize(key));
-        //算法：计算一定时间内没有命中的键，存起来   key->value
-        if(values==null){
-            return null;
+        try (Jedis jedis = this.redisClient.getResource();){
+            byte[] values=jedis.get(SerializableUtil.serialize(key));
+            if(values==null){
+                return null;
+            }
+            Object obj =SerializableUtil.unserizlize(values);
+            return obj;
         }
-        Object obj =SerializableUtil.unserizlize(values);
-        return obj;
     }
 
     public Object removeObject(Object key) {
         byte[]keybyte=SerializableUtil.serialize(key);
-        return this.redisClient.expire(keybyte, 0);
+        try (Jedis jedis = this.redisClient.getResource();){
+            return  jedis.expire(keybyte, 0);
+        }
     }
 
     public void clear() {
-        this.redisClient.flushDB();
+        try (Jedis jedis = this.redisClient.getResource();){
+            jedis.flushDB();
+        }
     }
 
     public int getSize() {
-        Long size = this.redisClient.dbSize();
-        int s =Integer.valueOf(size+"");
-        return s;
+        try (Jedis jedis = this.redisClient.getResource();){
+            Long size = jedis.dbSize();
+            return Integer.valueOf(size+"");
+        }
     }
 
     public ReadWriteLock getReadWriteLock() {

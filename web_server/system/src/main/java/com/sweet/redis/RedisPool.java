@@ -22,7 +22,7 @@ public class RedisPool {
     config.setTestOnReturn(Boolean.valueOf(bundle.getString("spring.redis.jedis.pool.testOnReturn")));
 
     //创建连接池
-    pool =new JedisPool(config,bundle.getString("spring.redis.host"),Integer.valueOf(bundle.getString("spring.redis.port")));
+    pool =new JedisPool(config,bundle.getString("spring.redis.host"),Integer.valueOf(bundle.getString("spring.redis.port")),Integer.valueOf(bundle.getString("spring.redis.timeout")));
     }
 
     public synchronized static JedisPool getPool() {
