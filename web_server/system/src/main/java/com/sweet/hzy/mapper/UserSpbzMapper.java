@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.*;
 
 import com.sweet.bean.UserSpbz;
 
-@CacheNamespace(implementation=com.sweet.redis.RedisCache.class)
+//@CacheNamespace(implementation=com.sweet.redis.RedisCache.class)
 public interface UserSpbzMapper {
 
 	@Select("select * from user_spbz where id = #{id}")
