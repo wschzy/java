@@ -1,0 +1,114 @@
+2019-07-19 14:38:48.176  INFO 13948 --- [main] com.sweet.Action                         : Starting Action on DESKTOP-P9NHQ6A with PID 13948 (C:\Users\wangshicheng\Desktop\Project\web_server\system\target\classes started by wangshicheng in C:\Users\wangshicheng\Desktop\Project\web_server\system)
+2019-07-19 14:38:48.180  INFO 13948 --- [main] com.sweet.Action                         : No active profile set, falling back to default profiles: default
+2019-07-19 14:38:48.561  INFO 13948 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@17d88132: startup date [Fri Jul 19 14:38:48 CST 2019]; root of context hierarchy
+2019-07-19 14:38:49.344  INFO 13948 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-07-19 14:38:49.968  INFO 13948 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$25d48bda] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-19 14:38:50.400  INFO 13948 --- [main] org.xnio                                 : XNIO version 3.3.8.Final
+2019-07-19 14:38:50.418  INFO 13948 --- [main] org.xnio.nio                             : XNIO NIO Implementation Version 3.3.8.Final
+2019-07-19 14:38:50.451  WARN 13948 --- [main] io.undertow.websockets.jsr               : UT026009: XNIO worker was not set on WebSocketDeploymentInfo, the default worker will be used
+2019-07-19 14:38:50.452  WARN 13948 --- [main] io.undertow.websockets.jsr               : UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2019-07-19 14:38:50.478  INFO 13948 --- [main] io.undertow.servlet                      : Initializing Spring embedded WebApplicationContext
+2019-07-19 14:38:50.478  INFO 13948 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1918 ms
+2019-07-19 14:38:50.981  INFO 13948 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-07-19 14:38:50.983  INFO 13948 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'sessionRepositoryFilter' to: [/*]
+2019-07-19 14:38:50.983  INFO 13948 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-07-19 14:38:50.983  INFO 13948 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-07-19 14:38:50.984  INFO 13948 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-07-19 14:38:50.984  INFO 13948 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'CharacterEncodingFilter' to urls: [/*]
+2019-07-19 14:38:50.984  INFO 13948 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to: [/*]
+2019-07-19 14:38:50.985  INFO 13948 --- [main] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-07-19 14:53:21.168  INFO 16040 --- [main] com.sweet.Action                         : Starting Action on DESKTOP-P9NHQ6A with PID 16040 (C:\Users\wangshicheng\Desktop\Project\web_server\system\target\classes started by wangshicheng in C:\Users\wangshicheng\Desktop\Project\web_server\system)
+2019-07-19 14:53:21.172  INFO 16040 --- [main] com.sweet.Action                         : No active profile set, falling back to default profiles: default
+2019-07-19 14:53:21.558  INFO 16040 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4f83df68: startup date [Fri Jul 19 14:53:21 CST 2019]; root of context hierarchy
+2019-07-19 14:53:22.520  INFO 16040 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-07-19 14:53:23.399  INFO 16040 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$60c796fc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-19 14:53:24.042  INFO 16040 --- [main] org.xnio                                 : XNIO version 3.3.8.Final
+2019-07-19 14:53:24.059  INFO 16040 --- [main] org.xnio.nio                             : XNIO NIO Implementation Version 3.3.8.Final
+2019-07-19 14:53:24.098  WARN 16040 --- [main] io.undertow.websockets.jsr               : UT026009: XNIO worker was not set on WebSocketDeploymentInfo, the default worker will be used
+2019-07-19 14:53:24.098  WARN 16040 --- [main] io.undertow.websockets.jsr               : UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2019-07-19 14:53:24.124  INFO 16040 --- [main] io.undertow.servlet                      : Initializing Spring embedded WebApplicationContext
+2019-07-19 14:53:24.124  INFO 16040 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2566 ms
+2019-07-19 14:53:24.577  INFO 16040 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-07-19 14:53:24.578  INFO 16040 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'sessionRepositoryFilter' to: [/*]
+2019-07-19 14:53:24.579  INFO 16040 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-07-19 14:53:24.579  INFO 16040 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-07-19 14:53:24.579  INFO 16040 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-07-19 14:53:24.579  INFO 16040 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'CharacterEncodingFilter' to urls: [/*]
+2019-07-19 14:53:24.580  INFO 16040 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to: [/*]
+2019-07-19 14:53:24.580  INFO 16040 --- [main] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-07-19 14:55:34.899  INFO 15384 --- [main] com.sweet.Action                         : Starting Action on DESKTOP-P9NHQ6A with PID 15384 (C:\Users\wangshicheng\Desktop\Project\web_server\system\target\classes started by wangshicheng in C:\Users\wangshicheng\Desktop\Project\web_server\system)
+2019-07-19 14:55:34.903  INFO 15384 --- [main] com.sweet.Action                         : No active profile set, falling back to default profiles: default
+2019-07-19 14:55:35.263  INFO 15384 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2fba3fc4: startup date [Fri Jul 19 14:55:35 CST 2019]; root of context hierarchy
+2019-07-19 14:55:35.979  INFO 15384 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-07-19 14:55:36.571  INFO 15384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$cc994df4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-19 14:55:37.004  INFO 15384 --- [main] org.xnio                                 : XNIO version 3.3.8.Final
+2019-07-19 14:55:37.022  INFO 15384 --- [main] org.xnio.nio                             : XNIO NIO Implementation Version 3.3.8.Final
+2019-07-19 14:55:37.052  WARN 15384 --- [main] io.undertow.websockets.jsr               : UT026009: XNIO worker was not set on WebSocketDeploymentInfo, the default worker will be used
+2019-07-19 14:55:37.053  WARN 15384 --- [main] io.undertow.websockets.jsr               : UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2019-07-19 14:55:37.080  INFO 15384 --- [main] io.undertow.servlet                      : Initializing Spring embedded WebApplicationContext
+2019-07-19 14:55:37.080  INFO 15384 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1817 ms
+2019-07-19 14:55:37.584  INFO 15384 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-07-19 14:55:37.586  INFO 15384 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'sessionRepositoryFilter' to: [/*]
+2019-07-19 14:55:37.586  INFO 15384 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-07-19 14:55:37.586  INFO 15384 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-07-19 14:55:37.586  INFO 15384 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-07-19 14:55:37.587  INFO 15384 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'CharacterEncodingFilter' to urls: [/*]
+2019-07-19 14:55:37.587  INFO 15384 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to: [/*]
+2019-07-19 14:55:37.587  INFO 15384 --- [main] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-07-19 14:58:09.795  INFO 6544 --- [main] com.sweet.Action                         : Starting Action on DESKTOP-P9NHQ6A with PID 6544 (C:\Users\wangshicheng\Desktop\Project\web_server\system\target\classes started by wangshicheng in C:\Users\wangshicheng\Desktop\Project\web_server\system)
+2019-07-19 14:58:09.799  INFO 6544 --- [main] com.sweet.Action                         : No active profile set, falling back to default profiles: default
+2019-07-19 14:58:10.198  INFO 6544 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@421e361: startup date [Fri Jul 19 14:58:10 CST 2019]; root of context hierarchy
+2019-07-19 14:58:11.039  INFO 6544 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-07-19 14:58:11.769  INFO 6544 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$954c8ee] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-19 14:58:12.201  INFO 6544 --- [main] org.xnio                                 : XNIO version 3.3.8.Final
+2019-07-19 14:58:12.218  INFO 6544 --- [main] org.xnio.nio                             : XNIO NIO Implementation Version 3.3.8.Final
+2019-07-19 14:58:12.250  WARN 6544 --- [main] io.undertow.websockets.jsr               : UT026009: XNIO worker was not set on WebSocketDeploymentInfo, the default worker will be used
+2019-07-19 14:58:12.250  WARN 6544 --- [main] io.undertow.websockets.jsr               : UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2019-07-19 14:58:12.277  INFO 6544 --- [main] io.undertow.servlet                      : Initializing Spring embedded WebApplicationContext
+2019-07-19 14:58:12.278  INFO 6544 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2080 ms
+2019-07-19 14:58:12.761  INFO 6544 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-07-19 14:58:12.763  INFO 6544 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'sessionRepositoryFilter' to: [/*]
+2019-07-19 14:58:12.763  INFO 6544 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-07-19 14:58:12.764  INFO 6544 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-07-19 14:58:12.764  INFO 6544 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-07-19 14:58:12.764  INFO 6544 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'CharacterEncodingFilter' to urls: [/*]
+2019-07-19 14:58:12.764  INFO 6544 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to: [/*]
+2019-07-19 14:58:12.765  INFO 6544 --- [main] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-07-19 14:58:55.031  INFO 8432 --- [main] com.sweet.Action                         : Starting Action on DESKTOP-P9NHQ6A with PID 8432 (C:\Users\wangshicheng\Desktop\Project\web_server\system\target\classes started by wangshicheng in C:\Users\wangshicheng\Desktop\Project\web_server\system)
+2019-07-19 14:58:55.035  INFO 8432 --- [main] com.sweet.Action                         : No active profile set, falling back to default profiles: default
+2019-07-19 14:58:55.439  INFO 8432 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4d518b32: startup date [Fri Jul 19 14:58:55 CST 2019]; root of context hierarchy
+2019-07-19 14:58:56.194  INFO 8432 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-07-19 14:58:56.830  INFO 8432 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c989d4b0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-19 14:58:57.278  INFO 8432 --- [main] org.xnio                                 : XNIO version 3.3.8.Final
+2019-07-19 14:58:57.295  INFO 8432 --- [main] org.xnio.nio                             : XNIO NIO Implementation Version 3.3.8.Final
+2019-07-19 14:58:57.334  WARN 8432 --- [main] io.undertow.websockets.jsr               : UT026009: XNIO worker was not set on WebSocketDeploymentInfo, the default worker will be used
+2019-07-19 14:58:57.334  WARN 8432 --- [main] io.undertow.websockets.jsr               : UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2019-07-19 14:58:57.366  INFO 8432 --- [main] io.undertow.servlet                      : Initializing Spring embedded WebApplicationContext
+2019-07-19 14:58:57.367  INFO 8432 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1929 ms
+2019-07-19 14:58:57.868  INFO 8432 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-07-19 14:58:57.870  INFO 8432 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'sessionRepositoryFilter' to: [/*]
+2019-07-19 14:58:57.870  INFO 8432 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-07-19 14:58:57.870  INFO 8432 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-07-19 14:58:57.870  INFO 8432 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-07-19 14:58:57.871  INFO 8432 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'CharacterEncodingFilter' to urls: [/*]
+2019-07-19 14:58:57.871  INFO 8432 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to: [/*]
+2019-07-19 14:58:57.871  INFO 8432 --- [main] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-07-19 15:02:01.563  INFO 2676 --- [main] com.sweet.Action                         : Starting Action on DESKTOP-P9NHQ6A with PID 2676 (C:\Users\wangshicheng\Desktop\Project\web_server\system\target\classes started by wangshicheng in C:\Users\wangshicheng\Desktop\Project\web_server\system)
+2019-07-19 15:02:01.567  INFO 2676 --- [main] com.sweet.Action                         : No active profile set, falling back to default profiles: default
+2019-07-19 15:02:01.960  INFO 2676 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@379614be: startup date [Fri Jul 19 15:02:01 CST 2019]; root of context hierarchy
+2019-07-19 15:02:02.885  INFO 2676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-07-19 15:02:03.414  INFO 2676 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$238b401b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-19 15:02:03.818  INFO 2676 --- [main] org.xnio                                 : XNIO version 3.3.8.Final
+2019-07-19 15:02:03.835  INFO 2676 --- [main] org.xnio.nio                             : XNIO NIO Implementation Version 3.3.8.Final
+2019-07-19 15:02:03.865  WARN 2676 --- [main] io.undertow.websockets.jsr               : UT026009: XNIO worker was not set on WebSocketDeploymentInfo, the default worker will be used
+2019-07-19 15:02:03.865  WARN 2676 --- [main] io.undertow.websockets.jsr               : UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2019-07-19 15:02:03.890  INFO 2676 --- [main] io.undertow.servlet                      : Initializing Spring embedded WebApplicationContext
+2019-07-19 15:02:03.890  INFO 2676 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1931 ms
+2019-07-19 15:02:04.289  INFO 2676 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-07-19 15:02:04.290  INFO 2676 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'sessionRepositoryFilter' to: [/*]
+2019-07-19 15:02:04.291  INFO 2676 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-07-19 15:02:04.291  INFO 2676 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-07-19 15:02:04.291  INFO 2676 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-07-19 15:02:04.291  INFO 2676 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'CharacterEncodingFilter' to urls: [/*]
+2019-07-19 15:02:04.291  INFO 2676 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to: [/*]
+2019-07-19 15:02:04.291  INFO 2676 --- [main] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
