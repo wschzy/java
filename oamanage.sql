@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2019-07-17 09:52:52
+Date: 2019-07-22 17:44:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -277,7 +277,7 @@ CREATE TABLE `user_pay` (
   `time` datetime DEFAULT NULL,
   `note` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=602 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=623 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_pay
@@ -853,6 +853,26 @@ INSERT INTO `user_pay` VALUES ('597', '21', '71', '2', '7.00', '2019-07-17 09:37
 INSERT INTO `user_pay` VALUES ('598', '21', '70', '2', '13.00', '2019-07-17 09:37:39', '馄饨');
 INSERT INTO `user_pay` VALUES ('599', '21', '62', '2', '5.00', '2019-07-17 09:38:08', '冰淇淋');
 INSERT INTO `user_pay` VALUES ('601', '21', '33', '5', '100.00', '2019-07-17 09:48:58', '月卡');
+INSERT INTO `user_pay` VALUES ('603', '19', '33', '2', '50.00', '2019-07-22 17:27:26', '');
+INSERT INTO `user_pay` VALUES ('604', '19', '86', '2', '235.00', '2019-07-22 17:28:00', '两套衣服');
+INSERT INTO `user_pay` VALUES ('605', '19', '91', '2', '150.00', '2019-07-22 17:28:31', '大超生日礼物');
+INSERT INTO `user_pay` VALUES ('606', '19', '40', '2', '4.50', '2019-07-22 17:28:53', '早饭');
+INSERT INTO `user_pay` VALUES ('607', '19', '34', '1', '20.00', '2019-07-22 17:30:13', '');
+INSERT INTO `user_pay` VALUES ('608', '19', '53', '1', '29.94', '2019-07-22 17:30:35', '');
+INSERT INTO `user_pay` VALUES ('609', '19', '53', '1', '49.90', '2019-07-22 17:30:51', '');
+INSERT INTO `user_pay` VALUES ('610', '19', '61', '1', '44.50', '2019-07-22 17:31:08', '');
+INSERT INTO `user_pay` VALUES ('611', '19', '41', '1', '8.99', '2019-07-22 17:34:36', '');
+INSERT INTO `user_pay` VALUES ('612', '19', '34', '1', '20.00', '2019-07-22 17:35:28', '');
+INSERT INTO `user_pay` VALUES ('613', '21', '71', '2', '4.00', '2019-07-22 17:37:59', '');
+INSERT INTO `user_pay` VALUES ('614', '21', '42', '2', '6.50', '2019-07-22 17:38:14', '');
+INSERT INTO `user_pay` VALUES ('615', '21', '18', '2', '15.00', '2019-07-22 17:38:46', '');
+INSERT INTO `user_pay` VALUES ('616', '21', '41', '2', '9.50', '2019-07-22 17:39:20', '');
+INSERT INTO `user_pay` VALUES ('617', '21', '71', '2', '3.00', '2019-07-22 17:39:34', '');
+INSERT INTO `user_pay` VALUES ('618', '21', '42', '2', '18.20', '2019-07-22 17:41:11', '');
+INSERT INTO `user_pay` VALUES ('619', '21', '62', '2', '5.00', '2019-07-22 17:41:36', '');
+INSERT INTO `user_pay` VALUES ('620', '21', '41', '2', '14.10', '2019-07-22 17:41:58', '');
+INSERT INTO `user_pay` VALUES ('621', '21', '41', '2', '16.00', '2019-07-22 17:42:05', '');
+INSERT INTO `user_pay` VALUES ('622', '21', '63', '2', '13.50', '2019-07-22 17:42:34', '');
 
 -- ----------------------------
 -- Table structure for user_spbz
