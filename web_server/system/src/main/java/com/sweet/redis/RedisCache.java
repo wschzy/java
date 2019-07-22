@@ -1,10 +1,12 @@
 package com.sweet.redis;
 
+import java.util.Set;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
-
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.cache.Cache;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
@@ -13,6 +15,10 @@ public class RedisCache implements Cache{
     private String id;
     private JedisPool redisClient=createRedis();
     private ReadWriteLock readWriteLock = new ReentrantReadWriteLock(); //读写锁
+
+    private final static RedisSerializer<Object> serializer = new JdkSerializationRedisSerializer();
+
+
 
     public void setReadWriteLock(ReadWriteLock readWriteLock) {
         this.readWriteLock = readWriteLock;
@@ -38,33 +44,45 @@ public class RedisCache implements Cache{
     }
 
     public void putObject(Object key, Object value) {
-        byte[] keybyte=SerializableUtil.serialize(key);
-        byte[]valuebyte=SerializableUtil.serialize(value);
         try (Jedis jedis = this.redisClient.getResource();){
-            jedis.set(keybyte, valuebyte);
+            jedis.set(serializer.serialize(key), serializer.serialize(value));
         }
     }
 
     public Object getObject(Object key) {
         //缓存穿透
         try (Jedis jedis = this.redisClient.getResource();){
-            byte[] values=jedis.get(SerializableUtil.serialize(key));
+            byte[] values=jedis.get(serializer.serialize(key));
             if(values==null){
                 return null;
             }
-            Object obj =SerializableUtil.unserizlize(values);
-            return obj;
+            return serializer.deserialize(values);
         }
     }
 
     public Object removeObject(Object key) {
-        byte[]keybyte=SerializableUtil.serialize(key);
         try (Jedis jedis = this.redisClient.getResource();){
-            return  jedis.expire(keybyte, 0);
+            return  jedis.expire(serializer.serialize(key), 0);
         }
     }
 
     public void clear() {
+        try (Jedis jedis = this.redisClient.getResource();){
+            Set<byte[]> keys = jedis.keys(("*"+id+"*").getBytes());//匹配当前mapper下所有的缓存
+            for (byte[] key : keys) {
+                jedis.del(key);
+            }
+            //jedis.flushDB();
+        }
+    }
+
+    /*private Object execute(RedisCallback callback) {
+        try (Jedis jedis = this.redisClient.getResource();){
+            return callback.doWithRedis(jedis);
+        }
+    }*/
+
+    /*public void clear() {
         execute(new RedisCallback() {
             @Override
             public Object doWithRedis(Jedis jedis) {
@@ -72,13 +90,7 @@ public class RedisCache implements Cache{
                 return null;
             }
         });
-    }
-
-    private Object execute(RedisCallback callback) {
-        try (Jedis jedis = this.redisClient.getResource();){
-            return callback.doWithRedis(jedis);
-        }
-    }
+    }*/
 
     public int getSize() {
         try (Jedis jedis = this.redisClient.getResource();){
