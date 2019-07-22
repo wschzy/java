@@ -65,8 +65,18 @@ public class RedisCache implements Cache{
     }
 
     public void clear() {
+        execute(new RedisCallback() {
+            @Override
+            public Object doWithRedis(Jedis jedis) {
+                jedis.del(id);
+                return null;
+            }
+        });
+    }
+
+    private Object execute(RedisCallback callback) {
         try (Jedis jedis = this.redisClient.getResource();){
-            jedis.flushDB();
+            return callback.doWithRedis(jedis);
         }
     }
 
