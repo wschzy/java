@@ -9,6 +9,12 @@ import com.sweet.bean.SysUserInfo;
 @CacheNamespace(implementation=com.sweet.redis.RedisCache.class)//不能加括号
 public interface SysUserInfoMapper {
 
+    /**
+     * 根据homeid查询用户列表
+     */
+    @Select("select id,loginid,phone,sex,fullname,email,picture from sys_userinfo where id in (select userid from user_home_rel where homeid = #{homeid})")
+    List<SysUserInfo> getUserListByHomeid(Integer homeid);
+
     //查询所有用户
     @Select("SELECT id,loginid,phone,sex,fullname,email,lrsj FROM SYS_USERINFO where tag = 1")
     List<SysUserInfo> findUserList();

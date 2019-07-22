@@ -2,6 +2,8 @@ package com.sweet.hzy.service.imp;
 
 import java.util.List;
 import javax.annotation.Resource;
+
+import com.sweet.hzy.mapper.UserPayMapper;
 import org.springframework.stereotype.Service;
 import com.sweet.bean.UserDictionary;
 import com.sweet.hzy.mapper.UserDictionaryMapper;
@@ -14,6 +16,9 @@ public class UserDictionaryServiceImp implements UserDictionaryService {
 
 	@Resource
 	private UserDictionaryMapper userDictionaryMapper;
+
+	@Resource
+	private UserPayMapper userPayMapper;
 	
 	@Override
 	public List<UserDictionary>getDictionaryList(){
@@ -35,7 +40,7 @@ public class UserDictionaryServiceImp implements UserDictionaryService {
 	
 	@Override
 	public int deleteDictionaryById(Integer id) throws SysException {
-		int param = userDictionaryMapper.inPayByid(id);
+		int param = userPayMapper.inPayByid(id);
 		if(0 != param) {
 			throw new SysException("已经存在支付中，不能删除");
 		}

@@ -35,6 +35,12 @@ public interface UserPayMapper {
 	
 	@Update("update user_pay set dicid=#{dicid},way=#{way},money=#{money},note=#{note} where id = #{id}")
 	int updateUserPay(UserPay pay);
+
+	/**
+	 * 判断用户类别是否存在支付中
+	 */
+	@Select("select count(*) from user_pay where dicid = #{id} or way = #{id}")
+	int inPayByid(Integer id);
 	
 	/**
 	 * 查询本周每天消费消费

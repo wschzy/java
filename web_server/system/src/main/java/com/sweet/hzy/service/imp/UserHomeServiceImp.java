@@ -48,7 +48,7 @@ public class UserHomeServiceImp implements UserHomeService{
 	 * @throws SysException 
 	 */
 	public List<SysUserInfo> getUserListByHomeid() throws SysException{
-		return userHomeMapper.getUserListByHomeid(getHomeByUserid().getId());
+		return sysUserInfoMapper.getUserListByHomeid(getHomeByUserid().getId());
 	}
 	
 	/**
