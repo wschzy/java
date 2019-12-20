@@ -1347,3 +1347,12 @@ INSERT INTO `user_spbz` VALUES (11, 21, 6, 180, '2019-03-14 16:03:23', 0, '家�
 INSERT INTO `user_spbz` VALUES (12, 18, 6, 180, '2019-03-14 16:20:30', 0, '家庭成员申请', '用户名：hzy，全名：胡子扬', 'USER_HOME_REL');
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+
+
+
+
+
+
+
