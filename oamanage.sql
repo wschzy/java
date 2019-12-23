@@ -11,7 +11,7 @@
  Target Server Version : 50540
  File Encoding         : 65001
 
- Date: 18/12/2019 16:03:15
+ Date: 23/12/2019 14:43:12
 */
 
 SET NAMES utf8mb4;
@@ -294,7 +294,7 @@ CREATE TABLE `user_pay`  (
   `time` datetime NULL DEFAULT NULL,
   `note` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1058 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1078 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of user_pay
@@ -1312,6 +1312,26 @@ INSERT INTO `user_pay` VALUES (1054, 21, 42, 2, 67.20, '2019-12-18 15:58:30', '�
 INSERT INTO `user_pay` VALUES (1055, 21, 45, 2, 48.50, '2019-12-18 15:59:20', '肯德基');
 INSERT INTO `user_pay` VALUES (1056, 21, 33, 2, 50.00, '2019-12-18 15:59:39', '月卡');
 INSERT INTO `user_pay` VALUES (1057, 21, 62, 2, 4.50, '2019-12-18 16:00:17', '12月17号');
+INSERT INTO `user_pay` VALUES (1058, 19, 85, 1, 25.54, '2019-12-23 11:01:07', '胡妈妈鞋');
+INSERT INTO `user_pay` VALUES (1059, 19, 101, 1, 24.41, '2019-12-23 11:01:42', '手套');
+INSERT INTO `user_pay` VALUES (1060, 19, 53, 1, 10.00, '2019-12-23 11:02:43', '');
+INSERT INTO `user_pay` VALUES (1061, 19, 101, 2, 25.00, '2019-12-23 11:03:45', '护手霜');
+INSERT INTO `user_pay` VALUES (1062, 19, 91, 2, 10.00, '2019-12-23 11:04:12', '妈妈生日红包');
+INSERT INTO `user_pay` VALUES (1063, 19, 34, 2, 1.50, '2019-12-23 11:04:47', '摩拜');
+INSERT INTO `user_pay` VALUES (1064, 19, 98, 1, 202.00, '2019-12-23 11:09:18', '碗柜（胡）');
+INSERT INTO `user_pay` VALUES (1065, 19, 41, 1, 11.30, '2019-12-23 11:10:02', '香锅');
+INSERT INTO `user_pay` VALUES (1066, 19, 41, 1, 17.70, '2019-12-23 11:10:16', '');
+INSERT INTO `user_pay` VALUES (1067, 19, 51, 1, 2.40, '2019-12-23 11:10:47', '小e微店');
+INSERT INTO `user_pay` VALUES (1068, 19, 51, 1, 5.50, '2019-12-23 11:11:31', '方便面');
+INSERT INTO `user_pay` VALUES (1069, 19, 51, 1, 2.66, '2019-12-23 11:12:10', '大润发');
+INSERT INTO `user_pay` VALUES (1070, 19, 43, 1, 25.85, '2019-12-23 11:12:52', '养乐多');
+INSERT INTO `user_pay` VALUES (1071, 19, 92, 1, 7.00, '2019-12-23 11:13:28', '停车费网吧');
+INSERT INTO `user_pay` VALUES (1072, 19, 42, 1, 6.00, '2019-12-23 11:13:53', '莽子火锅加多宝');
+INSERT INTO `user_pay` VALUES (1073, 19, 62, 1, 52.50, '2019-12-23 11:26:50', '胡');
+INSERT INTO `user_pay` VALUES (1074, 21, 67, 2, 9.90, '2019-12-23 14:09:31', '');
+INSERT INTO `user_pay` VALUES (1075, 21, 42, 2, 258.00, '2019-12-23 14:09:56', '莽子火锅');
+INSERT INTO `user_pay` VALUES (1076, 21, 70, 2, 4.50, '2019-12-23 14:10:21', '牙刷');
+INSERT INTO `user_pay` VALUES (1077, 21, 57, 2, 199.60, '2019-12-23 14:10:43', '');
 
 -- ----------------------------
 -- Table structure for user_spbz
@@ -1347,12 +1367,3 @@ INSERT INTO `user_spbz` VALUES (11, 21, 6, 180, '2019-03-14 16:03:23', 0, '家�
 INSERT INTO `user_spbz` VALUES (12, 18, 6, 180, '2019-03-14 16:20:30', 0, '家庭成员申请', '用户名：hzy，全名：胡子扬', 'USER_HOME_REL');
 
 SET FOREIGN_KEY_CHECKS = 1;
-
-
-
-
-
-
-
-
-
