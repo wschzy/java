@@ -1,0 +1,183 @@
+--该日期是否出勤
+ALTER FUNCTION getAttendance(
+@depart VARCHAR(50),
+--日期
+@ymd date
+)
+--出勤1 非出勤0
+RETURNS int
+BEGIN
+	
+		--出勤标准
+	DECLARE @attendance_standard int;
+	--查询出勤标准
+	SELECT  @attendance_standard = attendance_standard 
+		from t_mst_case_work_time 
+		where code = @depart and enable_flag = '1';
+	--默认5天
+	set @attendance_standard = isnull(@attendance_standard,5);
+		
+	
+	
+	DECLARE @WORK_DAY NUMERIC(5,1);
+	DECLARE @res int;
+	select  @WORK_DAY = WORK_DAY 
+		from   cim_kb.cim_kb.dbo.t_mst_discount_calendar 
+		WHERE YMD = @ymd;
+	
+	if @WORK_DAY =0
+		set @res = 0
+	else if @WORK_DAY = 1
+	 set @res = 1
+  else if @WORK_DAY>0 and @WORK_DAY<1
+		begin
+			if @attendance_standard > 5
+				set @res = 1
+			else
+				set @res = 0
+		end
+		
+	RETURN @res
+END
+
+
+
+ALTER FUNCTION getCnt(
+@begintime DATETIME,
+@endtime DATETIME,
+@depart VARCHAR(50)
+)
+RETURNS @tab TABLE(cnt int)
+AS 
+BEGIN
+    DECLARE @cnt INT
+    SET @cnt=0
+    --开始结束日期是否为空
+    IF (isnull(@begintime,'')='' OR ISNULL(@endtime,'')='')
+    BEGIN
+        INSERT INTO @tab
+        SELECT @cnt
+				return
+    END
+    ELSE
+		--开始时间加1
+    SET @begintime=DATEADD(DAY,1,@begintime)
+    WHILE cast(@begintime AS DATE)<cast(@endtime AS DATE)
+    BEGIN
+				--如果在非工作时间
+        IF dbo.getAttendance( @depart, @begintime ) = 0 
+        BEGIN
+            SET @cnt=@cnt
+        END           
+        ELSE 
+        BEGIN
+            SET @cnt=@cnt+1
+        END           
+        SET @begintime=DATEADD(DAY,1,@begintime)   
+    END 
+    INSERT INTO @tab
+    SELECT @cnt   
+    RETURN
+END
+
+
+
+ALTER FUNCTION getWorkMinutes(
+@begintime DATETIME,
+@endtime DATETIME,
+@depart VARCHAR(50)
+)
+RETURNS @tab TABLE(cnt int)
+AS 
+BEGIN
+	
+	--上班时间
+	DECLARE @go_time time;
+	--下班时间
+	DECLARE @close_time time;
+	--开始工作时间
+	DECLARE @go_work  time;
+	--结束工作时间
+	DECLARE @close_work  time;
+	--全天工作总分钟数
+	DECLARE @workMinutes  int;
+	
+	--查询该部门上班时间 下班时间
+	SELECT  @go_time = go_time,@close_time = close_time 
+		from t_mst_case_work_time 
+		where code = @depart and enable_flag = '1';
+	set @go_time = isnull(@go_time,'09:00');
+	set @close_time = isnull(@close_time,'18:00');
+	set @go_work = cast(@begintime as time);
+	set @close_work = cast(@endtime as time);
+	set @workMinutes = DATEDIFF( MINUTE, @go_time,@close_time);
+	
+	insert into @tab
+	SELECT  CASE
+			--当开始>结束日期 0
+			WHEN @begintime>@endtime THEN 0
+			--当开始和结束日期是同一天
+			WHEN CAST(@begintime AS date)=cast(@endtime AS DATE) THEN (
+				CASE
+					--非出勤 则为0
+					WHEN dbo.getAttendance( @depart, @begintime ) = 0  THEN 0  
+					--开始工作时间在工作时间内 
+					WHEN  @go_work >= @go_time AND @go_work<@close_time THEN (
+						CASE 
+							--当结束工作时间小于下班时间 则用结束时间-开始时间
+							WHEN @close_work<@close_time THEN   DATEDIFF( MINUTE, @begintime, @endtime ) 
+							--当结束时间大于下班时间 则用下班时间-开始工作时间
+							WHEN @close_work>=@close_time THEN  DATEDIFF( MINUTE,@go_work,@close_time) 
+						END
+					)
+					--当开始工作时间小于上班时间
+					WHEN @go_work<@go_time THEN (
+						CASE 
+							--当结束工作时间小于上班时间 为0
+							WHEN  @close_work<@go_time then 0
+							--当结束工作时间小于下班时间 则用结束工作时间-上班时间
+							WHEN @close_work<@close_time THEN  DATEDIFF( MINUTE,@go_time,@close_work) 
+							--当结束工作时间大于下班时间 则用下班时间-上班时间
+							WHEN @close_work>=@close_time THEN   @workMinutes
+						END
+					)
+					--判断开始工作时间大于下班时间
+					WHEN @go_work>=@close_time THEN 0
+				END
+			)
+			
+			--开始结束日期是否有一个为空，如果是则间隔时间为0
+			WHEN ISNULL(@begintime,'')='' OR ISNULL(@endtime,'')='' THEN 0
+			ELSE 
+				CASE 
+					--判断开始时间是否出勤
+					WHEN dbo.getAttendance( @depart, @begintime ) = 0  THEN 0  
+					ELSE 
+						CASE  
+							--判断开始工作时间在工作时间内 = 下班时间-开始工作时间
+							when @go_work>=@go_time AND @go_work< @close_time THEN  DATEDIFF( MINUTE, @go_work, @close_time )  
+							--判断开始工作时间小于上班时间 = 下班时间 -上班时间
+							WHEN @go_work<@go_time THEN @workMinutes
+							--判断开始工作时间大于下班时间
+							WHEN @go_work>=@close_time THEN 0
+						END
+				END                           
+				+ 
+				CASE 
+					--判断结束时间是否是周六周末
+					WHEN dbo.getAttendance( @depart, @endtime ) = 0 THEN 0
+					ELSE 
+						CASE  
+							--判断结束工作时间>=上班时间<下班时间 = 结束工作时间-上班时间
+							when @close_work>=@go_time AND @close_work<@close_time THEN DATEDIFF( MINUTE, @go_time,@close_work )  
+							--结束工作时间小于上班时间=0
+							WHEN @close_work<@go_time THEN 0
+							--结束工作时间大于下班时间=9
+							WHEN @close_work>=@close_time THEN  @workMinutes 
+						END                	
+				END
+			 END                                 
+		  +  b.cnt*@workMinutes  as  minutes                                             
+	FROM  dbo.getCnt(@begintime,@endtime,@depart) b
+	RETURN 
+END
