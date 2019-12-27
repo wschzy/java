@@ -24,6 +24,9 @@ BEGIN
 	select  @WORK_DAY = WORK_DAY 
 		from   cim_kb.cim_kb.dbo.t_mst_discount_calendar 
 		WHERE YMD = @ymd;
+		--默认0
+	set @WORK_DAY = isnull(@WORK_DAY,0);
+		
 	
 	if @WORK_DAY =0
 		set @res = 0
@@ -87,7 +90,7 @@ ALTER FUNCTION getWorkMinutes(
 @endtime DATETIME,
 @depart VARCHAR(50)
 )
-RETURNS @tab TABLE(cnt int)
+RETURNS int
 AS 
 BEGIN
 	
@@ -101,6 +104,7 @@ BEGIN
 	DECLARE @close_work  time;
 	--全天工作总分钟数
 	DECLARE @workMinutes  int;
+	DECLARE @res int;
 	
 	--查询该部门上班时间 下班时间
 	SELECT  @go_time = go_time,@close_time = close_time 
@@ -112,10 +116,11 @@ BEGIN
 	set @close_work = cast(@endtime as time);
 	set @workMinutes = DATEDIFF( MINUTE, @go_time,@close_time);
 	
-	insert into @tab
-	SELECT  CASE
+	--insert into @tab
+
+	SELECT @res = CASE
 			--当开始>结束日期 0
-			WHEN @begintime>@endtime THEN 0
+			WHEN @begintime>=@endtime THEN 0
 			--当开始和结束日期是同一天
 			WHEN CAST(@begintime AS date)=cast(@endtime AS DATE) THEN (
 				CASE
@@ -177,7 +182,139 @@ BEGIN
 						END                	
 				END
 			 END                                 
-		  +  b.cnt*@workMinutes  as  minutes                                             
-	FROM  dbo.getCnt(@begintime,@endtime,@depart) b
-	RETURN 
+		  +  b.cnt*@workMinutes                                             
+	FROM  dbo.getCnt(@begintime,@endtime,@depart) b 
+	
+	
+	RETURN @res
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ALTER FUNCTION getCnt(
+@begintime DATETIME,
+@endtime DATETIME,
+@depart VARCHAR(50)
+)
+RETURNS @tab TABLE(cnt int)
+AS 
+BEGIN
+    DECLARE @cnt INT
+    SET @cnt=0
+		
+    --开始结束日期是否为空
+    IF (isnull(@begintime,'')='' OR ISNULL(@endtime,'')='')
+    BEGIN
+        INSERT INTO @tab
+        SELECT @cnt
+				return
+    END
+    ELSE
+		--开始时间加1
+    SET @begintime=DATEADD(DAY,1,@begintime)
+		
+		
+		--临时出勤表数据,变量表
+			DECLARE @calendar TABLE
+			 (
+				YMD date,
+				WORK_DAY NUMERIC(5,1)
+			 );	
+			 DECLARE @attendance TABLE
+			 (
+				dep VARCHAR(50),
+				att int
+			 );	
+			insert into @calendar( YMD,WORK_DAY )
+			SELECT YMD,WORK_DAY from  cim_kb.cim_kb.dbo.t_mst_discount_calendar  where  ymd >= @begintime and ymd <= @endtime;
+			
+			insert into @attendance( dep,att )
+			SELECT  code,attendance_standard = attendance_standard 
+				from t_mst_case_work_time 
+				where enable_flag = '1';
+
+			
+			
+				
+			 
+    WHILE cast(@begintime AS DATE)<cast(@endtime AS DATE)
+    BEGIN
+				
+				DECLARE @WORK_DAY NUMERIC(5,1);
+				DECLARE @res int;
+				SELECT @WORK_DAY = WORK_DAY FROM @calendar t WHERE t.WORK_DAY = @begintime;
+				--默认0
+				set @WORK_DAY = isnull(@WORK_DAY,0);
+				if @WORK_DAY =0
+					set @res = 0
+				else if @WORK_DAY = 1
+					set @res = 1
+				else if @WORK_DAY>0 and @WORK_DAY<1
+					begin
+							DECLARE @attendance_standard int;
+							SELECT  @attendance_standard = att  from @attendance ;
+							--默认5天
+							set @attendance_standard = isnull(@attendance_standard,5);
+						if @attendance_standard > 5
+							set @res = 1
+					else
+							set @res = 0
+					end
+				
+				
+				 
+				--如果在非工作时间
+        IF dbo.getAttendance( @depart, @begintime ) = 0 
+        BEGIN
+            SET @cnt=@cnt
+        END           
+        ELSE 
+        BEGIN
+            SET @cnt=@cnt+1
+        END           
+        SET @begintime=DATEADD(DAY,1,@begintime)   
+    END 
+    INSERT INTO @tab
+    SELECT @cnt   
+    RETURN
 END
