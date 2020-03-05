@@ -10,11 +10,13 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
+
 @Slf4j
 public class RedisCache implements Cache{
     private String id;
     private JedisPool redisClient=createRedis();
     private ReadWriteLock readWriteLock = new ReentrantReadWriteLock(); //读写锁
+
 
     private final static RedisSerializer<Object> serializer = new JdkSerializationRedisSerializer();
 
