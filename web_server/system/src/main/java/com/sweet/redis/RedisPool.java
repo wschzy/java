@@ -1,3 +1,4 @@
+/*
 package com.sweet.redis;
 
 import java.util.ResourceBundle;
@@ -10,7 +11,6 @@ public class RedisPool {
 
     private RedisPool(){
         ResourceBundle bundle =ResourceBundle.getBundle("application");
-        //bundle类似一个map
         if(bundle==null){
             throw new IllegalArgumentException("[redis.properties] is not find ");
            }
@@ -36,3 +36,4 @@ public class RedisPool {
         return pool;
     }
 }
+*/

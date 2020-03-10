@@ -21,8 +21,7 @@ public class ServletUtil {
 	 * 获取当前session
 	 */
 	public static HttpSession getSession() {
-		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-		return attributes.getRequest().getSession();
+		return getRequset().getSession();
 	}
 	
 	/**

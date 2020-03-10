@@ -1,12 +1,14 @@
 package com.sweet;
 
+import com.sweet.util.SpringContextUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.ServletComponentScan;
-import org.springframework.scheduling.annotation.EnableAsync;
 import com.sweet.config.DBConfig1;
 import com.sweet.config.DBConfig2;
+import org.springframework.context.ApplicationContext;
+
 @SpringBootApplication// same as @Configuration @EnableAutoConfiguration @ComponentScan
 //@EnableAsync//开启异步
 @EnableConfigurationProperties(value = { DBConfig1.class, DBConfig2.class })//多数据源
@@ -20,7 +22,8 @@ public class Action {
 	 * java -server -Xms32m -Xmx32m  -jar springboot.jar
 	 */
 	public static void main(String[] args) {
-		SpringApplication.run(Action.class,args);
+		ApplicationContext context= SpringApplication.run(Action.class,args);
+		SpringContextUtil.setApplicationContext(context);
 	}
 	
 }
