@@ -73,6 +73,7 @@ public class RedisCache implements Cache{
     }
 
     public void clear() {
+        createRedis();
         Set<byte[]> keys=keys(("*"+id+"*").getBytes());
         //遍历key  进行删除  可以用多线程
         for(byte[] key:keys){
