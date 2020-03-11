@@ -11,6 +11,7 @@ import { TaskComponent } from './page/task/task.component';
 import { UserComponent } from './page/user/user.component';
 import { AddUserComponent } from './page/add-user/add-user.component';
 import { OverviewComponent } from './page/overview/overview.component';
+import { RankComponent } from './page/rank/rank.component';
 const routes: Routes = [
   { path:'login',component:LoginComponent,pathMatch:'full' },
   { path:'',component:LoginComponent},
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:'task',component:TaskComponent},
   {path:'user',component:UserComponent},
   {path:'add-user',component:AddUserComponent},
-  {path:'overview',component:OverviewComponent}
+  {path:'overview',component:OverviewComponent},
+  {path:'rank',component:RankComponent}
 ];
 
 @NgModule({

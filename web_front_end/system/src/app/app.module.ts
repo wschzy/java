@@ -24,6 +24,7 @@ import en from '@angular/common/locales/en';
 import { UserComponent } from './page/user/user.component';
 import { AddUserComponent } from './page/add-user/add-user.component';
 import { OverviewComponent } from './page/overview/overview.component';
+import { RankComponent } from './page/rank/rank.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { OverviewComponent } from './page/overview/overview.component';
     UserComponent,
     AddUserComponent,
     OverviewComponent,
+    RankComponent
   ],
   imports: [
     BrowserModule,

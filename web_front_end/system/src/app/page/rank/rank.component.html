@@ -1,0 +1,24 @@
+<div id="content">
+    <nz-table #basicTable 
+        [nzData]="listOfDisplayData"
+        [nzPageIndex]="pageIndex" [nzTotal]="total" nzSimple >
+        <thead>
+          <tr>
+            <th>序号</th>
+            <th>名字</th>
+            <th>成绩</th>
+            <th>赞</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <td>{{ data.age }}</td>
+            <td>{{ data.name }}</td>
+            <td>{{ data.street }}</td>
+            <td>
+              <a> {{ data.building }}</a>
+            </td>
+          </tr>
+        </tbody>
+    </nz-table> 
+</div>
