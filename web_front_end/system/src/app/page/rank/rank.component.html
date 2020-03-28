@@ -1,5 +1,5 @@
 <div id="content">
-    <nz-table #basicTable 
+    <!-- <nz-table #basicTable 
         [nzData]="listOfDisplayData"
         [nzPageIndex]="pageIndex" [nzTotal]="total" nzSimple >
         <thead>
@@ -16,9 +16,34 @@
             <td>{{ data.name }}</td>
             <td>{{ data.street }}</td>
             <td>
+              <i class="iconfont icon-zan"></i>
               <a> {{ data.building }}</a>
             </td>
           </tr>
         </tbody>
-    </nz-table> 
+    </nz-table>  -->
+    <div style="margin: 8px;">
+      <i class="iconfont icon-Update" (click)="change()"></i>
+    </div>
+    <nz-list
+    [nzDataSource]="data"
+    [nzRenderItem]="item"
+    [nzPagination]="pagination"
+  >
+    <ng-template #item let-item>
+      <nz-list-item [nzContent]="item.content" [nzActions]="[ msgAction]" [nzExtra]="extra">
+        <ng-template #msgAction><i class="iconfont icon-zan" style="margin-right: 8px;" (click)="count(item)"></i>{{item.count}}</ng-template>
+        <nz-list-item-meta class="title" [nzAvatar]="item.avatar" [nzTitle]="nzTitle">
+          <ng-template #nzTitle
+            >{{item.name}}</ng-template
+          >
+        </nz-list-item-meta>
+      </nz-list-item>
+    </ng-template>
+  
+    <ng-template #pagination>
+      <nz-pagination [nzPageIndex]="1" [nzTotal]="50" (nzPageIndexChange)="loadData($event)"></nz-pagination>
+    </ng-template>
+  </nz-list>
 </div>
+

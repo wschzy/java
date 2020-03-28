@@ -1,3 +1,14 @@
 #content{
     margin: 0 auto;
 }
+i{
+    font-size: 18px;
+    display: inline-block;
+  }
+  .title{
+      margin-left: 40px;
+  }
+  ::ng-deep .ant-list-item-content{
+      font-size: 20px;
+      color:   #48AA57;
+  }
